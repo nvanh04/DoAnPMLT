@@ -928,62 +928,8 @@ var customerId = 0;
                             <div class="right">
                                 <div id="media_image-12" class="aside-item sidebar-category collection-category widget_media_image"><img width="600" height="500" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/d0f62f32e17500c22b19a97d9e4a2a26.jpg" class="image wp-image-2217  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/d0f62f32e17500c22b19a97d9e4a2a26.jpg 600w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/d0f62f32e17500c22b19a97d9e4a2a26-24x20.jpg 24w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/d0f62f32e17500c22b19a97d9e4a2a26-36x30.jpg 36w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/d0f62f32e17500c22b19a97d9e4a2a26-48x40.jpg 48w" sizes="(max-width: 600px) 100vw, 600px" /></div>
                             </div>
-                            <div class="product-content-box">
-                                <div class="left">
+                        </div>
 
-                                    <h3 class="product-table-title">Thông Tin Chi Tiết</h3>
-                                    <div class="white-panel">
-                                        <div class="attribute-table single-table">
-
-                                            <table id="chi-tiet" class="table table-bordered table-detail table-striped" cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        @foreach (var column in ViewBag.listTenCotSanPham)
-                                                        {
-                                                            <th>@column[0]</th>
-                                                        }
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach (var row in ViewBag.listGetProductInfo)
-                                                    {
-                                                        <tr>
-                                                            @foreach (var cell in row)
-                                                            {
-                                                                <td>@cell</td>
-                                                            }
-                                                        </tr>
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <h3 class="product-table-title">Mô Tả Sản Phẩm</h3>
-                                    <div class="white-panel">
-                                        <div class="product-description">
-                                            <div class="product-content-detail">
-                                                <div id="gioi-thieu" class="content js-content" itemprop="description">
-                                                    <div class="top-feature-item bullet-wrap">
-                                                        @foreach (var b in ViewBag.listchitietsanpham)
-                                                        {
-                                                            <p>@b[2]</p>
-                                                        }
-
-                                                    </div>
-                                                    <p class="description-addon">* Giá sản phẩm trên Tiki đã bao gồm thuế VAT. Tuy nhiên tuỳ vào từng loại sản phẩm hoặc phương thức, địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như phí vận chuyển, phụ phí hàng cồng kềnh, &#8230;</p>
-
-                                                </div>
-                                                <p class="show-more"><a class="js-show-more" href="Javascript:;" title="Xem Thêm Nội Dung">Xem Thêm Nội Dung</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div class="right">
-                                    <div id="media_image-12" class="aside-item sidebar-category collection-category widget_media_image"><img width="600" height="500" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/d0f62f32e17500c22b19a97d9e4a2a26.jpg" class="image wp-image-2217  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/d0f62f32e17500c22b19a97d9e4a2a26.jpg 600w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/d0f62f32e17500c22b19a97d9e4a2a26-24x20.jpg 24w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/d0f62f32e17500c22b19a97d9e4a2a26-36x30.jpg 36w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/d0f62f32e17500c22b19a97d9e4a2a26-48x40.jpg 48w" sizes="(max-width: 600px) 100vw, 600px" /></div>
-                                </div>
-                            </div>
                         <div class="row nonemar">
                             <div class="col-xs-12">
                                 <div id="hoi-dap" class="question-answer-box">
