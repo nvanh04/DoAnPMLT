@@ -743,8 +743,8 @@
                             @foreach (var c in ViewBag.listSanPham)
                             {
                                 <div data-seller-product-id="2237" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2237" data-score="" href="~/Views/Home/chitietsanpham.cshtml" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="" />
-
+                                    <a data-id="2237" data-score="" href="~/Home/chitietsanpham?id=@c[0]" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="" />
+                                    @*<a href="~/Home/chitietsanpham"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>*@
                                     <span class="image">
 
                                         <img class="product-image img-responsive" src="~/HINH/@c[10]" alt="">
