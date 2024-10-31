@@ -740,7 +740,7 @@
                             <h4>Sản Phẩm Mới</h4>
                         </div>
                         <div class="home-recently-list">
-                            
+                            @foreach (var c in ViewBag.listSanPham)
                             {
                                 <div data-seller-product-id="2237" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
                                     <a data-id="2237" data-score="" href="~/Home/chitietsanpham?id=@c[0]" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="" />
