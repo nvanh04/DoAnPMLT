@@ -641,10 +641,11 @@ var customerId = 0;
                     <div class="product-listing">
                         <div class="product-box no-mg">
                             <div class="filter-list-box">
+                                @foreach (var c in ViewBag.listDanhMuc)
+                                {
+                                    @c[1]
+                                }
 
-                                <h1>
-                                    Phòng ngủ hiện đại
-                                </h1>
 
 
                                 <!-- Keyword suggestion list -->
