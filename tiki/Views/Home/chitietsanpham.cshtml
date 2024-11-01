@@ -880,29 +880,32 @@ var customerId = 0;
                             <div class="left">
 
                                 <h3 class="product-table-title">Thông Tin Chi Tiết</h3>
-                                    <div class="white-panel">
-                                        <div class="attribute-table single-table">
+                                <div class="white-panel">
+                                    <div class="attribute-table single-table">
 
-                                            <table id="chi-tiet" class="table table-bordered table-detail table-striped" cellspacing="0">
-                                                @foreach (var c in ViewBag.listTenCotSanPham)
+                                        <table id="chi-tiet" class="table table-bordered table-detail table-striped" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    @foreach (var column in ViewBag.listTenCotSanPham)
+                                                    {
+                                                        <th>@column[0]</th>
+                                                    }
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var row in ViewBag.listGetProductInfo)
                                                 {
-                                                    <tbody>
-
-                                                        <tr>
-                                                            <td>@c[0]</td>
-                                                            @foreach (var a in ViewBag.listGetProductInfo)
-                                                            {
-                                                                <td class="last">@a[1]</td>
-                                                            }
-
-                                                        </tr>
-
-                                                    </tbody>
+                                                    <tr>
+                                                        @foreach (var cell in row)
+                                                        {
+                                                            <td>@cell</td>
+                                                        }
+                                                    </tr>
                                                 }
-
-                                            </table>
-                                        </div>
-                                    </div>   
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                                 <h3 class="product-table-title">Mô Tả Sản Phẩm</h3>
                                 <div class="white-panel">
                                     <div class="product-description">
