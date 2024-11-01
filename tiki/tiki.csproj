@@ -461,6 +461,7 @@
     <Content Include="Views\admin\addproduct.cshtml" />
     <Content Include="Views\admin\categoryproduct.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\GioHang\ThanhToan.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
