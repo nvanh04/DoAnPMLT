@@ -29,6 +29,17 @@ namespace tiki.Controllers
         {
             return View();
         }
-       
+        public ActionResult OrderDetails()
+        {
+            return View();
+        }
+        public ActionResult OrderList()
+        {
+            return View();
+        }
+        public ActionResult Reviews()
+        {
+            return View();
+        }
     }
 }

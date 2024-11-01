@@ -184,13 +184,18 @@
     <Content Include="assets\js\app-ecommerce-customer-detail-overview.js" />
     <Content Include="assets\js\app-ecommerce-customer-detail.js" />
     <Content Include="assets\js\app-ecommerce-dashboard.js" />
+    <Content Include="assets\js\app-ecommerce-order-details.js" />
+    <Content Include="assets\js\app-ecommerce-order-list.js" />
     <Content Include="assets\js\app-ecommerce-product-add.js" />
+    <Content Include="assets\js\app-ecommerce-reviews.js" />
     <Content Include="assets\js\config.js" />
     <Content Include="assets\js\dashboards-analytics.js" />
     <Content Include="assets\js\extended-ui-perfect-scrollbar.js" />
+    <Content Include="assets\js\extended-ui-star-ratings.js" />
     <Content Include="assets\js\form-basic-inputs.js" />
     <Content Include="assets\js\helpers.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\modal-add-new-address.js" />
     <Content Include="assets\js\modal-edit-user.js" />
     <Content Include="assets\js\pages-account-settings-account.js" />
     <Content Include="assets\js\ui-modals.js" />
@@ -225,6 +230,7 @@
     <Content Include="assets\vendor\libs\datatables-bs5\datatables.bootstrap5.css" />
     <Content Include="assets\vendor\libs\datatables-bs5\responsive.bootstrap5.css" />
     <Content Include="assets\vendor\libs\datatables-buttons-bs5\buttons.bootstrap5.css" />
+    <Content Include="assets\vendor\libs\datatables-checkboxes-jquery\datatables.checkboxes.css" />
     <Content Include="assets\vendor\libs\datatables-responsive-bs5\responsive.bootstrap5.css" />
     <Content Include="assets\vendor\libs\dropzone\dropzone.css" />
     <Content Include="assets\vendor\libs\flatpickr\flatpickr.css" />
@@ -248,9 +254,11 @@
     <Content Include="assets\vendor\libs\quill\katex.js" />
     <Content Include="assets\vendor\libs\quill\quill.js" />
     <Content Include="assets\vendor\libs\quill\typography.css" />
+    <Content Include="assets\vendor\libs\rateyo\rateyo.css" />
+    <Content Include="assets\vendor\libs\rateyo\rateyo.js" />
     <Content Include="assets\vendor\libs\select2\select2.css" />
-    <Content Include="assets\vendor\libs\sweetalert2\sweetalert2.js" />
     <Content Include="assets\vendor\libs\sweetalert2\sweetalert2.css" />
+    <Content Include="assets\vendor\libs\sweetalert2\sweetalert2.js" />
     <Content Include="assets\vendor\libs\tagify\tagify.css" />
     <Content Include="assets\vendor\libs\typeahead-js\typeahead.css" />
     <Content Include="assets\vendor\libs\typeahead-js\typeahead.js" />
@@ -325,6 +333,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\js\NewFolder1\" />
+    <Folder Include="assets\vendor\libs\cleave-phone.js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -343,10 +353,6 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="assets\vendor\fonts\boxicons\boxicons.eot" />
-    <Content Include="assets\vendor\fonts\boxicons\boxicons.ttf" />
-    <Content Include="assets\vendor\fonts\boxicons\boxicons.woff" />
-    <Content Include="assets\vendor\fonts\boxicons\boxicons.woff2" />
     <Content Include="dist\css\core.css.map" />
     <Content Include="dist\css\pages\page-account-settings.css.map" />
     <Content Include="dist\css\pages\page-auth.css.map" />
@@ -367,6 +373,10 @@
     <Content Include="libs\highlight\highlight-github.scss" />
     <Content Include="libs\highlight\highlight.scss" />
     <Content Include="libs\perfect-scrollbar\perfect-scrollbar.scss" />
+    <Content Include="assets\vendor\fonts\boxicons\boxicons.eot" />
+    <Content Include="assets\vendor\fonts\boxicons\boxicons.ttf" />
+    <Content Include="assets\vendor\fonts\boxicons\boxicons.woff" />
+    <Content Include="assets\vendor\fonts\boxicons\boxicons.woff2" />
     <None Include="packages.config" />
     <Content Include="scss\core.scss" />
     <Content Include="scss\pages\page-account-settings.scss" />
@@ -461,6 +471,10 @@
     <Content Include="Views\admin\addproduct.cshtml" />
     <Content Include="Views\admin\categoryproduct.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\GioHang\ThanhToan.cshtml" />
+    <Content Include="Views\admin\OrderDetails.cshtml" />
+    <Content Include="Views\admin\OrderList.cshtml" />
+    <Content Include="Views\admin\Reviews.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

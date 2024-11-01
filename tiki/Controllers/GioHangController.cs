@@ -13,5 +13,9 @@ namespace tiki.Controllers
         {
             return View();
         }
+        public ActionResult ThanhToan()
+        {
+            return View();
+        }
     }
 }

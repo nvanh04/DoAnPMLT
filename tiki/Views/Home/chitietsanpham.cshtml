@@ -652,7 +652,7 @@ var customerId = 0;
                             <figure class="woocommerce-product-gallery__wrapper">
                                 @foreach (var c in ViewBag.listchitietsanpham)
                                 {
-                                    <div data-thumb="~/HINH/@c[10]" data-thumb-alt="" class="woocommerce-product-gallery__image"><a href="~/HINH/@c[10]"><img width="1200" height="1200" src="~/HINH/@c[10]" class="wp-post-image" alt="" loading="lazy" title="b02b462394bc3c59e5876ec0d9cb6ae8" data-caption="" data-src="~/HINH/@c[10]" data-large_image="~/HINH/@c[10]" data-large_image_width="1200" data-large_image_height="1200" /></a></div>
+                                    <div data-thumb="~/HINH/@c[10]" data-thumb-alt="" class="woocommerce-product-gallery__image"><a href="~/HINH/@c[10]"><img width="1200" height="1200" src="~/HINH/@c[10]" class="wp-post-image" alt="" loading="lazy" title="b02b462394bc3c59e5876ec0d9cb6ae8" data-caption="" data-src="https://salt.tikicdn.com/cache/750x750/ts/product/c0/97/b5/b81f612e1b64d15d52f7e5114f8e47c5.PNG.webp" data-large_image="~/HINH/@c[10]" data-large_image_width="1200" data-large_image_height="1200" /></a></div>
 
                                 }
                             </figure>
@@ -880,29 +880,32 @@ var customerId = 0;
                             <div class="left">
 
                                 <h3 class="product-table-title">Thông Tin Chi Tiết</h3>
-                                    <div class="white-panel">
-                                        <div class="attribute-table single-table">
+                                <div class="white-panel">
+                                    <div class="attribute-table single-table">
 
-                                            <table id="chi-tiet" class="table table-bordered table-detail table-striped" cellspacing="0">
-                                                @foreach (var c in ViewBag.listTenCotSanPham)
+                                        <table id="chi-tiet" class="table table-bordered table-detail table-striped" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    @foreach (var column in ViewBag.listTenCotSanPham)
+                                                    {
+                                                        <th>@column[0]</th>
+                                                    }
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var row in ViewBag.listGetProductInfo)
                                                 {
-                                                    <tbody>
-
-                                                        <tr>
-                                                            <td>@c[0]</td>
-                                                            @foreach (var a in ViewBag.listGetProductInfo)
-                                                            {
-                                                                <td class="last">@a[1]</td>
-                                                            }
-
-                                                        </tr>
-
-                                                    </tbody>
+                                                    <tr>
+                                                        @foreach (var cell in row)
+                                                        {
+                                                            <td>@cell</td>
+                                                        }
+                                                    </tr>
                                                 }
-
-                                            </table>
-                                        </div>
-                                    </div>   
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                                 <h3 class="product-table-title">Mô Tả Sản Phẩm</h3>
                                 <div class="white-panel">
                                     <div class="product-description">
