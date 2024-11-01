@@ -476,6 +476,7 @@
     <Content Include="Views\admin\OrderDetails.cshtml" />
     <Content Include="Views\admin\OrderList.cshtml" />
     <Content Include="Views\admin\Reviews.cshtml" />
+    <Content Include="Views\Home\GiaoDienDangNhap.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

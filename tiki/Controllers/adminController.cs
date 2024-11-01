@@ -11,7 +11,13 @@ namespace tiki.Controllers
         // GET: admin
         public ActionResult Index()
         {
+            if (Session["taikhoan"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
+
         }
         public ActionResult eCommerce()
         {
