@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="assets\css\style.css" />
     <Content Include="assets\css\woo.css" />
     <Compile Include="Controllers\adminController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
