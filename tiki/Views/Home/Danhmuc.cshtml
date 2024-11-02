@@ -624,11 +624,13 @@ var customerId = 0;
                 <div class="container">
                     @if (ViewBag.listSPtheoID != null)
                     {
-                        foreach (var c in ViewBag.listSPtheoID)
-                        {
-                            <ul id="breadcrumb" class="breadcrumb"><li class="item-home"><a class="bread-link bread-home" href="Views/Home/Index.cshtml" title="Trang chủ">Trang chủ</a></li><li class="separator separator-home">    <i class="fa fa-angle-right"></i>   </li><li class="item-cat item-custom-post-type-product"><p class="bread-cat bread-custom-post-type-product" title="Sản phẩm">Sản phẩm</p></li><li class="separator">    <i class="fa fa-angle-right"></i>   </li><li class="item-current item-archive"><strong class="bread-current bread-archive">@c[11]</strong></li></ul>
-
-                        }
+                        <ul id="breadcrumb" class="breadcrumb">
+                            <li class="item-home"><a class="bread-link bread-home" href="Views/Home/Index.cshtml" title="Trang chủ">Trang chủ</a></li>
+                            <li class="separator separator-home">    <i class="fa fa-angle-right"></i>   </li>
+                            <li class="item-cat item-custom-post-type-product"><p class="bread-cat bread-custom-post-type-product" title="Sản phẩm">Sản phẩm</p></li>
+                            <li class="separator">    <i class="fa fa-angle-right"></i>   </li>
+                            <li class="item-current item-archive"><strong class="bread-current bread-archive">@ViewBag.listSPtheoID[0][11]</strong></li>
+                        </ul>
                     }
                 </div>
             </div>
