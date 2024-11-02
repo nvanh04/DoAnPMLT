@@ -9,12 +9,12 @@ namespace tiki.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
             DataModel db = new DataModel();
             ViewBag.listSanPham = db.get("EXEC xuatProducts");
             ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
-
+            ViewBag.listSPtheoID = db.get("EXEC SPtheoID'" + id + "'");
             return View();
         }
         public ActionResult GiaoDienDangNhap()
@@ -58,11 +58,15 @@ namespace tiki.Controllers
             }
         }
 
-        public ActionResult Danhmuc()
+        public ActionResult Danhmuc(string id)
         {
             DataModel db = new DataModel();
             ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
-            
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id+"'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
+
+
             return View();
         }
 
