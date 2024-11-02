@@ -20,15 +20,13 @@ namespace tiki.Controllers
         public ActionResult GiaoDienDangNhap()
         {
             DataModel db = new DataModel();
-            ViewBag.listSanPham = db.get("EXEC xuatProducts");
-            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
             return View();
         }
         [HttpPost]
-        public ActionResult XulyDangNhap(string username, string password)
+        public ActionResult XulyDangNhap(string email, string password)
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC KIEMTRADANGNHAP4 '" + username + "','" + password + "'");
+            ViewBag.list = db.get("EXEC KIEMTRADANGNHAP5 '" + email + "','" + password + "'");
 
             if (ViewBag.list.Count > 0)
             {
@@ -36,7 +34,8 @@ namespace tiki.Controllers
                 return RedirectToAction("Index", "admin");
             }
             else
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("GiaoDienDangNhap", "Home");
+
         }
         [HttpPost]
         public ActionResult XuLyDangKy(string username, string password, string email, string hoTen)

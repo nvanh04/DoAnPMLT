@@ -13,7 +13,7 @@ namespace tiki.Controllers
         {
             if (Session["taikhoan"] == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("GiaoDienDangNhap", "Home");
             }
 
             return View();
