@@ -28,14 +28,33 @@ namespace tiki.Controllers
         {
             DataModel db = new DataModel();
             ViewBag.list = db.get("EXEC KiemTraCC '" + email + "','" + password + "'");
-
             if (ViewBag.list.Count > 0)
             {
                 Session["taikhoan"] = ViewBag.list[0];
-                return RedirectToAction("Index", "home");
+                string vaiTro = ViewBag.list[0].VaiTro;
+
+                // Check for null to identify customers
+                if (vaiTro == null)
+                {
+                    return RedirectToAction("Index", "Home"); // Redirect to customer area
+                }
+                else
+                {
+                    switch (vaiTro)
+                    {
+                        case "NBH":
+                            return RedirectToAction("Index", "NhaBanHang"); // Redirect to seller area
+                        case "admin":
+                            return RedirectToAction("Index", "admin"); // Redirect to admin area
+                        default:
+                            return RedirectToAction("GiaoDienDangNhap", "Home"); // Invalid role
+                    }
+                }
             }
             else
+            {
                 return RedirectToAction("GiaoDienDangNhap", "Home");
+            }
 
         }
         [HttpPost]

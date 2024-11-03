@@ -77,12 +77,10 @@ namespace tiki.Controllers
 
             if (ViewBag.result.Count > 0)
             {
-                // Registration successful, you might want to display a success message or redirect to a confirmation page
                 return RedirectToAction("Index", "admin");
             }
             else
             {
-                // Registration failed, you might want to display error messages or re-render the registration form with error messages
                 return RedirectToAction("Index", "Home");
             }
         }
