@@ -81,6 +81,7 @@ namespace tiki.Controllers
             }
             else
             {
+                // Registration failed, you might want to display error messages or re-render the registration form with error messages
                 return RedirectToAction("Index", "Home");
             }
         }
