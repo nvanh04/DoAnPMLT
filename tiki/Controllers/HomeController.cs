@@ -27,15 +27,26 @@ namespace tiki.Controllers
         public ActionResult XulyDangNhap(string email, string password)
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC KIEMTRADANGNHAP5 '" + email + "','" + password + "'");
-
-            if (ViewBag.list.Count > 0)
+            ViewBag.list = db.get("EXEC KiemTraCC '" + email + "','" + password + "'");
+            if (Session["taikhoan"] == null)
             {
-                Session["taikhoan"] = ViewBag.list[0];
-                return RedirectToAction("Index", "home");
+                return View();
+            }
+            string vaiTro = ViewBag.list[9].VaiTro;
+
+            if (vaiTro != null)
+            {
+                Session["IDAdmin"] = ViewBag.list[0].ID;
+                Session["TenAdmin"] = ViewBag.list[1].HoTen;
+                Session["TKAdmin"] = ViewBag.list[2].TKhoan;
+                Session["Vaitro"] = ViewBag.list[9].VaiTro;
+               
+                return RedirectToAction("Index", "admin");
             }
             else
+            {
                 return RedirectToAction("GiaoDienDangNhap", "Home");
+            }
 
         }
         [HttpPost]

@@ -478,6 +478,7 @@
     <Content Include="Views\admin\Reviews.cshtml" />
     <Content Include="Views\Home\GiaoDienDangNhap.cshtml" />
     <Content Include="Views\Home\TimKiemTenSP.cshtml" />
+    <Content Include="Views\admin\Create.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
