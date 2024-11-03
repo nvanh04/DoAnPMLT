@@ -194,6 +194,7 @@
     <Content Include="assets\js\extended-ui-star-ratings.js" />
     <Content Include="assets\js\form-basic-inputs.js" />
     <Content Include="assets\js\helpers.js" />
+    <Content Include="assets\js\log.js" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\modal-add-new-address.js" />
     <Content Include="assets\js\modal-edit-user.js" />
