@@ -648,81 +648,67 @@ var customerId = 0;
 
 
                     <div class="product-listing">
-                        <div class="product-box no-mg">
-                            <div class="filter-list-box">
-                                @if (ViewBag.listSPtheoID != null)
-                                {
-                                    <ul>
-                                       <div class="home-recently-list">
-                                           @foreach (var c in ViewBag.listSPtheoID)
-                                           {
-                                               <div data-seller-product-id="2237" data-title="@c[1]" data-category="@c[1]" tpl="" rel="" class="product-item">
-                                                   <a data-id="2237" data-score="" href="~/Home/chitietsanpham?id=@c[0]" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="" />
-                                                   @*<a href="~/Home/chitietsanpham"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>*@
-                                                   <span class="image">
-
-                                                       <img class="product-image img-responsive" src="~/HINH/@c[10]" alt="">
-
-
-                                                       <span class="product-right-icon">
-                                                       </span>
-
-                                                   </span>
-
-                                                   <span class="title">
-                                                       @c[1]
-                                                   </span>
-                                                   <p class="price-sale">
-
-
-                                                       <span class="final-price">@c[3]</span>
-                                                       <span class="price-regular">11,790,000 đ</span>
-
-
-                                                       <span class="sale-tag sale-tag-square"> 1%</span>
-                                                   </p>
-                                                   <div class="price-tag-wrap"></div>
-                                                   <div class="review-wrap">
-                                                       <p class="rating">
-                                                           <span class="rating-content">
-                                                               <i class="star"></i>
-                                                               <i class="star"></i>
-                                                               <i class="star"></i>
-                                                               <i class="star"></i>
-                                                               <i class="star"></i>
+                        @if (ViewBag.listSPtheoID != null)
+                        {
+                            foreach (var c in ViewBag.listSPtheoID)
+                            {
+                                <div class="product-box no-mg">
+                                    <div class="filter-list-box">
+                                        <ul>
+                                            <div class="home-recently-list">                                               
+                                                <div data-seller-product-id="2237" data-title="@c[1]" data-category="@c[1]" tpl="" rel="" class="product-item">
+                                                    <a data-id="2237" data-score="" href="~/Home/chitietsanpham?id=@c[0]" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="" />
+                                                    @*<a href="~/Home/chitietsanpham"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>*@
+                                                    <span class="image">
+                                                        <img class="product-image img-responsive" src="~/HINH/@c[10]" alt="">
+                                                        <span class="product-right-icon">
+                                                        </span>
+                                                    </span>
+                                                    <span class="title">
+                                                        @c[1]
+                                                    </span>
+                                                    <p class="price-sale">
+                                                        <span class="final-price">@c[3]</span>
+                                                        <span class="price-regular">11,790,000 đ</span>
+                                                        <span class="sale-tag sale-tag-square"> 1%</span>
+                                                    </p>
+                                                    <div class="price-tag-wrap"></div>
+                                                    <div class="review-wrap">
+                                                        <p class="rating">
+                                                            <span class="rating-content">
+                                                                <i class="star"></i>
+                                                                <i class="star"></i>
+                                                                <i class="star"></i>
+                                                                <i class="star"></i>
+                                                                <i class="star"></i>
 
 
-                                                               <span style="width:0%">
-                                                                   <i class="star"></i>
-                                                                   <i class="star"></i>
-                                                                   <i class="star"></i>
-                                                                   <i class="star"></i>
-                                                                   <i class="star"></i>
-                                                               </span>
-                                                           </span>
-                                                       </p>
-                                                       <p class="review">(0 nhận xét)</p>
-                                                   </div>
+                                                                <span style="width:0%">
+                                                                    <i class="star"></i>
+                                                                    <i class="star"></i>
+                                                                    <i class="star"></i>
+                                                                    <i class="star"></i>
+                                                                    <i class="star"></i>
+                                                                </span>
+                                                            </span>
+                                                        </p>
+                                                        <p class="review">(0 nhận xét)</p>
+                                                    </div>
 
-                                               </div>
-                                           }
+                                                </div>
+                                            </div>
+                                        </ul>
+                                        <!-- Keyword suggestion list -->
+                                    </div>
+                                </div>
+                            }
 
+                        }
+                        else
+                        {
+                            <p>Không có sản phẩm nào trong danh mục này.</p>
+                        }
 
-
-                                       </div>
-                                    </ul>
-                                }
-                                else
-                                {
-                                    <p>Không có sản phẩm nào trong danh mục này.</p>
-                                }
-
-
-
-                                <!-- Keyword suggestion list -->
-
-                            </div>
-                        </div>
 
                         <div class="product-box no-mg">
 

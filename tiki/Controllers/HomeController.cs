@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -31,7 +32,7 @@ namespace tiki.Controllers
             if (ViewBag.list.Count > 0)
             {
                 Session["taikhoan"] = ViewBag.list[0];
-                return RedirectToAction("addproduct", "admin");
+                return RedirectToAction("Index", "home");
             }
             else
                 return RedirectToAction("GiaoDienDangNhap", "Home");
@@ -78,6 +79,12 @@ namespace tiki.Controllers
            
             return View();
         }
-
+        public ActionResult TimKiemTenSP(string tensp, string id)
+        {
+            DataModel db = new DataModel();
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.list = db.get("EXEC TIMKIEMTHEOTEN '" + tensp + "'");
+            return View();
+        }
     }
 }

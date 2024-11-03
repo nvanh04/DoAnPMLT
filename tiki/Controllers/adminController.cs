@@ -12,6 +12,7 @@ namespace tiki.Controllers
         // GET: admin
         public ActionResult Index()
         {
+            DataModel db = new DataModel();
             if (Session["taikhoan"] == null)
             {
                 return RedirectToAction("GiaoDienDangNhap", "Home");
@@ -28,6 +29,7 @@ namespace tiki.Controllers
         {
             return View();
         }
+
         ////[HttpPost]
         public ActionResult addproduct()
         {
@@ -58,6 +60,8 @@ namespace tiki.Controllers
             //return View("addproduct");
             return RedirectToAction("product", "admin");
         }
+
+
         public ActionResult categoryproduct()
         {
             return View();
