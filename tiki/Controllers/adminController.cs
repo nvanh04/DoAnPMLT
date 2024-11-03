@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using tiki.Models;
 namespace tiki.Controllers
@@ -65,6 +66,14 @@ namespace tiki.Controllers
         public ActionResult categoryproduct()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult themdanhmuc(string category_name)
+        {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get("EXEC THEMDANHMUC1 N'" + category_name + "';");
+
+            return RedirectToAction("OrderDetails", "admin");
         }
         public ActionResult OrderDetails()
         {
