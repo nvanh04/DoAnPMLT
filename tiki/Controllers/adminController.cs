@@ -33,6 +33,11 @@ namespace tiki.Controllers
         public ActionResult addproduct()
         {
             DataModel db = new DataModel();
+            ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
+            ViewBag.listnhacungcap = db.get("SELECT * FROM Brands");
+
+
+
             return View();
         }
         [HttpPost]
@@ -52,7 +57,7 @@ namespace tiki.Controllers
         public ActionResult themdanhmuc(string category_name)
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC THEMLOAISP "+category_name+"");
+            ViewBag.list = db.get("EXEC THEMLOAISP '"+category_name+"'");
 
             return RedirectToAction("categoryproduct", "admin");
         }
