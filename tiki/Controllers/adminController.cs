@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using tiki.Models;
 namespace tiki.Controllers
 {
     public class adminController : Controller
@@ -27,8 +27,12 @@ namespace tiki.Controllers
         {
             return View();
         }
-        public ActionResult addproduct()
+        public ActionResult addproduct(string name,string description,string price,string HINH, string category_id, string brand_id, string stock_quantity, string price_discount)
         {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get("EXEC THEMSACH N'" + name  + "'," + description + "','" + price + "','" +
+                                                    HINH + "'," + category_id + "," + brand_id + ";");
+
             return View();
         }
         public ActionResult categoryproduct()
