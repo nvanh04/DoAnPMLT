@@ -1,0 +1,103 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            color: #999;
+            background: #f3f3f3;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-control {
+            border-color: #eee;
+            min-height: 41px;
+            box-shadow: none !important;
+            border-radius: 10px;
+        }
+
+            .form-control:focus {
+                border: 3px solid #5cd3b4;
+            }
+
+
+        .form-horizontal h2 {
+            color: #333;
+            padding: 0 30px 10px 30px;
+            border-bottom: 3px solid #5cd3b4;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+            width: 70%;
+        }
+
+        .form-horizontal .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-horizontal label {
+            font-weight: normal;
+            font-size: 15px;
+            color: black;
+        }
+
+
+
+        .form-horizontal .btn:hover, .form-horizontal .btn:focus {
+            background: #41cba9;
+            outline: none !important;
+        }
+
+        .form-horizontal a {
+            color: #5cd3b4;
+            text-decoration: underline;
+        }
+
+            .form-horizontal a:hover {
+                text-decoration: none;
+            }
+
+        .form-horizontal form a {
+            color: #5cd3b4;
+            text-decoration: none;
+        }
+
+            .form-horizontal form a:hover {
+                text-decoration: underline;
+            }
+
+        .control-label {
+            color: black;
+        }
+
+        #dangky input {
+            background-color: #5cd3b4;
+            border-radius: 10px;
+            color: snow;
+        }
+
+        #dangky {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="~/admin/XuLyDangKyadmin" method="post">
+                <h1>Create Admin Account</h1>
+                <input type="text" name="username" placeholder="Username" required="" />
+                <input type="email" name="email" placeholder="Email" required="" />
+                <input type="password" name="password" placeholder="Password" required="" />
+                <input type="text" name="hoTen" placeholder="Họ và Tên" required="" />
+                <input type="text" name="vaiTro" placeholder="Vai Trò" required="" />
+                <input type="tel" name="soDT" placeholder="Số Điện Thoại" required="" />
+                <input type="text" name="diaChi" placeholder="Địa Chỉ" required="" />
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

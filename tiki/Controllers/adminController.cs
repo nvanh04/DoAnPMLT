@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using tiki.Models;
 namespace tiki.Controllers
@@ -58,5 +60,32 @@ namespace tiki.Controllers
         {
             return View();
         }
+
+        //Phân quyền
+        public ActionResult Create()
+        {
+            DataModel db = new DataModel();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult XuLyDangKyadmin(string username, string VaiTro, string email, string password_hash, string full_name, string phone_number, string address)
+        {
+            DataModel db = new DataModel();
+
+            // Assuming you have a stored procedure to insert new users:
+            ViewBag.result = db.get("EXEC CreateAdmin '" + username + "', '" + VaiTro + "','" + email + "','" + password_hash + "','" + full_name + "','"+phone_number+"', '"+address+"'");
+
+            if (ViewBag.result.Count > 0)
+            {
+                // Registration successful, you might want to display a success message or redirect to a confirmation page
+                return RedirectToAction("Index", "admin");
+            }
+            else
+            {
+                // Registration failed, you might want to display error messages or re-render the registration form with error messages
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
     }
 }

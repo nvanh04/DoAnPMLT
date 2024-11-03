@@ -27,7 +27,7 @@ namespace tiki.Controllers
         public ActionResult XulyDangNhap(string email, string password)
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC KIEMTRADANGNHAP5 '" + email + "','" + password + "'");
+            ViewBag.list = db.get("EXEC KiemTraCC '" + email + "','" + password + "'");
 
             if (ViewBag.list.Count > 0)
             {
