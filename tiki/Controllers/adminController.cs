@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,13 +28,35 @@ namespace tiki.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult addproduct(string name,string description,string price,string HINH, string category_id, string brand_id, string stock_quantity, string price_discount)
+        ////[HttpPost]
+        public ActionResult addproduct()
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC THEMSP1 N'"+ name+"', '"+ description+"', "+price+", '"+HINH+"', "+category_id+", "+brand_id+", "+stock_quantity+", "+price_discount+";");
+            ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
+            ViewBag.listnhacungcap = db.get("SELECT * FROM Brands");
+
+
 
             return View();
+        }
+        [HttpPost]
+        public ActionResult themsanpham(string name, string description, string price, HttpPostedFileBase HINH, string category_id, string brand_id, string stock_quantity, string price_discount)
+        {
+            try
+            { 
+                if (HINH != null && HINH.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(HINH.FileName);
+                    string path = Path.Combine(Server.MapPath("~/HINH"), filename);
+                    HINH.SaveAs(path);
+
+                    DataModel db = new DataModel();
+                    ViewBag.list = db.get("EXEC THEMSP2 N'" + name + "', '" + description + "', " + price + ", '" + HINH.FileName + "', " + category_id + ", " + brand_id + ", " + stock_quantity + ", " + price_discount + ";");
+                }                                                     
+            }
+            catch (Exception) { }
+            //return View("addproduct");
+            return RedirectToAction("product", "admin");
         }
         public ActionResult categoryproduct()
         {
