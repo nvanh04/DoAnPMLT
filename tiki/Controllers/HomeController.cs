@@ -32,7 +32,7 @@ namespace tiki.Controllers
             if (ViewBag.list.Count > 0)
             {
                 Session["taikhoan"] = ViewBag.list[0];
-                return RedirectToAction("Index", "admin");
+                return RedirectToAction("Index", "home");
             }
             else
                 return RedirectToAction("GiaoDienDangNhap", "Home");
