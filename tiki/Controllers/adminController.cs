@@ -30,8 +30,7 @@ namespace tiki.Controllers
         public ActionResult addproduct(string name,string description,string price,string HINH, string category_id, string brand_id, string stock_quantity, string price_discount)
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC THEMSACH N'" + name  + "'," + description + "','" + price + "','" +
-                                                    HINH + "'," + category_id + "," + brand_id + ";");
+            ViewBag.list = db.get("EXEC THEMSP1 N'"+ name+"', '"+ description+"', "+price+", '"+HINH+"', "+category_id+", "+brand_id+", "+stock_quantity+", "+price_discount+";");
 
             return View();
         }
