@@ -52,9 +52,9 @@ namespace tiki.Controllers
         public ActionResult themdanhmuc(string category_name)
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC THEMDANHMUC1 N'" + category_name + "';");
+            ViewBag.list = db.get("EXEC THEMLOAISP "+category_name+"");
 
-            return RedirectToAction("OrderDetails", "admin");
+            return RedirectToAction("categoryproduct", "admin");
         }
         public ActionResult OrderDetails()
         {
