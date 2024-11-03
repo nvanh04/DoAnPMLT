@@ -69,7 +69,7 @@ namespace tiki.Controllers
         public ActionResult themdanhmuc(string category_name)
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC THEMLOAISP '"+category_name+"'");
+            ViewBag.list = db.get("EXEC THEMLOAISP '" + category_name + "'");
 
             return RedirectToAction("categoryproduct", "admin");
         }
@@ -98,7 +98,7 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
 
             // Assuming you have a stored procedure to insert new users:
-            ViewBag.result = db.get("EXEC UserCC '" + username + "', '" + VaiTro + "','" + email + "','" + password_hash + "','" + full_name + "','"+phone_number+"', '"+address+"'");
+            ViewBag.result = db.get("EXEC UserCC '" + username + "', '" + VaiTro + "','" + email + "','" + password_hash + "','" + full_name + "','" + phone_number + "', '" + address + "'");
 
             if (ViewBag.result.Count > 0)
             {

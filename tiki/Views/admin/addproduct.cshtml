@@ -1796,29 +1796,29 @@
 
                             </div>
                             @*<form action="~/admin/themsanpham" method="post" enctype="multipart/form-data">
-            Tên sách:<input type="text" name="name" /><br />
-            Đơn giá :<input type="text" name="price" /><br />
-            Đơn giá :<input type="text" name="price_discount" /><br />
-            Mô tả :<textarea name="description"></textarea><br />
-            Hình minh họa: <input type="file" name="HINH" /><br />
-            Mã Thương hiệu:
-            <select name="brand_id">
-                @foreach (var c in ViewBag.listnhacungcap)
-                {
-                    <option value="@c[0]">@c[1]</option>
-                }
-            </select>
-            Mã danh mục:
+                                    Tên sách:<input type="text" name="name" /><br />
+                                    Đơn giá :<input type="text" name="price" /><br />
+                                    Đơn giá :<input type="text" name="price_discount" /><br />
+                                    Mô tả :<textarea name="description"></textarea><br />
+                                    Hình minh họa: <input type="file" name="HINH" /><br />
+                                    Mã Thương hiệu:
+                                    <select name="brand_id">
+                                        @foreach (var c in ViewBag.listnhacungcap)
+                                        {
+                                            <option value="@c[0]">@c[1]</option>
+                                        }
+                                    </select>
+                                    Mã danh mục:
 
-            <select name="category_id">
-                @foreach (var c in ViewBag.listDanhMuc)
-                {
-                    <option value="@c[0]">@c[1]</option>
-                }
-            </select>
-            số lượng :<input type="text" name="stock_quantity" /><br />
-            <input type="submit" value="Thêm sách" />
-        </form>*@
+                                    <select name="category_id">
+                                        @foreach (var c in ViewBag.listDanhMuc)
+                                        {
+                                            <option value="@c[0]">@c[1]</option>
+                                        }
+                                    </select>
+                                    số lượng :<input type="text" name="stock_quantity" /><br />
+                                    <input type="submit" value="Thêm sách" />
+                                </form>*@
                             <form action="~/admin/themsanpham" method="post" enctype="multipart/form-data">
                                 <div class="row">
 
