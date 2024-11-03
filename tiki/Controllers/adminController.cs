@@ -79,10 +79,6 @@ namespace tiki.Controllers
             {
                 return RedirectToAction("Index", "admin");
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
         }
 
     }
