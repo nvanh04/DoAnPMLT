@@ -29,6 +29,9 @@ namespace tiki.Controllers
         }
         public ActionResult product()
         {
+            DataModel db = new DataModel();
+            ViewBag.listSanpham = db.get("SELECT * FROM Products");
+            ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
             return View();
         }
         public ActionResult addproduct()
