@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -41,12 +42,23 @@ namespace tiki.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult ThemSP(string ten, string mota, string gia, string hinh, string madanhmuc, string mathuonghieu, string soluongton, string giagiam)
+        public ActionResult themsanpham(string name, string description, string price, HttpPostedFileBase HINH, string category_id, string brand_id, string stock_quantity, string price_discount)
         {
-            DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC THEMSP2 N'" + ten + "','" + mota + "', " + gia + ", '" + hinh + "', " + madanhmuc + ", " + mathuonghieu + ", " + soluongton + ", " + giagiam + ";");
+            try
+            {
+                if (HINH != null && HINH.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(HINH.FileName);
+                    string path = Path.Combine(Server.MapPath("~/HINH"), filename);
+                    HINH.SaveAs(path);
 
-            return RedirectToAction("addproduct", "admin");
+                    DataModel db = new DataModel();
+                    ViewBag.list = db.get("EXEC THEMSP2 N'" + name + "', '" + description + "', " + price + ", '" + HINH.FileName + "', " + category_id + ", " + brand_id + ", " + stock_quantity + ", " + price_discount + ";");
+                }
+            }
+            catch (Exception) { }
+            //return View("addproduct");
+            return RedirectToAction("product", "admin");
         }
 
         public ActionResult categoryproduct()
