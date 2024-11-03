@@ -31,7 +31,7 @@ namespace tiki.Controllers
             if (ViewBag.list.Count > 0)
             {
                 Session["taikhoan"] = ViewBag.list[0];
-                return RedirectToAction("addproduct", "admin");
+                return RedirectToAction("Index", "admin");
             }
             else
                 return RedirectToAction("GiaoDienDangNhap", "Home");

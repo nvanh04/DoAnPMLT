@@ -11,6 +11,7 @@ namespace tiki.Controllers
         // GET: admin
         public ActionResult Index()
         {
+            DataModel db = new DataModel();
             if (Session["taikhoan"] == null)
             {
                 return RedirectToAction("GiaoDienDangNhap", "Home");
@@ -27,14 +28,20 @@ namespace tiki.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult addproduct(string name,string description,string price,string HINH, string category_id, string brand_id, string stock_quantity, string price_discount)
+        public ActionResult addproduct()
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC THEMSP1 N'"+ name+"', '"+ description+"', "+price+", '"+HINH+"', "+category_id+", "+brand_id+", "+stock_quantity+", "+price_discount+";");
-
             return View();
         }
+        [HttpPost]
+        public ActionResult ThemSP(string ten, string mota, string gia, string hinh, string madanhmuc, string mathuonghieu, string soluongton, string giagiam)
+        {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get("EXEC THEMSP2 N'" + ten + "','" + mota + "', " + gia + ", '" + hinh + "', " + madanhmuc + ", " + mathuonghieu + ", " + soluongton + ", " + giagiam + ";");
+
+            return RedirectToAction("addproduct", "admin");
+        }
+
         public ActionResult categoryproduct()
         {
             return View();
