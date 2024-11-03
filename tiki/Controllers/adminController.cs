@@ -27,6 +27,7 @@ namespace tiki.Controllers
         {
             return View();
         }
+        [HttpPost]
         public ActionResult addproduct(string name,string description,string price,string HINH, string category_id, string brand_id, string stock_quantity, string price_discount)
         {
             DataModel db = new DataModel();
