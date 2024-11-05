@@ -30,12 +30,18 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
             ViewBag.list = db.get("EXEC KIEMTRADANGNHAP5 '" + email + "','" + password + "'");
             ViewBag.listCheckAdmin = db.get("CheckAdmin '" + email + "','" + password + "'");
+            ViewBag.listCheckNBH = db.get("CheckAdmin '" + email + "','" + password + "'");
 
             if (ViewBag.listCheckAdmin.Count > 0)
             {
                 Session["taikhoan"] = ViewBag.listCheckAdmin[0];
                 return RedirectToAction("Index", "admin");
-            } 
+            }
+            if (ViewBag.listCheckNBH.Count > 0)
+            {
+                Session["taikhoan"] = ViewBag.listCheckNBH[0];
+                return RedirectToAction("Index", "admin");
+            }
 
             if (ViewBag.list.Count > 0)
             {
