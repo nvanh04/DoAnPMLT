@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using tiki.Models;
 
@@ -27,28 +28,24 @@ namespace tiki.Controllers
         public ActionResult XulyDangNhap(string email, string password)
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC KiemTraCC '" + email + "','" + password + "'");
-            if (Session["taikhoan"] == null)
-            {
-                return View();
-            }
-            string vaiTro = ViewBag.list[9].VaiTro;
+            ViewBag.list = db.get("EXEC KIEMTRADANGNHAP5 '" + email + "','" + password + "'");
+            ViewBag.listCheckAdmin = db.get("CheckAdmin '" + email + "','" + password + "'");
 
-            if (vaiTro != null)
+            if (ViewBag.listCheckAdmin.Count > 0)
             {
-                Session["IDAdmin"] = ViewBag.list[0].ID;
-                Session["TenAdmin"] = ViewBag.list[1].HoTen;
-                Session["TKAdmin"] = ViewBag.list[2].TKhoan;
-                Session["Vaitro"] = ViewBag.list[9].VaiTro;
-               
+                Session["taikhoan"] = ViewBag.listCheckAdmin[0];
                 return RedirectToAction("Index", "admin");
+            } 
+
+            if (ViewBag.list.Count > 0)
+            {
+                Session["taikhoan"] = ViewBag.list[0];
+                return RedirectToAction("Index", "Home");
             }
             else
-            {
-                return RedirectToAction("GiaoDienDangNhap", "Home");
-            }
-
+                return RedirectToAction("GiaoDienDangNhap");
         }
+        
         [HttpPost]
         public ActionResult XuLyDangKy(string username, string password, string email, string hoTen)
         {
