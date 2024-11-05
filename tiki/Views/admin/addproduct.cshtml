@@ -1791,11 +1791,35 @@
                                         <button class="btn btn-label-secondary">Bỏ đi</button>
 
                                     </div>
-                                    
+
                                 </div>
 
                             </div>
-                            <form action="~/admin/themsanpham " method="post" enctype="multipart/form-data">
+                            @*<form action="~/admin/themsanpham" method="post" enctype="multipart/form-data">
+                                    Tên sách:<input type="text" name="name" /><br />
+                                    Đơn giá :<input type="text" name="price" /><br />
+                                    Đơn giá :<input type="text" name="price_discount" /><br />
+                                    Mô tả :<textarea name="description"></textarea><br />
+                                    Hình minh họa: <input type="file" name="HINH" /><br />
+                                    Mã Thương hiệu:
+                                    <select name="brand_id">
+                                        @foreach (var c in ViewBag.listnhacungcap)
+                                        {
+                                            <option value="@c[0]">@c[1]</option>
+                                        }
+                                    </select>
+                                    Mã danh mục:
+
+                                    <select name="category_id">
+                                        @foreach (var c in ViewBag.listDanhMuc)
+                                        {
+                                            <option value="@c[0]">@c[1]</option>
+                                        }
+                                    </select>
+                                    số lượng :<input type="text" name="stock_quantity" /><br />
+                                    <input type="submit" value="Thêm sách" />
+                                </form>*@
+                            <form action="~/admin/themsanpham" method="post" enctype="multipart/form-data">
                                 <div class="row">
 
                                     <!-- First column-->
@@ -1810,16 +1834,9 @@
                                                     <label class="form-label" for="ecommerce-product-name">Tên</label>
                                                     <input type="text" class="form-control" id="ecommerce-product-name" placeholder="Product title" name="name" aria-label="Nhập tên">
                                                 </div>
-                                                @*<div class="row mb-6">
-                            <div class="col">
-                                <label class="form-label" for="ecommerce-product-sku">SKU</label>
-                                <input type="number" class="form-control" id="ecommerce-product-sku" placeholder="SKU" name="productSku" aria-label="Product SKU">
-                            </div>
-
-                        </div>*@
                                                 <!-- Description -->
                                                 <div>
-                                                    <input type="text" class="form-control" id="ecommerce-product-name" placeholder="MÔ TẢ" name="description" aria-label="Nhập tên">
+                                                    <textarea type="text" class="form-control" id="ecommerce-product-name" placeholder="MÔ TẢ" name="description" aria-label="Nhập tên"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1838,52 +1855,12 @@
                                                     <span class="note needsclick btn btn-sm btn-label-primary" id="btnBrowse">Browse image</span>
                                                 </div>
                                                 <div class="fallback">
-                                                    <input  type="file" name="HINH" />
+                                                    <input type="file" name="HINH" />
                                                 </div>
 
 
                                             </div>
                                         </div>
-                                        <!-- /Media -->
-                                        <!-- Variants -->
-                                        @*<div class="card mb-6">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Variants</h5>
-                    </div>
-                    <div class="card-body">
-                        <form class="form-repeater">
-                            <div data-repeater-list="group-a">
-                                <div data-repeater-item>
-                                    <div class="row g-6 mb-6">
-
-                                        <div class="col-4">
-                                            <label class="form-label" for="form-repeater-1-1">Options</label>
-                                            <select id="form-repeater-1-1" class="select2 form-select" data-placeholder="Size">
-                                                <option value="">Size</option>
-                                                <option value="size">Size</option>
-                                                <option value="color">Color</option>
-                                                <option value="weight">Weight</option>
-                                                <option value="smell">Smell</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-8">
-                                            <label class="form-label invisible" for="form-repeater-1-2">Not visible</label>
-                                            <input type="number" id="form-repeater-1-2" class="form-control" placeholder="Enter size" />
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary" data-repeater-create>
-                                    <i class='bx bx-plus bx-sm me-2'></i>
-                                    Add another option
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>*@
                                         <!-- /Variants -->
                                         <!-- Inventory -->
                                         <div class="card mb-6">
@@ -1909,24 +1886,6 @@
                                                                             <span class="align-middle">Shipping</span>
                                                                         </button>
                                                                     </li>
-                                                                    @*<li class="nav-item">
-                                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#global-delivery">
-                                                    <i class="bx bx-globe bx-sm me-1_5"></i>
-                                                    <span class="align-middle">Global Delivery</span>
-                                                </button>
-                                            </li>
-                                            <li class="nav-item">
-                                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#attributes">
-                                                    <i class="bx bx-link bx-sm me-1_5"></i>
-                                                    <span class="align-middle">Attributes</span>
-                                                </button>
-                                            </li>
-                                            <li class="nav-item">
-                                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#advanced">
-                                                    <i class="bx bx-lock bx-sm me-1_5"></i>
-                                                    <span class="align-middle">Advanced</span>
-                                                </button>
-                                            </li>*@
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -1943,16 +1902,7 @@
                                                                     <div class="col-12 col-sm-9">
                                                                         <input type="number" class="form-control" id="ecommerce-product-stock" placeholder="Quantity" name="stock_quantity" aria-label="Quantity">
                                                                     </div>
-                                                                    @*<div class="col-12 col-sm-3">
-                                                                        <button class="btn btn-primary">Confirm</button>
-                                                                    </div>*@
                                                                 </div>
-                                                                @*<div>
-                                            <h6 class="mb-2 fw-normal">Product in stock now: <span class="text-body">54</span></h6>
-                                            <h6 class="mb-2 fw-normal">Product in transit: <span class="text-body">390</span></h6>
-                                            <h6 class="mb-2 fw-normal">Last time restocked: <span class="text-body">24th June, 2023</span></h6>
-                                            <h6 class="mb-0 fw-normal">Total stock over lifetime: <span class="text-body">2430</span></h6>
-                                        </div>*@
                                                             </div>
                                                             <!-- Shipping Tab -->
                                                             <div class="tab-pane fade" id="shipping" role="tabpanel">
@@ -2108,22 +2058,6 @@
                                                     <label class="form-label" for="ecommerce-product-discount-price">Giá giảm giá</label>
                                                     <input type="text" class="form-control" id="ecommerce-product-discount-price" placeholder="Discounted Price" name="price_discount" aria-label="Product discounted price">
                                                 </div>
-                                                <!-- Charge tax check box -->
-                                                @*<div class="form-check ms-2 mt-7 mb-4">
-                            <input class="form-check-input" type="checkbox" value="" id="price-charge-tax" checked>
-                            <label class="switch-label" for="price-charge-tax">
-                                Tính thuế cho sản phẩm này
-                            </label>
-                        </div>*@
-                                                <!-- Instock switch -->
-                                                @*<div class="d-flex justify-content-between align-items-center border-top pt-2">
-                            <span class="mb-0">In stock</span>
-                            <div class="w-25 d-flex justify-content-end">
-                                <div class="form-check form-switch me-n3">
-                                    <input type="checkbox" class="form-check-input" checked />
-                                </div>
-                            </div>
-                        </div>*@
                                             </div>
                                         </div>
                                         <!-- /Pricing Card -->
@@ -2138,7 +2072,7 @@
                                                     <label class="form-label mb-1" for="vendor">
                                                         Nhà cung cấp
                                                     </label>
-                                                    <select id="vendor" class="select2 form-select" data-placeholder="Chọn nhà cung cấp">
+                                                    <select name="category_id" id="vendor" class="select2 form-select" data-placeholder="Chọn nhà cung cấp">
                                                         @foreach (var b in ViewBag.listnhacungcap)
                                                         {
                                                             <option value="@b[0]">@b[1]</option>
@@ -2152,7 +2086,7 @@
                                                         <label class="form-label mb-1" for="category-org">
                                                             <span>Loại</span>
                                                         </label>
-                                                        <select id="category-org" class="select2 form-select" data-placeholder="Select Category">
+                                                        <select name="brand_id" id="category-org" class="select2 form-select" data-placeholder="Select Category">
                                                             @foreach (var c in ViewBag.listDanhMuc)
                                                             {
                                                                 <option value="@c[0]">@c[1]</option>
@@ -2162,35 +2096,6 @@
                                                     </div>
                                                     @*<a href="javascript:void(0);" class="fw-medium btn btn-icon btn-label-primary ms-4"><i class='bx bx-plus bx-md'></i></a>*@
                                                 </div>
-                                                <!-- Collection -->
-                                                <!--<div class="mb-6 col ecommerce-select2-dropdown">
-                        <label class="form-label mb-1" for="collection">
-                            Collection
-                        </label>
-                        <select id="collection" class="select2 form-select" data-placeholder="Collection">
-                            <option value="">Collection</option>
-                            <option value="men-clothing">Men's Clothing</option>
-                            <option value="women-clothing">Women's-clothing</option>
-                            <option value="kid-clothing">Kid's-clothing</option>
-                        </select>
-                    </div>-->
-                                                <!-- Status -->
-                                                <!--<div class="mb-6 col ecommerce-select2-dropdown">
-                        <label class="form-label mb-1" for="status-org">
-                            Status
-                        </label>
-                        <select id="status-org" class="select2 form-select" data-placeholder="Published">
-                            <option value="">Published</option>
-                            <option value="Published">Published</option>
-                            <option value="Scheduled">Scheduled</option>
-                            <option value="Inactive">Inactive</option>
-                        </select>
-                    </div>-->
-                                                <!-- Tags -->
-                                                <!--<div>
-                        <label for="ecommerce-product-tags" class="form-label mb-1">Tags</label>
-                        <input id="ecommerce-product-tags" class="form-control" name="ecommerce-product-tags" value="Normal,Standard,Premium" aria-label="Product Tags" />
-                    </div>-->
                                             </div>
                                         </div>
                                         <!-- /Organize Card -->
@@ -2199,6 +2104,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Xuất bản sản phẩm</button>
                             </form>
+
                         </div>
                     </div>
                     <!-- / Content -->

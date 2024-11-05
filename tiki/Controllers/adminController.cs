@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -28,25 +29,52 @@ namespace tiki.Controllers
         }
         public ActionResult product()
         {
+            DataModel db = new DataModel();
+            ViewBag.listSanpham = db.get("SELECT * FROM Products");
+            ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
             return View();
         }
         public ActionResult addproduct()
         {
             DataModel db = new DataModel();
+            ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
+            ViewBag.listnhacungcap = db.get("SELECT * FROM Brands");
+
+
+
             return View();
         }
         [HttpPost]
-        public ActionResult ThemSP(string ten, string mota, string gia, string hinh, string madanhmuc, string mathuonghieu, string soluongton, string giagiam)
+        public ActionResult themsanpham(string name, string description, string price, HttpPostedFileBase HINH, string category_id, string brand_id, string stock_quantity, string price_discount)
         {
-            DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC THEMSP2 N'" + ten + "','" + mota + "', " + gia + ", '" + hinh + "', " + madanhmuc + ", " + mathuonghieu + ", " + soluongton + ", " + giagiam + ";");
+            try
+            {
+                if (HINH != null && HINH.ContentLength > 0)
+                {
+                    string filename = Path.GetFileName(HINH.FileName);
+                    string path = Path.Combine(Server.MapPath("~/HINH"), filename);
+                    HINH.SaveAs(path);
 
-            return RedirectToAction("addproduct", "admin");
+                    DataModel db = new DataModel();
+                    ViewBag.list = db.get("EXEC THEMSP2 N'" + name + "', '" + description + "', " + price + ", '" + HINH.FileName + "', " + category_id + ", " + brand_id + ", " + stock_quantity + ", " + price_discount + ";");
+                }
+            }
+            catch (Exception) { }
+            //return View("addproduct");
+            return RedirectToAction("product", "admin");
         }
 
         public ActionResult categoryproduct()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult themdanhmuc(string category_name)
+        {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get("EXEC THEMLOAISP '" + category_name + "'");
+
+            return RedirectToAction("categoryproduct", "admin");
         }
         public ActionResult OrderDetails()
         {
@@ -73,7 +101,7 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
 
             // Assuming you have a stored procedure to insert new users:
-            ViewBag.result = db.get("EXEC AddAdmin '" + username + "', '" + VaiTro + "','" + email + "','" + password_hash + "','" + full_name + "','"+phone_number+"', '"+address+"'");
+            ViewBag.result = db.get("EXEC UserCC '" + username + "', '" + VaiTro + "','" + email + "','" + password_hash + "','" + full_name + "','"+phone_number+"', '"+address+"'");
 
             if (ViewBag.result.Count > 0)
             {
