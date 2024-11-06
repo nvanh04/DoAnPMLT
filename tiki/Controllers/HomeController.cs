@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -28,30 +29,46 @@ namespace tiki.Controllers
         public ActionResult XulyDangNhap(string email, string password)
         {
             DataModel db = new DataModel();
+            ViewBag.listCheckAdmin = db.get("EXEC CheckAdmin '" + email + "','" + password + "'");
+            ViewBag.listCheckNBH = db.get("EXEC CheckNBH1 '" + email + "','" + password + "'");
             ViewBag.list = db.get("EXEC KIEMTRADANGNHAP5 '" + email + "','" + password + "'");
-            ViewBag.listCheckAdmin = db.get("CheckAdmin '" + email + "','" + password + "'");
-            ViewBag.listCheckNBH = db.get("CheckAdmin '" + email + "','" + password + "'");
 
-            if (ViewBag.listCheckAdmin.Count > 0)
+            // Nếu là Admin
+            if (ViewBag.listCheckAdmin != null && ViewBag.listCheckAdmin.Count > 0)
             {
-                Session["taikhoan"] = ViewBag.listCheckAdmin[0];
-                return RedirectToAction("Index", "admin");
-            }
-            if (ViewBag.listCheckNBH.Count > 0)
-            {
-                Session["taikhoan"] = ViewBag.listCheckNBH[0];
+                ArrayList adminData = (ArrayList)ViewBag.listCheckAdmin[0];
+                Session["IDAdmin"] = adminData[0];
+                Session["TenAdmin"] = adminData[1];
+                Session["VaiTro"] = adminData[2];
                 return RedirectToAction("Index", "admin");
             }
 
-            if (ViewBag.list.Count > 0)
+            // Nếu là Nhà bán hàng (NBH)
+            if (ViewBag.listCheckNBH != null && ViewBag.listCheckNBH.Count > 0)
             {
-                Session["taikhoan"] = ViewBag.list[0];
+                ArrayList nbhData = (ArrayList)ViewBag.listCheckNBH[0];
+                Session["IDNBH"] = nbhData[0];
+                Session["TenNBH"] = nbhData[1];
+                Session["MatKhauNBH"] = nbhData[2];
+                return RedirectToAction("Index", "admin");
+            }
+
+            // Nếu là khách hàng (KH)
+            if (ViewBag.list != null && ViewBag.list.Count > 0)
+            {
+                ArrayList userData = (ArrayList)ViewBag.list[0];
+                Session["IDKH"] = userData[0];
+                Session["MKKH"] = userData[3];
+                Session["TenKH"] = userData[1];
+                Session["SoDTKH"] = userData[5];
                 return RedirectToAction("Index", "Home");
             }
-            else
-                return RedirectToAction("GiaoDienDangNhap");
+
+            // Nếu không tìm thấy tài khoản
+            return RedirectToAction("GiaoDienDangNhap");
         }
-        
+
+
         [HttpPost]
         public ActionResult XuLyDangKy(string username, string password, string email, string hoTen)
         {

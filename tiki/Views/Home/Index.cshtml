@@ -456,10 +456,23 @@
                             <div data-reactroot="">
 
                                 <div>
-                                    <a href="~/Home/GiaoDienDangNhap">
-                                        <i class="icon-style-1 tikicon icon-user"></i><b>Đăng nhập</b>
-                                        <br><small>Tài khoản</small>
-                                    </a>
+                                    @if (Session["IDKH"] != null)
+                                    {
+                                        <!-- Hiển thị thông tin khách hàng -->
+                                        <a href="@Url.Action("InfoCustomer", "Home")" class="nav-item nav-link">@Session["TenKH"]</a>
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link" style="display: block; margin-top: 5px;">Đăng xuất</a>
+                                    }          
+                                    else
+                                    {
+                                        <!-- Hiển thị liên kết đăng nhập nếu người dùng chưa đăng nhập -->
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
+                                    }
+
+
+                                    @*<a href="~/Home/GiaoDienDangNhap">
+            <i class="icon-style-1 tikicon icon-user"></i><b>Đăng nhập</b>
+            <br><small>Tài khoản</small>
+        </a>*@
                                 </div>
                             </div>
                         </div>
