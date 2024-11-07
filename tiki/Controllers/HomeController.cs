@@ -63,9 +63,10 @@ namespace tiki.Controllers
                 Session["SoDTKH"] = userData[5];
                 return RedirectToAction("Index", "Home");
             }
-
             // Nếu không tìm thấy tài khoản
-            return RedirectToAction("GiaoDienDangNhap");
+            else { return RedirectToAction("GiaoDienDangNhap"); }
+            // Nếu không tìm thấy tài khoản
+            
         }
 
 

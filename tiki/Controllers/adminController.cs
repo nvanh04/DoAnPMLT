@@ -15,10 +15,10 @@ namespace tiki.Controllers
         public ActionResult Index()
         {
             DataModel db = new DataModel();
-            if (Session["taikhoan"] == null)
-            {
-                return RedirectToAction("GiaoDienDangNhap", "Home");
-            }
+            //if (Session["taikhoan"] == null)
+            //{
+            //    return RedirectToAction("GiaoDienDangNhap", "Home");
+            //}
 
             return View();
 

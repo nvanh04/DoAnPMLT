@@ -693,93 +693,86 @@ var customerId = 0;
                                         </div>
                                     </div>
                                 </div><div class="row flex">
-                                    <div class="col-xs-7 no-padding-right product-info-block">
-                                        <div class="item-row1">
-                                            <div class="item-price">
+                                          <div class="col-xs-7 no-padding-right product-info-block">
+                                              <div class="item-row1">
+                                                  <div class="item-price">
 
 
-                                                <div class="price-block show-border">
+                                                      <div class="price-block show-border">
 
 
-                                                    <p class="special-price-item" data-value="11790000" id="p-specialprice">
-                                                        <span id="flash-sale-price-label" style="" class="hot-deal">
-                                                            <img class="icon-hot-deal" src="~/HINH/@c[10]" width="91">Giá:
-                                                        </span>
-                                                        <span id="span-price">@c[3]</span>
-                                                    </p>
+                                                          <p class="special-price-item" data-value="11790000" id="p-specialprice">
+                                                              <span id="flash-sale-price-label" style="" class="hot-deal">
+                                                                  <img class="icon-hot-deal" src="~/HINH/@c[10]" width="91">Giá:
+                                                              </span>
+                                                              <span id="span-price">@c[3]</span>
+                                                          </p>
 
-                                                    <p style="" class="saleoff-price-item" id="p-saving-price">
-                                                        <span class="price-label">Tiết kiệm:</span>
-                                                        <span id="span-discount-percent" class="discount-percent">1%</span>
-                                                        <span id="span-saving-price">
-                                                            (100.000₫)
-                                                        </span>
-                                                    </p>
+                                                          <p style="" class="saleoff-price-item" id="p-saving-price">
+                                                              <span class="price-label">Tiết kiệm:</span>
+                                                              <span id="span-discount-percent" class="discount-percent">1%</span>
+                                                              <span id="span-saving-price">
+                                                                  (100.000₫)
+                                                              </span>
+                                                          </p>
 
-                                                    <p style="" class="old-price-item" data-value="17500000" id="p-listpirce">
-                                                        <span class="price-label">Giá thị trường:</span>
-                                                        <span id="span-list-price">11,690,000 ₫</span>
-                                                    </p>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-product col-sm-12">
-                                            <form class="cart product-form product-actions" action="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11/" method="post" enctype='multipart/form-data'>
+                                                          <p style="" class="old-price-item" data-value="17500000" id="p-listpirce">
+                                                              <span class="price-label">Giá thị trường:</span>
+                                                              <span id="span-list-price">11,690,000 ₫</span>
+                                                          </p>
 
 
+                                                      </div>
+                                                  </div>
+                                              </div>
 
-                                                <div class="item-product-options">
-                                                    <div id="add-cart-action">
-                                                        <div class="add-cart-action" style="display: block">
-                                                            <div class="quantity-box">
+                                              <div class="form-product col-sm-12">
+                                                  <form class="cart product-form product-actions" action="/GioHang/AddToCart" method="post" enctype='multipart/form-data'>
+                                                      <div class="item-product-options">
+                                                          <div id="add-cart-action">
+                                                              <div class="add-cart-action" style="display: block">
+                                                                  <div class="quantity-box">
+                                                                      <div class="tiki-save-wrapper">
+                                                                          <div id="deal-max" class="alert alert-warning alert-small deal-max">
+                                                                              Sản phẩm này có giới hạn số lượng khi đặt hàng:<br />
+                                                                              Bạn có thể mua tối đa 1 sản phẩm cho mỗi đơn hàng
+                                                                          </div>
+                                                                      </div>
 
-                                                                <div class="tiki-save-wrapper">
-                                                                    <div id="deal-max" style="" class="alert alert-warning alert-small deal-max">
-                                                                        Sản phẩm này có giới hạn số lượng khi đặt hàng:<br />
-                                                                        Bạn có thể mua tối đa 1 sản phẩm cho mỗi đơn hàng
-                                                                    </div>
-                                                                </div>
+                                                                      <!-- Hidden field to pass product ID -->
+                                                                      <input id="product_id_for_cart" name="productId" type="hidden" value="440702">
 
-                                                                <input id="product_id_for_wishlist" name="id" type="hidden" value="440702">
+                                                                      <!-- Quantity Selector -->
+                                                                      <div id="qtySelector" class="quantity-col1">
+                                                                          <p class="quantity-label">Số lượng:</p>
+                                                                          <div class="input-group bootstrap-touchspin">
+                                                                              <span class="input-group-btn">
+                                                                                  <button class="btn btn-default bootstrap-touchspin-down" onclick="var qtyField = document.getElementById('qty'); if(!isNaN(qtyField.value) && qtyField.value > 1) qtyField.value--; return false;" type="button">-</button>
+                                                                              </span>
+                                                                              <input id="qty" type="number" name="quantity" value="1" min="1" max="100" class="form-control">
+                                                                              <span class="input-group-btn">
+                                                                                  <button class="btn btn-default bootstrap-touchspin-up" onclick="var qtyField = document.getElementById('qty'); if(!isNaN(qtyField.value)) qtyField.value++; return false;" type="button">+</button>
+                                                                              </span>
+                                                                          </div>
+                                                                      </div>
 
-                                                                <div id="qtySelector" class="quantity-col1">
-                                                                    <p class="quantity-label">Số lượng:</p>
-                                                                    <p class="tiki-number-input">
-                                                                        <div class="input-group bootstrap-touchspin">
-                                                                            <span class="input-group-btn">
-                                                                                <button class="btn btn-default bootstrap-touchspin-down" onclick="var result = document.getElementById('qty'); var qtypro = result.value; if( !isNaN( qtypro ) &amp;&amp; qtypro > 1 ) result.value--;return false;" type="button">-</button>
-                                                                            </span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
-                                                                            <input id="qty" type="tel" name="quantity" value="1" min="1" max="100" class="form-control" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" onclick="var result = document.getElementById('qty'); var qtypro = result.value; if( !isNaN( qtypro )) result.value++;return false;" type="button">+</button></span>
-                                                                        </div>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="cta-box">
-
-
-                                                                    <button id="#mainAddToCart" class="add-to-cart  js-add-to-cart is-css" type="submit" admicro-data-event="AddToCart" admicro-data-auto="1" admicro-data-order="false" name="add-to-cart" value="2236">
-                                                                        <span class="text">CHỌN MUA</span>
-                                                                    </button>
-
-                                                                </div>
-
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-
-                                            </form>
-
-                                        </div>
+                                                                      <!-- Add to Cart Button -->
+                                                                      <div class="cta-box">
+                                                                          <button id="mainAddToCart" class="add-to-cart js-add-to-cart is-css" type="submit">
+                                                                              <span class="text">CHỌN MUA</span>
+                                                                          </button>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </form>
+                                              </div>
 
 
 
-                                    </div>
+
+                                          </div>
 
                                     <div class="col-xs-5 product-seller-block">
                                         <div class="seller-container">
