@@ -24,6 +24,19 @@ namespace tiki.Controllers
             return View();
         }
 
+        // Thêm sản phẩm vào giỏ hàng
+        [HttpPost]
+        public ActionResult AddToCart(int productId, int quantity)
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+
+            // Thực thi stored procedure để thêm sản phẩm vào giỏ hàng
+            db.get($"EXEC AddCartItem {userId}, {productId}, {quantity}");
+
+            return RedirectToAction("Index"); // Điều hướng đến trang giỏ hàng sau khi thêm
+        }
+
         // Cập nhật số lượng sản phẩm trong giỏ hàng
         [HttpPost]
         public ActionResult UpdateCart(int productId, int quantity)
@@ -67,7 +80,6 @@ namespace tiki.Controllers
 
             return RedirectToAction("Index");
         }
-
 
         // Chuyển đến trang thanh toán
         public ActionResult ThanhToan()
