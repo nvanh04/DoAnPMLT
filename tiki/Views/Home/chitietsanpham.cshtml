@@ -727,7 +727,7 @@ var customerId = 0;
                                               </div>
 
                                               <div class="form-product col-sm-12">
-                                                  <form class="cart product-form product-actions" action="/GioHang/AddToCart" method="post" enctype='multipart/form-data'>
+                                                  <form class="cart product-form product-actions" action="~/GioHang/AddToCart" method="post" enctype='multipart/form-data'>
                                                       <div class="item-product-options">
                                                           <div id="add-cart-action">
                                                               <div class="add-cart-action" style="display: block">
@@ -740,7 +740,14 @@ var customerId = 0;
                                                                       </div>
 
                                                                       <!-- Hidden field to pass product ID -->
-                                                                      <input id="product_id_for_cart" name="productId" type="hidden" value="440702">
+                                                                      @foreach (var d in ViewBag.listchitietsanpham)
+                                                                      {
+                                                                          <p>
+                                                                             <input id="product_id_for_cart" name="productId" type="hidden" value="@d[0]">
+
+                                                                          </p>
+                                                                      }
+                                                                      
 
                                                                       <!-- Quantity Selector -->
                                                                       <div id="qtySelector" class="quantity-col1">
