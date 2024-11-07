@@ -469,18 +469,18 @@ var customerId = 0;
                             <div data-reactroot="">
 
                                 <div>
-                                    <i class="icon-style-1 tikicon icon-user"></i><b>Đăng nhập</b>
-                                    <br><small>Tài khoản</small>
-                                </div>
-                                <div class="box">
-                                    <ul class="user-ajax-guest">
-                                        <li id="login_link">
-                                            <a href="#" title="Đăng Nhập" class="user-name-login lrm-login"><span class="text">Đăng nhập</span></a>
-                                        </li>
-                                        <li class="user-name-register">
-                                            <a href="#" title="Tạo tài khoản mới" class="lrm-register"><span class="text">Tạo tài khoản</span></a>
-                                        </li>
-                                    </ul>
+                                    @if (Session["IDKH"] != null)
+                                    {
+                                        <!-- Hiển thị thông tin khách hàng -->
+                                        <a href="@Url.Action("InfoCustomer", "Home")" class="nav-item nav-link">@Session["TenKH"]</a>
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link" style="display: block; margin-top: 5px;">Đăng xuất</a>
+                                    }
+                                    else
+                                    {
+                                        <!-- Hiển thị liên kết đăng nhập nếu người dùng chưa đăng nhập -->
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
+                                    }
+
                                 </div>
 
                             </div>
@@ -727,40 +727,56 @@ var customerId = 0;
                                               </div>
 
                                               <div class="form-product col-sm-12">
-                                                  <form class="cart product-form product-actions" action="/GioHang/AddToCart" method="post" enctype='multipart/form-data'>
+                                                  <form class="cart product-form product-actions" action="@Url.Action("AddToCart", "GioHang")" method="post" enctype="multipart/form-data">
+
+                                                      <!-- Thông báo lỗi/thành công -->
+                                                      @if (TempData["ErrorMessage"] != null)
+                                                      {
+                                                          <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                                                      }
+                                                      @if (TempData["SuccessMessage"] != null)
+                                                      {
+                                                          <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                                                      }
+
+                                                      <!-- Hidden field for Product ID -->
+                                                      @if (ViewBag.listchitietsanpham != null && ViewBag.listchitietsanpham.Count > 0)
+                                                      {
+                                                          <input id="product_id_for_cart" name="productId" type="hidden" value="@ViewBag.listchitietsanpham[0][0]">
+                                                      }
+
                                                       <div class="item-product-options">
                                                           <div id="add-cart-action">
                                                               <div class="add-cart-action" style="display: block">
                                                                   <div class="quantity-box">
+                                                                      <!-- Quantity Limitation Alert -->
                                                                       <div class="tiki-save-wrapper">
                                                                           <div id="deal-max" class="alert alert-warning alert-small deal-max">
                                                                               Sản phẩm này có giới hạn số lượng khi đặt hàng:<br />
-                                                                              Bạn có thể mua tối đa 1 sản phẩm cho mỗi đơn hàng
+                                                                              Bạn có thể mua tối đa 1 sản phẩm cho mỗi đơn hàng.
                                                                           </div>
                                                                       </div>
-
-                                                                      <!-- Hidden field to pass product ID -->
-                                                                      <input id="product_id_for_cart" name="productId" type="hidden" value="440702">
 
                                                                       <!-- Quantity Selector -->
                                                                       <div id="qtySelector" class="quantity-col1">
                                                                           <p class="quantity-label">Số lượng:</p>
                                                                           <div class="input-group bootstrap-touchspin">
+                                                                              <!-- Decrease Quantity Button -->
                                                                               <span class="input-group-btn">
-                                                                                  <button class="btn btn-default bootstrap-touchspin-down" onclick="var qtyField = document.getElementById('qty'); if(!isNaN(qtyField.value) && qtyField.value > 1) qtyField.value--; return false;" type="button">-</button>
+                                                                                  <button class="btn btn-default bootstrap-touchspin-down" type="button" onclick="decreaseQuantity()">-</button>
                                                                               </span>
+                                                                              <!-- Quantity Input -->
                                                                               <input id="qty" type="number" name="quantity" value="1" min="1" max="100" class="form-control">
+                                                                              <!-- Increase Quantity Button -->
                                                                               <span class="input-group-btn">
-                                                                                  <button class="btn btn-default bootstrap-touchspin-up" onclick="var qtyField = document.getElementById('qty'); if(!isNaN(qtyField.value)) qtyField.value++; return false;" type="button">+</button>
+                                                                                  <button class="btn btn-default bootstrap-touchspin-up" type="button" onclick="increaseQuantity()">+</button>
                                                                               </span>
                                                                           </div>
                                                                       </div>
 
                                                                       <!-- Add to Cart Button -->
                                                                       <div class="cta-box">
-                                                                          <button id="mainAddToCart" class="add-to-cart js-add-to-cart is-css" type="submit">
-                                                                              <span class="text">CHỌN MUA</span>
-                                                                          </button>
+                                                                          <button type="submit" class="add-to-cart">CHỌN MUA</button>
                                                                       </div>
                                                                   </div>
                                                               </div>
@@ -768,6 +784,29 @@ var customerId = 0;
                                                       </div>
                                                   </form>
                                               </div>
+
+                                              <script>
+                                                  // Function to decrease quantity
+                                                  function decreaseQuantity() {
+                                                      var qtyInput = document.getElementById('qty');
+                                                      var currentQty = parseInt(qtyInput.value);
+                                                      if (!isNaN(currentQty) && currentQty > 1) {
+                                                          qtyInput.value = currentQty - 1;
+                                                      }
+                                                  }
+
+                                                  // Function to increase quantity
+                                                  function increaseQuantity() {
+                                                      var qtyInput = document.getElementById('qty');
+                                                      var currentQty = parseInt(qtyInput.value);
+                                                      if (!isNaN(currentQty)) {
+                                                          qtyInput.value = currentQty + 1;
+                                                      }
+                                                  }
+                                              </script>
+
+
+
 
 
 

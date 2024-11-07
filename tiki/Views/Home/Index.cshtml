@@ -1694,24 +1694,24 @@
 
         <div class="lrm-user-modal-container">
             <!-- this is the container wrapper -->
-            <ul class="lrm-switcher -is-not-login-only">
+            <div>
+                @if (Session["IDKH"] != null)
+                {
+                    <!-- Hiển thị thông tin khách hàng -->
+                    <a href="@Url.Action("InfoCustomer", "Home")" class="nav-item nav-link">@Session["TenKH"]</a>
+                    <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link" style="display: block; margin-top: 5px;">Đăng xuất</a>
+                }
+                else
+                {
+                    <!-- Hiển thị liên kết đăng nhập nếu người dùng chưa đăng nhập -->
+                    <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
+                }
 
-                <li>
-                    <a href="#0" class="lrm-switch-to-link lrm-switch-to--login lrm-ficon-login ">
-                        Đăng nhập
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#0" class="lrm-switch-to-link lrm-switch-to--register lrm-ficon-register ">
-                        Tài khoản mới
-                    </a>
-                </li>
-            </ul>
+            </div>
 
             <div class="lrm-signin-section ">
                 <!-- log in form -->
-                <form class="lrm-form" action="~/home/XulyDangNhap" method="post" data-action="login" >
+                <form class="lrm-form" action="~/home/XulyDangNhap" method="post" data-action="login">
 
                     <div class="lrm-integrations lrm-integrations--login">
                     </div>
@@ -1750,24 +1750,24 @@
                     <div class="lrm-integrations lrm-integrations--login">
                     </div>
                     @*<form action="~/home/XulyDangNhap" method="post">
-                        Username: <input type="text" name="username" /><br />
-                        Password:<input type="password" name="password" /><br />
-                        <input type="submit" value="Đăng nhập" />
-                    </form>*@
+                    Username: <input type="text" name="username" /><br />
+                    Password:<input type="password" name="password" /><br />
+                    <input type="submit" value="Đăng nhập" />
+                </form>*@
 
                     <input type="hidden" name="redirect_to" value="">
-    <input type="hidden" name="lrm_action" value="login">
-    <input type="hidden" name="wp-submit" value="1">
-                     @*Fix for Eduma WP theme*@
+                    <input type="hidden" name="lrm_action" value="login">
+                    <input type="hidden" name="wp-submit" value="1">
+                    @*Fix for Eduma WP theme*@
                     <input type="hidden" name="lp-ajax" value="login">
 
-    <input type="hidden" id="security-login" name="security-login" value="291dca8a15" /><input type="hidden" name="_wp_http_referer" value="/" />
-                     @*For Invisible Recaptcha plugin*@ 
+                    <input type="hidden" id="security-login" name="security-login" value="291dca8a15" /><input type="hidden" name="_wp_http_referer" value="/" />
+                    @*For Invisible Recaptcha plugin*@
                     <span class="wpcf7-submit" style="display: none;"></span>
                 </form>
 
                 <p class="lrm-form-bottom-message"><a href="#0" class="lrm-switch-to--reset-password">Quên mật khẩu?</a></p>
-                 <a href="#0" class="lrm-close-form">Close</a> 
+                <a href="#0" class="lrm-close-form">Close</a>
             </div> <!-- lrm-login -->
 
 
@@ -1788,11 +1788,11 @@
                     </div>
 
                     <div class="fieldset clearfix">
-                        
-                            <label class="image-replace lrm-username lrm-ficon-user" for="signup-first-name" title="Họ và Tên"></label>
-                            <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="Họ và Tên" required aria-label="Họ và Tên" autocomplete="off" data-lpignore="true">
-                            <span class="lrm-error-message"></span>
-                        
+
+                        <label class="image-replace lrm-username lrm-ficon-user" for="signup-first-name" title="Họ và Tên"></label>
+                        <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="Họ và Tên" required aria-label="Họ và Tên" autocomplete="off" data-lpignore="true">
+                        <span class="lrm-error-message"></span>
+
                     </div>
 
                     <div class="fieldset fieldset--email">
