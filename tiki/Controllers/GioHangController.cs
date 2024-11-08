@@ -14,32 +14,14 @@ namespace tiki.Controllers
     public class GioHangController : Controller
     {
         // Hiển thị giỏ hàng
-        public ActionResult Index(string id)
+        public ActionResult Index()
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]); // Lấy ID người dùng từ Session.
 
-            // Thực thi stored procedure với UserId trực tiếp trong chuỗi truy vấn
-            ViewBag.CartItems = db.get("EXEC GetCartItems " + userId);
-            ViewBag.listchitietsanpham = db.get("EXEC TIMKIEMProductsID " + id + ";");
-            // Kiểm tra nếu Session["IDKH"] là null
-            if (Session["IDKH"] == null)
-            {
-                // Điều hướng đến trang đăng nhập nếu người dùng chưa đăng nhập
-                TempData["ErrorMessage"] = "Vui lòng đăng nhập để truy cập giỏ hàng.";
-                return RedirectToAction("GiaoDienDangNhap", "Account");
-            }
-            if (ViewBag.listchitietsanpham == null || ViewBag.listchitietsanpham.Count == 0)
-            {
-                TempData["ErrorMessage"] = "Không tìm thấy sản phẩm.";
-                return RedirectToAction("Index"); // Điều hướng đến trang chính hoặc xử lý khác
-            }
-            // Lưu thông tin sản phẩm vào Session để sử dụng trong AddToCart
-            if (ViewBag.listchitietsanpham != null && ViewBag.listchitietsanpham.Count > 0)
-            {
-                Session["SelectedProduct"] = ViewBag.listchitietsanpham;
-            }
-
+            // Thực thi stored procedure và lấy kết quả vào ViewBag.CartItems
+            ViewBag.CartItems = db.get("EXEC GetCartItems1 " + userId);
+            ViewBag.Discount = 10;
             return View();
         }
 

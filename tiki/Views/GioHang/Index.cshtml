@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Giỏ hàng";
-    var cartItems = ViewBag.CartItems as List<List<object>> ?? new List<List<object>>(); // Khởi tạo nếu null
+    var cartItems = ViewBag.CartItems as object[] ?? new object[0]; // Khởi tạo nếu null để tránh lỗi null
     var discount = ViewBag.Discount != null ? (decimal)ViewBag.Discount : 0;
 }
 <!DOCTYPE html>
@@ -385,7 +385,7 @@
             </div>
             <div class="header-form-container">
                 <div class="container">
-                    <a href="https://tiki.maugiaodien.com" class="logo">
+                    <a href="~/Views/Home/Index.cshtml" class="logo">
                         <img src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/logo-1.png">
                     </a>
 
@@ -676,106 +676,133 @@
                                         ViewBag.Title = "Giỏ hàng của bạn";
                                     }
 
-                                <div class="article-content">
-                                    <div class="rte">
-                                        <div class="woocommerce">
-                                            <div class="woocommerce-notices-wrapper"></div>
-                                            <div class="row">
-                                                <form class="woocommerce-cart-form col-sm-9" action="/GioHang/UpdateCart" method="post">
-                                                    <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="product-remove">&nbsp;</th>
-                                                                <th class="product-thumbnail">&nbsp;</th>
-                                                                <th class="product-name">Sản phẩm</th>
-                                                                <th class="product-price">Giá</th>
-                                                                <th class="product-quantity">Số lượng</th>
-                                                                <th class="product-subtotal">Tổng</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @if (cartItems.Any())
-                                                            {
-                                                                foreach (var item in cartItems)
+                                    <div class="article-content">
+                                        <div class="rte">
+                                            <div class="woocommerce">
+                                                <div class="woocommerce-notices-wrapper"></div>
+                                                <div class="row">
+                                                    <form class="woocommerce-cart-form col-sm-9" action="/GioHang/UpdateCart" method="post">
+                                                        <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="product-remove">&nbsp;</th>
+                                                                    <th class="product-thumbnail">&nbsp;</th>
+                                                                    <th class="product-name">Sản phẩm</th>
+                                                                    <th class="product-price">Giá</th>
+                                                                    <th class="product-quantity">Số lượng</th>
+                                                                    <th class="product-subtotal">Tổng</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @if (ViewBag.CartItems != null && ViewBag.CartItems.Count > 0)
                                                                 {
-                                                                    <tr class="woocommerce-cart-form__cart-item cart_item">
-                                                                        <td class="product-remove">
-                                                                            <a href="/GioHang/RemoveFromCart?productId=@item[0]" class="remove" aria-label="Xóa sản phẩm này" data-product_id="@item[0]">&times;</a>
-                                                                        </td>
-                                                                        <td class="product-thumbnail">
-                                                                            <a href="#"><img width="1200" height="1200" src="@item[4]" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" /></a>
-                                                                        </td>
-                                                                        <td class="product-name" data-title="Sản phẩm">
-                                                                            <a href="#">@item[1]</a>
-                                                                        </td>
-                                                                        <td class="product-price" data-title="Giá">
-                                                                            <span class="woocommerce-Price-amount amount">@((decimal)item[2]).ToString("N0")&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
-                                                                        </td>
-                                                                        <td class="product-quantity" data-title="Số lượng">
-                                                                            <div class="quantity">
-                                                                                <input type="number" name="quantity" class="input-text qty text" step="1" min="1" value="@item[3]" title="SL" size="4" inputmode="numeric" />
-                                                                                <input type="hidden" name="productId" value="@item[0]" />
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="product-subtotal" data-title="Tổng">
-                                                                            <span class="woocommerce-Price-amount amount">@((decimal)item[2] * (int)item[3]).ToString("N0")&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
-                                                                        </td>
+                                                                    foreach (var item in ViewBag.CartItems)
+                                                                    {
+                                                                        var productId = item[0]?.ToString();
+                                                                        var productName = item[1]?.ToString();
+                                                                        var itemPrice = decimal.Parse(item[2]?.ToString() ?? "0");
+                                                                        var quantity = int.Parse(item[3]?.ToString() ?? "0");
+                                                                        var totalPrice = decimal.Parse(item[4]?.ToString() ?? "0");
+                                                                        var imageUrl = item[5]?.ToString(); // URL ảnh sản phẩm
+
+                                                                        <tr class="woocommerce-cart-form__cart-item cart_item">
+                                                                            <td class="product-remove">
+                                                                                <a href="/GioHang/RemoveFromCart?productId=@productId" class="remove" aria-label="Xóa sản phẩm này" data-product_id="@productId">&times;</a>
+                                                                            </td>
+                                                                            <td class="product-thumbnail">
+                                                                                <a href="#"><img src="~/HINH/@imageUrl" alt="@productName" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" /></a>
+                                                                            </td>
+                                                                            <td class="product-name" data-title="Sản phẩm">
+                                                                                <a href="#">@productName</a>
+                                                                            </td>
+                                                                            <td class="product-price" data-title="Giá">
+                                                                                <span class="woocommerce-Price-amount amount">
+                                                                                    @(itemPrice.ToString("N0"))&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td class="product-quantity" data-title="Số lượng">
+                                                                                <div class="quantity">
+                                                                                    <input type="number" name="quantity" class="input-text qty text" step="1" min="1" value="@quantity" title="SL" size="4" inputmode="numeric" />
+                                                                                    <input type="hidden" name="productId" value="@productId" />
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="product-subtotal" data-title="Tổng">
+                                                                                <span class="woocommerce-Price-amount amount">
+                                                                                    @(totalPrice.ToString("N0"))&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <tr>
+                                                                        <td colspan="6" style="text-align: center;">Giỏ hàng của bạn hiện đang trống.</td>
                                                                     </tr>
                                                                 }
-                                                            }
-                                                            else
-                                                            {
                                                                 <tr>
-                                                                    <td colspan="6" style="text-align: center;">Giỏ hàng của bạn hiện đang trống.</td>
+                                                                    <td colspan="6" class="actions">
+                                                                        <div class="coupon">
+                                                                            <label for="coupon_code">Ưu đãi:</label>
+                                                                            <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi" />
+                                                                            <button type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
+                                                                        </div>
+                                                                        <button type="submit" class="button" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
+                                                                    </td>
                                                                 </tr>
-                                                            }
-                                                            <tr>
-                                                                <td colspan="6" class="actions">
-                                                                    <div class="coupon">
-                                                                        <label for="coupon_code">Ưu đãi:</label>
-                                                                        <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi" />
-                                                                        <button type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
-                                                                    </div>
-                                                                    <button type="submit" class="button" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </form>
+                                                            </tbody>
+                                                        </table>
+                                                    </form>
 
-                                                <div class="cart-collaterals1 col-sm-3">
-                                                    <div class="cart_totals">
-                                                        <table cellspacing="0" class="shop_table shop_table_responsive">
-                                                            <tr class="cart-subtotal">
-                                                                <th>Tạm tính</th>
-                                                                <td data-title="Tạm tính">
-                                                                    <span class="woocommerce-Price-amount amount">
-                                                                        @cartItems.Sum(item => (decimal)item[2] * (int)item[3]).ToString("N0")
-                                                                        <span class="woocommerce-Price-currencySymbol">&#8363;</span>
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="order-total">
-                                                                <th>Tổng</th>
-                                                                <td data-title="Tổng">
-                                                                    <strong>
+                                                    <div class="cart-collaterals1 col-sm-3">
+                                                        <div class="cart_totals">
+                                                            <table cellspacing="0" class="shop_table shop_table_responsive">
+                                                                <tr class="cart-subtotal">
+                                                                    <th>Tạm tính</th>
+                                                                    <td data-title="Tạm tính">
                                                                         <span class="woocommerce-Price-amount amount">
-                                                                            @((cartItems.Sum(item => (decimal)item[2] * (int)item[3]) - discount).ToString("N0"))
+                                                                            @{
+                                                                                // Tính tổng tạm tính
+                                                                                var subtotal = cartItems
+                                                                                    .OfType<object[]>()
+                                                                                    .Where(item => item.Length > 3)
+                                                                                    .Sum(item =>
+                                                                                        (decimal.TryParse(item[2]?.ToString(), out var price) ? price : 0) *
+                                                                                        (int.TryParse(item[3]?.ToString(), out var qty) ? qty : 0)
+                                                                                    );
+                                                                                @subtotal.ToString("N0")
+                                                                            }
                                                                             <span class="woocommerce-Price-currencySymbol">&#8363;</span>
                                                                         </span>
-                                                                    </strong>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <div class="wc-proceed-to-checkout">
-                                                            <a href="/GioHang/ThanhToan" class="checkout-button button alt wc-forward">Tiến hành thanh toán</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="order-total">
+                                                                    <th>Tổng</th>
+                                                                    <td data-title="Tổng">
+                                                                        <strong>
+                                                                            <span class="woocommerce-Price-amount amount">
+                                                                                @{
+                                                                                    // Tính tổng sau khi áp dụng giảm giá
+                                                                                    var total = subtotal - discount;
+                                                                                    @total.ToString("N0")
+                                                                                }
+                                                                                <span class="woocommerce-Price-currencySymbol">&#8363;</span>
+                                                                            </span>
+                                                                        </strong>
+                                                                    </td>
+                                                                </tr>
+
+
+                                                            </table>
+                                                            <div class="wc-proceed-to-checkout">
+                                                                <a href="/GioHang/ThanhToan" class="checkout-button button alt wc-forward">Tiến hành thanh toán</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
                                 </div>
                             </div>
