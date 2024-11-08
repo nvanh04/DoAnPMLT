@@ -8,6 +8,33 @@
     <title>
         Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh) &#8211; Mua Hàng Trực Tuyến Uy Tín với Giá Rẻ Hơn tại Tiki.vn
     </title>
+    <link href="" rel="shortcut icon" type="~/image/vnd.microsoft.icon" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="~/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="~/assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="~/assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="~/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css">
+    <link rel="stylesheet" href="~/assets/vendor/libs/sweetalert2/sweetalert2.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/form-validation/form-validation.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/select2/select2.css" />
+    <meta name='robots' content='noindex, nofollow' />
     <link href="" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <meta name='robots' content='noindex, nofollow' />
     <link rel='dns-prefetch' href='//s.w.org' />
@@ -296,45 +323,47 @@
     <link rel="alternate" type="application/json+oembed" href="https://tiki.maugiaodien.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftiki.maugiaodien.com%2Fsan-pham%2Fmay-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11%2F" />
     <link rel="alternate" type="text/xml+oembed" href="https://tiki.maugiaodien.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftiki.maugiaodien.com%2Fsan-pham%2Fmay-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11%2F&#038;format=xml" />
     <noscript>
-    <style>
-        .woocommerce-product-gallery {
-            opacity: 1 !important;
-        }
-    </style></noscript>
+        <style>
+            .woocommerce-product-gallery {
+                opacity: 1 !important;
+            }
+        </style>
+    </noscript>
     <style type="text/css" id="wp-custom-css">
-			.hien-thi-thong-tin .large-4 {
-    width: 33%;
-    display: inline-block;
-}
+        .hien-thi-thong-tin .large-4 {
+            width: 33%;
+            display: inline-block;
+        }
 
 
 
 
 
-.hien-thi-thong-tin .row {
-    margin: 0 15px;
-}
+        .hien-thi-thong-tin .row {
+            margin: 0 15px;
+        }
 
 
-.hien-thi-thong-tin .row {
-    margin: 0;
-}		</style>
+        .hien-thi-thong-tin .row {
+            margin: 0;
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700&amp;subset=vietnamese" rel="stylesheet">
 
     <script>
-var isLoggedIn = false;
-var customerId = 0;
+        var isLoggedIn = false;
+        var customerId = 0;
     </script>
     <script>
-    var facebookAppId = "";
-    // RECAPTCHA
-    var isNativeApp = false;
-    var rootUrl = 'https://tiki.maugiaodien.com';
-    var recaptchaKey = '';
-    var renderRecaptcha = false;
-    var talalyticsStatus = 1;
-    var searchTuningVersion = "";
-    var vendor ="";
+        var facebookAppId = "";
+        // RECAPTCHA
+        var isNativeApp = false;
+        var rootUrl = 'https://tiki.maugiaodien.com';
+        var recaptchaKey = '';
+        var renderRecaptcha = false;
+        var talalyticsStatus = 1;
+        var searchTuningVersion = "";
+        var vendor = "";
 
     </script>
 </head>
@@ -471,13 +500,44 @@ var customerId = 0;
                                 <div>
                                     @if (Session["IDKH"] != null)
                                     {
-                                        <!-- Hiển thị thông tin khách hàng -->
-                                        <a href="@Url.Action("InfoCustomer", "Home")" class="nav-item nav-link">@Session["TenKH"]</a>
-                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link" style="display: block; margin-top: 5px;">Đăng xuất</a>
+                                        <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                            <div style="top :-10px" class="avatar avatar-online">
+                                                <img src="~/assets/img/avatars/1.png" alt="" class="w-px-40 h-auto rounded-circle">
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li>
+                                                <a class="dropdown-item" href="@Url.Action("InfoCustomer", "Home")">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <div class="avatar avatar-online">
+                                                                <img src="~/assets/img/avatars/1.png" alt="" class="w-px-40 h-auto rounded-circle">
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <h6 class="mb-0">@Session["TenKH"]</h6>
+                                                            <small class="text-muted">Khách hàng</small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown-divider my-1"></div>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="@Url.Action("InfoCustomer", "Home")">
+                                                    <i class="bx bx-user bx-md me-3"></i><span>Thông tin cá nhân</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="@Url.Action("GiaoDienDangNhap", "Home")">
+                                                    <i class="bx bx-power-off bx-md me-3"></i><span>Đăng xuất</span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     }
                                     else
                                     {
-                                        <!-- Hiển thị liên kết đăng nhập nếu người dùng chưa đăng nhập -->
                                         <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
                                     }
 
@@ -650,10 +710,10 @@ var customerId = 0;
                         <span class="onsale">Giảm giá!</span>
                         <div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4" style="opacity: 0; transition: opacity .25s ease-in-out;">
                             <figure class="woocommerce-product-gallery__wrapper">
-                              
-                                    <div data-thumb="~/HINH/@ViewBag.listchitietsanpham[0][10]" data-thumb-alt="" class="woocommerce-product-gallery__image"><a href="~/HINH/@ViewBag.listchitietsanpham[0][10]"><img width="1200" height="1200" src="~/HINH/@ViewBag.listchitietsanpham[0][10]" class="wp-post-image" alt="" loading="lazy" title="b02b462394bc3c59e5876ec0d9cb6ae8" img src="~/HINH/@ViewBag.listchitietsanpham[0][10]" data-large_image="~/HINH/@ViewBag.listchitietsanpham[0][10]" data-large_image_width="1200" data-large_image_height="1200" /></a></div>
 
-                                
+                                <div data-thumb="~/HINH/@ViewBag.listchitietsanpham[0][10]" data-thumb-alt="" class="woocommerce-product-gallery__image"><a href="~/HINH/@ViewBag.listchitietsanpham[0][10]"><img width="1200" height="1200" src="~/HINH/@ViewBag.listchitietsanpham[0][10]" class="wp-post-image" alt="" loading="lazy" title="b02b462394bc3c59e5876ec0d9cb6ae8" img src="~/HINH/@ViewBag.listchitietsanpham[0][10]" data-large_image="~/HINH/@ViewBag.listchitietsanpham[0][10]" data-large_image_width="1200" data-large_image_height="1200" /></a></div>
+
+
                             </figure>
 
                         </div>
@@ -693,139 +753,139 @@ var customerId = 0;
                                         </div>
                                     </div>
                                 </div><div class="row flex">
-                                          <div class="col-xs-7 no-padding-right product-info-block">
-                                              <div class="item-row1">
-                                                  <div class="item-price">
+                                    <div class="col-xs-7 no-padding-right product-info-block">
+                                        <div class="item-row1">
+                                            <div class="item-price">
 
 
-                                                      <div class="price-block show-border">
+                                                <div class="price-block show-border">
 
 
-                                                          <p class="special-price-item" data-value="11790000" id="p-specialprice">
-                                                              <span id="flash-sale-price-label" style="" class="hot-deal">
-                                                                  <img class="icon-hot-deal" src="~/HINH/@c[10]" width="91">Giá:
-                                                              </span>
-                                                              <span id="span-price">@c[3]</span>
-                                                          </p>
+                                                    <p class="special-price-item" data-value="11790000" id="p-specialprice">
+                                                        <span id="flash-sale-price-label" style="" class="hot-deal">
+                                                            <img class="icon-hot-deal" src="~/HINH/@c[10]" width="91">Giá:
+                                                        </span>
+                                                        <span id="span-price">@c[3]</span>
+                                                    </p>
 
-                                                          <p style="" class="saleoff-price-item" id="p-saving-price">
-                                                              <span class="price-label">Tiết kiệm:</span>
-                                                              <span id="span-discount-percent" class="discount-percent">1%</span>
-                                                              <span id="span-saving-price">
-                                                                  (100.000₫)
-                                                              </span>
-                                                          </p>
+                                                    <p style="" class="saleoff-price-item" id="p-saving-price">
+                                                        <span class="price-label">Tiết kiệm:</span>
+                                                        <span id="span-discount-percent" class="discount-percent">1%</span>
+                                                        <span id="span-saving-price">
+                                                            (100.000₫)
+                                                        </span>
+                                                    </p>
 
-                                                          <p style="" class="old-price-item" data-value="17500000" id="p-listpirce">
-                                                              <span class="price-label">Giá thị trường:</span>
-                                                              <span id="span-list-price">11,690,000 ₫</span>
-                                                          </p>
-
-
-                                                      </div>
-                                                  </div>
-                                              </div>
-
-                                              <div class="form-product col-sm-12">
-
-                                                  <form class="cart product-form product-actions" action="@Url.Action("AddToCart", "GioHang")" method="post" enctype="multipart/form-data">
-
-                                                      <!-- Thông báo lỗi/thành công -->
-                                                      @if (TempData["ErrorMessage"] != null)
-                                                      {
-                                                          <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
-                                                      }
-                                                      @if (TempData["SuccessMessage"] != null)
-                                                      {
-                                                          <div class="alert alert-success">@TempData["SuccessMessage"]</div>
-                                                      }
-
-                                                      <!-- Hidden field for Product ID -->
-                                                      @if (ViewBag.listchitietsanpham != null && ViewBag.listchitietsanpham.Count > 0)
-                                                      {
-                                                          <input id="product_id_for_cart" name="productId" type="hidden" value="@ViewBag.listchitietsanpham[0][0]">
-                                                      }
+                                                    <p style="" class="old-price-item" data-value="17500000" id="p-listpirce">
+                                                        <span class="price-label">Giá thị trường:</span>
+                                                        <span id="span-list-price">11,690,000 ₫</span>
+                                                    </p>
 
 
-                                                  <form class="cart product-form product-actions" action="~/GioHang/AddToCart" method="post" enctype='multipart/form-data'>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                                      <div class="item-product-options">
-                                                          <div id="add-cart-action">
-                                                              <div class="add-cart-action" style="display: block">
-                                                                  <div class="quantity-box">
-                                                                      <!-- Quantity Limitation Alert -->
-                                                                      <div class="tiki-save-wrapper">
-                                                                          <div id="deal-max" class="alert alert-warning alert-small deal-max">
-                                                                              Sản phẩm này có giới hạn số lượng khi đặt hàng:<br />
-                                                                              Bạn có thể mua tối đa 1 sản phẩm cho mỗi đơn hàng.
-                                                                          </div>
-                                                                      </div>
+                                        <div class="form-product col-sm-12">
 
-                                                                      <!-- Hidden field to pass product ID -->
-                                                                      @foreach (var d in ViewBag.listchitietsanpham)
-                                                                      {
-                                                                          <p>
-                                                                             <input id="product_id_for_cart" name="productId" type="hidden" value="@d[0]">
+                                            <form class="cart product-form product-actions" action="@Url.Action("AddToCart", "GioHang")" method="post" enctype="multipart/form-data">
 
-                                                                          </p>
-                                                                      }
-                                                                      
+                                                <!-- Thông báo lỗi/thành công -->
+                                                @if (TempData["ErrorMessage"] != null)
+                                                {
+                                                    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                                                }
+                                                @if (TempData["SuccessMessage"] != null)
+                                                {
+                                                    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                                                }
 
-                                                                      <!-- Quantity Selector -->
-                                                                      <div id="qtySelector" class="quantity-col1">
-                                                                          <p class="quantity-label">Số lượng:</p>
-                                                                          <div class="input-group bootstrap-touchspin">
-                                                                              <!-- Decrease Quantity Button -->
-                                                                              <span class="input-group-btn">
-                                                                                  <button class="btn btn-default bootstrap-touchspin-down" type="button" onclick="decreaseQuantity()">-</button>
-                                                                              </span>
-                                                                              <!-- Quantity Input -->
-                                                                              <input id="qty" type="number" name="quantity" value="1" min="1" max="100" class="form-control">
-                                                                              <!-- Increase Quantity Button -->
-                                                                              <span class="input-group-btn">
-                                                                                  <button class="btn btn-default bootstrap-touchspin-up" type="button" onclick="increaseQuantity()">+</button>
-                                                                              </span>
-                                                                          </div>
-                                                                      </div>
-
-                                                                      <!-- Add to Cart Button -->
-                                                                      <div class="cta-box">
-                                                                          <button type="submit" class="add-to-cart">CHỌN MUA</button>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </form>
-                                              </div>
-
-                                              <script>
-                                                  // Function to decrease quantity
-                                                  function decreaseQuantity() {
-                                                      var qtyInput = document.getElementById('qty');
-                                                      var currentQty = parseInt(qtyInput.value);
-                                                      if (!isNaN(currentQty) && currentQty > 1) {
-                                                          qtyInput.value = currentQty - 1;
-                                                      }
-                                                  }
-
-                                                  // Function to increase quantity
-                                                  function increaseQuantity() {
-                                                      var qtyInput = document.getElementById('qty');
-                                                      var currentQty = parseInt(qtyInput.value);
-                                                      if (!isNaN(currentQty)) {
-                                                          qtyInput.value = currentQty + 1;
-                                                      }
-                                                  }
-                                              </script>
+                                                <!-- Hidden field for Product ID -->
+                                                @if (ViewBag.listchitietsanpham != null && ViewBag.listchitietsanpham.Count > 0)
+                                                {
+                                                    <input id="product_id_for_cart" name="productId" type="hidden" value="@ViewBag.listchitietsanpham[0][0]">
+                                                }
 
 
+                                                <form class="cart product-form product-actions" action="~/GioHang/AddToCart" method="post" enctype='multipart/form-data'>
 
+                                                    <div class="item-product-options">
+                                                        <div id="add-cart-action">
+                                                            <div class="add-cart-action" style="display: block">
+                                                                <div class="quantity-box">
+                                                                    <!-- Quantity Limitation Alert -->
+                                                                    <div class="tiki-save-wrapper">
+                                                                        <div id="deal-max" class="alert alert-warning alert-small deal-max">
+                                                                            Sản phẩm này có giới hạn số lượng khi đặt hàng:<br />
+                                                                            Bạn có thể mua tối đa 1 sản phẩm cho mỗi đơn hàng.
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Hidden field to pass product ID -->
+                                                                    @foreach (var d in ViewBag.listchitietsanpham)
+                                                                    {
+                                                                        <p>
+                                                                            <input id="product_id_for_cart" name="productId" type="hidden" value="@d[0]">
+
+                                                                        </p>
+                                                                    }
+
+
+                                                                    <!-- Quantity Selector -->
+                                                                    <div id="qtySelector" class="quantity-col1">
+                                                                        <p class="quantity-label">Số lượng:</p>
+                                                                        <div class="input-group bootstrap-touchspin">
+                                                                            <!-- Decrease Quantity Button -->
+                                                                            <span class="input-group-btn">
+                                                                                <button class="btn btn-default bootstrap-touchspin-down" type="button" onclick="decreaseQuantity()">-</button>
+                                                                            </span>
+                                                                            <!-- Quantity Input -->
+                                                                            <input id="qty" type="number" name="quantity" value="1" min="1" max="100" class="form-control">
+                                                                            <!-- Increase Quantity Button -->
+                                                                            <span class="input-group-btn">
+                                                                                <button class="btn btn-default bootstrap-touchspin-up" type="button" onclick="increaseQuantity()">+</button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Add to Cart Button -->
+                                                                    <div class="cta-box">
+                                                                        <button type="submit" class="add-to-cart">CHỌN MUA</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                        </div>
+
+                                        <script>
+                                            // Function to decrease quantity
+                                            function decreaseQuantity() {
+                                                var qtyInput = document.getElementById('qty');
+                                                var currentQty = parseInt(qtyInput.value);
+                                                if (!isNaN(currentQty) && currentQty > 1) {
+                                                    qtyInput.value = currentQty - 1;
+                                                }
+                                            }
+
+                                            // Function to increase quantity
+                                            function increaseQuantity() {
+                                                var qtyInput = document.getElementById('qty');
+                                                var currentQty = parseInt(qtyInput.value);
+                                                if (!isNaN(currentQty)) {
+                                                    qtyInput.value = currentQty + 1;
+                                                }
+                                            }
+                                        </script>
 
 
 
 
-                                          </div>
+
+
+
+                                    </div>
 
                                     <div class="col-xs-5 product-seller-block">
                                         <div class="seller-container">
@@ -875,10 +935,10 @@ var customerId = 0;
                                                     <div class="item">
                                                         <i style="margin-top: 5px" class="tikicon icon-phone"></i>
                                                         <!-- <p>
-                                <b>Liên hệ</b><br>
-                                HOTLINE: <a href="tel:1900 6035">1900 6035</a><br>
-                                <small>(1.000đ/phút, 8-21h cả T7, CN)</small>
-                                </p> -->
+                                                        <b>Liên hệ</b><br>
+                                                        HOTLINE: <a href="tel:1900 6035">1900 6035</a><br>
+                                                        <small>(1.000đ/phút, 8-21h cả T7, CN)</small>
+                                                        </p> -->
                                                         <p>
                                                             <b>Liên hệ</b><br />
                                                             Hotline đặt hàng <a href="tel:1800 6963">1800 6963</a><br>
@@ -1202,32 +1262,23 @@ var customerId = 0;
 
                                                 </div>
 
-                                                
-
-                                                        </a>
-                                                    </div>
-
-                                                </div>
 
 
+                                                </a>
                                             </div>
+
                                         </div>
-                                        <div class="swiper-button-next swiper-button-black"></div>
-                                        <div class="swiper-button-prev swiper-button-black"></div>
+
+
                                     </div>
                                 </div>
+                                <div class="swiper-button-next swiper-button-black"></div>
+                                <div class="swiper-button-prev swiper-button-black"></div>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
                     </div>
                 </div>
+
 
 
 
@@ -1241,122 +1292,131 @@ var customerId = 0;
 
 
 
-        <footer id="footer">
-            <!-- Begin MailChimp Signup Form -->
-            <div class="tiki-newsletter">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 clearfix">
 
-                            <div class="textwidget">
-                                <div role="form" class="wpcf7" id="wpcf7-f644-o1" lang="vi" dir="ltr">
-                                    <div class="screen-reader-response"></div>
-                                    <form action="/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11/#wpcf7-f644-o1" method="post" class="wpcf7-form" novalidate="novalidate">
-                                        <div style="display: none;">
-                                            <input type="hidden" name="_wpcf7" value="644" />
-                                            <input type="hidden" name="_wpcf7_version" value="5.1.6" />
-                                            <input type="hidden" name="_wpcf7_locale" value="vi" />
-                                            <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f644-o1" />
-                                            <input type="hidden" name="_wpcf7_container_post" value="0" />
-                                        </div>
-                                        <div class="col-lg-12 clearfix">
-                                            <div class="tiki-newsletter-title clearfix">
-                                                <i class="tikicon icon-newsletter"></i><br />
-                                                <h3>Đăng ký nhận bản tin Tiki</h3>
-                                                <h5>Đừng bỏ lỡ hàng ngàn sản phẩm và chương trình siêu hấp dẫn</h5>
-                                                </p>
-                                            </div>
-                                            <div class="mc-field-group"> <span class="wpcf7-form-control-wrap text-1"><input type="text" name="text-1" value="" size="40" class="wpcf7-form-control wpcf7-text form-control tiki-home-email" aria-invalid="false" placeholder="Địa chỉ email của bạn" /></span> <span class="tiki-newsletter-helper"></span></div>
-                                            <div class=""> <input type="submit" value="Đăng ký" class="wpcf7-form-control wpcf7-submit btn button btn-home-newsletter" /> </div>
+
+
+    </div>
+    </div>
+
+
+
+
+    <footer id="footer">
+        <!-- Begin MailChimp Signup Form -->
+        <div class="tiki-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 clearfix">
+
+                        <div class="textwidget">
+                            <div role="form" class="wpcf7" id="wpcf7-f644-o1" lang="vi" dir="ltr">
+                                <div class="screen-reader-response"></div>
+                                <form action="/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11/#wpcf7-f644-o1" method="post" class="wpcf7-form" novalidate="novalidate">
+                                    <div style="display: none;">
+                                        <input type="hidden" name="_wpcf7" value="644" />
+                                        <input type="hidden" name="_wpcf7_version" value="5.1.6" />
+                                        <input type="hidden" name="_wpcf7_locale" value="vi" />
+                                        <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f644-o1" />
+                                        <input type="hidden" name="_wpcf7_container_post" value="0" />
+                                    </div>
+                                    <div class="col-lg-12 clearfix">
+                                        <div class="tiki-newsletter-title clearfix">
+                                            <i class="tikicon icon-newsletter"></i><br />
+                                            <h3>Đăng ký nhận bản tin Tiki</h3>
+                                            <h5>Đừng bỏ lỡ hàng ngàn sản phẩm và chương trình siêu hấp dẫn</h5>
                                             </p>
                                         </div>
-                                        <div class="wpcf7-response-output wpcf7-display-none"></div>
-                                    </form>
-                                </div>
+                                        <div class="mc-field-group"> <span class="wpcf7-form-control-wrap text-1"><input type="text" name="text-1" value="" size="40" class="wpcf7-form-control wpcf7-text form-control tiki-home-email" aria-invalid="false" placeholder="Địa chỉ email của bạn" /></span> <span class="tiki-newsletter-helper"></span></div>
+                                        <div class=""> <input type="submit" value="Đăng ký" class="wpcf7-form-control wpcf7-submit btn button btn-home-newsletter" /> </div>
+                                        </p>
+                                    </div>
+                                    <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                </form>
                             </div>
-
                         </div>
+
                     </div>
                 </div>
             </div>
-            <!--End mc_embed_signup-->
-            <hr class="line-bg-body" />
-            <div class="list-footer-nav">
-                <div class="container">
+        </div>
+        <!--End mc_embed_signup-->
+        <hr class="line-bg-body" />
+        <div class="list-footer-nav">
+            <div class="container">
 
-                    <div class="footer-nav">
-                        <h4 class="title-menu">HỖ TRỢ KHÁCH HÀNG</h4><div class="menu-menu-footer-container">
-                            <ul id="menu-menu-footer" class="menu">
-                                <li id="menu-item-1801" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1801"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Giới thiệu Ant Clothes</span></a></li>
-                                <li id="menu-item-1802" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1802"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy chế hoạt động</span></a></li>
-                                <li id="menu-item-1803" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1803"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy định bán hàng</span></a></li>
-                                <li id="menu-item-1804" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1804"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Tin tức khuyến mãi</span></a></li>
-                            </ul>
-                        </div>
-                    </div><div class="footer-nav">
-                        <h4 class="title-menu">VỀ TIKI</h4><div class="menu-menu-footer-container">
-                            <ul id="menu-menu-footer-1" class="menu">
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1801"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Giới thiệu Ant Clothes</span></a></li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1802"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy chế hoạt động</span></a></li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1803"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy định bán hàng</span></a></li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1804"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Tin tức khuyến mãi</span></a></li>
-                            </ul>
-                        </div>
-                    </div><div class="footer-nav">
-                        <h4 class="title-menu">HỢP TÁC VÀ LIÊN KIẾT</h4><div class="menu-menu-footer-container">
-                            <ul id="menu-menu-footer-2" class="menu">
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1801"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Giới thiệu Ant Clothes</span></a></li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1802"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy chế hoạt động</span></a></li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1803"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy định bán hàng</span></a></li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1804"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Tin tức khuyến mãi</span></a></li>
-                            </ul>
-                        </div>
-                    </div><div class="footer-nav"><h4 class="title-menu">PHƯƠNG THỨC THANH TOÁN</h4><img width="194" height="82" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-1.png" class="image wp-image-2124  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-1.png 194w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-1-24x10.png 24w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-1-36x15.png 36w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-1-48x20.png 48w" sizes="(max-width: 194px) 100vw, 194px" /></div><div class="footer-nav"><h4 class="title-menu">TẢI ỨNG DỤNG TRÊN ĐIỆN THOẠI</h4><img width="134" height="98" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/download-app.png" class="image wp-image-2125  attachment-134x98 size-134x98" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/download-app.png 262w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/download-app-24x18.png 24w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/download-app-36x26.png 36w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/download-app-48x35.png 48w" sizes="(max-width: 134px) 100vw, 134px" /></div>
+                <div class="footer-nav">
+                    <h4 class="title-menu">HỖ TRỢ KHÁCH HÀNG</h4><div class="menu-menu-footer-container">
+                        <ul id="menu-menu-footer" class="menu">
+                            <li id="menu-item-1801" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1801"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Giới thiệu Ant Clothes</span></a></li>
+                            <li id="menu-item-1802" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1802"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy chế hoạt động</span></a></li>
+                            <li id="menu-item-1803" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1803"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy định bán hàng</span></a></li>
+                            <li id="menu-item-1804" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1804"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Tin tức khuyến mãi</span></a></li>
+                        </ul>
+                    </div>
+                </div><div class="footer-nav">
+                    <h4 class="title-menu">VỀ TIKI</h4><div class="menu-menu-footer-container">
+                        <ul id="menu-menu-footer-1" class="menu">
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1801"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Giới thiệu Ant Clothes</span></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1802"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy chế hoạt động</span></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1803"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy định bán hàng</span></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1804"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Tin tức khuyến mãi</span></a></li>
+                        </ul>
+                    </div>
+                </div><div class="footer-nav">
+                    <h4 class="title-menu">HỢP TÁC VÀ LIÊN KIẾT</h4><div class="menu-menu-footer-container">
+                        <ul id="menu-menu-footer-2" class="menu">
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1801"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Giới thiệu Ant Clothes</span></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1802"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy chế hoạt động</span></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1803"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy định bán hàng</span></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1804"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Tin tức khuyến mãi</span></a></li>
+                        </ul>
+                    </div>
+                </div><div class="footer-nav"><h4 class="title-menu">PHƯƠNG THỨC THANH TOÁN</h4><img width="194" height="82" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-1.png" class="image wp-image-2124  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-1.png 194w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-1-24x10.png 24w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-1-36x15.png 36w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-1-48x20.png 48w" sizes="(max-width: 194px) 100vw, 194px" /></div><div class="footer-nav"><h4 class="title-menu">TẢI ỨNG DỤNG TRÊN ĐIỆN THOẠI</h4><img width="134" height="98" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/download-app.png" class="image wp-image-2125  attachment-134x98 size-134x98" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/download-app.png 262w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/download-app-24x18.png 24w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/download-app-36x26.png 36w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/download-app-48x35.png 48w" sizes="(max-width: 134px) 100vw, 134px" /></div>
 
-                </div>
             </div>
+        </div>
 
-            <hr class="line-bg-body" />
+        <hr class="line-bg-body" />
 
-            <address class="footer-address">
-                <div class="container">
-                    <div class="address-office">
-                        <div class="info-address">
+        <address class="footer-address">
+            <div class="container">
+                <div class="address-office">
+                    <div class="info-address">
 
-                            <div class="textwidget">
-                                <p><strong>Địa chỉ văn phòng:</strong> 52 Út Tịch, phường 4, quận Tân Bình, thành phố Hồ Chí Minh</p>
-                                <p>Tiki nhận đặt hàng trực tuyến và giao hàng tận nơi, chưa hỗ trợ mua và nhận hàng trực tiếp tại văn phòng hoặc trung tâm xử lý đơn hàng</p>
-                            </div>
-
+                        <div class="textwidget">
+                            <p><strong>Địa chỉ văn phòng:</strong> 52 Út Tịch, phường 4, quận Tân Bình, thành phố Hồ Chí Minh</p>
+                            <p>Tiki nhận đặt hàng trực tuyến và giao hàng tận nơi, chưa hỗ trợ mua và nhận hàng trực tiếp tại văn phòng hoặc trung tâm xử lý đơn hàng</p>
                         </div>
-                    </div>
-                    <div class="address-service">
-                        <div class="info-address">
 
-                            <div class="textwidget">
-                                <p><strong>Địa chỉ gửi hàng đổi/trả/bảo hành:</strong> Trung tâm xử lý đơn hàng TIKI &#8211; Hẻm số 717, đường Tân Sơn, Phường 12, Quận Gò Vấp, TP. Hồ Chí Minh</p>
-                                <p>(Tham khảo hướng dẫn đổi, trả, bảo hành hoặc liên hệ 1900-6035 để được hướng dẫn thêm)</p>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
-            </address>
+                <div class="address-service">
+                    <div class="info-address">
 
-            <div class="footer-cpy-right">
-                <div class="container">
-                    <div class="cpy-right-info">
-                        <h5 class="title-menu">
-                            © 2016 &#8211; Bản quyền của Công Ty Cổ Phần Ti Ki &#8211; Tiki.vn</h4>			<div class="textwidget">
-                                <p>Giấy chứng nhận Đăng ký Kinh doanh số 0309532909 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 06/01/2010</p>
-                            </div>
-                    </div>
-                    <div class="ico-bocongthuong">
-                        <img width="126" height="43" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-2.png" class="image wp-image-2126  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-2.png 126w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-2-24x8.png 24w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-2-36x12.png 36w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-2-48x16.png 48w" sizes="(max-width: 126px) 100vw, 126px" />
+                        <div class="textwidget">
+                            <p><strong>Địa chỉ gửi hàng đổi/trả/bảo hành:</strong> Trung tâm xử lý đơn hàng TIKI &#8211; Hẻm số 717, đường Tân Sơn, Phường 12, Quận Gò Vấp, TP. Hồ Chí Minh</p>
+                            <p>(Tham khảo hướng dẫn đổi, trả, bảo hành hoặc liên hệ 1900-6035 để được hướng dẫn thêm)</p>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </footer>
+        </address>
+
+        <div class="footer-cpy-right">
+            <div class="container">
+                <div class="cpy-right-info">
+                    <h5 class="title-menu">
+                        © 2016 &#8211; Bản quyền của Công Ty Cổ Phần Ti Ki &#8211; Tiki.vn</h4>			<div class="textwidget">
+                            <p>Giấy chứng nhận Đăng ký Kinh doanh số 0309532909 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 06/01/2010</p>
+                        </div>
+                </div>
+                <div class="ico-bocongthuong">
+                    <img width="126" height="43" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-2.png" class="image wp-image-2126  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-2.png 126w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-2-24x8.png 24w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-2-36x12.png 36w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/ks-2-48x16.png 48w" sizes="(max-width: 126px) 100vw, 126px" />
+                </div>
+            </div>
+        </div>
+    </footer>
 
     </div>
     <div class="mobile">
@@ -1665,12 +1725,6 @@ var customerId = 0;
             <a href="#0" class="lrm-close-form">Đóng</a>
         </div> <!-- lrm-user-modal-container -->
     </div> <!-- lrm-user-modal -->
-
-
-
-    
-
-
     @*<script type="application/ld+json">{"@context":"https:\/\/schema.org\/","@type":"Product","@id":"https:\/\/tiki.maugiaodien.com\/san-pham\/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11\/#product","name":"M\u00e1y \u1ea2nh Canon 750D + Lens 18-55 IS STM (L\u00ea B\u1ea3o Minh)","url":"https:\/\/tiki.maugiaodien.com\/san-pham\/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11\/","description":"C\u1ea3m bi\u1ebfn: CMOS 24.2MP\r\n\r\nB\u1ed9 x\u1eed l\u00fd h\u00ecnh \u1ea3nh: DIGIC 6\r\n\r\nISO: ISO 100 - ISO 6400\r\n\r\nH\u1ec7 th\u1ed1ng l\u1ea5y n\u00e9t: 19 \u0111i\u1ec3m\r\n\r\nCh\u1ee5p \u1ea3nh li\u00ean t\u1ee5c: t\u1ed1i \u0111a kho\u1ea3ng 5,0 \u1ea3nh\/gi\u00e2y\r\n\r\nTruy\u1ec1n h\u00ecnh \u1ea3nh nhanh v\u1edbi k\u1ebft n\u1ed1i Wifi","image":"https:\/\/tiki.maugiaodien.com\/wp-content\/uploads\/2019\/03\/b02b462394bc3c59e5876ec0d9cb6ae8.jpg","sku":"6001759234016-7","offers":[{"@type":"Offer","price":"11690000","priceValidUntil":"2025-12-31","priceSpecification":{"price":"11690000","priceCurrency":"VND","valueAddedTaxIncluded":"false"},"priceCurrency":"VND","availability":"http:\/\/schema.org\/InStock","url":"https:\/\/tiki.maugiaodien.com\/san-pham\/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11\/","seller":{"@type":"Organization","name":"Mua H\u00e0ng Tr\u1ef1c Tuy\u1ebfn Uy T\u00edn v\u1edbi Gi\u00e1 R\u1ebb H\u01a1n t\u1ea1i Tiki.vn","url":"https:\/\/tiki.maugiaodien.com"}}]}</script>*@
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="pswp__bg"></div>
@@ -1707,42 +1761,42 @@ var customerId = 0;
         </div>
     </div>
     <script type="text/javascript">
-		var c = document.body.className;
-		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
-		document.body.className = c;
+        var c = document.body.className;
+        c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+        document.body.className = c;
     </script>
     <script type='text/javascript' id='lrm-modal-js-extra'>
-/* <![CDATA[ */
-var LRM = {"password_zxcvbn_js_src":"https:\/\/tiki.maugiaodien.com\/wp-includes\/js\/zxcvbn.min.js","password_strength_lib":null,"redirect_url":"","ajax_url":"https:\/\/tiki.maugiaodien.com\/?lrm=1","is_user_logged_in":"","reload_after_login":null,"selectors_mapping":{"login":"","register":""},"is_customize_preview":"","l10n":{"password_is_good":"Good Password","password_is_strong":"Strong Password","password_is_short":"Too Short Password","password_is_bad":"Bad Password","passwords_is_mismatch":"Passwords is mismatch!"}};
-/* ]]> */
+        /* <![CDATA[ */
+        var LRM = { "password_zxcvbn_js_src": "https:\/\/tiki.maugiaodien.com\/wp-includes\/js\/zxcvbn.min.js", "password_strength_lib": null, "redirect_url": "", "ajax_url": "https:\/\/tiki.maugiaodien.com\/?lrm=1", "is_user_logged_in": "", "reload_after_login": null, "selectors_mapping": { "login": "", "register": "" }, "is_customize_preview": "", "l10n": { "password_is_good": "Good Password", "password_is_strong": "Strong Password", "password_is_short": "Too Short Password", "password_is_bad": "Bad Password", "passwords_is_mismatch": "Passwords is mismatch!" } };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/ajax-login-and-registration-modal-popup/assets/lrm-core.js?ver=32' id='lrm-modal-js'></script>
     <script type='text/javascript' id='contact-form-7-js-extra'>
-/* <![CDATA[ */
-var wpcf7 = {"apiSettings":{"root":"https:\/\/tiki.maugiaodien.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
-/* ]]> */
+        /* <![CDATA[ */
+        var wpcf7 = { "apiSettings": { "root": "https:\/\/tiki.maugiaodien.com\/wp-json\/contact-form-7\/v1", "namespace": "contact-form-7\/v1" } };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.6' id='contact-form-7-js'></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/devvn-woocommerce-reviews/library/jquery.validate.min.js?ver=1.1.2' id='jquery.validate-js'></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/devvn-woocommerce-reviews/library/magnific-popup/magnific-popup.js?ver=1.1.2' id='magnific-popup-js'></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-includes/js/underscore.min.js?ver=1.13.3' id='underscore-js'></script>
     <script type='text/javascript' id='wp-util-js-extra'>
-/* <![CDATA[ */
-var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
-/* ]]> */
+        /* <![CDATA[ */
+        var _wpUtilSettings = { "ajax": { "url": "\/wp-admin\/admin-ajax.php" } };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-includes/js/wp-util.min.js?ver=6.0' id='wp-util-js'></script>
     <script type='text/javascript' id='devvn-reviews-script-js-extra'>
-/* <![CDATA[ */
-var devvn_reviews = {"ajax_url":"https:\/\/tiki.maugiaodien.com\/wp-admin\/admin-ajax.php","img_size":"512000","img_size_text":"500 KB","cmt_length":"10","number_img_upload":"3","star_1":"R\u1ea5t t\u1ec7","star_2":"T\u1ec7","star_3":"B\u00ecnh th\u01b0\u1eddng","star_4":"T\u1ed1t","star_5":"R\u1ea5t t\u1ed1t","name_required_text":"T\u00ean c\u1ee7a b\u1ea1n l\u00e0 b\u1eaft bu\u1ed9c!","email_required_text":"Email l\u00e0 b\u1eaft bu\u1ed9c!","phone_required_text":"S\u1ed1 \u0111i\u1ec7n tho\u1ea1i l\u00e0 b\u1eaft bu\u1ed9c!","cmt_required_text":"H\u00e3y nh\u1eadp b\u00ecnh lu\u1eadn c\u1ee7a b\u1ea1n!","minlength_text":"T\u1ed1i thi\u1ec3u 10 k\u00fd t\u1ef1","minlength_text2":"k\u00fd t\u1ef1 (T\u1ed1i thi\u1ec3u 10)","file_format_text":"<strong>L\u1ed7i:<\/strong> H\u00ecnh \u1ea3nh kh\u00f4ng \u0111\u00fang \u0111\u1ecbnh d\u1ea1ng. Ch\u1ec9 cho ph\u00e9p jpg\/png\/gif","file_size_text":"<strong>L\u1ed7i:<\/strong> H\u00ecnh \u1ea3nh qu\u00e1 l\u1edbn. Nh\u1eefng h\u00ecnh \u1ea3nh \u0111\u01b0\u1ee3c ph\u00e9p t\u1ea3i l\u00ean <= 500 KB","file_length_text":"Ch\u1ec9 cho ph\u00e9p t\u1ea3i l\u00ean 3 h\u00ecnh \u1ea3nh"};
-/* ]]> */
+        /* <![CDATA[ */
+        var devvn_reviews = { "ajax_url": "https:\/\/tiki.maugiaodien.com\/wp-admin\/admin-ajax.php", "img_size": "512000", "img_size_text": "500 KB", "cmt_length": "10", "number_img_upload": "3", "star_1": "R\u1ea5t t\u1ec7", "star_2": "T\u1ec7", "star_3": "B\u00ecnh th\u01b0\u1eddng", "star_4": "T\u1ed1t", "star_5": "R\u1ea5t t\u1ed1t", "name_required_text": "T\u00ean c\u1ee7a b\u1ea1n l\u00e0 b\u1eaft bu\u1ed9c!", "email_required_text": "Email l\u00e0 b\u1eaft bu\u1ed9c!", "phone_required_text": "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i l\u00e0 b\u1eaft bu\u1ed9c!", "cmt_required_text": "H\u00e3y nh\u1eadp b\u00ecnh lu\u1eadn c\u1ee7a b\u1ea1n!", "minlength_text": "T\u1ed1i thi\u1ec3u 10 k\u00fd t\u1ef1", "minlength_text2": "k\u00fd t\u1ef1 (T\u1ed1i thi\u1ec3u 10)", "file_format_text": "<strong>L\u1ed7i:<\/strong> H\u00ecnh \u1ea3nh kh\u00f4ng \u0111\u00fang \u0111\u1ecbnh d\u1ea1ng. Ch\u1ec9 cho ph\u00e9p jpg\/png\/gif", "file_size_text": "<strong>L\u1ed7i:<\/strong> H\u00ecnh \u1ea3nh qu\u00e1 l\u1edbn. Nh\u1eefng h\u00ecnh \u1ea3nh \u0111\u01b0\u1ee3c ph\u00e9p t\u1ea3i l\u00ean <= 500 KB", "file_length_text": "Ch\u1ec9 cho ph\u00e9p t\u1ea3i l\u00ean 3 h\u00ecnh \u1ea3nh" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/devvn-woocommerce-reviews/js/devvn-woocommerce-reviews.js?ver=1.1.2' id='devvn-reviews-script-js'></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70' id='jquery-blockui-js'></script>
     <script type='text/javascript' id='wc-add-to-cart-js-extra'>
-/* <![CDATA[ */
-var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"Xem gi\u1ecf h\u00e0ng","cart_url":"https:\/\/tiki.maugiaodien.com\/gio-hang\/","is_cart":"","cart_redirect_after_add":"no"};
-/* ]]> */
+        /* <![CDATA[ */
+        var wc_add_to_cart_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "Xem gi\u1ecf h\u00e0ng", "cart_url": "https:\/\/tiki.maugiaodien.com\/gio-hang\/", "is_cart": "", "cart_redirect_after_add": "no" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.8.0' id='wc-add-to-cart-js'></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom.min.js?ver=1.7.21' id='zoom-js'></script>
@@ -1750,22 +1804,22 @@ var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_ur
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1' id='photoswipe-js'></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min.js?ver=4.1.1' id='photoswipe-ui-default-js'></script>
     <script type='text/javascript' id='wc-single-product-js-extra'>
-/* <![CDATA[ */
-var wc_single_product_params = {"i18n_required_rating_text":"Vui l\u00f2ng ch\u1ecdn m\u1ed9t m\u1ee9c \u0111\u00e1nh gi\u00e1","review_rating_required":"yes","flexslider":{"rtl":false,"animation":"slide","smoothHeight":true,"directionNav":false,"controlNav":"thumbnails","slideshow":false,"animationSpeed":500,"animationLoop":false,"allowOneSlide":false},"zoom_enabled":"1","zoom_options":[],"photoswipe_enabled":"1","photoswipe_options":{"shareEl":false,"closeOnScroll":false,"history":false,"hideAnimationDuration":0,"showAnimationDuration":0},"flexslider_enabled":"1"};
-/* ]]> */
+        /* <![CDATA[ */
+        var wc_single_product_params = { "i18n_required_rating_text": "Vui l\u00f2ng ch\u1ecdn m\u1ed9t m\u1ee9c \u0111\u00e1nh gi\u00e1", "review_rating_required": "yes", "flexslider": { "rtl": false, "animation": "slide", "smoothHeight": true, "directionNav": false, "controlNav": "thumbnails", "slideshow": false, "animationSpeed": 500, "animationLoop": false, "allowOneSlide": false }, "zoom_enabled": "1", "zoom_options": [], "photoswipe_enabled": "1", "photoswipe_options": { "shareEl": false, "closeOnScroll": false, "history": false, "hideAnimationDuration": 0, "showAnimationDuration": 0 }, "flexslider_enabled": "1" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=3.8.0' id='wc-single-product-js'></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4' id='js-cookie-js'></script>
     <script type='text/javascript' id='woocommerce-js-extra'>
-/* <![CDATA[ */
-var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
-/* ]]> */
+        /* <![CDATA[ */
+        var woocommerce_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.8.0' id='woocommerce-js'></script>
     <script type='text/javascript' id='wc-cart-fragments-js-extra'>
-/* <![CDATA[ */
-var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_889ccfed3a46304e74ed615a94e54365","fragment_name":"wc_fragments_889ccfed3a46304e74ed615a94e54365","request_timeout":"5000"};
-/* ]]> */
+        /* <![CDATA[ */
+        var wc_cart_fragments_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "cart_hash_key": "wc_cart_hash_889ccfed3a46304e74ed615a94e54365", "fragment_name": "wc_fragments_889ccfed3a46304e74ed615a94e54365", "request_timeout": "5000" };
+        /* ]]> */
     </script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.8.0' id='wc-cart-fragments-js'></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/vendor.js?ver=6.0' id='script_02-js'></script>
@@ -1778,153 +1832,157 @@ var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax
 
 <script>
     var swiper = new Swiper('.slider-wrap .swiper-container', {
-      navigation: {
-        nextEl: '.slider-wrap .swiper-button-next',
-        prevEl: '.slider-wrap .swiper-button-prev',
-      },
+        navigation: {
+            nextEl: '.slider-wrap .swiper-button-next',
+            prevEl: '.slider-wrap .swiper-button-prev',
+        },
     });
 </script>
 
 
 <script>
     var swiper = new Swiper('.personal-categories .swiper-container', {
-      navigation: {
-        nextEl: '.personal-categories .swiper-button-next',
-        prevEl: '.personal-categories .swiper-button-prev',
-      },
-      slidesPerView: 8,
-      spaceBetween: 20,
-      // init: false,
-      pagination: {
-        el: '.personal-categories .swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 40,
+        navigation: {
+            nextEl: '.personal-categories .swiper-button-next',
+            prevEl: '.personal-categories .swiper-button-prev',
         },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 30,
+        slidesPerView: 8,
+        spaceBetween: 20,
+        // init: false,
+        pagination: {
+            el: '.personal-categories .swiper-pagination',
+            clickable: true,
         },
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
+        breakpoints: {
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            }
         }
-      }
     });
 </script>
 
 <script>
     var swiper = new Swiper('.personal-keyword .swiper-container', {
-      navigation: {
-        nextEl: '.personal-keyword .swiper-button-next',
-        prevEl: '.personal-keyword .swiper-button-prev',
-      },
-      slidesPerView: 8,
-      spaceBetween: 20,
-      // init: false,
-      pagination: {
-        el: '.personal-keyword .swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 40,
+        navigation: {
+            nextEl: '.personal-keyword .swiper-button-next',
+            prevEl: '.personal-keyword .swiper-button-prev',
         },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 30,
+        slidesPerView: 8,
+        spaceBetween: 20,
+        // init: false,
+        pagination: {
+            el: '.personal-keyword .swiper-pagination',
+            clickable: true,
         },
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
+        breakpoints: {
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            }
         }
-      }
     });
 </script>
 <script>
     var swiper = new Swiper('.product-author-content .swiper-container', {
-      navigation: {
-        nextEl: '.product-author-content .swiper-button-next',
-        prevEl: '.product-author-content .swiper-button-prev',
-      },
-      slidesPerView: 5,
-      spaceBetween: 20,
-      // init: false,
-      pagination: {
-        el: '.product-author-content .swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 40,
+        navigation: {
+            nextEl: '.product-author-content .swiper-button-next',
+            prevEl: '.product-author-content .swiper-button-prev',
         },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 30,
+        slidesPerView: 5,
+        spaceBetween: 20,
+        // init: false,
+        pagination: {
+            el: '.product-author-content .swiper-pagination',
+            clickable: true,
         },
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10,
+        breakpoints: {
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            }
         }
-      }
     });
 </script>
 <script type="text/javascript">
-  jQuery('header#header .main-nav .main-nav-wrap>ul>li>a').hover(function(){
-    jQuery(this).toggleClass('active');
-  });
-  jQuery('.recently').click(function(){
-    jQuery('#main-ajax-recentlyviewed').toggleClass('show');
-  });
+    jQuery('header#header .main-nav .main-nav-wrap>ul>li>a').hover(function () {
+        jQuery(this).toggleClass('active');
+    });
+    jQuery('.recently').click(function () {
+        jQuery('#main-ajax-recentlyviewed').toggleClass('show');
+    });
 </script>
 <script type="text/javascript">
-if (jQuery(window).width() < 996) {
-  jQuery(function() {
-    jQuery('#menumobile').mmenu();
-  });
-}
+    if (jQuery(window).width() < 996) {
+        jQuery(function () {
+            jQuery('#menumobile').mmenu();
+        });
+    }
 </script>
 </html>
 
 
 
 <script>
-	jQuery('.js-show-more').click(function(){
-		jQuery('#gioi-thieu').toggleClass('expand');
-	});
-	jQuery(".woocommerce-product-gallery__trigger" ).append( 'asas' );
+    jQuery('.js-show-more').click(function () {
+        jQuery('#gioi-thieu').toggleClass('expand');
+    });
+    jQuery(".woocommerce-product-gallery__trigger").append('asas');
 
     jQuery('#product-magiczoom').elevateZoom({
-    zoomType: "inner",
-cursor: "crosshair",
-zoomWindowFadeIn: 500,
-zoomWindowFadeOut: 750
-   });
+        zoomType: "inner",
+        cursor: "crosshair",
+        zoomWindowFadeIn: 500,
+        zoomWindowFadeOut: 750
+    });
 </script>
 <script>
-var swiper = new Swiper('.swiper-container.js-list-product', {
-  slidesPerView: 5,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
+    var swiper = new Swiper('.swiper-container.js-list-product', {
+        slidesPerView: 5,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
 
-});
+    });
 </script>
+<script src="~/assets/vendor/js/bootstrap.js"></script>
+<script src="~/assets/vendor/js/helpers.js"></script>
+<script src="~/assets/vendor/js/menu.js"></script>
+<script src="~/assets/vendor/js/template-customizer.js"></script>
