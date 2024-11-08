@@ -124,6 +124,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -479,10 +480,12 @@
     <Content Include="Views\Home\GiaoDienDangNhap.cshtml" />
     <Content Include="Views\Home\TimKiemTenSP.cshtml" />
     <Content Include="Views\admin\Create.cshtml" />
-    <Content Include="Views\admin\shop.cshtml" />
-    <Content Include="Views\admin\shopreview.cshtml" />
-    <Content Include="Views\admin\shoporderdetails.cshtml" />
-    <Content Include="Views\admin\shoporderlist.cshtml" />
+    <Content Include="Views\Shop\shop.cshtml" />
+    <Content Include="Views\Shop\shopreview.cshtml" />
+    <Content Include="Views\Shop\shoporderdetails.cshtml" />
+    <Content Include="Views\Shop\shoporderlist.cshtml" />
+    <Content Include="Views\Shop\category.cshtml" />
+    <Content Include="Views\Shop\shoplistproduct.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
