@@ -50,7 +50,7 @@ namespace tiki.Controllers
                 Session["IDNBH"] = nbhData[0];
                 Session["TenNBH"] = nbhData[1];
                 Session["MatKhauNBH"] = nbhData[2];
-                return RedirectToAction("shop", "admin");
+                return RedirectToAction("shop", "Shop");
             }
 
             // Nếu là khách hàng (KH)

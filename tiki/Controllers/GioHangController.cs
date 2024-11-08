@@ -68,16 +68,24 @@ namespace tiki.Controllers
 
         // Cập nhật số lượng sản phẩm trong giỏ hàng
         [HttpPost]
-        public ActionResult UpdateCart(int productId, int quantity)
+        public ActionResult UpdateCart(List<int> productIds, List<int> quantities)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
 
-            // Thực thi stored procedure để cập nhật số lượng sản phẩm
-            db.get($"EXEC UpdateCartItem {userId}, {productId}, {quantity}");
-            
+            // Duyệt qua từng sản phẩm và cập nhật số lượng
+            for (int i = 0; i < productIds.Count; i++)
+            {
+                int productId = productIds[i];
+                int quantity = quantities[i];
+
+                // Thực thi stored procedure để cập nhật số lượng từng sản phẩm
+                db.get($"EXEC UpdateCartItem {userId}, {productId}, {quantity}");
+            }
+
             return RedirectToAction("Index");
         }
+
 
         // Xóa sản phẩm khỏi giỏ hàng
         public ActionResult RemoveFromCart(int productId)

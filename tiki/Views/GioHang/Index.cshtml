@@ -739,7 +739,7 @@
                                             <div class="woocommerce">
                                                 <div class="woocommerce-notices-wrapper"></div>
                                                 <div class="row">
-                                                    <form class="woocommerce-cart-form col-sm-9" action="~/GioHang/UpdateCart" method="post">
+                                                    <form action="@Url.Action("UpdateCart")" method="post" class="woocommerce-cart-form col-sm-9">
                                                         <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
                                                             <thead>
                                                                 <tr>
@@ -780,8 +780,8 @@
                                                                             </td>
                                                                             <td class="product-quantity" data-title="Số lượng">
                                                                                 <div class="quantity">
-                                                                                    <input type="number" name="quantity" class="input-text qty text" step="1" min="1" value="@quantity" title="SL" size="4" inputmode="numeric" />
-                                                                                    <input type="hidden" name="productId" value="@productId" />
+                                                                                    <input type="hidden" name="productIds" value="@productId" />
+                                                                                    <input type="number" name="quantities" class="input-text qty text" step="1" min="1" value="@quantity" title="SL" size="4" inputmode="numeric" />
                                                                                 </div>
                                                                             </td>
                                                                             <td class="product-subtotal" data-title="Tổng">
@@ -811,6 +811,7 @@
                                                             </tbody>
                                                         </table>
                                                     </form>
+
 
                                                     <div class="cart-collaterals1 col-sm-3">
                                                         <div class="cart_totals">
