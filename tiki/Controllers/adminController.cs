@@ -121,25 +121,7 @@ namespace tiki.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-        public ActionResult shop()
-        {
-            DataModel db = new DataModel();
-            ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
-            ViewBag.listnhacungcap = db.get("SELECT * FROM Brands");
-            return View();
-        }
-        public ActionResult shopreview()
-        {
-            return View();
-        }
-        public ActionResult shoporderdetails()
-        {
-            return View();
-        }
-        public ActionResult shoporderlist()
-        {
-            return View();
-        }
+        
         public ActionResult Xoanguoidung(string id)
         {
             DataModel db = new DataModel();

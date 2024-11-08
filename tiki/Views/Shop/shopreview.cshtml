@@ -53,7 +53,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Demo : eCommerce Customer All - Apps | sneat - Bootstrap Dashboard PRO</title>
+    <title>Demo : eCommerce Manage reviews - App | sneat - Bootstrap Dashboard PRO</title>
 
 
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 Admin Dashboard built for developers!" />
@@ -64,14 +64,11 @@
 
     <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
     <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');</script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5DDHKGP');</script>
     <!-- End Google Tag Manager -->
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="~/assets/img/favicon/favicon.ico" />
@@ -97,10 +94,13 @@
     <link rel="stylesheet" href="~/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
     <link rel="stylesheet" href="~/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
     <link rel="stylesheet" href="~/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
-    <link rel="stylesheet" href="~/assets/vendor/libs/select2/select2.css" />
-    <link rel="stylesheet" href="~/assets/vendor/libs/form-validation/form-validation.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/rateyo/rateyo.css" />
 
     <!-- Page CSS -->
+
+    <link rel="stylesheet" href="~/assets/vendor/css/pages/app-ecommerce.css">
+
     <!-- Helpers -->
     <script src="~/assets/vendor/js/helpers.js"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
@@ -347,144 +347,140 @@
                             <div class="text-truncate" data-i18n="eCommerce">eCommerce</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="~/admin/Index" class="menu-link">
-                                    <div class="text-truncate" data-i18n="Dashboard">Dashboard</div>
-                                </a>
-                            </li>
+                            @*<li class="menu-item">
+                                    <a href="app-ecommerce-dashboard.html" class="menu-link">
+                                        <div class="text-truncate" data-i18n="Dashboard">Dashboard</div>
+                                    </a>
+                                </li>*@
                             <li class="menu-item">
                                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                                     <div class="text-truncate" data-i18n="Products">Products</div>
                                 </a>
                                 <ul class="menu-sub">
-                                    @*<li class="menu-item">
-                                        <a href="app-ecommerce-product-list.html" class="menu-link">
+                                    <li class="menu-item">
+                                        <a href="~/Shop/shoplistproduct" class="menu-link">
                                             <div class="text-truncate" data-i18n="Product List">Product List</div>
                                         </a>
-                                    </li>*@
-                                    @*<li class="menu-item">
-                                        <a href="app-ecommerce-product-add.html" class="menu-link">
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="~/Shop/shop" class="menu-link">
                                             <div class="text-truncate" data-i18n="Add Product">Add Product</div>
                                         </a>
-                                    </li>*@
+                                    </li>
                                     <li class="menu-item">
-                                        <a href="~/admin/categoryproduct" class="menu-link">
+                                        <a href="~/Shop/categor" class="menu-link">
                                             <div class="text-truncate" data-i18n="Category List">Category List</div>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            @*<li class="menu-item">
+                            <li class="menu-item">
                                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                                     <div class="text-truncate" data-i18n="Order">Order</div>
                                 </a>
                                 <ul class="menu-sub">
                                     <li class="menu-item">
-                                        <a href="app-ecommerce-order-list.html" class="menu-link">
+                                        <a href="~/Shop/shoporderlist" class="menu-link">
                                             <div class="text-truncate" data-i18n="Order List">Order List</div>
                                         </a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="app-ecommerce-order-details.html" class="menu-link">
-                                            <div class="text-truncate" data-i18n="Order Details">Order Details</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>*@
-                            <li class="menu-item active open">
-                                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                    <div class="text-truncate" data-i18n="Customer">Customer</div>
-                                </a>
-                                <ul class="menu-sub">
-                                    <li class="menu-item active">
-                                        <a href="app-ecommerce-customer-all.html" class="menu-link">
-                                            <div class="text-truncate" data-i18n="All Customers">All Customers</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="~/admin/Create" class="menu-link">
-                                            <div class="text-truncate" data-i18n="All Customers">ADD Customers</div>
-                                        </a>
-                                    </li>
-                                    @*<li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <div class="text-truncate" data-i18n="Customer Details">Customer Details</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="app-ecommerce-customer-details-overview.html" class="menu-link">
-                        <div class="text-truncate" data-i18n="Overview">Overview</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="app-ecommerce-customer-details-security.html" class="menu-link">
-                        <div class="text-truncate" data-i18n="Security">Security</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="app-ecommerce-customer-details-billing.html" class="menu-link">
-                        <div class="text-truncate" data-i18n="Address & Billing">Address & Billing</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="app-ecommerce-customer-details-notifications.html" class="menu-link">
-                        <div class="text-truncate" data-i18n="Notifications">Notifications</div>
-                    </a>
-                </li>
-
-            </ul>
-        </li>*@
+                                            <a href="~/Shop/shoporderdetails" class="menu-link">
+                                                <div class="text-truncate" data-i18n="Order Details">Order Details</div>
+                                            </a>
+                                        </li>
                                 </ul>
                             </li>
                             @*<li class="menu-item">
+                                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                        <div class="text-truncate" data-i18n="Customer">Customer</div>
+                                    </a>
+                                    <ul class="menu-sub">
+                                        <li class="menu-item">
+                                            <a href="app-ecommerce-customer-all.html" class="menu-link">
+                                                <div class="text-truncate" data-i18n="All Customers">All Customers</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                                <div class="text-truncate" data-i18n="Customer Details">Customer Details</div>
+                                            </a>
+                                            <ul class="menu-sub">
+                                                <li class="menu-item">
+                                                    <a href="app-ecommerce-customer-details-overview.html" class="menu-link">
+                                                        <div class="text-truncate" data-i18n="Overview">Overview</div>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="app-ecommerce-customer-details-security.html" class="menu-link">
+                                                        <div class="text-truncate" data-i18n="Security">Security</div>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="app-ecommerce-customer-details-billing.html" class="menu-link">
+                                                        <div class="text-truncate" data-i18n="Address & Billing">Address & Billing</div>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="app-ecommerce-customer-details-notifications.html" class="menu-link">
+                                                        <div class="text-truncate" data-i18n="Notifications">Notifications</div>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>*@
+                            <li class="menu-item active">
                                 <a href="app-ecommerce-manage-reviews.html" class="menu-link">
                                     <div class="text-truncate" data-i18n="Manage Reviews">Manage Reviews</div>
                                 </a>
-                            </li>*@
+                            </li>
                             @*<li class="menu-item">
-                                <a href="app-ecommerce-referral.html" class="menu-link">
-                                    <div class="text-truncate" data-i18n="Referrals">Referrals</div>
-                                </a>
-                            </li>*@
+                                    <a href="app-ecommerce-referral.html" class="menu-link">
+                                        <div class="text-truncate" data-i18n="Referrals">Referrals</div>
+                                    </a>
+                                </li>*@
                             @*<li class="menu-item">
-                                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                    <div class="text-truncate" data-i18n="Settings">Settings</div>
-                                </a>
-                                <ul class="menu-sub">
-                                    <li class="menu-item">
-                                        <a href="app-ecommerce-settings-detail.html" class="menu-link">
-                                            <div class="text-truncate" data-i18n="Store Details">Store Details</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="app-ecommerce-settings-payments.html" class="menu-link">
-                                            <div class="text-truncate" data-i18n="Payments">Payments</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="app-ecommerce-settings-checkout.html" class="menu-link">
-                                            <div class="text-truncate" data-i18n="Checkout">Checkout</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="app-ecommerce-settings-shipping.html" class="menu-link">
-                                            <div class="text-truncate" data-i18n="Shipping & Delivery">Shipping & Delivery</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="app-ecommerce-settings-locations.html" class="menu-link">
-                                            <div class="text-truncate" data-i18n="Locations">Locations</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="app-ecommerce-settings-notifications.html" class="menu-link">
-                                            <div class="text-truncate" data-i18n="Notifications">Notifications</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>*@
+                                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                        <div class="text-truncate" data-i18n="Settings">Settings</div>
+                                    </a>
+                                    <ul class="menu-sub">
+                                        <li class="menu-item">
+                                            <a href="app-ecommerce-settings-detail.html" class="menu-link">
+                                                <div class="text-truncate" data-i18n="Store Details">Store Details</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="app-ecommerce-settings-payments.html" class="menu-link">
+                                                <div class="text-truncate" data-i18n="Payments">Payments</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="app-ecommerce-settings-checkout.html" class="menu-link">
+                                                <div class="text-truncate" data-i18n="Checkout">Checkout</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="app-ecommerce-settings-shipping.html" class="menu-link">
+                                                <div class="text-truncate" data-i18n="Shipping & Delivery">Shipping & Delivery</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="app-ecommerce-settings-locations.html" class="menu-link">
+                                                <div class="text-truncate" data-i18n="Locations">Locations</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="app-ecommerce-settings-notifications.html" class="menu-link">
+                                                <div class="text-truncate" data-i18n="Notifications">Notifications</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>*@
                         </ul>
                     </li>
+
 
                     <!-- e-commerce-app menu end -->
                     <!-- Academy menu start -->
@@ -1412,285 +1408,285 @@
                             </li>
                             <!-- / Style Switcher-->
                             <!-- Quick links  -->
-                            @*<li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
-                                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                                        <i class='bx bx-grid-alt bx-md'></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end p-0">
-                                        <div class="dropdown-menu-header border-bottom">
-                                            <div class="dropdown-header d-flex align-items-center py-3">
-                                                <h6 class="mb-0 me-auto">Shortcuts</h6>
-                                                <a href="javascript:void(0)" class="dropdown-shortcuts-add py-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts"><i class="bx bx-plus-circle text-heading"></i></a>
+                            <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                    <i class='bx bx-grid-alt bx-md'></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end p-0">
+                                    <div class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h6 class="mb-0 me-auto">Shortcuts</h6>
+                                            <a href="javascript:void(0)" class="dropdown-shortcuts-add py-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts"><i class="bx bx-plus-circle text-heading"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-shortcuts-list scrollable-container">
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-calendar bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="app-calendar.html" class="stretched-link">Calendar</a>
+                                                <small>Appointments</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-food-menu bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
+                                                <small>Manage Accounts</small>
                                             </div>
                                         </div>
-                                        <div class="dropdown-shortcuts-list scrollable-container">
-                                            <div class="row row-bordered overflow-visible g-0">
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-calendar bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="app-calendar.html" class="stretched-link">Calendar</a>
-                                                    <small>Appointments</small>
-                                                </div>
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-food-menu bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
-                                                    <small>Manage Accounts</small>
-                                                </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-user bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="app-user-list.html" class="stretched-link">User App</a>
+                                                <small>Manage Users</small>
                                             </div>
-                                            <div class="row row-bordered overflow-visible g-0">
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-user bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="app-user-list.html" class="stretched-link">User App</a>
-                                                    <small>Manage Users</small>
-                                                </div>
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-check-shield bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="app-access-roles.html" class="stretched-link">Role Management</a>
-                                                    <small>Permission</small>
-                                                </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-check-shield bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="app-access-roles.html" class="stretched-link">Role Management</a>
+                                                <small>Permission</small>
                                             </div>
-                                            <div class="row row-bordered overflow-visible g-0">
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-pie-chart-alt-2 bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="index.html" class="stretched-link">Dashboard</a>
-                                                    <small>User Dashboard</small>
-                                                </div>
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-cog bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="pages-account-settings-account.html" class="stretched-link">Setting</a>
-                                                    <small>Account Settings</small>
-                                                </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-pie-chart-alt-2 bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="index.html" class="stretched-link">Dashboard</a>
+                                                <small>User Dashboard</small>
                                             </div>
-                                            <div class="row row-bordered overflow-visible g-0">
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-help-circle bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="pages-faq.html" class="stretched-link">FAQs</a>
-                                                    <small>FAQs & Articles</small>
-                                                </div>
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-window-open bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="modal-examples.html" class="stretched-link">Modals</a>
-                                                    <small>Useful Popups</small>
-                                                </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-cog bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="pages-account-settings-account.html" class="stretched-link">Setting</a>
+                                                <small>Account Settings</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-help-circle bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="pages-faq.html" class="stretched-link">FAQs</a>
+                                                <small>FAQs & Articles</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-window-open bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="modal-examples.html" class="stretched-link">Modals</a>
+                                                <small>Useful Popups</small>
                                             </div>
                                         </div>
                                     </div>
-                                </li>*@
+                                </div>
+                            </li>
                             <!-- Quick links -->
                             <!-- Notification -->
-                            @*<li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2">
-                                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                                        <span class="position-relative">
-                                            <i class="bx bx-bell bx-md"></i>
-                                            <span class="badge rounded-pill bg-danger badge-dot badge-notifications border"></span>
-                                        </span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end p-0">
-                                        <li class="dropdown-menu-header border-bottom">
-                                            <div class="dropdown-header d-flex align-items-center py-3">
-                                                <h6 class="mb-0 me-auto">Notification</h6>
-                                                <div class="d-flex align-items-center h6 mb-0">
-                                                    <span class="badge bg-label-primary me-2">8 New</span>
-                                                    <a href="javascript:void(0)" class="dropdown-notifications-all p-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i class="bx bx-envelope-open text-heading"></i></a>
+                            <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                    <span class="position-relative">
+                                        <i class="bx bx-bell bx-md"></i>
+                                        <span class="badge rounded-pill bg-danger badge-dot badge-notifications border"></span>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end p-0">
+                                    <li class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h6 class="mb-0 me-auto">Notification</h6>
+                                            <div class="d-flex align-items-center h6 mb-0">
+                                                <span class="badge bg-label-primary me-2">8 New</span>
+                                                <a href="javascript:void(0)" class="dropdown-notifications-all p-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i class="bx bx-envelope-open text-heading"></i></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-notifications-list scrollable-container">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="../../assets/img/avatars/1.png" alt class="rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Congratulation Lettie 🎉</h6>
+                                                        <small class="mb-1 d-block text-body">Won the monthly best seller gold badge</small>
+                                                        <small class="text-muted">1h ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="dropdown-notifications-list scrollable-container">
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <img src="~/assets/img/avatars/1.png" alt class="rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Congratulation Lettie 🎉</h6>
-                                                            <small class="mb-1 d-block text-body">Won the monthly best seller gold badge</small>
-                                                            <small class="text-muted">1h ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-danger">CF</span>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <span class="avatar-initial rounded-circle bg-label-danger">CF</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Charles Franklin</h6>
-                                                            <small class="mb-1 d-block text-body">Accepted your connection</small>
-                                                            <small class="text-muted">12hr ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Charles Franklin</h6>
+                                                        <small class="mb-1 d-block text-body">Accepted your connection</small>
+                                                        <small class="text-muted">12hr ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="../../assets/img/avatars/2.png" alt class="rounded-circle">
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <img src="~/assets/img/avatars/2.png" alt class="rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">New Message ✉️</h6>
-                                                            <small class="mb-1 d-block text-body">You have new message from Natalie</small>
-                                                            <small class="text-muted">1h ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">New Message ✉️</h6>
+                                                        <small class="mb-1 d-block text-body">You have new message from Natalie</small>
+                                                        <small class="text-muted">1h ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-cart"></i></span>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-cart"></i></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Whoo! You have new order 🛒 </h6>
-                                                            <small class="mb-1 d-block text-body">ACME Inc. made new order $1,154</small>
-                                                            <small class="text-muted">1 day ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Whoo! You have new order 🛒 </h6>
+                                                        <small class="mb-1 d-block text-body">ACME Inc. made new order $1,154</small>
+                                                        <small class="text-muted">1 day ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="../../assets/img/avatars/9.png" alt class="rounded-circle">
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <img src="~/assets/img/avatars/9.png" alt class="rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Application has been approved 🚀 </h6>
-                                                            <small class="mb-1 d-block text-body">Your ABC project application has been approved.</small>
-                                                            <small class="text-muted">2 days ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Application has been approved 🚀 </h6>
+                                                        <small class="mb-1 d-block text-body">Your ABC project application has been approved.</small>
+                                                        <small class="text-muted">2 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-pie-chart-alt"></i></span>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-pie-chart-alt"></i></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Monthly report is generated</h6>
-                                                            <small class="mb-1 d-block text-body">July monthly financial report is generated </small>
-                                                            <small class="text-muted">3 days ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Monthly report is generated</h6>
+                                                        <small class="mb-1 d-block text-body">July monthly financial report is generated </small>
+                                                        <small class="text-muted">3 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="../../assets/img/avatars/5.png" alt class="rounded-circle">
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <img src="~/assets/img/avatars/5.png" alt class="rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Send connection request</h6>
-                                                            <small class="mb-1 d-block text-body">Peter sent you connection request</small>
-                                                            <small class="text-muted">4 days ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Send connection request</h6>
+                                                        <small class="mb-1 d-block text-body">Peter sent you connection request</small>
+                                                        <small class="text-muted">4 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="../../assets/img/avatars/6.png" alt class="rounded-circle">
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <img src="~/assets/img/avatars/6.png" alt class="rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">New message from Jane</h6>
-                                                            <small class="mb-1 d-block text-body">Your have new message from Jane</small>
-                                                            <small class="text-muted">5 days ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">New message from Jane</h6>
+                                                        <small class="mb-1 d-block text-body">Your have new message from Jane</small>
+                                                        <small class="text-muted">5 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-warning"><i class="bx bx-error"></i></span>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <span class="avatar-initial rounded-circle bg-label-warning"><i class="bx bx-error"></i></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">CPU is running high</h6>
-                                                            <small class="mb-1 d-block text-body">CPU Utilization Percent is currently at 88.63%,</small>
-                                                            <small class="text-muted">5 days ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                                                        </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">CPU is running high</h6>
+                                                        <small class="mb-1 d-block text-body">CPU Utilization Percent is currently at 88.63%,</small>
+                                                        <small class="text-muted">5 days ago</small>
                                                     </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="border-top">
-                                            <div class="d-grid p-4">
-                                                <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
-                                                    <small class="align-middle">View all notifications</small>
-                                                </a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>*@
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="border-top">
+                                        <div class="d-grid p-4">
+                                            <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
+                                                <small class="align-middle">View all notifications</small>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
                             <!--/ Notification -->
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="~/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
+                                        <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -1699,7 +1695,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="~/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
+                                                        <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -1780,260 +1776,95 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
 
 
-                        <!-- customers List Table -->
-                        <div class="card">
-
-                            <div class="card-datatable table-responsive">
-                                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
-                                    <!--<div class="card-header d-flex flex-wrap flex-md-row flex-column align-items-start align-items-sm-center py-0">
-                                        <div class="d-flex align-items-center me-5"><div id="DataTables_Table_0_filter" class="dataTables_filter ms-n3 mb-0 mb-md-6"><label><input type="search" class="form-control" placeholder="Search Cutomers" aria-controls="DataTables_Table_0"></label></div></div><div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-md-end flex-wrap flex-sm-nowrap mb-6 mb-sm-0 pt-0">
-                                            <div class="dataTables_length ms-n2 me-2" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div><div class="dt-buttons btn-group flex-wrap d-flex">-->
-                                                @*<div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary me-4" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false"><span><i class="bx bx-export bx-sm me-2"></i>Export</span></button></div>*@
-                                                @*<button class="btn btn-secondary add-new btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEcommerceCustomerAdd"><span><i class="bx bx-plus bx-sm me-0 me-sm-2 mb-1"></i><span class="d-none d-sm-inline-block">Add Customer</span></span></button>*@
-                                            <!--</div>
+                        <div class="row mb-6 g-6">
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-body row widget-separator g-0">
+                                        <div class="col-sm-5 border-shift border-end pe-sm-6">
+                                            <h3 class="text-primary d-flex align-items-center gap-2 mb-2">4.89<i class="bx bxs-star bx-30px"></i></h3>
+                                            <p class="h6 mb-2">Total 187 reviews</p>
+                                            <p class="pe-2 mb-2">All reviews are from genuine customers</p>
+                                            <span class="badge bg-label-primary mb-4 mb-sm-0">+5 This week</span>
+                                            <hr class="d-sm-none">
                                         </div>
-                                    </div>-->
-                                    <div class="card">
 
-                                        <div class="card-datatable table-responsive">
-                                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
-                                                <div class="card-header d-flex flex-wrap flex-md-row flex-column align-items-start align-items-sm-center py-0"><div class="d-flex align-items-center me-5"><div id="DataTables_Table_0_filter" class="dataTables_filter ms-n3 mb-0 mb-md-6"><label><input type="search" class="form-control" placeholder="Search Order" aria-controls="DataTables_Table_0"></label></div></div><div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-md-end flex-wrap flex-sm-nowrap mb-6 mb-sm-0 pt-0"><div class="dataTables_length ms-n2 me-2" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div><div class="dt-buttons btn-group flex-wrap d-flex"> <div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary me-4" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false"><span><i class="bx bx-export bx-sm me-2"></i>Export</span></button></div> <button class="btn btn-secondary add-new btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEcommerceCustomerAdd"><span><i class="bx bx-plus bx-sm me-0 me-sm-2 mb-1"></i><span class="d-none d-sm-inline-block">Add Customer</span></span></button> </div></div></div><table class="datatables-customers table border-top dataTable no-footer dtr-column" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 888px;">
-    <thead>
-        <tr>
-            <th class="control sorting_disabled dtr-hidden" rowspan="1" colspan="1" style="width: 0px; display: none;" aria-label=""></th>
-            <th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1" colspan="1" style="width: 18px;" data-col="1" aria-label=""><input type="checkbox" class="form-check-input"></th>
-            <th class="sorting sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 213px;" aria-label="Customer: activate to sort column ascending" aria-sort="descending">Customer</th>
-            <th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 93px;" aria-label="Customer Id: activate to sort column ascending">Customer Id</th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 166px;" aria-label="Country: activate to sort column ascending">Số điện thoại</th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 47px;" aria-label="Order: activate to sort column ascending">Order</th>
-            <th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 91px;" aria-label="Total Spent: activate to sort column ascending">Họ Tên</th>
-            <th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 91px;" aria-label="Total Spent: activate to sort column ascending">Role</th>
-        </tr>
-    </thead>
-    @foreach (var a in ViewBag.listUser)
-    {
-        <tbody>
-            <tr class="odd">
-                <td class="  control" tabindex="0" style="display: none;"></td>
-                <td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td>
-                <td class="sorting_1"><div class="d-flex justify-content-start align-items-center customer-name"></div><div class="d-flex flex-column"><a class="text-heading"><span class="fw-medium">@a[1]</span></a><small>@a[2]</small></div> </td>
-                <td><span class="text-heading">@a[0]</span></td>
-                <td><div class="d-flex justify-content-start align-items-center customer-country"><div><i class="fis fi fi-ua rounded-circle me-2 fs-4"></i></div><div><span>@a[5]</span></div></div></td>
-                <td><span>@a[6]</span></td>
-                <td><span class="fw-medium text-heading">@a[4]@*<input type="text" class="form-control" id="ecommerce-product-name" placeholder="Vai trò" name="description" aria-label="Nhập tên">*@</span></td>
-                <td><a href="~/admin/Xoanguoidung?id=@a[0]">Xóa</a></td>
-            </tr>
-        
-
-        </tbody>
-
-
-    }
-</table><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 100 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link"><i class="bx bx-chevron-left bx-18px"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="DataTables_Table_0_ellipsis"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="ellipsis" tabindex="-1" class="page-link">…</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="9" tabindex="0" class="page-link">10</a></li><li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" class="page-link"><i class="bx bx-chevron-right bx-18px"></i></a></li></ul></div></div></div><div style="width: 1%;"></div>
+                                        <div class="col-sm-7 gap-2 text-nowrap d-flex flex-column justify-content-between ps-sm-6 pt-2 py-sm-2">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <small>5 Star</small>
+                                                <div class="progress w-100 bg-label-primary" style="height:8px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="61.50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small class="w-px-20 text-end">124</small>
                                             </div>
-                                        </div>
-                                        <!-- Offcanvas to add new customer -->
-                                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEcommerceCustomerAdd" aria-labelledby="offcanvasEcommerceCustomerAddLabel">
-                                            <div class="offcanvas-header">
-                                                <h5 id="offcanvasEcommerceCustomerAddLabel" class="offcanvas-title">Add Customer</h5>
-                                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <small>4 Star</small>
+                                                <div class="progress w-100 bg-label-primary" style="height:8px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small class="w-px-20 text-end">40</small>
                                             </div>
-                                            <div class="offcanvas-body border-top mx-0 flex-grow-0">
-                                                <form class="ecommerce-customer-add pt-0 fv-plugins-bootstrap5 fv-plugins-framework" id="eCommerceCustomerAddForm" onsubmit="return false" novalidate="novalidate">
-                                                    <div class="ecommerce-customer-add-basic mb-4">
-                                                        <h6 class="mb-6">Basic Information</h6>
-                                                        <div class="mb-6 fv-plugins-icon-container">
-                                                            <label class="form-label" for="ecommerce-customer-add-name">Name*</label>
-                                                            <input type="text" class="form-control" id="ecommerce-customer-add-name" placeholder="John Doe" name="customerName" aria-label="John Doe">
-                                                            <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                                                        </div>
-                                                        <div class="mb-6 fv-plugins-icon-container">
-                                                            <label class="form-label" for="ecommerce-customer-add-email">Email*</label>
-                                                            <input type="text" id="ecommerce-customer-add-email" class="form-control" placeholder="john.doe@example.com" aria-label="john.doe@example.com" name="customerEmail">
-                                                            <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                                                        </div>
-                                                        <div>
-                                                            <label class="form-label" for="ecommerce-customer-add-contact">Mobile</label>
-                                                            <input type="text" id="ecommerce-customer-add-contact" class="form-control phone-mask" placeholder="+(123) 456-7890" aria-label="+(123) 456-7890" name="customerContact">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="ecommerce-customer-add-shiping mb-6 pt-4">
-                                                        <h6 class="mb-6">Shipping Information</h6>
-                                                        <div class="mb-6">
-                                                            <label class="form-label" for="ecommerce-customer-add-address">Address Line 1</label>
-                                                            <input type="text" id="ecommerce-customer-add-address" class="form-control" placeholder="45 Roker Terrace" aria-label="45 Roker Terrace" name="customerAddress1">
-                                                        </div>
-                                                        <div class="mb-6">
-                                                            <label class="form-label" for="ecommerce-customer-add-address-2">Address Line 2</label>
-                                                            <input type="text" id="ecommerce-customer-add-address-2" class="form-control" aria-label="address2" name="customerAddress2">
-                                                        </div>
-                                                        <div class="mb-6">
-                                                            <label class="form-label" for="ecommerce-customer-add-town">Town</label>
-                                                            <input type="text" id="ecommerce-customer-add-town" class="form-control" placeholder="New York" aria-label="New York" name="customerTown">
-                                                        </div>
-                                                        <div class="col-12 mb-6">
-                                                            <label class="form-label" for="ecommerce-customer-add-state">State / Province</label>
-                                                            <input type="text" id="ecommerce-customer-add-state" class="form-control" placeholder="Southern tip" aria-label="Southern tip" name="customerState">
-                                                        </div>
-                                                        <div class="col-12 mb-6">
-                                                            <label class="form-label" for="ecommerce-customer-add-post-code">Post Code</label>
-                                                            <input type="text" id="ecommerce-customer-add-post-code" class="form-control" placeholder="734990" aria-label="734990" name="pin" pattern="[0-9]{8}" maxlength="8">
-                                                        </div>
-                                                        <div>
-                                                            <label class="form-label" for="ecommerce-customer-add-country">Country</label>
-                                                            <div class="position-relative">
-                                                                <select id="ecommerce-customer-add-country" class="select2 form-select select2-hidden-accessible" data-select2-id="ecommerce-customer-add-country" tabindex="-1" aria-hidden="true">
-                                                                    <option value="" data-select2-id="2">Select</option>
-                                                                    <option value="Australia">Australia</option>
-                                                                    <option value="Bangladesh">Bangladesh</option>
-                                                                    <option value="Belarus">Belarus</option>
-                                                                    <option value="Brazil">Brazil</option>
-                                                                    <option value="Canada">Canada</option>
-                                                                    <option value="China">China</option>
-                                                                    <option value="France">France</option>
-                                                                    <option value="Germany">Germany</option>
-                                                                    <option value="India">India</option>
-                                                                    <option value="Indonesia">Indonesia</option>
-                                                                    <option value="Israel">Israel</option>
-                                                                    <option value="Italy">Italy</option>
-                                                                    <option value="Japan">Japan</option>
-                                                                    <option value="Korea">Korea, Republic of</option>
-                                                                    <option value="Mexico">Mexico</option>
-                                                                    <option value="Philippines">Philippines</option>
-                                                                    <option value="Russia">Russian Federation</option>
-                                                                    <option value="South Africa">South Africa</option>
-                                                                    <option value="Thailand">Thailand</option>
-                                                                    <option value="Turkey">Turkey</option>
-                                                                    <option value="Ukraine">Ukraine</option>
-                                                                    <option value="United Arab Emirates">United Arab Emirates</option>
-                                                                    <option value="United Kingdom">United Kingdom</option>
-                                                                    <option value="United States">United States</option>
-                                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style="width: 335.347px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-ecommerce-customer-add-country-container"><span class="select2-selection__rendered" id="select2-ecommerce-customer-add-country-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">United States </span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="d-sm-flex mb-6">
-                                                        <div class="me-auto mb-2 mb-md-0">
-                                                            <h6 class="mb-1">Use as a billing address?</h6>
-                                                            <small>If you need more info, please check budget.</small>
-                                                        </div>
-                                                        <div class="form-check form-switch my-auto me-n2">
-                                                            <input type="checkbox" class="form-check-input" checked="">
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <button type="submit" class="btn btn-primary me-sm-3 data-submit">Add</button>
-                                                        <button type="reset" class="btn btn-label-danger" data-bs-dismiss="offcanvas">Discard</button>
-                                                    </div>
-                                                    <input type="hidden">
-                                                </form>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <small>3 Star</small>
+                                                <div class="progress w-100 bg-label-primary" style="height:8px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 35%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small class="w-px-20 text-end">12</small>
                                             </div>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <small>2 Star</small>
+                                                <div class="progress w-100 bg-label-primary" style="height:8px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 18%" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small class="w-px-20 text-end">7</small>
+                                            </div>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <small>1 Star</small>
+                                                <div class="progress w-100 bg-label-primary" style="height:8px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 10%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small class="w-px-20 text-end">2</small>
+                                            </div>
+
                                         </div>
                                     </div>
-                                    @*<div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 100 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link"><i class="bx bx-chevron-left bx-18px"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="DataTables_Table_0_ellipsis"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="ellipsis" tabindex="-1" class="page-link">…</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="9" tabindex="0" class="page-link">10</a></li><li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" class="page-link"><i class="bx bx-chevron-right bx-18px"></i></a></li></ul></div></div></div><div style="width: 1%;"></div>
-                                </div>*@
-                            </div>
-                            <!-- Offcanvas to add new customer -->
-                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEcommerceCustomerAdd" aria-labelledby="offcanvasEcommerceCustomerAddLabel">
-                                <div class="offcanvas-header">
-                                    <h5 id="offcanvasEcommerceCustomerAddLabel" class="offcanvas-title">Add Customer</h5>
-                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                 </div>
-                                <div class="offcanvas-body border-top mx-0 flex-grow-0">
-                                    <form class="ecommerce-customer-add pt-0 fv-plugins-bootstrap5 fv-plugins-framework" id="eCommerceCustomerAddForm" onsubmit="return false" novalidate="novalidate">
-                                        <div class="ecommerce-customer-add-basic mb-4">
-                                            <h6 class="mb-6">Basic Information</h6>
-                                            <div class="mb-6 fv-plugins-icon-container">
-                                                <label class="form-label" for="ecommerce-customer-add-name">Name*</label>
-                                                <input type="text" class="form-control" id="ecommerce-customer-add-name" placeholder="John Doe" name="customerName" aria-label="John Doe">
-                                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-body row">
+                                        <div class="col-sm-5">
+                                            <div class="mb-12">
+                                                <h5 class="mb-2 text-nowrap">Reviews statistics</h5>
+                                                <p class="mb-0"> <span class="me-2">12 New reviews</span> <span class="badge bg-label-success">+8.4%</span></p>
                                             </div>
-                                            <div class="mb-6 fv-plugins-icon-container">
-                                                <label class="form-label" for="ecommerce-customer-add-email">Email*</label>
-                                                <input type="text" id="ecommerce-customer-add-email" class="form-control" placeholder="john.doe@example.com" aria-label="john.doe@example.com" name="customerEmail">
-                                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                                            </div>
+
                                             <div>
-                                                <label class="form-label" for="ecommerce-customer-add-contact">Mobile</label>
-                                                <input type="text" id="ecommerce-customer-add-contact" class="form-control phone-mask" placeholder="+(123) 456-7890" aria-label="+(123) 456-7890" name="customerContact">
+                                                <h6 class="mb-2 fw-normal">
+                                                    <span class="text-success me-1">87%</span>Positive reviews
+                                                </h6>
+                                                <small>Weekly Report</small>
                                             </div>
+                                        </div>
+                                        <div class="col-sm-7 d-flex justify-content-sm-end align-items-end" style="position: relative;">
+                                            <div id="reviewsChart" style="min-height: 175px;"><div id="apexchartserhb1ls9" class="apexcharts-canvas apexchartserhb1ls9 apexcharts-theme-light" style="width: 190px; height: 160px;"><svg id="SvgjsSvg1722" width="190" height="160" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1724" class="apexcharts-inner apexcharts-graphical" transform="translate(22, 5)"><defs id="SvgjsDefs1723"><linearGradient id="SvgjsLinearGradient1727" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1728" stop-opacity="0.4" stop-color="rgba(216,227,240,0.4)" offset="0"></stop><stop id="SvgjsStop1729" stop-opacity="0.5" stop-color="rgba(190,209,230,0.5)" offset="1"></stop><stop id="SvgjsStop1730" stop-opacity="0.5" stop-color="rgba(190,209,230,0.5)" offset="1"></stop></linearGradient><clipPath id="gridRectMaskerhb1ls9"><rect id="SvgjsRect1732" width="162" height="128.62888854598998" x="-2" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskerhb1ls9"></clipPath><clipPath id="nonForecastMaskerhb1ls9"></clipPath><clipPath id="gridRectMarkerMaskerhb1ls9"><rect id="SvgjsRect1733" width="162" height="132.62888854598998" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><rect id="SvgjsRect1731" width="9.028571428571428" height="128.62888854598998" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke-dasharray="3" fill="url(#SvgjsLinearGradient1727)" class="apexcharts-xcrosshairs" y2="128.62888854598998" filter="none" fill-opacity="0.9"></rect><g id="SvgjsG1752" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1753" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)"><text id="SvgjsText1755" font-family="Helvetica, Arial, sans-serif" x="11.285714285714286" y="157.62888854598998" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a7acb2" class="apexcharts-text apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;"><tspan id="SvgjsTspan1756">M</tspan><title>M</title></text><text id="SvgjsText1758" font-family="Helvetica, Arial, sans-serif" x="33.85714285714286" y="157.62888854598998" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a7acb2" class="apexcharts-text apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;"><tspan id="SvgjsTspan1759">T</tspan><title>T</title></text><text id="SvgjsText1761" font-family="Helvetica, Arial, sans-serif" x="56.42857142857144" y="157.62888854598998" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a7acb2" class="apexcharts-text apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;"><tspan id="SvgjsTspan1762">W</tspan><title>W</title></text><text id="SvgjsText1764" font-family="Helvetica, Arial, sans-serif" x="79" y="157.62888854598998" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a7acb2" class="apexcharts-text apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;"><tspan id="SvgjsTspan1765">T</tspan><title>T</title></text><text id="SvgjsText1767" font-family="Helvetica, Arial, sans-serif" x="101.57142857142857" y="157.62888854598998" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a7acb2" class="apexcharts-text apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;"><tspan id="SvgjsTspan1768">F</tspan><title>F</title></text><text id="SvgjsText1770" font-family="Helvetica, Arial, sans-serif" x="124.14285714285715" y="157.62888854598998" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a7acb2" class="apexcharts-text apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;"><tspan id="SvgjsTspan1771">S</tspan><title>S</title></text><text id="SvgjsText1773" font-family="Helvetica, Arial, sans-serif" x="146.71428571428575" y="157.62888854598998" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#a7acb2" class="apexcharts-text apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;"><tspan id="SvgjsTspan1774">S</tspan><title>S</title></text></g></g><g id="SvgjsG1777" class="apexcharts-grid"><g id="SvgjsG1778" class="apexcharts-gridlines-horizontal" style="display: none;"><line id="SvgjsLine1780" x1="0" y1="0" x2="158" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1781" x1="0" y1="32.157222136497495" x2="158" y2="32.157222136497495" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1782" x1="0" y1="64.31444427299499" x2="158" y2="64.31444427299499" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1783" x1="0" y1="96.47166640949249" x2="158" y2="96.47166640949249" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1784" x1="0" y1="128.62888854598998" x2="158" y2="128.62888854598998" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1779" class="apexcharts-gridlines-vertical" style="display: none;"></g><line id="SvgjsLine1786" x1="0" y1="128.62888854598998" x2="158" y2="128.62888854598998" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1785" x1="0" y1="1" x2="0" y2="128.62888854598998" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1734" class="apexcharts-bar-series apexcharts-plot-series"><g id="SvgjsG1735" class="apexcharts-series" rel="1" seriesName="seriesx1" data:realIndex="0"><path id="SvgjsPath1739" d="M 6.771428571428572 123.62888854598998L 6.771428571428572 112.19074045499165Q 6.771428571428572 107.19074045499165 11.771428571428572 107.19074045499165L 10.8 107.19074045499165Q 15.8 107.19074045499165 15.8 112.19074045499165L 15.8 112.19074045499165L 15.8 123.62888854598998Q 15.8 128.62888854598998 10.8 128.62888854598998L 11.771428571428572 128.62888854598998Q 6.771428571428572 128.62888854598998 6.771428571428572 123.62888854598998z" fill="#71dd3729" fill-opacity="1" stroke-opacity="1" stroke-linecap="round" stroke-width="0" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskerhb1ls9)" pathTo="M 6.771428571428572 123.62888854598998L 6.771428571428572 112.19074045499165Q 6.771428571428572 107.19074045499165 11.771428571428572 107.19074045499165L 10.8 107.19074045499165Q 15.8 107.19074045499165 15.8 112.19074045499165L 15.8 112.19074045499165L 15.8 123.62888854598998Q 15.8 128.62888854598998 10.8 128.62888854598998L 11.771428571428572 128.62888854598998Q 6.771428571428572 128.62888854598998 6.771428571428572 123.62888854598998z" pathFrom="M 6.771428571428572 123.62888854598998L 6.771428571428572 123.62888854598998L 15.8 123.62888854598998L 15.8 123.62888854598998L 15.8 123.62888854598998L 15.8 123.62888854598998L 15.8 123.62888854598998L 6.771428571428572 123.62888854598998" cy="107.19074045499165" cx="29.342857142857145" j="0" val="20" barHeight="21.43814809099833" barWidth="9.028571428571428"></path><path id="SvgjsPath1741" d="M 29.342857142857145 123.62888854598998L 29.342857142857145 90.75259236399333Q 29.342857142857145 85.75259236399333 34.34285714285714 85.75259236399333L 33.371428571428574 85.75259236399333Q 38.371428571428574 85.75259236399333 38.371428571428574 90.75259236399333L 38.371428571428574 90.75259236399333L 38.371428571428574 123.62888854598998Q 38.371428571428574 128.62888854598998 33.371428571428574 128.62888854598998L 34.34285714285714 128.62888854598998Q 29.342857142857145 128.62888854598998 29.342857142857145 123.62888854598998z" fill="#71dd3729" fill-opacity="1" stroke-opacity="1" stroke-linecap="round" stroke-width="0" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskerhb1ls9)" pathTo="M 29.342857142857145 123.62888854598998L 29.342857142857145 90.75259236399333Q 29.342857142857145 85.75259236399333 34.34285714285714 85.75259236399333L 33.371428571428574 85.75259236399333Q 38.371428571428574 85.75259236399333 38.371428571428574 90.75259236399333L 38.371428571428574 90.75259236399333L 38.371428571428574 123.62888854598998Q 38.371428571428574 128.62888854598998 33.371428571428574 128.62888854598998L 34.34285714285714 128.62888854598998Q 29.342857142857145 128.62888854598998 29.342857142857145 123.62888854598998z" pathFrom="M 29.342857142857145 123.62888854598998L 29.342857142857145 123.62888854598998L 38.371428571428574 123.62888854598998L 38.371428571428574 123.62888854598998L 38.371428571428574 123.62888854598998L 38.371428571428574 123.62888854598998L 38.371428571428574 123.62888854598998L 29.342857142857145 123.62888854598998" cy="85.75259236399333" cx="51.91428571428572" j="1" val="40" barHeight="42.87629618199666" barWidth="9.028571428571428"></path><path id="SvgjsPath1743" d="M 51.91428571428572 123.62888854598998L 51.91428571428572 69.31444427299499Q 51.91428571428572 64.31444427299499 56.91428571428572 64.31444427299499L 55.94285714285715 64.31444427299499Q 60.94285714285715 64.31444427299499 60.94285714285715 69.31444427299499L 60.94285714285715 69.31444427299499L 60.94285714285715 123.62888854598998Q 60.94285714285715 128.62888854598998 55.94285714285715 128.62888854598998L 56.91428571428572 128.62888854598998Q 51.91428571428572 128.62888854598998 51.91428571428572 123.62888854598998z" fill="#71dd3729" fill-opacity="1" stroke-opacity="1" stroke-linecap="round" stroke-width="0" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskerhb1ls9)" pathTo="M 51.91428571428572 123.62888854598998L 51.91428571428572 69.31444427299499Q 51.91428571428572 64.31444427299499 56.91428571428572 64.31444427299499L 55.94285714285715 64.31444427299499Q 60.94285714285715 64.31444427299499 60.94285714285715 69.31444427299499L 60.94285714285715 69.31444427299499L 60.94285714285715 123.62888854598998Q 60.94285714285715 128.62888854598998 55.94285714285715 128.62888854598998L 56.91428571428572 128.62888854598998Q 51.91428571428572 128.62888854598998 51.91428571428572 123.62888854598998z" pathFrom="M 51.91428571428572 123.62888854598998L 51.91428571428572 123.62888854598998L 60.94285714285715 123.62888854598998L 60.94285714285715 123.62888854598998L 60.94285714285715 123.62888854598998L 60.94285714285715 123.62888854598998L 60.94285714285715 123.62888854598998L 51.91428571428572 123.62888854598998" cy="64.31444427299499" cx="74.4857142857143" j="2" val="60" barHeight="64.31444427299499" barWidth="9.028571428571428"></path><path id="SvgjsPath1745" d="M 74.4857142857143 123.62888854598998L 74.4857142857143 47.876296181996665Q 74.4857142857143 42.876296181996665 79.4857142857143 42.876296181996665L 78.51428571428572 42.876296181996665Q 83.51428571428572 42.876296181996665 83.51428571428572 47.876296181996665L 83.51428571428572 47.876296181996665L 83.51428571428572 123.62888854598998Q 83.51428571428572 128.62888854598998 78.51428571428572 128.62888854598998L 79.4857142857143 128.62888854598998Q 74.4857142857143 128.62888854598998 74.4857142857143 123.62888854598998z" fill="#71dd3729" fill-opacity="1" stroke-opacity="1" stroke-linecap="round" stroke-width="0" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskerhb1ls9)" pathTo="M 74.4857142857143 123.62888854598998L 74.4857142857143 47.876296181996665Q 74.4857142857143 42.876296181996665 79.4857142857143 42.876296181996665L 78.51428571428572 42.876296181996665Q 83.51428571428572 42.876296181996665 83.51428571428572 47.876296181996665L 83.51428571428572 47.876296181996665L 83.51428571428572 123.62888854598998Q 83.51428571428572 128.62888854598998 78.51428571428572 128.62888854598998L 79.4857142857143 128.62888854598998Q 74.4857142857143 128.62888854598998 74.4857142857143 123.62888854598998z" pathFrom="M 74.4857142857143 123.62888854598998L 74.4857142857143 123.62888854598998L 83.51428571428572 123.62888854598998L 83.51428571428572 123.62888854598998L 83.51428571428572 123.62888854598998L 83.51428571428572 123.62888854598998L 83.51428571428572 123.62888854598998L 74.4857142857143 123.62888854598998" cy="42.876296181996665" cx="97.05714285714286" j="3" val="80" barHeight="85.75259236399332" barWidth="9.028571428571428"></path><path id="SvgjsPath1747" d="M 97.05714285714286 123.62888854598998L 97.05714285714286 26.438148090998325Q 97.05714285714286 21.438148090998325 102.05714285714286 21.438148090998325L 101.08571428571429 21.438148090998325Q 106.08571428571429 21.438148090998325 106.08571428571429 26.438148090998325L 106.08571428571429 26.438148090998325L 106.08571428571429 123.62888854598998Q 106.08571428571429 128.62888854598998 101.08571428571429 128.62888854598998L 102.05714285714286 128.62888854598998Q 97.05714285714286 128.62888854598998 97.05714285714286 123.62888854598998z" fill="rgba(113,221,55,0.85)" fill-opacity="1" stroke-opacity="1" stroke-linecap="round" stroke-width="0" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskerhb1ls9)" pathTo="M 97.05714285714286 123.62888854598998L 97.05714285714286 26.438148090998325Q 97.05714285714286 21.438148090998325 102.05714285714286 21.438148090998325L 101.08571428571429 21.438148090998325Q 106.08571428571429 21.438148090998325 106.08571428571429 26.438148090998325L 106.08571428571429 26.438148090998325L 106.08571428571429 123.62888854598998Q 106.08571428571429 128.62888854598998 101.08571428571429 128.62888854598998L 102.05714285714286 128.62888854598998Q 97.05714285714286 128.62888854598998 97.05714285714286 123.62888854598998z" pathFrom="M 97.05714285714286 123.62888854598998L 97.05714285714286 123.62888854598998L 106.08571428571429 123.62888854598998L 106.08571428571429 123.62888854598998L 106.08571428571429 123.62888854598998L 106.08571428571429 123.62888854598998L 106.08571428571429 123.62888854598998L 97.05714285714286 123.62888854598998" cy="21.438148090998325" cx="119.62857142857143" j="4" val="100" barHeight="107.19074045499165" barWidth="9.028571428571428"></path><path id="SvgjsPath1749" d="M 119.62857142857143 123.62888854598998L 119.62857142857143 47.876296181996665Q 119.62857142857143 42.876296181996665 124.62857142857143 42.876296181996665L 123.65714285714287 42.876296181996665Q 128.65714285714287 42.876296181996665 128.65714285714287 47.876296181996665L 128.65714285714287 47.876296181996665L 128.65714285714287 123.62888854598998Q 128.65714285714287 128.62888854598998 123.65714285714287 128.62888854598998L 124.62857142857143 128.62888854598998Q 119.62857142857143 128.62888854598998 119.62857142857143 123.62888854598998z" fill="#71dd3729" fill-opacity="1" stroke-opacity="1" stroke-linecap="round" stroke-width="0" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskerhb1ls9)" pathTo="M 119.62857142857143 123.62888854598998L 119.62857142857143 47.876296181996665Q 119.62857142857143 42.876296181996665 124.62857142857143 42.876296181996665L 123.65714285714287 42.876296181996665Q 128.65714285714287 42.876296181996665 128.65714285714287 47.876296181996665L 128.65714285714287 47.876296181996665L 128.65714285714287 123.62888854598998Q 128.65714285714287 128.62888854598998 123.65714285714287 128.62888854598998L 124.62857142857143 128.62888854598998Q 119.62857142857143 128.62888854598998 119.62857142857143 123.62888854598998z" pathFrom="M 119.62857142857143 123.62888854598998L 119.62857142857143 123.62888854598998L 128.65714285714287 123.62888854598998L 128.65714285714287 123.62888854598998L 128.65714285714287 123.62888854598998L 128.65714285714287 123.62888854598998L 128.65714285714287 123.62888854598998L 119.62857142857143 123.62888854598998" cy="42.876296181996665" cx="142.20000000000002" j="5" val="80" barHeight="85.75259236399332" barWidth="9.028571428571428"></path><path id="SvgjsPath1751" d="M 142.20000000000002 123.62888854598998L 142.20000000000002 69.31444427299499Q 142.20000000000002 64.31444427299499 147.20000000000002 64.31444427299499L 146.22857142857146 64.31444427299499Q 151.22857142857146 64.31444427299499 151.22857142857146 69.31444427299499L 151.22857142857146 69.31444427299499L 151.22857142857146 123.62888854598998Q 151.22857142857146 128.62888854598998 146.22857142857146 128.62888854598998L 147.20000000000002 128.62888854598998Q 142.20000000000002 128.62888854598998 142.20000000000002 123.62888854598998z" fill="#71dd3729" fill-opacity="1" stroke-opacity="1" stroke-linecap="round" stroke-width="0" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMaskerhb1ls9)" pathTo="M 142.20000000000002 123.62888854598998L 142.20000000000002 69.31444427299499Q 142.20000000000002 64.31444427299499 147.20000000000002 64.31444427299499L 146.22857142857146 64.31444427299499Q 151.22857142857146 64.31444427299499 151.22857142857146 69.31444427299499L 151.22857142857146 69.31444427299499L 151.22857142857146 123.62888854598998Q 151.22857142857146 128.62888854598998 146.22857142857146 128.62888854598998L 147.20000000000002 128.62888854598998Q 142.20000000000002 128.62888854598998 142.20000000000002 123.62888854598998z" pathFrom="M 142.20000000000002 123.62888854598998L 142.20000000000002 123.62888854598998L 151.22857142857146 123.62888854598998L 151.22857142857146 123.62888854598998L 151.22857142857146 123.62888854598998L 151.22857142857146 123.62888854598998L 151.22857142857146 123.62888854598998L 142.20000000000002 123.62888854598998" cy="64.31444427299499" cx="164.7714285714286" j="6" val="60" barHeight="64.31444427299499" barWidth="9.028571428571428"></path><g id="SvgjsG1737" class="apexcharts-bar-goals-markers" style="pointer-events: none"><g id="SvgjsG1738" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1740" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1742" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1744" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1746" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1748" className="apexcharts-bar-goals-groups"></g><g id="SvgjsG1750" className="apexcharts-bar-goals-groups"></g></g></g><g id="SvgjsG1736" class="apexcharts-datalabels" data:realIndex="0"></g></g><line id="SvgjsLine1787" x1="0" y1="0" x2="158" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1788" x1="0" y1="0" x2="158" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1789" class="apexcharts-yaxis-annotations"></g><g id="SvgjsG1790" class="apexcharts-xaxis-annotations"></g><g id="SvgjsG1791" class="apexcharts-point-annotations"></g></g><g id="SvgjsG1775" class="apexcharts-yaxis" rel="0" transform="translate(-8, 0)"><g id="SvgjsG1776" class="apexcharts-yaxis-texts-g"></g></g><g id="SvgjsG1725" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend" style="max-height: 80px;"></div><div class="apexcharts-tooltip apexcharts-theme-light"><div class="apexcharts-tooltip-title" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"></div><div class="apexcharts-tooltip-series-group" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgba(113, 221, 55, 0.16);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
+                                            <div class="resize-triggers"><div class="expand-trigger"><div style="width: 308px; height: 166px;"></div></div><div class="contract-trigger"></div></div>
                                         </div>
 
-                                        <div class="ecommerce-customer-add-shiping mb-6 pt-4">
-                                            <h6 class="mb-6">Shipping Information</h6>
-                                            <div class="mb-6">
-                                                <label class="form-label" for="ecommerce-customer-add-address">Address Line 1</label>
-                                                <input type="text" id="ecommerce-customer-add-address" class="form-control" placeholder="45 Roker Terrace" aria-label="45 Roker Terrace" name="customerAddress1">
-                                            </div>
-                                            <div class="mb-6">
-                                                <label class="form-label" for="ecommerce-customer-add-address-2">Address Line 2</label>
-                                                <input type="text" id="ecommerce-customer-add-address-2" class="form-control" aria-label="address2" name="customerAddress2">
-                                            </div>
-                                            <div class="mb-6">
-                                                <label class="form-label" for="ecommerce-customer-add-town">Town</label>
-                                                <input type="text" id="ecommerce-customer-add-town" class="form-control" placeholder="New York" aria-label="New York" name="customerTown">
-                                            </div>
-                                            <div class="col-12 mb-6">
-                                                <label class="form-label" for="ecommerce-customer-add-state">State / Province</label>
-                                                <input type="text" id="ecommerce-customer-add-state" class="form-control" placeholder="Southern tip" aria-label="Southern tip" name="customerState">
-                                            </div>
-                                            <div class="col-12 mb-6">
-                                                <label class="form-label" for="ecommerce-customer-add-post-code">Post Code</label>
-                                                <input type="text" id="ecommerce-customer-add-post-code" class="form-control" placeholder="734990" aria-label="734990" name="pin" pattern="[0-9]{8}" maxlength="8">
-                                            </div>
-                                            <div>
-                                                <label class="form-label" for="ecommerce-customer-add-country">Country</label>
-                                                <div class="position-relative">
-                                                    <select id="ecommerce-customer-add-country" class="select2 form-select select2-hidden-accessible" data-select2-id="ecommerce-customer-add-country" tabindex="-1" aria-hidden="true">
-                                                        <option value="" data-select2-id="2">Select</option>
-                                                        <option value="Australia">Australia</option>
-                                                        <option value="Bangladesh">Bangladesh</option>
-                                                        <option value="Belarus">Belarus</option>
-                                                        <option value="Brazil">Brazil</option>
-                                                        <option value="Canada">Canada</option>
-                                                        <option value="China">China</option>
-                                                        <option value="France">France</option>
-                                                        <option value="Germany">Germany</option>
-                                                        <option value="India">India</option>
-                                                        <option value="Indonesia">Indonesia</option>
-                                                        <option value="Israel">Israel</option>
-                                                        <option value="Italy">Italy</option>
-                                                        <option value="Japan">Japan</option>
-                                                        <option value="Korea">Korea, Republic of</option>
-                                                        <option value="Mexico">Mexico</option>
-                                                        <option value="Philippines">Philippines</option>
-                                                        <option value="Russia">Russian Federation</option>
-                                                        <option value="South Africa">South Africa</option>
-                                                        <option value="Thailand">Thailand</option>
-                                                        <option value="Turkey">Turkey</option>
-                                                        <option value="Ukraine">Ukraine</option>
-                                                        <option value="United Arab Emirates">United Arab Emirates</option>
-                                                        <option value="United Kingdom">United Kingdom</option>
-                                                        <option value="United States">United States</option>
-                                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style="width: 335.347px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-ecommerce-customer-add-country-container"><span class="select2-selection__rendered" id="select2-ecommerce-customer-add-country-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">United States </span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                                </div>
-                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                                        </div>
-
-                                        <div class="d-sm-flex mb-6">
-                                            <div class="me-auto mb-2 mb-md-0">
-                                                <h6 class="mb-1">Use as a billing address?</h6>
-                                                <small>If you need more info, please check budget.</small>
-                                            </div>
-                                            <div class="form-check form-switch my-auto me-n2">
-                                                <input type="checkbox" class="form-check-input" checked="">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <button type="submit" class="btn btn-primary me-sm-3 data-submit">Add</button>
-                                            <button type="reset" class="btn btn-label-danger" data-bs-dismiss="offcanvas">Discard</button>
-                                        </div>
-                                        <input type="hidden">
-                                    </form>
+                        <!-- review List Table -->
+                        <div class="card">
+                            <div class="card-datatable table-responsive">
+                                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                                    <div class="card-header d-flex align-items-md-center align-items-start py-0 flex-wrap flex-md-row flex-column"><div class="me-5 ms-n4"><div id="DataTables_Table_0_filter" class="dataTables_filter mb-0 mb-md-6"><label><input type="search" class="form-control" placeholder="Search Review" aria-controls="DataTables_Table_0"></label></div></div><div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-start align-items-sm-center justify-content-md-end pt-0 gap-sm-4 gap-6 flex-wrap flex-sm-row flex-column mb-6 mb-sm-0"><div class="dataTables_length ms-n2 me-n2 mb-0 mb-sm-6" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div><div class="review_filter"><select id="Review" class="form-select"><option value=""> All </option><option value="Pending" class="text-capitalize">Pending</option><option value="Published" class="text-capitalize">Published</option></select></div><div class="mx-0 me-md-n3 mt-sm-0"><div class="dt-buttons btn-group flex-wrap"><div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary me-3" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false"><span><i class="bx bx-export bx-sm me-2"></i>Export</span></button></div> </div></div></div></div><table class="datatables-review table border-top dataTable no-footer dtr-column collapsed" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 1390px;">
+                                        <thead>
+                                            <tr><th class="control sorting_disabled" rowspan="1" colspan="1" style="width: 0px;" aria-label=""></th><th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1" colspan="1" style="width: 18px;" data-col="1" aria-label=""><input type="checkbox" class="form-check-input"></th><th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 247px;" aria-label="Product: activate to sort column descending" aria-sort="ascending">Product</th><th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 211px;" aria-label="Reviewer: activate to sort column ascending">Reviewer</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 391px;" aria-label="Review">Review</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 89px;" aria-label="Date: activate to sort column ascending">Date</th><th class="text-nowrap sorting dtr-hidden" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 75px; display: none;" aria-label="Status: activate to sort column ascending">Status</th><th class="sorting_disabled dtr-hidden" rowspan="1" colspan="1" style="width: 59px; display: none;" aria-label="Actions">Actions</th></tr>
+                                        </thead>
+                                        <tbody><tr class="odd"><td class="control" tabindex="0" style=""></td><td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td><td class="sorting_1" style=""><div class="d-flex justify-content-start align-items-center customer-name"><div class="avatar-wrapper"><div class="avatar me-4 rounded-2 bg-label-secondary"><img src="../../assets/img/ecommerce-images/product-9.png" alt="Product-9" class="rounded"></div></div><div class="d-flex flex-column"><span class="fw-medium text-nowrap text-heading">Air Jordan</span><small>Air Jordan is a line of basketball shoes produced by Nike</small></div></div></td><td><div class="d-flex justify-content-start align-items-center customer-name"><div class="avatar-wrapper"><div class="avatar avatar-sm me-4"><img src="../../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle"></div></div><div class="d-flex flex-column"><a href="app-ecommerce-customer-details-overview.html"><span class="fw-medium">Gisela Leppard</span></a><small class="text-nowrap">gleppard8@yandex.ru</small></div></div></td><td><div><div class="read-only-ratings ps-0 mb-1 jq-ry-container" readonly="readonly" style="width: 132px;"><div class="jq-ry-group-wrapper"><div class="jq-ry-normal-group jq-ry-group"><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 22 22" fill="gray"><path d="M20.1188 8.41458C20.0611 8.24488 19.9551 8.09576 19.8137 7.98564C19.6723 7.87552 19.5017 7.80922 19.3231 7.79492L14.0972 7.37967L11.8358 2.37375C11.7637 2.21252 11.6466 2.07558 11.4985 1.97945C11.3503 1.88333 11.1776 1.83213 11.001 1.83203C10.8244 1.83193 10.6515 1.88295 10.5033 1.97891C10.3551 2.07487 10.2378 2.21168 10.1656 2.37283L7.90417 7.37967L2.67826 7.79492C2.50268 7.80883 2.33482 7.87303 2.19477 7.97984C2.05472 8.08665 1.9484 8.23155 1.88854 8.3972C1.82869 8.56284 1.81782 8.74223 1.85724 8.9139C1.89666 9.08556 1.98471 9.24223 2.11084 9.36517L5.97276 13.1299L4.60693 19.0443C4.56545 19.2233 4.57874 19.4106 4.64508 19.582C4.71141 19.7534 4.82772 19.9009 4.97891 20.0053C5.1301 20.1098 5.3092 20.1664 5.49296 20.1678C5.67672 20.1692 5.85666 20.1153 6.00943 20.0132L11.0007 16.6857L15.9919 20.0132C16.1481 20.1168 16.3322 20.1702 16.5196 20.1661C16.707 20.162 16.8886 20.1006 17.04 19.9902C17.1915 19.8798 17.3055 19.7256 17.3667 19.5485C17.4279 19.3713 17.4335 19.1797 17.3825 18.9993L15.7059 13.1327L19.8639 9.39084C20.1362 9.14517 20.2361 8.762 20.1188 8.41458Z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 22 22" fill="gray" style="margin-left: 3px;"><path d="M20.1188 8.41458C20.0611 8.24488 19.9551 8.09576 19.8137 7.98564C19.6723 7.87552 19.5017 7.80922 19.3231 7.79492L14.0972 7.37967L11.8358 2.37375C11.7637 2.21252 11.6466 2.07558 11.4985 1.97945C11.3503 1.88333 11.1776 1.83213 11.001 1.83203C10.8244 1.83193 10.6515 1.88295 10.5033 1.97891C10.3551 2.07487 10.2378 2.21168 10.1656 2.37283L7.90417 7.37967L2.67826 7.79492C2.50268 7.80883 2.33482 7.87303 2.19477 7.97984C2.05472 8.08665 1.9484 8.23155 1.88854 8.3972C1.82869 8.56284 1.81782 8.74223 1.85724 8.9139C1.89666 9.08556 1.98471 9.24223 2.11084 9.36517L5.97276 13.1299L4.60693 19.0443C4.56545 19.2233 4.57874 19.4106 4.64508 19.582C4.71141 19.7534 4.82772 19.9009 4.97891 20.0053C5.1301 20.1098 5.3092 20.1664 5.49296 20.1678C5.67672 20.1692 5.85666 20.1153 6.00943 20.0132L11.0007 16.6857L15.9919 20.0132C16.1481 20.1168 16.3322 20.1702 16.5196 20.1661C16.707 20.162 16.8886 20.1006 17.04 19.9902C17.1915 19.8798 17.3055 19.7256 17.3667 19.5485C17.4279 19.3713 17.4335 19.1797 17.3825 18.9993L15.7059 13.1327L19.8639 9.39084C20.1362 9.14517 20.2361 8.762 20.1188 8.41458Z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 22 22" fill="gray" style="margin-left: 3px;"><path d="M20.1188 8.41458C20.0611 8.24488 19.9551 8.09576 19.8137 7.98564C19.6723 7.87552 19.5017 7.80922 19.3231 7.79492L14.0972 7.37967L11.8358 2.37375C11.7637 2.21252 11.6466 2.07558 11.4985 1.97945C11.3503 1.88333 11.1776 1.83213 11.001 1.83203C10.8244 1.83193 10.6515 1.88295 10.5033 1.97891C10.3551 2.07487 10.2378 2.21168 10.1656 2.37283L7.90417 7.37967L2.67826 7.79492C2.50268 7.80883 2.33482 7.87303 2.19477 7.97984C2.05472 8.08665 1.9484 8.23155 1.88854 8.3972C1.82869 8.56284 1.81782 8.74223 1.85724 8.9139C1.89666 9.08556 1.98471 9.24223 2.11084 9.36517L5.97276 13.1299L4.60693 19.0443C4.56545 19.2233 4.57874 19.4106 4.64508 19.582C4.71141 19.7534 4.82772 19.9009 4.97891 20.0053C5.1301 20.1098 5.3092 20.1664 5.49296 20.1678C5.67672 20.1692 5.85666 20.1153 6.00943 20.0132L11.0007 16.6857L15.9919 20.0132C16.1481 20.1168 16.3322 20.1702 16.5196 20.1661C16.707 20.162 16.8886 20.1006 17.04 19.9902C17.1915 19.8798 17.3055 19.7256 17.3667 19.5485C17.4279 19.3713 17.4335 19.1797 17.3825 18.9993L15.7059 13.1327L19.8639 9.39084C20.1362 9.14517 20.2361 8.762 20.1188 8.41458Z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 22 22" fill="gray" style="margin-left: 3px;"><path d="M20.1188 8.41458C20.0611 8.24488 19.9551 8.09576 19.8137 7.98564C19.6723 7.87552 19.5017 7.80922 19.3231 7.79492L14.0972 7.37967L11.8358 2.37375C11.7637 2.21252 11.6466 2.07558 11.4985 1.97945C11.3503 1.88333 11.1776 1.83213 11.001 1.83203C10.8244 1.83193 10.6515 1.88295 10.5033 1.97891C10.3551 2.07487 10.2378 2.21168 10.1656 2.37283L7.90417 7.37967L2.67826 7.79492C2.50268 7.80883 2.33482 7.87303 2.19477 7.97984C2.05472 8.08665 1.9484 8.23155 1.88854 8.3972C1.82869 8.56284 1.81782 8.74223 1.85724 8.9139C1.89666 9.08556 1.98471 9.24223 2.11084 9.36517L5.97276 13.1299L4.60693 19.0443C4.56545 19.2233 4.57874 19.4106 4.64508 19.582C4.71141 19.7534 4.82772 19.9009 4.97891 20.0053C5.1301 20.1098 5.3092 20.1664 5.49296 20.1678C5.67672 20.1692 5.85666 20.1153 6.00943 20.0132L11.0007 16.6857L15.9919 20.0132C16.1481 20.1168 16.3322 20.1702 16.5196 20.1661C16.707 20.162 16.8886 20.1006 17.04 19.9902C17.1915 19.8798 17.3055 19.7256 17.3667 19.5485C17.4279 19.3713 17.4335 19.1797 17.3825 18.9993L15.7059 13.1327L19.8639 9.39084C20.1362 9.14517 20.2361 8.762 20.1188 8.41458Z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 22 22" fill="gray" style="margin-left: 3px;"><path d="M20.1188 8.41458C20.0611 8.24488 19.9551 8.09576 19.8137 7.98564C19.6723 7.87552 19.5017 7.80922 19.3231 7.79492L14.0972 7.37967L11.8358 2.37375C11.7637 2.21252 11.6466 2.07558 11.4985 1.97945C11.3503 1.88333 11.1776 1.83213 11.001 1.83203C10.8244 1.83193 10.6515 1.88295 10.5033 1.97891C10.3551 2.07487 10.2378 2.21168 10.1656 2.37283L7.90417 7.37967L2.67826 7.79492C2.50268 7.80883 2.33482 7.87303 2.19477 7.97984C2.05472 8.08665 1.9484 8.23155 1.88854 8.3972C1.82869 8.56284 1.81782 8.74223 1.85724 8.9139C1.89666 9.08556 1.98471 9.24223 2.11084 9.36517L5.97276 13.1299L4.60693 19.0443C4.56545 19.2233 4.57874 19.4106 4.64508 19.582C4.71141 19.7534 4.82772 19.9009 4.97891 20.0053C5.1301 20.1098 5.3092 20.1664 5.49296 20.1678C5.67672 20.1692 5.85666 20.1153 6.00943 20.0132L11.0007 16.6857L15.9919 20.0132C16.1481 20.1168 16.3322 20.1702 16.5196 20.1661C16.707 20.162 16.8886 20.1006 17.04 19.9902C17.1915 19.8798 17.3055 19.7256 17.3667 19.5485C17.4279 19.3713 17.4335 19.1797 17.3825 18.9993L15.7059 13.1327L19.8639 9.39084C20.1362 9.14517 20.2361 8.762 20.1188 8.41458Z"></path></svg></div><div class="jq-ry-rated-group jq-ry-group" style="width: 38.6364%;"><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 22 22" fill="#f39c12"><path d="M20.1188 8.41458C20.0611 8.24488 19.9551 8.09576 19.8137 7.98564C19.6723 7.87552 19.5017 7.80922 19.3231 7.79492L14.0972 7.37967L11.8358 2.37375C11.7637 2.21252 11.6466 2.07558 11.4985 1.97945C11.3503 1.88333 11.1776 1.83213 11.001 1.83203C10.8244 1.83193 10.6515 1.88295 10.5033 1.97891C10.3551 2.07487 10.2378 2.21168 10.1656 2.37283L7.90417 7.37967L2.67826 7.79492C2.50268 7.80883 2.33482 7.87303 2.19477 7.97984C2.05472 8.08665 1.9484 8.23155 1.88854 8.3972C1.82869 8.56284 1.81782 8.74223 1.85724 8.9139C1.89666 9.08556 1.98471 9.24223 2.11084 9.36517L5.97276 13.1299L4.60693 19.0443C4.56545 19.2233 4.57874 19.4106 4.64508 19.582C4.71141 19.7534 4.82772 19.9009 4.97891 20.0053C5.1301 20.1098 5.3092 20.1664 5.49296 20.1678C5.67672 20.1692 5.85666 20.1153 6.00943 20.0132L11.0007 16.6857L15.9919 20.0132C16.1481 20.1168 16.3322 20.1702 16.5196 20.1661C16.707 20.162 16.8886 20.1006 17.04 19.9902C17.1915 19.8798 17.3055 19.7256 17.3667 19.5485C17.4279 19.3713 17.4335 19.1797 17.3825 18.9993L15.7059 13.1327L19.8639 9.39084C20.1362 9.14517 20.2361 8.762 20.1188 8.41458Z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 22 22" fill="#f39c12" style="margin-left: 3px;"><path d="M20.1188 8.41458C20.0611 8.24488 19.9551 8.09576 19.8137 7.98564C19.6723 7.87552 19.5017 7.80922 19.3231 7.79492L14.0972 7.37967L11.8358 2.37375C11.7637 2.21252 11.6466 2.07558 11.4985 1.97945C11.3503 1.88333 11.1776 1.83213 11.001 1.83203C10.8244 1.83193 10.6515 1.88295 10.5033 1.97891C10.3551 2.07487 10.2378 2.21168 10.1656 2.37283L7.90417 7.37967L2.67826 7.79492C2.50268 7.80883 2.33482 7.87303 2.19477 7.97984C2.05472 8.08665 1.9484 8.23155 1.88854 8.3972C1.82869 8.56284 1.81782 8.74223 1.85724 8.9139C1.89666 9.08556 1.98471 9.24223 2.11084 9.36517L5.97276 13.1299L4.60693 19.0443C4.56545 19.2233 4.57874 19.4106 4.64508 19.582C4.71141 19.7534 4.82772 19.9009 4.97891 20.0053C5.1301 20.1098 5.3092 20.1664 5.49296 20.1678C5.67672 20.1692 5.85666 20.1153 6.00943 20.0132L11.0007 16.6857L15.9919 20.0132C16.1481 20.1168 16.3322 20.1702 16.5196 20.1661C16.707 20.162 16.8886 20.1006 17.04 19.9902C17.1915 19.8798 17.3055 19.7256 17.3667 19.5485C17.4279 19.3713 17.4335 19.1797 17.3825 18.9993L15.7059 13.1327L19.8639 9.39084C20.1362 9.14517 20.2361 8.762 20.1188 8.41458Z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 22 22" fill="#f39c12" style="margin-left: 3px;"><path d="M20.1188 8.41458C20.0611 8.24488 19.9551 8.09576 19.8137 7.98564C19.6723 7.87552 19.5017 7.80922 19.3231 7.79492L14.0972 7.37967L11.8358 2.37375C11.7637 2.21252 11.6466 2.07558 11.4985 1.97945C11.3503 1.88333 11.1776 1.83213 11.001 1.83203C10.8244 1.83193 10.6515 1.88295 10.5033 1.97891C10.3551 2.07487 10.2378 2.21168 10.1656 2.37283L7.90417 7.37967L2.67826 7.79492C2.50268 7.80883 2.33482 7.87303 2.19477 7.97984C2.05472 8.08665 1.9484 8.23155 1.88854 8.3972C1.82869 8.56284 1.81782 8.74223 1.85724 8.9139C1.89666 9.08556 1.98471 9.24223 2.11084 9.36517L5.97276 13.1299L4.60693 19.0443C4.56545 19.2233 4.57874 19.4106 4.64508 19.582C4.71141 19.7534 4.82772 19.9009 4.97891 20.0053C5.1301 20.1098 5.3092 20.1664 5.49296 20.1678C5.67672 20.1692 5.85666 20.1153 6.00943 20.0132L11.0007 16.6857L15.9919 20.0132C16.1481 20.1168 16.3322 20.1702 16.5196 20.1661C16.707 20.162 16.8886 20.1006 17.04 19.9902C17.1915 19.8798 17.3055 19.7256 17.3667 19.5485C17.4279 19.3713 17.4335 19.1797 17.3825 18.9993L15.7059 13.1327L19.8639 9.39084C20.1362 9.14517 20.2361 8.762 20.1188 8.41458Z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 22 22" fill="#f39c12" style="margin-left: 3px;"><path d="M20.1188 8.41458C20.0611 8.24488 19.9551 8.09576 19.8137 7.98564C19.6723 7.87552 19.5017 7.80922 19.3231 7.79492L14.0972 7.37967L11.8358 2.37375C11.7637 2.21252 11.6466 2.07558 11.4985 1.97945C11.3503 1.88333 11.1776 1.83213 11.001 1.83203C10.8244 1.83193 10.6515 1.88295 10.5033 1.97891C10.3551 2.07487 10.2378 2.21168 10.1656 2.37283L7.90417 7.37967L2.67826 7.79492C2.50268 7.80883 2.33482 7.87303 2.19477 7.97984C2.05472 8.08665 1.9484 8.23155 1.88854 8.3972C1.82869 8.56284 1.81782 8.74223 1.85724 8.9139C1.89666 9.08556 1.98471 9.24223 2.11084 9.36517L5.97276 13.1299L4.60693 19.0443C4.56545 19.2233 4.57874 19.4106 4.64508 19.582C4.71141 19.7534 4.82772 19.9009 4.97891 20.0053C5.1301 20.1098 5.3092 20.1664 5.49296 20.1678C5.67672 20.1692 5.85666 20.1153 6.00943 20.0132L11.0007 16.6857L15.9919 20.0132C16.1481 20.1168 16.3322 20.1702 16.5196 20.1661C16.707 20.162 16.8886 20.1006 17.04 19.9902C17.1915 19.8798 17.3055 19.7256 17.3667 19.5485C17.4279 19.3713 17.4335 19.1797 17.3825 18.9993L15.7059 13.1327L19.8639 9.39084C20.1362 9.14517 20.2361 8.762 20.1188 8.41458Z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 22 22" fill="#f39c12" style="margin-left: 3px;"><path d="M20.1188 8.41458C20.0611 8.24488 19.9551 8.09576 19.8137 7.98564C19.6723 7.87552 19.5017 7.80922 19.3231 7.79492L14.0972 7.37967L11.8358 2.37375C11.7637 2.21252 11.6466 2.07558 11.4985 1.97945C11.3503 1.88333 11.1776 1.83213 11.001 1.83203C10.8244 1.83193 10.6515 1.88295 10.5033 1.97891C10.3551 2.07487 10.2378 2.21168 10.1656 2.37283L7.90417 7.37967L2.67826 7.79492C2.50268 7.80883 2.33482 7.87303 2.19477 7.97984C2.05472 8.08665 1.9484 8.23155 1.88854 8.3972C1.82869 8.56284 1.81782 8.74223 1.85724 8.9139C1.89666 9.08556 1.98471 9.24223 2.11084 9.36517L5.97276 13.1299L4.60693 19.0443C4.56545 19.2233 4.57874 19.4106 4.64508 19.582C4.71141 19.7534 4.82772 19.9009 4.97891 20.0053C5.1301 20.1098 5.3092 20.1664 5.49296 20.1678C5.67672 20.1692 5.85666 20.1153 6.00943 20.0132L11.0007 16.6857L15.9919 20.0132C16.1481 20.1168 16.3322 20.1702 16.5196 20.1661C16.707 20.162 16.8886 20.1006 17.04 19.9902C17.1915 19.8798 17.3055 19.7256 17.3667 19.5485C17.4279 19.3713 17.4335 19.1797 17.3825 18.9993L15.7059 13.1327L19.8639 9.39084C20.1362 9.14517 20.2361 8.762 20.1188 8.41458Z"></path></svg></div></div></div><p class="h6 mb-1 text-truncate">Ut mauris</p><small class="text-break pe-3">Fusce consequat. Nulla nisl. Nunc nisl.</small></div></td><td class="" style=""><span class="text-nowrap">Apr 20, 2020</span></td><td class="dtr-hidden" style="display: none;"><span class="badge bg-label-success" text-capitalize="">Published</span></td><td class="dtr-hidden" style="display: none;"><div class="text-xxl-center"><div class="dropdown"><a href="javascript:;" class="btn btn-icon dropdown-toggle hide-arrow p-0" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded bx-md"></i></a><div class="dropdown-menu dropdown-menu-end"><a href="javascript:;" class="dropdown-item">Download</a><a href="javascript:;" class="dropdown-item">Edit</a><a href="javascript:;" class="dropdown-item">Duplicate</a><div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item delete-record text-danger">Delete</a></div></div></div></td></tr></tbody>
+                                    </table><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 100 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link"><i class="bx bx-chevron-left bx-18px"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="DataTables_Table_0_ellipsis"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="ellipsis" tabindex="-1" class="page-link">…</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="9" tabindex="0" class="page-link">10</a></li><li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" class="page-link"><i class="bx bx-chevron-right bx-18px"></i></a></li></ul></div></div></div><div style="width: 1%;"></div>
                                 </div>
                             </div>
                         </div>
@@ -2103,19 +1934,16 @@
     <!-- Vendors JS -->
     <script src="~/assets/vendor/libs/moment/moment.js"></script>
     <script src="~/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-    <script src="~/assets/vendor/libs/select2/select2.js"></script>
-    <script src="~/assets/vendor/libs/form-validation/popular.js"></script>
-    <script src="~/assets/vendor/libs/form-validation/bootstrap5.js"></script>
-    <script src="~/assets/vendor/libs/form-validation/auto-focus.js"></script>
-    <script src="~/assets/vendor/libs/cleavejs/cleave.js"></script>
-    <script src="~/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+    <script src="~/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="~/assets/vendor/libs/rateyo/rateyo.js"></script>
 
     <!-- Main JS -->
     <script src="~/assets/js/main.js"></script>
 
 
     <!-- Page JS -->
-    <script src="~/assets/js/app-ecommerce-customer-all.js"></script>
+    <script src="~/assets/js/app-ecommerce-reviews.js"></script>
+    <script src="~/assets/js/extended-ui-star-ratings.js"></script>
 
 </body>
 
