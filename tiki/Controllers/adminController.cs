@@ -66,7 +66,15 @@ namespace tiki.Controllers
 
         public ActionResult categoryproduct()
         {
+            DataModel db = new DataModel();
+            ViewBag.listxuatdanhmuc = db.get("SELECT * FROM Categories");
             return View();
+        }
+        public ActionResult Xoadanhmuc(string id)
+        {
+            DataModel db = new DataModel();
+            ViewBag.listxoasanpham = db.get("EXEC XOADANHMUCTHEOID " + id);
+            return RedirectToAction("categoryproduct", "admin");
         }
         [HttpPost]
         public ActionResult themdanhmuc(string category_name)
@@ -112,6 +120,32 @@ namespace tiki.Controllers
                 // Registration failed, you might want to display error messages or re-render the registration form with error messages
                 return RedirectToAction("Index", "Home");
             }
+        }
+        public ActionResult shop()
+        {
+            DataModel db = new DataModel();
+            ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
+            ViewBag.listnhacungcap = db.get("SELECT * FROM Brands");
+            return View();
+        }
+        public ActionResult shopreview()
+        {
+            return View();
+        }
+        public ActionResult shoporderdetails()
+        {
+            return View();
+        }
+        public ActionResult shoporderlist()
+        {
+            return View();
+        }
+        public ActionResult Xoanguoidung(string id)
+        {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get("EXEC XOANGUOIDUNGTHEOID " + id);
+            return RedirectToAction("Index", "Customers");
+
         }
 
     }

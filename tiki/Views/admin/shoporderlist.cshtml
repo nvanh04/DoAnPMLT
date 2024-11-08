@@ -53,7 +53,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Demo : eCommerce Customer All - Apps | sneat - Bootstrap Dashboard PRO</title>
+    <title>Demo : Order List - eCommerce | sneat - Bootstrap Dashboard PRO</title>
 
 
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 Admin Dashboard built for developers!" />
@@ -64,14 +64,11 @@
 
     <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
     <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');</script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5DDHKGP');</script>
     <!-- End Google Tag Manager -->
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="~/assets/img/favicon/favicon.ico" />
@@ -94,11 +91,9 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="~/assets/vendor/libs/typeahead-js/typeahead.css" />
-    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
-    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
-    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
-    <link rel="stylesheet" href="~/assets/vendor/libs/select2/select2.css" />
-    <link rel="stylesheet" href="~/assets/vendor/libs/form-validation/form-validation.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
 
     <!-- Page CSS -->
     <!-- Helpers -->
@@ -347,61 +342,61 @@
                             <div class="text-truncate" data-i18n="eCommerce">eCommerce</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item">
+                            @*<li class="menu-item">
                                 <a href="app-ecommerce-dashboard.html" class="menu-link">
                                     <div class="text-truncate" data-i18n="Dashboard">Dashboard</div>
                                 </a>
-                            </li>
+                            </li>*@
                             <li class="menu-item">
                                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                                     <div class="text-truncate" data-i18n="Products">Products</div>
                                 </a>
                                 <ul class="menu-sub">
                                     <li class="menu-item">
-                                        <a href="app-ecommerce-product-list.html" class="menu-link">
+                                        <a href="~/admin/shoporderlist" class="menu-link">
                                             <div class="text-truncate" data-i18n="Product List">Product List</div>
                                         </a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="app-ecommerce-product-add.html" class="menu-link">
+                                        <a href="~/admin/shop" class="menu-link">
                                             <div class="text-truncate" data-i18n="Add Product">Add Product</div>
                                         </a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="app-ecommerce-category-list.html" class="menu-link">
+                                        <a href="~/admin/categoryproduct" class="menu-link">
                                             <div class="text-truncate" data-i18n="Category List">Category List</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item">
-                                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                    <div class="text-truncate" data-i18n="Order">Order</div>
-                                </a>
-                                <ul class="menu-sub">
-                                    <li class="menu-item">
-                                        <a href="app-ecommerce-order-list.html" class="menu-link">
-                                            <div class="text-truncate" data-i18n="Order List">Order List</div>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="app-ecommerce-order-details.html" class="menu-link">
-                                            <div class="text-truncate" data-i18n="Order Details">Order Details</div>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="menu-item active open">
                                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                    <div class="text-truncate" data-i18n="Customer">Customer</div>
+                                    <div class="text-truncate" data-i18n="Order">Order</div>
                                 </a>
                                 <ul class="menu-sub">
                                     <li class="menu-item active">
+                                        <a href="app-ecommerce-order-list.html" class="menu-link">
+                                            <div class="text-truncate" data-i18n="Order List">Order List</div>
+                                        </a>
+                                    </li>
+                                    @*<li class="menu-item">
+                                        <a href="~/admin/shoporderdetails" class="menu-link">
+                                            <div class="text-truncate" data-i18n="Order Details">Order Details</div>
+                                        </a>
+                                    </li>*@
+                                </ul>
+                            </li>
+                            @*<li class="menu-item">
+                                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                    <div class="text-truncate" data-i18n="Customer">Customer</div>
+                                </a>
+                                <ul class="menu-sub">
+                                    <li class="menu-item">
                                         <a href="app-ecommerce-customer-all.html" class="menu-link">
                                             <div class="text-truncate" data-i18n="All Customers">All Customers</div>
                                         </a>
                                     </li>
-                                    @*<li class="menu-item">
+                                    <li class="menu-item">
                                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                                             <div class="text-truncate" data-i18n="Customer Details">Customer Details</div>
                                         </a>
@@ -428,14 +423,14 @@
                                             </li>
 
                                         </ul>
-                                    </li>*@
+                                    </li>
                                 </ul>
-                            </li>
-                            @*<li class="menu-item">
-                                <a href="app-ecommerce-manage-reviews.html" class="menu-link">
+                            </li>*@
+                            <li class="menu-item">
+                                <a href="~/admin/shopreview" class="menu-link">
                                     <div class="text-truncate" data-i18n="Manage Reviews">Manage Reviews</div>
                                 </a>
-                            </li>*@
+                            </li>
                             @*<li class="menu-item">
                                 <a href="app-ecommerce-referral.html" class="menu-link">
                                     <div class="text-truncate" data-i18n="Referrals">Referrals</div>
@@ -480,6 +475,7 @@
                             </li>*@
                         </ul>
                     </li>
+
 
                     <!-- e-commerce-app menu end -->
                     <!-- Academy menu start -->
@@ -1407,285 +1403,285 @@
                             </li>
                             <!-- / Style Switcher-->
                             <!-- Quick links  -->
-                            @*<li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
-                                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                                        <i class='bx bx-grid-alt bx-md'></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end p-0">
-                                        <div class="dropdown-menu-header border-bottom">
-                                            <div class="dropdown-header d-flex align-items-center py-3">
-                                                <h6 class="mb-0 me-auto">Shortcuts</h6>
-                                                <a href="javascript:void(0)" class="dropdown-shortcuts-add py-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts"><i class="bx bx-plus-circle text-heading"></i></a>
+                            <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                    <i class='bx bx-grid-alt bx-md'></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end p-0">
+                                    <div class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h6 class="mb-0 me-auto">Shortcuts</h6>
+                                            <a href="javascript:void(0)" class="dropdown-shortcuts-add py-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts"><i class="bx bx-plus-circle text-heading"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-shortcuts-list scrollable-container">
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-calendar bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="app-calendar.html" class="stretched-link">Calendar</a>
+                                                <small>Appointments</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-food-menu bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
+                                                <small>Manage Accounts</small>
                                             </div>
                                         </div>
-                                        <div class="dropdown-shortcuts-list scrollable-container">
-                                            <div class="row row-bordered overflow-visible g-0">
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-calendar bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="app-calendar.html" class="stretched-link">Calendar</a>
-                                                    <small>Appointments</small>
-                                                </div>
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-food-menu bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
-                                                    <small>Manage Accounts</small>
-                                                </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-user bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="app-user-list.html" class="stretched-link">User App</a>
+                                                <small>Manage Users</small>
                                             </div>
-                                            <div class="row row-bordered overflow-visible g-0">
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-user bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="app-user-list.html" class="stretched-link">User App</a>
-                                                    <small>Manage Users</small>
-                                                </div>
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-check-shield bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="app-access-roles.html" class="stretched-link">Role Management</a>
-                                                    <small>Permission</small>
-                                                </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-check-shield bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="app-access-roles.html" class="stretched-link">Role Management</a>
+                                                <small>Permission</small>
                                             </div>
-                                            <div class="row row-bordered overflow-visible g-0">
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-pie-chart-alt-2 bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="index.html" class="stretched-link">Dashboard</a>
-                                                    <small>User Dashboard</small>
-                                                </div>
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-cog bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="pages-account-settings-account.html" class="stretched-link">Setting</a>
-                                                    <small>Account Settings</small>
-                                                </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-pie-chart-alt-2 bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="index.html" class="stretched-link">Dashboard</a>
+                                                <small>User Dashboard</small>
                                             </div>
-                                            <div class="row row-bordered overflow-visible g-0">
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-help-circle bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="pages-faq.html" class="stretched-link">FAQs</a>
-                                                    <small>FAQs & Articles</small>
-                                                </div>
-                                                <div class="dropdown-shortcuts-item col">
-                                                    <span class="dropdown-shortcuts-icon rounded-circle mb-3">
-                                                        <i class="bx bx-window-open bx-26px text-heading"></i>
-                                                    </span>
-                                                    <a href="modal-examples.html" class="stretched-link">Modals</a>
-                                                    <small>Useful Popups</small>
-                                                </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-cog bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="pages-account-settings-account.html" class="stretched-link">Setting</a>
+                                                <small>Account Settings</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-help-circle bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="pages-faq.html" class="stretched-link">FAQs</a>
+                                                <small>FAQs & Articles</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                                    <i class="bx bx-window-open bx-26px text-heading"></i>
+                                                </span>
+                                                <a href="modal-examples.html" class="stretched-link">Modals</a>
+                                                <small>Useful Popups</small>
                                             </div>
                                         </div>
                                     </div>
-                                </li>*@
+                                </div>
+                            </li>
                             <!-- Quick links -->
                             <!-- Notification -->
-                            @*<li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2">
-                                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                                        <span class="position-relative">
-                                            <i class="bx bx-bell bx-md"></i>
-                                            <span class="badge rounded-pill bg-danger badge-dot badge-notifications border"></span>
-                                        </span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end p-0">
-                                        <li class="dropdown-menu-header border-bottom">
-                                            <div class="dropdown-header d-flex align-items-center py-3">
-                                                <h6 class="mb-0 me-auto">Notification</h6>
-                                                <div class="d-flex align-items-center h6 mb-0">
-                                                    <span class="badge bg-label-primary me-2">8 New</span>
-                                                    <a href="javascript:void(0)" class="dropdown-notifications-all p-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i class="bx bx-envelope-open text-heading"></i></a>
+                            <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                    <span class="position-relative">
+                                        <i class="bx bx-bell bx-md"></i>
+                                        <span class="badge rounded-pill bg-danger badge-dot badge-notifications border"></span>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end p-0">
+                                    <li class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h6 class="mb-0 me-auto">Notification</h6>
+                                            <div class="d-flex align-items-center h6 mb-0">
+                                                <span class="badge bg-label-primary me-2">8 New</span>
+                                                <a href="javascript:void(0)" class="dropdown-notifications-all p-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i class="bx bx-envelope-open text-heading"></i></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-notifications-list scrollable-container">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="../../assets/img/avatars/1.png" alt class="rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Congratulation Lettie 🎉</h6>
+                                                        <small class="mb-1 d-block text-body">Won the monthly best seller gold badge</small>
+                                                        <small class="text-muted">1h ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="dropdown-notifications-list scrollable-container">
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <img src="~/assets/img/avatars/1.png" alt class="rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Congratulation Lettie 🎉</h6>
-                                                            <small class="mb-1 d-block text-body">Won the monthly best seller gold badge</small>
-                                                            <small class="text-muted">1h ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-danger">CF</span>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <span class="avatar-initial rounded-circle bg-label-danger">CF</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Charles Franklin</h6>
-                                                            <small class="mb-1 d-block text-body">Accepted your connection</small>
-                                                            <small class="text-muted">12hr ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Charles Franklin</h6>
+                                                        <small class="mb-1 d-block text-body">Accepted your connection</small>
+                                                        <small class="text-muted">12hr ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="../../assets/img/avatars/2.png" alt class="rounded-circle">
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <img src="~/assets/img/avatars/2.png" alt class="rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">New Message ✉️</h6>
-                                                            <small class="mb-1 d-block text-body">You have new message from Natalie</small>
-                                                            <small class="text-muted">1h ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">New Message ✉️</h6>
+                                                        <small class="mb-1 d-block text-body">You have new message from Natalie</small>
+                                                        <small class="text-muted">1h ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-cart"></i></span>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-cart"></i></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Whoo! You have new order 🛒 </h6>
-                                                            <small class="mb-1 d-block text-body">ACME Inc. made new order $1,154</small>
-                                                            <small class="text-muted">1 day ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Whoo! You have new order 🛒 </h6>
+                                                        <small class="mb-1 d-block text-body">ACME Inc. made new order $1,154</small>
+                                                        <small class="text-muted">1 day ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="../../assets/img/avatars/9.png" alt class="rounded-circle">
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <img src="~/assets/img/avatars/9.png" alt class="rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Application has been approved 🚀 </h6>
-                                                            <small class="mb-1 d-block text-body">Your ABC project application has been approved.</small>
-                                                            <small class="text-muted">2 days ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Application has been approved 🚀 </h6>
+                                                        <small class="mb-1 d-block text-body">Your ABC project application has been approved.</small>
+                                                        <small class="text-muted">2 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-pie-chart-alt"></i></span>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <span class="avatar-initial rounded-circle bg-label-success"><i class="bx bx-pie-chart-alt"></i></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Monthly report is generated</h6>
-                                                            <small class="mb-1 d-block text-body">July monthly financial report is generated </small>
-                                                            <small class="text-muted">3 days ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Monthly report is generated</h6>
+                                                        <small class="mb-1 d-block text-body">July monthly financial report is generated </small>
+                                                        <small class="text-muted">3 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="../../assets/img/avatars/5.png" alt class="rounded-circle">
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <img src="~/assets/img/avatars/5.png" alt class="rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">Send connection request</h6>
-                                                            <small class="mb-1 d-block text-body">Peter sent you connection request</small>
-                                                            <small class="text-muted">4 days ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">Send connection request</h6>
+                                                        <small class="mb-1 d-block text-body">Peter sent you connection request</small>
+                                                        <small class="text-muted">4 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="../../assets/img/avatars/6.png" alt class="rounded-circle">
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <img src="~/assets/img/avatars/6.png" alt class="rounded-circle">
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">New message from Jane</h6>
-                                                            <small class="mb-1 d-block text-body">Your have new message from Jane</small>
-                                                            <small class="text-muted">5 days ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">New message from Jane</h6>
+                                                        <small class="mb-1 d-block text-body">Your have new message from Jane</small>
+                                                        <small class="text-muted">5 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-warning"><i class="bx bx-error"></i></span>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 me-3">
-                                                            <div class="avatar">
-                                                                <span class="avatar-initial rounded-circle bg-label-warning"><i class="bx bx-error"></i></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="small mb-0">CPU is running high</h6>
-                                                            <small class="mb-1 d-block text-body">CPU Utilization Percent is currently at 88.63%,</small>
-                                                            <small class="text-muted">5 days ago</small>
-                                                        </div>
-                                                        <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                                                            <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
-                                                        </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="small mb-0">CPU is running high</h6>
+                                                        <small class="mb-1 d-block text-body">CPU Utilization Percent is currently at 88.63%,</small>
+                                                        <small class="text-muted">5 days ago</small>
                                                     </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="border-top">
-                                            <div class="d-grid p-4">
-                                                <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
-                                                    <small class="align-middle">View all notifications</small>
-                                                </a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>*@
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="bx bx-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="border-top">
+                                        <div class="d-grid p-4">
+                                            <a class="btn btn-primary btn-sm d-flex" href="javascript:void(0);">
+                                                <small class="align-middle">View all notifications</small>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
                             <!--/ Notification -->
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="~/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
+                                        <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -1694,7 +1690,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="~/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
+                                                        <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -1775,260 +1771,81 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
 
 
-                        <!-- customers List Table -->
-                        <div class="card">
+                        <!-- Order List Widget -->
 
-                            <div class="card-datatable table-responsive">
-                                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
-                                    <!--<div class="card-header d-flex flex-wrap flex-md-row flex-column align-items-start align-items-sm-center py-0">
-                                        <div class="d-flex align-items-center me-5"><div id="DataTables_Table_0_filter" class="dataTables_filter ms-n3 mb-0 mb-md-6"><label><input type="search" class="form-control" placeholder="Search Cutomers" aria-controls="DataTables_Table_0"></label></div></div><div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-md-end flex-wrap flex-sm-nowrap mb-6 mb-sm-0 pt-0">
-                                            <div class="dataTables_length ms-n2 me-2" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div><div class="dt-buttons btn-group flex-wrap d-flex">-->
-                                                @*<div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary me-4" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false"><span><i class="bx bx-export bx-sm me-2"></i>Export</span></button></div>*@
-                                                @*<button class="btn btn-secondary add-new btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEcommerceCustomerAdd"><span><i class="bx bx-plus bx-sm me-0 me-sm-2 mb-1"></i><span class="d-none d-sm-inline-block">Add Customer</span></span></button>*@
-                                            <!--</div>
+                        <div class="card mb-6">
+                            <div class="card-widget-separator-wrapper">
+                                <div class="card-body card-widget-separator">
+                                    <div class="row gy-4 gy-sm-1">
+                                        <div class="col-sm-6 col-lg-3">
+                                            <div class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-4 pb-sm-0">
+                                                <div>
+                                                    <h4 class="mb-0">56</h4>
+                                                    <p class="mb-0">Pending Payment</p>
+                                                </div>
+                                                <span class="avatar w-px-40 h-px-40 me-sm-6">
+                                                    <span class="avatar-initial bg-label-secondary rounded">
+                                                        <i class="bx bx-calendar bx-lg text-heading"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <hr class="d-none d-sm-block d-lg-none me-6">
                                         </div>
-                                    </div>-->
-                                    <div class="card">
-
-                                        <div class="card-datatable table-responsive">
-                                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
-                                                <div class="card-header d-flex flex-wrap flex-md-row flex-column align-items-start align-items-sm-center py-0"><div class="d-flex align-items-center me-5"><div id="DataTables_Table_0_filter" class="dataTables_filter ms-n3 mb-0 mb-md-6"><label><input type="search" class="form-control" placeholder="Search Order" aria-controls="DataTables_Table_0"></label></div></div><div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-md-end flex-wrap flex-sm-nowrap mb-6 mb-sm-0 pt-0"><div class="dataTables_length ms-n2 me-2" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div><div class="dt-buttons btn-group flex-wrap d-flex"> <div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary me-4" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false"><span><i class="bx bx-export bx-sm me-2"></i>Export</span></button></div> <button class="btn btn-secondary add-new btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEcommerceCustomerAdd"><span><i class="bx bx-plus bx-sm me-0 me-sm-2 mb-1"></i><span class="d-none d-sm-inline-block">Add Customer</span></span></button> </div></div></div><table class="datatables-customers table border-top dataTable no-footer dtr-column" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 888px;">
-    <thead>
-        <tr>
-            <th class="control sorting_disabled dtr-hidden" rowspan="1" colspan="1" style="width: 0px; display: none;" aria-label=""></th>
-            <th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1" colspan="1" style="width: 18px;" data-col="1" aria-label=""><input type="checkbox" class="form-check-input"></th>
-            <th class="sorting sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 213px;" aria-label="Customer: activate to sort column ascending" aria-sort="descending">Customer</th>
-            <th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 93px;" aria-label="Customer Id: activate to sort column ascending">Customer Id</th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 166px;" aria-label="Country: activate to sort column ascending">Số điện thoại</th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 47px;" aria-label="Order: activate to sort column ascending">Order</th>
-            <th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 91px;" aria-label="Total Spent: activate to sort column ascending">Họ Tên</th>
-            <th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 91px;" aria-label="Total Spent: activate to sort column ascending">Role</th>
-        </tr>
-    </thead>
-    @foreach (var a in ViewBag.listUser)
-    {
-        <tbody>
-            <tr class="odd">
-                <td class="  control" tabindex="0" style="display: none;"></td>
-                <td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td>
-                <td class="sorting_1"><div class="d-flex justify-content-start align-items-center customer-name"></div><div class="d-flex flex-column"><a class="text-heading"><span class="fw-medium">@a[1]</span></a><small>@a[2]</small></div> </td>
-                <td><span class="text-heading">@a[0]</span></td>
-                <td><div class="d-flex justify-content-start align-items-center customer-country"><div><i class="fis fi fi-ua rounded-circle me-2 fs-4"></i></div><div><span>@a[5]</span></div></div></td>
-                <td><span>@a[6]</span></td>
-                <td><span class="fw-medium text-heading">@a[4]@*<input type="text" class="form-control" id="ecommerce-product-name" placeholder="Vai trò" name="description" aria-label="Nhập tên">*@</span></td>
-                <td><a href="~/admin/Xoanguoidung?id=@a[0]">Xóa</a></td>
-            </tr>
-        
-
-        </tbody>
-
-
-    }
-</table><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 100 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link"><i class="bx bx-chevron-left bx-18px"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="DataTables_Table_0_ellipsis"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="ellipsis" tabindex="-1" class="page-link">…</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="9" tabindex="0" class="page-link">10</a></li><li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" class="page-link"><i class="bx bx-chevron-right bx-18px"></i></a></li></ul></div></div></div><div style="width: 1%;"></div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <div class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-4 pb-sm-0">
+                                                <div>
+                                                    <h4 class="mb-0">12,689</h4>
+                                                    <p class="mb-0">Completed</p>
+                                                </div>
+                                                <span class="avatar w-px-40 h-px-40 p-2 me-lg-6">
+                                                    <span class="avatar-initial bg-label-secondary rounded">
+                                                        <i class="bx bx-check-double bx-lg text-heading"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <hr class="d-none d-sm-block d-lg-none">
+                                        </div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <div class="d-flex justify-content-between align-items-start border-end pb-4 pb-sm-0 card-widget-3">
+                                                <div>
+                                                    <h4 class="mb-0">124</h4>
+                                                    <p class="mb-0">Refunded</p>
+                                                </div>
+                                                <span class="avatar w-px-40 h-px-40 p-2 me-sm-6">
+                                                    <span class="avatar-initial bg-label-secondary rounded">
+                                                        <i class="bx bx-wallet bx-lg text-heading"></i>
+                                                    </span>
+                                                </span>
                                             </div>
                                         </div>
-                                        <!-- Offcanvas to add new customer -->
-                                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEcommerceCustomerAdd" aria-labelledby="offcanvasEcommerceCustomerAddLabel">
-                                            <div class="offcanvas-header">
-                                                <h5 id="offcanvasEcommerceCustomerAddLabel" class="offcanvas-title">Add Customer</h5>
-                                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                            </div>
-                                            <div class="offcanvas-body border-top mx-0 flex-grow-0">
-                                                <form class="ecommerce-customer-add pt-0 fv-plugins-bootstrap5 fv-plugins-framework" id="eCommerceCustomerAddForm" onsubmit="return false" novalidate="novalidate">
-                                                    <div class="ecommerce-customer-add-basic mb-4">
-                                                        <h6 class="mb-6">Basic Information</h6>
-                                                        <div class="mb-6 fv-plugins-icon-container">
-                                                            <label class="form-label" for="ecommerce-customer-add-name">Name*</label>
-                                                            <input type="text" class="form-control" id="ecommerce-customer-add-name" placeholder="John Doe" name="customerName" aria-label="John Doe">
-                                                            <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                                                        </div>
-                                                        <div class="mb-6 fv-plugins-icon-container">
-                                                            <label class="form-label" for="ecommerce-customer-add-email">Email*</label>
-                                                            <input type="text" id="ecommerce-customer-add-email" class="form-control" placeholder="john.doe@example.com" aria-label="john.doe@example.com" name="customerEmail">
-                                                            <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                                                        </div>
-                                                        <div>
-                                                            <label class="form-label" for="ecommerce-customer-add-contact">Mobile</label>
-                                                            <input type="text" id="ecommerce-customer-add-contact" class="form-control phone-mask" placeholder="+(123) 456-7890" aria-label="+(123) 456-7890" name="customerContact">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="ecommerce-customer-add-shiping mb-6 pt-4">
-                                                        <h6 class="mb-6">Shipping Information</h6>
-                                                        <div class="mb-6">
-                                                            <label class="form-label" for="ecommerce-customer-add-address">Address Line 1</label>
-                                                            <input type="text" id="ecommerce-customer-add-address" class="form-control" placeholder="45 Roker Terrace" aria-label="45 Roker Terrace" name="customerAddress1">
-                                                        </div>
-                                                        <div class="mb-6">
-                                                            <label class="form-label" for="ecommerce-customer-add-address-2">Address Line 2</label>
-                                                            <input type="text" id="ecommerce-customer-add-address-2" class="form-control" aria-label="address2" name="customerAddress2">
-                                                        </div>
-                                                        <div class="mb-6">
-                                                            <label class="form-label" for="ecommerce-customer-add-town">Town</label>
-                                                            <input type="text" id="ecommerce-customer-add-town" class="form-control" placeholder="New York" aria-label="New York" name="customerTown">
-                                                        </div>
-                                                        <div class="col-12 mb-6">
-                                                            <label class="form-label" for="ecommerce-customer-add-state">State / Province</label>
-                                                            <input type="text" id="ecommerce-customer-add-state" class="form-control" placeholder="Southern tip" aria-label="Southern tip" name="customerState">
-                                                        </div>
-                                                        <div class="col-12 mb-6">
-                                                            <label class="form-label" for="ecommerce-customer-add-post-code">Post Code</label>
-                                                            <input type="text" id="ecommerce-customer-add-post-code" class="form-control" placeholder="734990" aria-label="734990" name="pin" pattern="[0-9]{8}" maxlength="8">
-                                                        </div>
-                                                        <div>
-                                                            <label class="form-label" for="ecommerce-customer-add-country">Country</label>
-                                                            <div class="position-relative">
-                                                                <select id="ecommerce-customer-add-country" class="select2 form-select select2-hidden-accessible" data-select2-id="ecommerce-customer-add-country" tabindex="-1" aria-hidden="true">
-                                                                    <option value="" data-select2-id="2">Select</option>
-                                                                    <option value="Australia">Australia</option>
-                                                                    <option value="Bangladesh">Bangladesh</option>
-                                                                    <option value="Belarus">Belarus</option>
-                                                                    <option value="Brazil">Brazil</option>
-                                                                    <option value="Canada">Canada</option>
-                                                                    <option value="China">China</option>
-                                                                    <option value="France">France</option>
-                                                                    <option value="Germany">Germany</option>
-                                                                    <option value="India">India</option>
-                                                                    <option value="Indonesia">Indonesia</option>
-                                                                    <option value="Israel">Israel</option>
-                                                                    <option value="Italy">Italy</option>
-                                                                    <option value="Japan">Japan</option>
-                                                                    <option value="Korea">Korea, Republic of</option>
-                                                                    <option value="Mexico">Mexico</option>
-                                                                    <option value="Philippines">Philippines</option>
-                                                                    <option value="Russia">Russian Federation</option>
-                                                                    <option value="South Africa">South Africa</option>
-                                                                    <option value="Thailand">Thailand</option>
-                                                                    <option value="Turkey">Turkey</option>
-                                                                    <option value="Ukraine">Ukraine</option>
-                                                                    <option value="United Arab Emirates">United Arab Emirates</option>
-                                                                    <option value="United Kingdom">United Kingdom</option>
-                                                                    <option value="United States">United States</option>
-                                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style="width: 335.347px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-ecommerce-customer-add-country-container"><span class="select2-selection__rendered" id="select2-ecommerce-customer-add-country-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">United States </span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="d-sm-flex mb-6">
-                                                        <div class="me-auto mb-2 mb-md-0">
-                                                            <h6 class="mb-1">Use as a billing address?</h6>
-                                                            <small>If you need more info, please check budget.</small>
-                                                        </div>
-                                                        <div class="form-check form-switch my-auto me-n2">
-                                                            <input type="checkbox" class="form-check-input" checked="">
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <button type="submit" class="btn btn-primary me-sm-3 data-submit">Add</button>
-                                                        <button type="reset" class="btn btn-label-danger" data-bs-dismiss="offcanvas">Discard</button>
-                                                    </div>
-                                                    <input type="hidden">
-                                                </form>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h4 class="mb-0">32</h4>
+                                                    <p class="mb-0">Failed</p>
+                                                </div>
+                                                <span class="avatar w-px-40 h-px-40 p-2">
+                                                    <span class="avatar-initial bg-label-secondary rounded">
+                                                        <i class="bx bx-error-alt bx-lg text-heading"></i>
+                                                    </span>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-                                    @*<div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 100 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link"><i class="bx bx-chevron-left bx-18px"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="DataTables_Table_0_ellipsis"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="ellipsis" tabindex="-1" class="page-link">…</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="9" tabindex="0" class="page-link">10</a></li><li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" class="page-link"><i class="bx bx-chevron-right bx-18px"></i></a></li></ul></div></div></div><div style="width: 1%;"></div>
-                                </div>*@
-                            </div>
-                            <!-- Offcanvas to add new customer -->
-                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEcommerceCustomerAdd" aria-labelledby="offcanvasEcommerceCustomerAddLabel">
-                                <div class="offcanvas-header">
-                                    <h5 id="offcanvasEcommerceCustomerAddLabel" class="offcanvas-title">Add Customer</h5>
-                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                 </div>
-                                <div class="offcanvas-body border-top mx-0 flex-grow-0">
-                                    <form class="ecommerce-customer-add pt-0 fv-plugins-bootstrap5 fv-plugins-framework" id="eCommerceCustomerAddForm" onsubmit="return false" novalidate="novalidate">
-                                        <div class="ecommerce-customer-add-basic mb-4">
-                                            <h6 class="mb-6">Basic Information</h6>
-                                            <div class="mb-6 fv-plugins-icon-container">
-                                                <label class="form-label" for="ecommerce-customer-add-name">Name*</label>
-                                                <input type="text" class="form-control" id="ecommerce-customer-add-name" placeholder="John Doe" name="customerName" aria-label="John Doe">
-                                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                                            </div>
-                                            <div class="mb-6 fv-plugins-icon-container">
-                                                <label class="form-label" for="ecommerce-customer-add-email">Email*</label>
-                                                <input type="text" id="ecommerce-customer-add-email" class="form-control" placeholder="john.doe@example.com" aria-label="john.doe@example.com" name="customerEmail">
-                                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                                            </div>
-                                            <div>
-                                                <label class="form-label" for="ecommerce-customer-add-contact">Mobile</label>
-                                                <input type="text" id="ecommerce-customer-add-contact" class="form-control phone-mask" placeholder="+(123) 456-7890" aria-label="+(123) 456-7890" name="customerContact">
-                                            </div>
-                                        </div>
+                            </div>
+                        </div>
 
-                                        <div class="ecommerce-customer-add-shiping mb-6 pt-4">
-                                            <h6 class="mb-6">Shipping Information</h6>
-                                            <div class="mb-6">
-                                                <label class="form-label" for="ecommerce-customer-add-address">Address Line 1</label>
-                                                <input type="text" id="ecommerce-customer-add-address" class="form-control" placeholder="45 Roker Terrace" aria-label="45 Roker Terrace" name="customerAddress1">
-                                            </div>
-                                            <div class="mb-6">
-                                                <label class="form-label" for="ecommerce-customer-add-address-2">Address Line 2</label>
-                                                <input type="text" id="ecommerce-customer-add-address-2" class="form-control" aria-label="address2" name="customerAddress2">
-                                            </div>
-                                            <div class="mb-6">
-                                                <label class="form-label" for="ecommerce-customer-add-town">Town</label>
-                                                <input type="text" id="ecommerce-customer-add-town" class="form-control" placeholder="New York" aria-label="New York" name="customerTown">
-                                            </div>
-                                            <div class="col-12 mb-6">
-                                                <label class="form-label" for="ecommerce-customer-add-state">State / Province</label>
-                                                <input type="text" id="ecommerce-customer-add-state" class="form-control" placeholder="Southern tip" aria-label="Southern tip" name="customerState">
-                                            </div>
-                                            <div class="col-12 mb-6">
-                                                <label class="form-label" for="ecommerce-customer-add-post-code">Post Code</label>
-                                                <input type="text" id="ecommerce-customer-add-post-code" class="form-control" placeholder="734990" aria-label="734990" name="pin" pattern="[0-9]{8}" maxlength="8">
-                                            </div>
-                                            <div>
-                                                <label class="form-label" for="ecommerce-customer-add-country">Country</label>
-                                                <div class="position-relative">
-                                                    <select id="ecommerce-customer-add-country" class="select2 form-select select2-hidden-accessible" data-select2-id="ecommerce-customer-add-country" tabindex="-1" aria-hidden="true">
-                                                        <option value="" data-select2-id="2">Select</option>
-                                                        <option value="Australia">Australia</option>
-                                                        <option value="Bangladesh">Bangladesh</option>
-                                                        <option value="Belarus">Belarus</option>
-                                                        <option value="Brazil">Brazil</option>
-                                                        <option value="Canada">Canada</option>
-                                                        <option value="China">China</option>
-                                                        <option value="France">France</option>
-                                                        <option value="Germany">Germany</option>
-                                                        <option value="India">India</option>
-                                                        <option value="Indonesia">Indonesia</option>
-                                                        <option value="Israel">Israel</option>
-                                                        <option value="Italy">Italy</option>
-                                                        <option value="Japan">Japan</option>
-                                                        <option value="Korea">Korea, Republic of</option>
-                                                        <option value="Mexico">Mexico</option>
-                                                        <option value="Philippines">Philippines</option>
-                                                        <option value="Russia">Russian Federation</option>
-                                                        <option value="South Africa">South Africa</option>
-                                                        <option value="Thailand">Thailand</option>
-                                                        <option value="Turkey">Turkey</option>
-                                                        <option value="Ukraine">Ukraine</option>
-                                                        <option value="United Arab Emirates">United Arab Emirates</option>
-                                                        <option value="United Kingdom">United Kingdom</option>
-                                                        <option value="United States">United States</option>
-                                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style="width: 335.347px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-ecommerce-customer-add-country-container"><span class="select2-selection__rendered" id="select2-ecommerce-customer-add-country-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">United States </span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="d-sm-flex mb-6">
-                                            <div class="me-auto mb-2 mb-md-0">
-                                                <h6 class="mb-1">Use as a billing address?</h6>
-                                                <small>If you need more info, please check budget.</small>
-                                            </div>
-                                            <div class="form-check form-switch my-auto me-n2">
-                                                <input type="checkbox" class="form-check-input" checked="">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <button type="submit" class="btn btn-primary me-sm-3 data-submit">Add</button>
-                                            <button type="reset" class="btn btn-label-danger" data-bs-dismiss="offcanvas">Discard</button>
-                                        </div>
-                                        <input type="hidden">
-                                    </form>
+                        <!-- Order List Table -->
+                        <div class="card">
+                            <div class="card-datatable table-responsive">
+                                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                                    <div class="card-header py-0 d-flex flex-column flex-md-row align-items-center"><div><div id="DataTables_Table_0_filter" class="dataTables_filter ms-n3 mb-0 mb-md-6"><label><input type="search" class="form-control" placeholder="Search Order" aria-controls="DataTables_Table_0"></label></div></div><div class="d-flex align-items-center justify-content-md-end gap-2 justify-content-center"><div class="dataTables_length ms-n2" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="10">10</option><option value="40">40</option><option value="60">60</option><option value="80">80</option><option value="100">100</option></select></label></div><div class="dt-action-buttons pt-0"><div class="dt-buttons btn-group flex-wrap"><div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false"><span><i class="bx bx-export bx-sm me-2"></i>Export</span></button></div> </div></div></div></div><table class="datatables-order table border-top dataTable no-footer dtr-column collapsed" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 1392px;">
+                                        <thead>
+                                            <tr><th class="control sorting_disabled" rowspan="1" colspan="1" style="width: 0px;" aria-label=""></th><th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1" colspan="1" style="width: 18px;" data-col="1" aria-label=""><input type="checkbox" class="form-check-input"></th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 65px;" aria-label="order: activate to sort column ascending">order</th><th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 151px;" aria-label="date: activate to sort column descending" aria-sort="ascending">date</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 303px;" aria-label="customers: activate to sort column ascending">customers</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 123px;" aria-label="payment: activate to sort column ascending">payment</th><th class="sorting dtr-hidden" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 138px; display: none;" aria-label="status: activate to sort column ascending">status</th><th class="sorting dtr-hidden" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 163px; display: none;" aria-label="method: activate to sort column ascending">method</th><th class="sorting_disabled dtr-hidden" rowspan="1" colspan="1" style="width: 79px; display: none;" aria-label="Actions">Actions</th></tr>
+                                        </thead>
+                                        <tbody><tr class="odd"><td class="control" tabindex="0" style=""></td><td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td><td><a href="app-ecommerce-order-details.html"><span>#6979</span></a></td><td class="sorting_1"><span class="text-nowrap">Apr 15, 2023, 10:21</span></td><td><div class="d-flex justify-content-start align-items-center order-name text-nowrap"><div class="avatar-wrapper"><div class="avatar avatar-sm me-3"><img src="../../assets/img/avatars/3.png" alt="Avatar" class="rounded-circle"></div></div><div class="d-flex flex-column"><h6 class="m-0"><a href="pages-profile-user.html" class="text-heading">Cristine Easom</a></h6><small>ceasomw@theguardian.com</small></div></div></td><td><h6 class="mb-0 align-items-center d-flex w-px-100 text-warning"><i class="bx bxs-circle bx-8px me-1"></i>Pending</h6></td><td class="dtr-hidden" style="display: none;"><span class="badge px-2 bg-label-success" text-capitalized="">Delivered</span></td><td class="dtr-hidden" style="display: none;"><div class="d-flex align-items-center text-nowrap"><img src="../../assets/img/icons/payments/mastercard-cc.png" alt="mastercard-cc" width="29"><span><i class="bx bx-dots-horizontal-rounded mt-1"></i>2356</span></div></td><td class="dtr-hidden" style="display: none;"><div class="d-flex justify-content-sm-start align-items-sm-center"><button class="btn btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded bx-md"></i></button><div class="dropdown-menu dropdown-menu-end m-0"><a href="app-ecommerce-order-details.html" class="dropdown-item">View</a><a href="javascript:0;" class="dropdown-item delete-record">Delete</a></div></div></td></tr></tbody>
+                                    </table><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Displaying 1 to 10 of 100 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link"><i class="bx bx-chevron-left bx-18px"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="DataTables_Table_0_ellipsis"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="ellipsis" tabindex="-1" class="page-link">…</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="9" tabindex="0" class="page-link">10</a></li><li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" class="page-link"><i class="bx bx-chevron-right bx-18px"></i></a></li></ul></div></div></div><div style="width: 1%;"></div>
                                 </div>
                             </div>
                         </div>
@@ -2042,10 +1859,7 @@
                             <div class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
                                 <div class="text-body">
                                     ©
-                                    <script>
-                                        document.write(new Date().getFullYear())
-
-                                    </script>, made with ❤️ by <a href="https://themeselection.com" target="_blank" class="footer-link">ThemeSelection</a>
+                                    <script>document.write(new Date().getFullYear())</script>2024, made with ❤️ by <a href="https://themeselection.com" target="_blank" class="footer-link">ThemeSelection</a>
                                 </div>
                                 <div class="d-none d-lg-inline-block">
 
@@ -2096,21 +1910,14 @@
 
     <!-- endbuild -->
     <!-- Vendors JS -->
-    <script src="~/assets/vendor/libs/moment/moment.js"></script>
     <script src="~/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-    <script src="~/assets/vendor/libs/select2/select2.js"></script>
-    <script src="~/assets/vendor/libs/form-validation/popular.js"></script>
-    <script src="~/assets/vendor/libs/form-validation/bootstrap5.js"></script>
-    <script src="~/assets/vendor/libs/form-validation/auto-focus.js"></script>
-    <script src="~/assets/vendor/libs/cleavejs/cleave.js"></script>
-    <script src="~/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
 
     <!-- Main JS -->
     <script src="~/assets/js/main.js"></script>
 
 
     <!-- Page JS -->
-    <script src="~/assets/js/app-ecommerce-customer-all.js"></script>
+    <script src="~/assets/js/app-ecommerce-order-list.js"></script>
 
 </body>
 
