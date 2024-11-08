@@ -109,7 +109,7 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
 
             // Assuming you have a stored procedure to insert new users:
-            ViewBag.result = db.get("EXEC AddNBH '" + username + "', '" + VaiTro + "','" + email + "','" + password_hash + "','" + full_name + "','"+phone_number+"', '"+address+"'");
+            ViewBag.result = db.get("EXEC AddNBH1 '" + username + "', '" + VaiTro + "','" + email + "','" + password_hash + "','" + full_name + "','"+phone_number+"', '"+address+"'");
 
             if (ViewBag.result.Count > 0)
             {
