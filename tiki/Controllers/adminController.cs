@@ -140,7 +140,13 @@ namespace tiki.Controllers
         {
             return View();
         }
+        public ActionResult Xoanguoidung(string id)
+        {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get("EXEC XOANGUOIDUNGTHEOID " + id);
+            return RedirectToAction("Index", "Customers");
 
+        }
 
     }
 }
