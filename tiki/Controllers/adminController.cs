@@ -15,10 +15,10 @@ namespace tiki.Controllers
         public ActionResult Index()
         {
             DataModel db = new DataModel();
-            if (Session["taikhoan"] == null)
-            {
-                return RedirectToAction("GiaoDienDangNhap", "Home");
-            }
+            //if (Session["taikhoan"] == null)
+            //{
+            //    return RedirectToAction("GiaoDienDangNhap", "Home");
+            //}
 
             return View();
 
@@ -109,7 +109,7 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
 
             // Assuming you have a stored procedure to insert new users:
-            ViewBag.result = db.get("EXEC UserCC '" + username + "', '" + VaiTro + "','" + email + "','" + password_hash + "','" + full_name + "','" + phone_number + "', '" + address + "'");
+            ViewBag.result = db.get("EXEC AddAdmin '" + username + "', '" + VaiTro + "','" + email + "','" + password_hash + "','" + full_name + "','"+phone_number+"', '"+address+"'");
 
             if (ViewBag.result.Count > 0)
             {

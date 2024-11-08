@@ -469,18 +469,18 @@ var customerId = 0;
                             <div data-reactroot="">
 
                                 <div>
-                                    <i class="icon-style-1 tikicon icon-user"></i><b>Đăng nhập</b>
-                                    <br><small>Tài khoản</small>
-                                </div>
-                                <div class="box">
-                                    <ul class="user-ajax-guest">
-                                        <li id="login_link">
-                                            <a href="#" title="Đăng Nhập" class="user-name-login lrm-login"><span class="text">Đăng nhập</span></a>
-                                        </li>
-                                        <li class="user-name-register">
-                                            <a href="#" title="Tạo tài khoản mới" class="lrm-register"><span class="text">Tạo tài khoản</span></a>
-                                        </li>
-                                    </ul>
+                                    @if (Session["IDKH"] != null)
+                                    {
+                                        <!-- Hiển thị thông tin khách hàng -->
+                                        <a href="@Url.Action("InfoCustomer", "Home")" class="nav-item nav-link">@Session["TenKH"]</a>
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link" style="display: block; margin-top: 5px;">Đăng xuất</a>
+                                    }
+                                    else
+                                    {
+                                        <!-- Hiển thị liên kết đăng nhập nếu người dùng chưa đăng nhập -->
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
+                                    }
+
                                 </div>
 
                             </div>
@@ -693,93 +693,142 @@ var customerId = 0;
                                         </div>
                                     </div>
                                 </div><div class="row flex">
-                                    <div class="col-xs-7 no-padding-right product-info-block">
-                                        <div class="item-row1">
-                                            <div class="item-price">
+                                          <div class="col-xs-7 no-padding-right product-info-block">
+                                              <div class="item-row1">
+                                                  <div class="item-price">
 
 
-                                                <div class="price-block show-border">
+                                                      <div class="price-block show-border">
 
 
-                                                    <p class="special-price-item" data-value="11790000" id="p-specialprice">
-                                                        <span id="flash-sale-price-label" style="" class="hot-deal">
-                                                            <img class="icon-hot-deal" src="~/HINH/@c[10]" width="91">Giá:
-                                                        </span>
-                                                        <span id="span-price">@c[3]</span>
-                                                    </p>
+                                                          <p class="special-price-item" data-value="11790000" id="p-specialprice">
+                                                              <span id="flash-sale-price-label" style="" class="hot-deal">
+                                                                  <img class="icon-hot-deal" src="~/HINH/@c[10]" width="91">Giá:
+                                                              </span>
+                                                              <span id="span-price">@c[3]</span>
+                                                          </p>
 
-                                                    <p style="" class="saleoff-price-item" id="p-saving-price">
-                                                        <span class="price-label">Tiết kiệm:</span>
-                                                        <span id="span-discount-percent" class="discount-percent">1%</span>
-                                                        <span id="span-saving-price">
-                                                            (100.000₫)
-                                                        </span>
-                                                    </p>
+                                                          <p style="" class="saleoff-price-item" id="p-saving-price">
+                                                              <span class="price-label">Tiết kiệm:</span>
+                                                              <span id="span-discount-percent" class="discount-percent">1%</span>
+                                                              <span id="span-saving-price">
+                                                                  (100.000₫)
+                                                              </span>
+                                                          </p>
 
-                                                    <p style="" class="old-price-item" data-value="17500000" id="p-listpirce">
-                                                        <span class="price-label">Giá thị trường:</span>
-                                                        <span id="span-list-price">11,690,000 ₫</span>
-                                                    </p>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-product col-sm-12">
-                                            <form class="cart product-form product-actions" action="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11/" method="post" enctype='multipart/form-data'>
+                                                          <p style="" class="old-price-item" data-value="17500000" id="p-listpirce">
+                                                              <span class="price-label">Giá thị trường:</span>
+                                                              <span id="span-list-price">11,690,000 ₫</span>
+                                                          </p>
 
 
+                                                      </div>
+                                                  </div>
+                                              </div>
 
-                                                <div class="item-product-options">
-                                                    <div id="add-cart-action">
-                                                        <div class="add-cart-action" style="display: block">
-                                                            <div class="quantity-box">
+                                              <div class="form-product col-sm-12">
+<<<<<<< HEAD
+                                                  <form class="cart product-form product-actions" action="@Url.Action("AddToCart", "GioHang")" method="post" enctype="multipart/form-data">
 
-                                                                <div class="tiki-save-wrapper">
-                                                                    <div id="deal-max" style="" class="alert alert-warning alert-small deal-max">
-                                                                        Sản phẩm này có giới hạn số lượng khi đặt hàng:<br />
-                                                                        Bạn có thể mua tối đa 1 sản phẩm cho mỗi đơn hàng
-                                                                    </div>
-                                                                </div>
+                                                      <!-- Thông báo lỗi/thành công -->
+                                                      @if (TempData["ErrorMessage"] != null)
+                                                      {
+                                                          <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                                                      }
+                                                      @if (TempData["SuccessMessage"] != null)
+                                                      {
+                                                          <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                                                      }
 
-                                                                <input id="product_id_for_wishlist" name="id" type="hidden" value="440702">
+                                                      <!-- Hidden field for Product ID -->
+                                                      @if (ViewBag.listchitietsanpham != null && ViewBag.listchitietsanpham.Count > 0)
+                                                      {
+                                                          <input id="product_id_for_cart" name="productId" type="hidden" value="@ViewBag.listchitietsanpham[0][0]">
+                                                      }
 
-                                                                <div id="qtySelector" class="quantity-col1">
-                                                                    <p class="quantity-label">Số lượng:</p>
-                                                                    <p class="tiki-number-input">
-                                                                        <div class="input-group bootstrap-touchspin">
-                                                                            <span class="input-group-btn">
-                                                                                <button class="btn btn-default bootstrap-touchspin-down" onclick="var result = document.getElementById('qty'); var qtypro = result.value; if( !isNaN( qtypro ) &amp;&amp; qtypro > 1 ) result.value--;return false;" type="button">-</button>
-                                                                            </span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
-                                                                            <input id="qty" type="tel" name="quantity" value="1" min="1" max="100" class="form-control" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" onclick="var result = document.getElementById('qty'); var qtypro = result.value; if( !isNaN( qtypro )) result.value++;return false;" type="button">+</button></span>
-                                                                        </div>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="cta-box">
+=======
+                                                  <form class="cart product-form product-actions" action="~/GioHang/AddToCart" method="post" enctype='multipart/form-data'>
+>>>>>>> b3ca8ef713cdece1028264dca9ebfcd72c30ec2d
+                                                      <div class="item-product-options">
+                                                          <div id="add-cart-action">
+                                                              <div class="add-cart-action" style="display: block">
+                                                                  <div class="quantity-box">
+                                                                      <!-- Quantity Limitation Alert -->
+                                                                      <div class="tiki-save-wrapper">
+                                                                          <div id="deal-max" class="alert alert-warning alert-small deal-max">
+                                                                              Sản phẩm này có giới hạn số lượng khi đặt hàng:<br />
+                                                                              Bạn có thể mua tối đa 1 sản phẩm cho mỗi đơn hàng.
+                                                                          </div>
+                                                                      </div>
+
+<<<<<<< HEAD
+=======
+                                                                      <!-- Hidden field to pass product ID -->
+                                                                      @foreach (var d in ViewBag.listchitietsanpham)
+                                                                      {
+                                                                          <p>
+                                                                             <input id="product_id_for_cart" name="productId" type="hidden" value="@d[0]">
+
+                                                                          </p>
+                                                                      }
+                                                                      
+
+>>>>>>> b3ca8ef713cdece1028264dca9ebfcd72c30ec2d
+                                                                      <!-- Quantity Selector -->
+                                                                      <div id="qtySelector" class="quantity-col1">
+                                                                          <p class="quantity-label">Số lượng:</p>
+                                                                          <div class="input-group bootstrap-touchspin">
+                                                                              <!-- Decrease Quantity Button -->
+                                                                              <span class="input-group-btn">
+                                                                                  <button class="btn btn-default bootstrap-touchspin-down" type="button" onclick="decreaseQuantity()">-</button>
+                                                                              </span>
+                                                                              <!-- Quantity Input -->
+                                                                              <input id="qty" type="number" name="quantity" value="1" min="1" max="100" class="form-control">
+                                                                              <!-- Increase Quantity Button -->
+                                                                              <span class="input-group-btn">
+                                                                                  <button class="btn btn-default bootstrap-touchspin-up" type="button" onclick="increaseQuantity()">+</button>
+                                                                              </span>
+                                                                          </div>
+                                                                      </div>
+
+                                                                      <!-- Add to Cart Button -->
+                                                                      <div class="cta-box">
+                                                                          <button type="submit" class="add-to-cart">CHỌN MUA</button>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </form>
+                                              </div>
+
+                                              <script>
+                                                  // Function to decrease quantity
+                                                  function decreaseQuantity() {
+                                                      var qtyInput = document.getElementById('qty');
+                                                      var currentQty = parseInt(qtyInput.value);
+                                                      if (!isNaN(currentQty) && currentQty > 1) {
+                                                          qtyInput.value = currentQty - 1;
+                                                      }
+                                                  }
+
+                                                  // Function to increase quantity
+                                                  function increaseQuantity() {
+                                                      var qtyInput = document.getElementById('qty');
+                                                      var currentQty = parseInt(qtyInput.value);
+                                                      if (!isNaN(currentQty)) {
+                                                          qtyInput.value = currentQty + 1;
+                                                      }
+                                                  }
+                                              </script>
 
 
-                                                                    <button id="#mainAddToCart" class="add-to-cart  js-add-to-cart is-css" type="submit" admicro-data-event="AddToCart" admicro-data-auto="1" admicro-data-order="false" name="add-to-cart" value="2236">
-                                                                        <span class="text">CHỌN MUA</span>
-                                                                    </button>
-
-                                                                </div>
-
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
 
 
-                                            </form>
-
-                                        </div>
 
 
-
-                                    </div>
+                                          </div>
 
                                     <div class="col-xs-5 product-seller-block">
                                         <div class="seller-container">

@@ -442,28 +442,25 @@
                             <div data-reactroot="">
 
                                 <div>
-                                    <i class="icon-style-1 tikicon icon-user"></i><b>Đăng nhập</b>
-                                    <br><small>Tài khoản</small>
+                                    @if (Session["IDKH"] != null)
+                                    {
+                                        <!-- Hiển thị thông tin khách hàng -->
+                                        <a href="@Url.Action("InfoCustomer", "Home")" class="nav-item nav-link">@Session["TenKH"]</a>
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link" style="display: block; margin-top: 5px;">Đăng xuất</a>
+                                    }
+                                    else
+                                    {
+                                        <!-- Hiển thị liên kết đăng nhập nếu người dùng chưa đăng nhập -->
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
+                                    }
                                 </div>
-                                <div class="box">
-                                    <ul class="user-ajax-guest">
-                                        <li id="login_link">
-                                            <a href="#" title="Đăng Nhập" class="user-name-login lrm-login"><span class="text">Đăng nhập</span></a>
-                                        </li>
-                                        <li class="user-name-register">
-                                            <a href="#" title="Tạo tài khoản mới" class="lrm-register"><span class="text">Tạo tài khoản</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
                             </div>
                         </div>
 
 
                         <div id="header-cart">
-                            <a data-reactroot="" rel="nofollow" href="https://tiki.mauthemewp.com/gio-hang/" class="header-cart item" admicro-data-event="ClickXemGioHang" admicro-data-auto="1" admicro-data-order="false">
-                                <i class="tikicon icon-cart"></i><!-- react-text: 3 -->Giỏ hàng<!-- /react-text --><span class="cart-count" id="cart-total">0</span>
-                            </a>
+                            <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>
+
                         </div>
 
                         <!-- Tooltip Link social -->

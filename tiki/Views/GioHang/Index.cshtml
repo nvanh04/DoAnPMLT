@@ -1,4 +1,8 @@
-﻿
+﻿@{
+    ViewBag.Title = "Giỏ hàng";
+    var cartItems = ViewBag.CartItems as List<List<object>> ?? new List<List<object>>(); // Khởi tạo nếu null
+    var discount = ViewBag.Discount != null ? (decimal)ViewBag.Discount : 0;
+}
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -487,20 +491,19 @@
                             <div data-reactroot="">
 
                                 <div>
-                                    <i class="icon-style-1 tikicon icon-user"></i><b>Đăng nhập</b>
-                                    <br><small>Tài khoản</small>
-                                </div>
-                                <div class="box">
-                                    <ul class="user-ajax-guest">
-                                        <li id="login_link">
-                                            <a href="#" title="Đăng Nhập" class="user-name-login lrm-login"><span class="text">Đăng nhập</span></a>
-                                        </li>
-                                        <li class="user-name-register">
-                                            <a href="#" title="Tạo tài khoản mới" class="lrm-register"><span class="text">Tạo tài khoản</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    @if (Session["IDKH"] != null)
+                                    {
+                                        <!-- Hiển thị thông tin khách hàng -->
+                                        <a href="@Url.Action("InfoCustomer", "Home")" class="nav-item nav-link">@Session["TenKH"]</a>
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link" style="display: block; margin-top: 5px;">Đăng xuất</a>
+                                    }
+                                    else
+                                    {
+                                        <!-- Hiển thị liên kết đăng nhập nếu người dùng chưa đăng nhập -->
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
+                                    }
 
+                                </div>
                             </div>
                         </div>
 
@@ -669,122 +672,111 @@
                                     <h1 class="article-title1"><a href="https://tiki.maugiaodien.com/gio-hang/">Giỏ hàng</a></h1>
 
 
-                                    <div class="article-content">
-                                        <div class="rte">
-                                            <div class="woocommerce">
-                                                <div class="woocommerce-notices-wrapper"></div><div class="row">
-                                                    <form class="woocommerce-cart-form col-sm-9" action="https://tiki.maugiaodien.com/gio-hang/" method="post">
+                                    @{
+                                        ViewBag.Title = "Giỏ hàng của bạn";
+                                    }
 
-                                                        <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
-                                                            <thead>
+                                <div class="article-content">
+                                    <div class="rte">
+                                        <div class="woocommerce">
+                                            <div class="woocommerce-notices-wrapper"></div>
+                                            <div class="row">
+                                                <form class="woocommerce-cart-form col-sm-9" action="/GioHang/UpdateCart" method="post">
+                                                    <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="product-remove">&nbsp;</th>
+                                                                <th class="product-thumbnail">&nbsp;</th>
+                                                                <th class="product-name">Sản phẩm</th>
+                                                                <th class="product-price">Giá</th>
+                                                                <th class="product-quantity">Số lượng</th>
+                                                                <th class="product-subtotal">Tổng</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (cartItems.Any())
+                                                            {
+                                                                foreach (var item in cartItems)
+                                                                {
+                                                                    <tr class="woocommerce-cart-form__cart-item cart_item">
+                                                                        <td class="product-remove">
+                                                                            <a href="/GioHang/RemoveFromCart?productId=@item[0]" class="remove" aria-label="Xóa sản phẩm này" data-product_id="@item[0]">&times;</a>
+                                                                        </td>
+                                                                        <td class="product-thumbnail">
+                                                                            <a href="#"><img width="1200" height="1200" src="@item[4]" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" /></a>
+                                                                        </td>
+                                                                        <td class="product-name" data-title="Sản phẩm">
+                                                                            <a href="#">@item[1]</a>
+                                                                        </td>
+                                                                        <td class="product-price" data-title="Giá">
+                                                                            <span class="woocommerce-Price-amount amount">@((decimal)item[2]).ToString("N0")&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+                                                                        </td>
+                                                                        <td class="product-quantity" data-title="Số lượng">
+                                                                            <div class="quantity">
+                                                                                <input type="number" name="quantity" class="input-text qty text" step="1" min="1" value="@item[3]" title="SL" size="4" inputmode="numeric" />
+                                                                                <input type="hidden" name="productId" value="@item[0]" />
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="product-subtotal" data-title="Tổng">
+                                                                            <span class="woocommerce-Price-amount amount">@((decimal)item[2] * (int)item[3]).ToString("N0")&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
                                                                 <tr>
-                                                                    <th class="product-remove">&nbsp;</th>
-                                                                    <th class="product-thumbnail">&nbsp;</th>
-                                                                    <th class="product-name">Sản phẩm</th>
-                                                                    <th class="product-price">Giá</th>
-                                                                    <th class="product-quantity">Số lượng</th>
-                                                                    <th class="product-subtotal">Tổng</th>
+                                                                    <td colspan="6" style="text-align: center;">Giỏ hàng của bạn hiện đang trống.</td>
                                                                 </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                            }
+                                                            <tr>
+                                                                <td colspan="6" class="actions">
+                                                                    <div class="coupon">
+                                                                        <label for="coupon_code">Ưu đãi:</label>
+                                                                        <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi" />
+                                                                        <button type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
+                                                                    </div>
+                                                                    <button type="submit" class="button" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </form>
 
-                                                                <tr class="woocommerce-cart-form__cart-item cart_item">
-
-                                                                    <td class="product-remove">
-                                                                        <a href="https://tiki.maugiaodien.com/gio-hang/?remove_item=b166b57d195370cd41f80dd29ed523d9&#038;_wpnonce=77c35ccb6f" class="remove" aria-label="Xóa sản phẩm này" data-product_id="2237" data-product_sku="6001759234016-8">&times;</a>
-                                                                    </td>
-
-                                                                    <td class="product-thumbnail">
-                                                                        <a href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh/"><img width="1200" height="1200" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" /></a>
-                                                                    </td>
-
-                                                                    <td class="product-name" data-title="Sản phẩm">
-                                                                        <a href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh/">Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)</a>
-                                                                    </td>
-
-                                                                    <td class="product-price" data-title="Giá">
-                                                                        <span class="woocommerce-Price-amount amount">11,690,000&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
-                                                                    </td>
-
-                                                                    <td class="product-quantity" data-title="Số lượng">
-                                                                        <div class="quantity">
-                                                                            <label class="screen-reader-text" for="quantity_6726e70308985">Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh) số lượng</label>
-                                                                            <input type="number"
-                                                                                   id="quantity_6726e70308985"
-                                                                                   class="input-text qty text"
-                                                                                   step="1"
-                                                                                   min="0"
-                                                                                   max=""
-                                                                                   name="cart[b166b57d195370cd41f80dd29ed523d9][qty]"
-                                                                                   value="1"
-                                                                                   title="SL"
-                                                                                   size="4"
-                                                                                   inputmode="numeric" />
-                                                                        </div>
-                                                                    </td>
-
-                                                                    <td class="product-subtotal" data-title="Tổng">
-                                                                        <span class="woocommerce-Price-amount amount">11,690,000&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
-                                                                    </td>
-                                                                </tr>
-
-
-                                                                <tr>
-                                                                    <td colspan="6" class="actions">
-
-                                                                        <div class="coupon">
-                                                                            <label for="coupon_code">Ưu đãi:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi" /> <button type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
-                                                                        </div>
-
-                                                                        <button type="submit" class="button" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
-
-
-                                                                        <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="77c35ccb6f" /><input type="hidden" name="_wp_http_referer" value="/gio-hang/" />
-                                                                    </td>
-                                                                </tr>
-
-                                                            </tbody>
+                                                <div class="cart-collaterals1 col-sm-3">
+                                                    <div class="cart_totals">
+                                                        <table cellspacing="0" class="shop_table shop_table_responsive">
+                                                            <tr class="cart-subtotal">
+                                                                <th>Tạm tính</th>
+                                                                <td data-title="Tạm tính">
+                                                                    <span class="woocommerce-Price-amount amount">
+                                                                        @cartItems.Sum(item => (decimal)item[2] * (int)item[3]).ToString("N0")
+                                                                        <span class="woocommerce-Price-currencySymbol">&#8363;</span>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="order-total">
+                                                                <th>Tổng</th>
+                                                                <td data-title="Tổng">
+                                                                    <strong>
+                                                                        <span class="woocommerce-Price-amount amount">
+                                                                            @((cartItems.Sum(item => (decimal)item[2] * (int)item[3]) - discount).ToString("N0"))
+                                                                            <span class="woocommerce-Price-currencySymbol">&#8363;</span>
+                                                                        </span>
+                                                                    </strong>
+                                                                </td>
+                                                            </tr>
                                                         </table>
-                                                    </form>
-
-                                                    <div class="cart-collaterals1 col-sm-3">
-                                                        <div class="cart_totals ">
-
-
-                                                            <table cellspacing="0" class="shop_table shop_table_responsive">
-
-                                                                <tr class="cart-subtotal">
-                                                                    <th>Tạm tính</th>
-                                                                    <td data-title="Tạm tính"><span class="woocommerce-Price-amount amount">11,690,000&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></td>
-                                                                </tr>
-
-
-
-
-
-
-                                                                <tr class="order-total">
-                                                                    <th>Tổng</th>
-                                                                    <td data-title="Tổng"><strong><span class="woocommerce-Price-amount amount">11,690,000&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></strong> </td>
-                                                                </tr>
-
-
-                                                            </table>
-
-                                                            <div class="wc-proceed-to-checkout">
-
-                                                                <a href="https://tiki.maugiaodien.com/thanh-toan/" class="checkout-button button alt wc-forward">
-                                                                    Tiến hành thanh toán
-                                                                </a>
-                                                            </div>
-
-
+                                                        <div class="wc-proceed-to-checkout">
+                                                            <a href="/GioHang/ThanhToan" class="checkout-button button alt wc-forward">Tiến hành thanh toán</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
                                 </div>
                             </div>
 
