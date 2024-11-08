@@ -75,7 +75,7 @@ namespace tiki.Controllers
 
             // Thực thi stored procedure để cập nhật số lượng sản phẩm
             db.get($"EXEC UpdateCartItem {userId}, {productId}, {quantity}");
-
+            
             return RedirectToAction("Index");
         }
 
