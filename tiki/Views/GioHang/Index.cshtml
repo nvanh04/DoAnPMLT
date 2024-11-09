@@ -1,7 +1,11 @@
 ﻿@{
     ViewBag.Title = "Giỏ hàng";
     var cartItems = ViewBag.CartItems as object[] ?? new object[0]; // Khởi tạo nếu null để tránh lỗi null
-    var discount = ViewBag.Discount != null ? (decimal)ViewBag.Discount : 0;
+    //var discount = ViewBag.Discount != null ? (decimal)ViewBag.Discount : 0;
+    // Lấy các giá trị từ ViewBag để hiển thị trong giao diện
+    decimal cartTotal = ViewBag.CartTotal != null ? (decimal)ViewBag.CartTotal : 0;
+    decimal discount = ViewBag.Discount != null ? (decimal)ViewBag.Discount : 0;
+    decimal totalAfterDiscount = ViewBag.TotalAfterDiscount != null ? (decimal)ViewBag.TotalAfterDiscount : cartTotal;
 }
 <!DOCTYPE html>
 <html lang="vi">
@@ -807,14 +811,14 @@
                                                         <button type="submit" class="button" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
                                                     </form>
 
+                                                    <!-- Form nhập mã giảm giá -->
                                                     <form action="@Url.Action("ApplyCoupon")" method="post" class="apply-coupon-form" style="margin-top: 20px;">
                                                         <div class="coupon">
                                                             <label for="coupon_code">Ưu đãi:</label>
                                                             <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Nhập mã ưu đãi tại đây" />
                                                             <button type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
 
-                                                            <!-- Thông báo lỗi hoặc thành công khi áp dụng mã giảm giá -->
-
+                                                            <!-- Hiển thị thông báo thành công hoặc lỗi khi áp dụng mã giảm giá -->
                                                             @if (ViewBag.CouponSuccess != null)
                                                             {
                                                                 <div class="coupon-success" style="color: green; margin-top: 5px;">
@@ -830,6 +834,7 @@
                                                         </div>
                                                     </form>
 
+                                                    <!-- Bảng tóm tắt giỏ hàng -->
                                                     <div class="cart-collaterals1 col-sm-3">
                                                         <div class="cart_totals">
                                                             <table cellspacing="0" class="shop_table shop_table_responsive">
@@ -837,7 +842,7 @@
                                                                     <th>Tạm tính</th>
                                                                     <td data-title="Tạm tính">
                                                                         <span class="woocommerce-Price-amount amount">
-                                                                            @(ViewBag.CartTotal != null ? ((decimal)ViewBag.CartTotal).ToString("N0") : "0")
+                                                                            @cartTotal.ToString("N0")
                                                                             <span class="woocommerce-Price-currencySymbol">&#8363;</span>
                                                                         </span>
                                                                     </td>
@@ -847,7 +852,7 @@
                                                                     <td data-title="Tổng">
                                                                         <strong>
                                                                             <span class="woocommerce-Price-amount amount">
-                                                                                @(ViewBag.TotalAfterDiscount != null ? ((decimal)ViewBag.TotalAfterDiscount).ToString("N0") : "0")
+                                                                                @totalAfterDiscount.ToString("N0")
                                                                                 <span class="woocommerce-Price-currencySymbol">&#8363;</span>
                                                                             </span>
                                                                         </strong>
