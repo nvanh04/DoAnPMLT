@@ -1184,12 +1184,13 @@
                                     <div class="article-content">
                                         <div class="rte">
                                             <div class="woocommerce">
-                                                <div class="woocommerce-notices-wrapper"></div><div class="woocommerce-form-login-toggle">
+                                                <div class="woocommerce-notices-wrapper"></div>@*<div class="woocommerce-form-login-toggle">
 
                                                     <div class="woocommerce-info">
                                                         Bạn đã có tài khoản? <a href="#" class="showlogin">Ấn vào đây để đăng nhập</a>
                                                     </div>
                                                 </div>
+
                                                 <form class="woocommerce-form woocommerce-form-login login" method="post" style="display:none;">
 
 
@@ -1220,8 +1221,8 @@
                                                     <div class="clear"></div>
 
 
-                                                </form>
-                                                <div class="woocommerce-form-coupon-toggle">
+                                                </form>*@
+                                                @*<div class="woocommerce-form-coupon-toggle">
 
                                                     <div class="woocommerce-info">
                                                         Bạn có mã ưu đãi? <a href="#" class="showcoupon">Ấn vào đây để nhập mã</a>
@@ -1241,7 +1242,7 @@
                                                     </p>
 
                                                     <div class="clear"></div>
-                                                </form>
+                                                </form>*@
                                                 <div class="woocommerce-notices-wrapper"></div>
                                                 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="https://tiki.maugiaodien.com/thanh-toan/" enctype="multipart/form-data" novalidate="novalidate">
 
@@ -1303,45 +1304,44 @@
                                                     <div class="col-sm-4" style=" background: #ebe9eb; color: #000; ">
                                                         <h3 id="order_review_heading">Đơn hàng của bạn</h3>
 
-
+                                                       
                                                         <div id="order_review" class="woocommerce-checkout-review-order">
                                                             <table class="shop_table woocommerce-checkout-review-order-table">
+
                                                                 <thead>
                                                                     <tr>
                                                                         <th class="product-name">Sản phẩm</th>
                                                                         <th class="product-total">Tổng</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody>
-                                                                    <tr class="cart_item">
-                                                                        <td class="product-name">
-                                                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)&nbsp;							 <strong class="product-quantity">× 1</strong>
-                                                                        </td>
-                                                                        <td class="product-total">
-                                                                            <span class="woocommerce-Price-amount amount">11,690,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                                <tfoot>
-
-                                                                    <tr class="cart-subtotal">
-                                                                        <th>Tạm tính</th>
-                                                                        <td><span class="woocommerce-Price-amount amount">11,690,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></td>
-                                                                    </tr>
-
-
-
-
-
-
-                                                                    <tr class="order-total">
-                                                                        <th>Tổng</th>
-                                                                        <td><strong><span class="woocommerce-Price-amount amount">11,690,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></strong> </td>
-                                                                    </tr>
-
-
-                                                                </tfoot>
+                                                                @foreach (var item in ViewBag.CartItems)
+                                                                {
+                                                                    var productId = item[0]?.ToString();
+                                                                    var productName = item[1]?.ToString();
+                                                                    var itemPrice = decimal.Parse(item[2]?.ToString() ?? "0");
+                                                                    var quantity = int.Parse(item[3]?.ToString() ?? "0");
+                                                                    var totalPrice = decimal.Parse(item[4]?.ToString() ?? "0");
+                                                                    var imageUrl = item[5]?.ToString();
+                                                                    <tbody>
+                                                                        <tr class="cart_item">
+                                                                            <td class="product-name">
+                                                                                @productName&nbsp;							 <strong class="product-quantity">× @quantity</strong>
+                                                                            </td>
+                                                                            <td class="product-total">
+                                                                                <span class="woocommerce-Price-amount amount">@itemPrice&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                    <tfoot>
+                                                                        <tr class="order-total">
+                                                                            <th>Tổng</th>
+                                                                            <td><strong><span class="woocommerce-Price-amount amount">@(ViewBag.CartTotal != null ? ((decimal)ViewBag.CartTotal).ToString("N0") : "0")&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></strong> </td>
+                                                                        </tr>
+                                                                    </tfoot>
+                                                                }
                                                             </table>
+
+
 
                                                             <div id="payment" class="woocommerce-checkout-payment">
                                                                 <ul class="wc_payment_methods payment_methods methods">
@@ -1384,8 +1384,8 @@
                                                             </div>
 
                                                         </div>
-
                                                     </div>
+
                                                 </form>
 
                                             </div>
@@ -1623,17 +1623,17 @@
             display: none !important;
         }
 
-        body.logged-in [class*='lrm-hide-if-logged-in'] {
+                                                            body.logged-in [class*='lrm-hide-if-logged-in'] {
             display: none !important;
         }
 
-        body:not(.logged-in) .lrm-show-if-logged-in {
-            display: none !important;
-        }
+                                                    body:not(.logged-in) .lrm-show-if-logged-in {
+                                                        display: none !important;
+                                                        }
 
-        body:not(.logged-in) [class*='lrm-show-if-logged-in'] {
-            display: none !important;
-        }
+                                                    body:not(.logged-in) [class*='lrm-show-if-logged-in'] {
+                                                        display: none !important;
+                                                        }
     </style>
     <!--
     -->
