@@ -178,9 +178,9 @@ namespace tiki.Controllers
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
-            decimal orderTotal = 0;
+
             // Thực thi stored procedure để xóa sản phẩm khỏi giỏ hàng
-            db.get($"EXEC RemoveCartItem {userId}, {productId}, {orderTotal}");
+            db.get($"EXEC RemoveCartItem {userId}, {productId}");
 
             return RedirectToAction("Index");
         }

@@ -34,36 +34,36 @@ namespace tiki.Controllers
         public ActionResult XulyDangNhap(string email, string password)
         {
             DataModel db = new DataModel();
-            ViewBag.listCheckAdmin = db.get("EXEC CheckAdmin '" + email + "','" + password + "'");
-            ViewBag.listCheckNBH = db.get("EXEC CheckNBH1 '" + email + "','" + password + "'");
+            //ViewBag.listCheckAdmin = db.get("EXEC CheckAdmin '" + email + "','" + password + "'");
+            //ViewBag.listCheckNBH = db.get("EXEC CheckNBH1 '" + email + "','" + password + "'");
             ViewBag.list = db.get("EXEC KIEMTRADANGNHAP5 '" + email + "','" + password + "'");
 
-            // Nếu là Admin
-            if (ViewBag.listCheckAdmin != null && ViewBag.listCheckAdmin.Count > 0)
-            {
-                ArrayList adminData = (ArrayList)ViewBag.listCheckAdmin[0];
-                Session["IDAdmin"] = adminData[0];
-                Session["TenAdmin"] = adminData[1];
-                Session["VaiTro"] = adminData[2];
-                return RedirectToAction("Index", "admin");
-            }
+            //// Nếu là Admin
+            //if (ViewBag.listCheckAdmin != null && ViewBag.listCheckAdmin.Count > 0)
+            //{
+            //    ArrayList adminData = (ArrayList)ViewBag.listCheckAdmin[0];
+            //    Session["IDAdmin"] = adminData[0];
+            //    Session["TenAdmin"] = adminData[1];
+            //    Session["VaiTro"] = adminData[2];
+            //    return RedirectToAction("Index", "admin");
+            //}
 
-            // Nếu là Nhà bán hàng (NBH)
-            if (ViewBag.listCheckNBH != null && ViewBag.listCheckNBH.Count > 0)
-            {
-                ArrayList nbhData = (ArrayList)ViewBag.listCheckNBH[0];
-                Session["IDNBH"] = nbhData[0];
-                Session["TenNBH"] = nbhData[1];
-                Session["MatKhauNBH"] = nbhData[2];
-                return RedirectToAction("shop", "Shop");
-            }
+            //// Nếu là Nhà bán hàng (NBH)
+            //if (ViewBag.listCheckNBH != null && ViewBag.listCheckNBH.Count > 0)
+            //{
+            //    ArrayList nbhData = (ArrayList)ViewBag.listCheckNBH[0];
+            //    Session["IDNBH"] = nbhData[0];
+            //    Session["TenNBH"] = nbhData[1];
+            //    Session["MatKhauNBH"] = nbhData[2];
+            //    return RedirectToAction("shop", "Shop");
+            //}
 
             // Nếu là khách hàng (KH)
             if (ViewBag.list != null && ViewBag.list.Count > 0)
             {
                 ArrayList userData = (ArrayList)ViewBag.list[0];
                 Session["IDKH"] = userData[0];
-                Session["MKKH"] = userData[3];
+                Session["VaiTro"] = userData[9];
                 Session["TenKH"] = userData[1];
                 Session["SoDTKH"] = userData[5];
                 return RedirectToAction("Index", "Home");
@@ -122,6 +122,13 @@ namespace tiki.Controllers
             ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
             ViewBag.list = db.get("EXEC TIMKIEMTHEOTEN '" + tensp + "'");
             return View();
+        }
+        public ActionResult UpdateUserRoleToNBH()
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.UpdateUserRoleToNBH = db.get($"EXEC UpdateUserRoleToNBH {userId}");
+            return RedirectToAction("shop", "Shop");
         }
     }
 }

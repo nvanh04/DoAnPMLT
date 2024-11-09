@@ -960,11 +960,31 @@
                                             <li>
                                                 <div class="dropdown-divider my-1"></div>
                                             </li>
+
                                             <li>
                                                 <a class="dropdown-item" href="@Url.Action("InfoCustomer", "Home")">
                                                     <i class="bx bx-user bx-md me-3"></i><span>Thông tin cá nhân</span>
                                                 </a>
                                             </li>
+
+                                            @* Thêm điều kiện hiển thị trang dành cho NBH hoặc Admin *@
+                                            @if (Session["VaiTro"]?.ToString() == "NBH")
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" href="@Url.Action("shop", "Shop")">
+                                                        <i class="bx bx-store bx-md me-3"></i><span>Trang bán hàng</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            else if (Session["VaiTro"]?.ToString() == "Admin")
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" href="@Url.Action("Index", "Admin")">
+                                                        <i class="bx bx-cog bx-md me-3"></i><span>Trang Admin</span>
+                                                    </a>
+                                                </li>
+                                            }
+
                                             <li>
                                                 <a class="dropdown-item" href="@Url.Action("GiaoDienDangNhap", "Home")">
                                                     <i class="bx bx-power-off bx-md me-3"></i><span>Đăng xuất</span>

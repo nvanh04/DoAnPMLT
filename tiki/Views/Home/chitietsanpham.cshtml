@@ -524,11 +524,31 @@
                                             <li>
                                                 <div class="dropdown-divider my-1"></div>
                                             </li>
+
                                             <li>
                                                 <a class="dropdown-item" href="@Url.Action("InfoCustomer", "Home")">
                                                     <i class="bx bx-user bx-md me-3"></i><span>Thông tin cá nhân</span>
                                                 </a>
                                             </li>
+
+                                            @* Thêm điều kiện hiển thị trang dành cho NBH hoặc Admin *@
+                                            @if (Session["VaiTro"]?.ToString() == "NBH")
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" href="@Url.Action("shop", "Shop")">
+                                                        <i class="bx bx-store bx-md me-3"></i><span>Trang bán hàng</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            else if (Session["VaiTro"]?.ToString() == "Admin")
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" href="@Url.Action("Index", "Admin")">
+                                                        <i class="bx bx-cog bx-md me-3"></i><span>Trang Admin</span>
+                                                    </a>
+                                                </li>
+                                            }
+
                                             <li>
                                                 <a class="dropdown-item" href="@Url.Action("GiaoDienDangNhap", "Home")">
                                                     <i class="bx bx-power-off bx-md me-3"></i><span>Đăng xuất</span>
@@ -939,11 +959,6 @@
                                                 <div class="contact">
                                                     <div class="item">
                                                         <i style="margin-top: 5px" class="tikicon icon-phone"></i>
-                                                        <!-- <p>
-                                                        <b>Liên hệ</b><br>
-                                                        HOTLINE: <a href="tel:1900 6035">1900 6035</a><br>
-                                                        <small>(1.000đ/phút, 8-21h cả T7, CN)</small>
-                                                        </p> -->
                                                         <p>
                                                             <b>Liên hệ</b><br />
                                                             Hotline đặt hàng <a href="tel:1800 6963">1800 6963</a><br>
@@ -958,10 +973,37 @@
                                                     </div>
                                                 </div>
                                                 <div class="register-to-sell">
-                                                    Bạn muốn bán hàng cùng Tiki? <a target="_blank" href="/ban-hang-cung-tiki?ref=pdp-seller-info">Đăng ký</a>
+                                                    <form id="registerForm" action="~/home/UpdateUserRoleToNBH" method="post">
+                                                        Bạn muốn bán hàng cùng Tiki?
+                                                        <a href="javascript:void(0);" onclick="showConfirmation()">Đăng ký</a>
+                                                    </form>
                                                 </div>
 
+                                                <!-- Modal xác nhận -->
+                                                <div id="confirmationModal" style="display:none;">
+                                                    <div style="background-color: #fff; padding: 20px; border-radius: 8px; max-width: 300px; text-align: center;">
+                                                        <p>Bạn có chắc chắn muốn đăng ký bán hàng?</p>
+                                                        <button onclick="submitForm()">Đồng ý</button>
+                                                        <button onclick="closeModal()">Từ chối</button>
+                                                    </div>
+                                                </div>
 
+                                                <script>
+                                                    function showConfirmation() {
+                                                        // Hiển thị modal xác nhận
+                                                        document.getElementById("confirmationModal").style.display = "block";
+                                                    }
+
+                                                    function closeModal() {
+                                                        // Đóng modal xác nhận
+                                                        document.getElementById("confirmationModal").style.display = "none";
+                                                    }
+
+                                                    function submitForm() {
+                                                        // Gửi form
+                                                        document.getElementById("registerForm").submit();
+                                                    }
+                                                </script>
                                             </div>
                                             <div class="social-wrapper  " style="text-align: center;">
                                                 <div class="social-component-toggle">
