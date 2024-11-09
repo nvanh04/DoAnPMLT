@@ -57,41 +57,44 @@ namespace tiki.Controllers
 
             // Lấy giá trị tạm tính (CartTotal) từ Session
             decimal cartTotal = Session["CartTotal"] != null ? Convert.ToDecimal(Session["CartTotal"]) : 0;
-            decimal discount = 0;
+            decimal discount = 0; // Khai báo biến discount bên ngoài
 
-            try
+            // Kiểm tra mã giảm giá rỗng
+            if (string.IsNullOrWhiteSpace(coupon_code))
             {
-                // Gọi stored procedure ApplyCoupon để lấy giá trị giảm giá dựa trên mã giảm giá
-                var discountList = db.get($"EXEC ApplyCoupon {userId}, '{coupon_code}'") as ArrayList;
+                TempData["CouponError"] = "Mã giảm giá không được để trống.";
+                return RedirectToAction("Index");
+            }
 
-                // Kiểm tra discountList và lấy giá trị DiscountAmount nếu có
-                if (discountList != null && discountList.Count > 0 && discountList[0] is Dictionary<string, object> row)
+            // Gọi stored procedure ApplyCoupon
+            ViewBag.discountResult = db.get($"EXEC ApplyCoupon {userId}, '{coupon_code}'");
+
+            // Kiểm tra kết quả trả về của stored procedure
+            if (ViewBag.discountResult != null && ViewBag.discountResult.Count > 0)
+            {
+                ArrayList discountResult = (ArrayList)ViewBag.discountResult[0];
+
+                // Chuyển đổi discountResult[0] sang decimal
+                if (discountResult.Count > 0 && decimal.TryParse(discountResult[0].ToString(), out discount))
                 {
-                    // Lấy giá trị giảm giá từ cột DiscountAmount
-                    if (row.ContainsKey("DiscountAmount") && decimal.TryParse(row["DiscountAmount"]?.ToString(), out discount) && discount > 0)
+                    if (discount > 0)
                     {
-                        TempData["CouponSuccess"] = $"Mã giảm giá đã được áp dụng. Giảm giá: {discount:N0}₫.";
+                        TempData["Discount"] = discount;
+                        TempData["CouponSuccess"] = $"Bạn đã được giảm giá {discount:C}.";
                     }
                     else
                     {
-                        TempData["CouponError"] = "Mã giảm giá không hợp lệ hoặc không đáp ứng điều kiện.";
+                        TempData["CouponError"] = "Mã giảm giá không hợp lệ hoặc đã hết hạn.";
                     }
                 }
                 else
                 {
-                    TempData["CouponError"] = "Mã giảm giá không hợp lệ hoặc không đáp ứng điều kiện.";
+                    TempData["CouponError"] = "Không thể chuyển đổi giá trị giảm giá.";
                 }
             }
-            catch (SqlException ex)
+            else
             {
-                if (ex.Number == 547) // Mã lỗi 547 là lỗi vi phạm khóa ngoại hoặc mã không tồn tại
-                {
-                    TempData["ErrorMessage"] = "Mã giảm giá không hợp lệ. Vui lòng kiểm tra lại.";
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = "Có lỗi xảy ra khi áp dụng mã giảm giá.";
-                }
+                TempData["CouponError"] = "Đã xảy ra lỗi khi áp dụng mã giảm giá. Vui lòng thử lại.";
             }
 
             // Tính tổng tiền sau khi áp dụng mã giảm giá
@@ -104,6 +107,7 @@ namespace tiki.Controllers
 
             return RedirectToAction("Index");
         }
+
 
 
         // Thêm sản phẩm vào giỏ hàng
