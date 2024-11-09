@@ -67,7 +67,8 @@ namespace tiki.Controllers
             }
 
             // Gọi stored procedure ApplyCoupon
-            ViewBag.discountResult = db.get($"EXEC ApplyCoupon {userId}, '{coupon_code}'");
+            ViewBag.discountResult = db.get($"EXEC ApplyCoupon {userId}, '{coupon_code}', {cartTotal}");
+
 
             // Kiểm tra kết quả trả về của stored procedure
             if (ViewBag.discountResult != null && ViewBag.discountResult.Count > 0)
@@ -84,12 +85,12 @@ namespace tiki.Controllers
                     }
                     else
                     {
-                        TempData["CouponError"] = "Mã giảm giá không hợp lệ hoặc đã hết hạn.";
+                        TempData["CouponError"] = "Mã giảm giá không hợp lệ, đã hết hạn hoặc không đáp ứng giá trị đơn hàng tối thiểu.";
                     }
                 }
                 else
                 {
-                    TempData["CouponError"] = "Không thể chuyển đổi giá trị giảm giá.";
+                    TempData["CouponError"] = "Mã giảm giá không hợp lệ, đã hết hạn hoặc không đáp ứng giá trị đơn hàng tối thiểu.";
                 }
             }
             else
