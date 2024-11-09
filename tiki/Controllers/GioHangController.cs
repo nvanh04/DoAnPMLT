@@ -187,7 +187,14 @@ namespace tiki.Controllers
             int userId = Convert.ToInt32(Session["IDKH"]);
 
             // Lấy thông tin giỏ hàng của người dùng khi chuyển đến trang thanh toán
-            ViewBag.CartItems = db.get("EXEC GetCartItems " + userId);
+            ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
+            ViewBag.cartTotalResult = db.get($"EXEC CalculateCartTotal {userId}");
+            decimal cartTotal = ViewBag.cartTotalResult != null && ViewBag.cartTotalResult.Count > 0
+                                ? Convert.ToDecimal(ViewBag.cartTotalResult[0][0])
+                                : 0;
+
+            ViewBag.CartTotal = cartTotal;
+            Session["CartTotal"] = cartTotal;
 
             return View();
         }
