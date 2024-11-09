@@ -15,6 +15,11 @@ namespace tiki.Controllers
         public ActionResult Index(string id)
         {
             DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.listDemSanPham = db.get($"exec DemSP {userId}");
+            ArrayList DemSP = (ArrayList)ViewBag.listDemSanPham[0];
+
+            Session["DemSP"] = DemSP[0];
             ViewBag.listSanPham = db.get("EXEC xuatProducts");
             ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
             ViewBag.listSPtheoID = db.get("EXEC SPtheoID'" + id + "'");

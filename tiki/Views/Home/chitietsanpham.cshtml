@@ -548,9 +548,14 @@
 
 
                         <div id="header-cart">
-                            <a data-reactroot="" rel="nofollow" href="https://tiki.maugiaodien.com/gio-hang/" class="header-cart item" admicro-data-event="ClickXemGioHang" admicro-data-auto="1" admicro-data-order="false">
-                                <i class="tikicon icon-cart"></i><!-- react-text: 3 -->Giỏ hàng<!-- /react-text --><span class="cart-count" id="cart-total">0</span>
-                            </a>
+                            @if (Session["IDKH"] != null)
+                            {
+                                <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">@Session["DemSP"]</span></a>
+                            }
+                            else
+                            {
+                                <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>
+                            }
                         </div>
 
                         <!-- Tooltip Link social -->

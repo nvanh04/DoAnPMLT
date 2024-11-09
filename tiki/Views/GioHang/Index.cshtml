@@ -567,9 +567,14 @@
 
 
                         <div id="header-cart">
-                            <a data-reactroot="" rel="nofollow" href="https://tiki.maugiaodien.com/gio-hang/" class="header-cart item" admicro-data-event="ClickXemGioHang" admicro-data-auto="1" admicro-data-order="false">
-                                <i class="tikicon icon-cart"></i><!-- react-text: 3 -->Giỏ hàng<!-- /react-text --><span class="cart-count" id="cart-total">0</span>
-                            </a>
+                            @if (Session["IDKH"] != null)
+                            {
+                                <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">@Session["DemSP"]</span></a>
+                            }
+                            else
+                            {
+                                <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>
+                            }
                         </div>
 
                         <!-- Tooltip Link social -->
@@ -726,9 +731,7 @@
                             <div class="col-lg-12">
 
                                 <div class="article-details">
-
                                     <h1 class="article-title1"><a href="https://tiki.maugiaodien.com/gio-hang/">Giỏ hàng</a></h1>
-
 
                                     @{
                                         ViewBag.Title = "Giỏ hàng của bạn";
@@ -761,7 +764,7 @@
                                                                         var itemPrice = decimal.Parse(item[2]?.ToString() ?? "0");
                                                                         var quantity = int.Parse(item[3]?.ToString() ?? "0");
                                                                         var totalPrice = decimal.Parse(item[4]?.ToString() ?? "0");
-                                                                        var imageUrl = item[5]?.ToString(); // URL ảnh sản phẩm
+                                                                        var imageUrl = item[5]?.ToString();
 
                                                                         <tr class="woocommerce-cart-form__cart-item cart_item">
                                                                             <td class="product-remove">
@@ -798,20 +801,34 @@
                                                                         <td colspan="6" style="text-align: center;">Giỏ hàng của bạn hiện đang trống.</td>
                                                                     </tr>
                                                                 }
-                                                                <tr>
-                                                                    <td colspan="6" class="actions">
-                                                                        <div class="coupon">
-                                                                            <label for="coupon_code">Ưu đãi:</label>
-                                                                            <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi" />
-                                                                            <button type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
-                                                                        </div>
-                                                                        <button type="submit" class="button" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
-                                                                    </td>
-                                                                </tr>
                                                             </tbody>
                                                         </table>
+
+                                                        <button type="submit" class="button" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
                                                     </form>
 
+                                                    <form action="@Url.Action("ApplyCoupon")" method="post" class="apply-coupon-form" style="margin-top: 20px;">
+                                                        <div class="coupon">
+                                                            <label for="coupon_code">Ưu đãi:</label>
+                                                            <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Nhập mã ưu đãi tại đây" />
+                                                            <button type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
+
+                                                            <!-- Thông báo lỗi hoặc thành công khi áp dụng mã giảm giá -->
+
+                                                            @if (ViewBag.CouponSuccess != null)
+                                                            {
+                                                                <div class="coupon-success" style="color: green; margin-top: 5px;">
+                                                                    <strong>Thành công!</strong> @ViewBag.CouponSuccess
+                                                                </div>
+                                                            }
+                                                            else if (ViewBag.CouponError != null)
+                                                            {
+                                                                <div class="coupon-error" style="color: red; margin-top: 5px;">
+                                                                    <strong>Không thể áp dụng mã giảm giá:</strong> @ViewBag.CouponError
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </form>
 
                                                     <div class="cart-collaterals1 col-sm-3">
                                                         <div class="cart_totals">
@@ -820,17 +837,7 @@
                                                                     <th>Tạm tính</th>
                                                                     <td data-title="Tạm tính">
                                                                         <span class="woocommerce-Price-amount amount">
-                                                                            @{
-                                                                                // Tính tổng tạm tính
-                                                                                var subtotal = cartItems
-                                                                                    .OfType<object[]>()
-                                                                                    .Where(item => item.Length > 3)
-                                                                                    .Sum(item =>
-                                                                                        (decimal.TryParse(item[2]?.ToString(), out var price) ? price : 0) *
-                                                                                        (int.TryParse(item[3]?.ToString(), out var qty) ? qty : 0)
-                                                                                    );
-                                                                                @subtotal.ToString("N0")
-                                                                            }
+                                                                            @(ViewBag.CartTotal != null ? ((decimal)ViewBag.CartTotal).ToString("N0") : "0")
                                                                             <span class="woocommerce-Price-currencySymbol">&#8363;</span>
                                                                         </span>
                                                                     </td>
@@ -840,30 +847,37 @@
                                                                     <td data-title="Tổng">
                                                                         <strong>
                                                                             <span class="woocommerce-Price-amount amount">
-                                                                                @{
-                                                                                    // Tính tổng sau khi áp dụng giảm giá
-                                                                                    var total = subtotal - discount;
-                                                                                    @total.ToString("N0")
-                                                                                }
+                                                                                @(ViewBag.TotalAfterDiscount != null ? ((decimal)ViewBag.TotalAfterDiscount).ToString("N0") : "0")
                                                                                 <span class="woocommerce-Price-currencySymbol">&#8363;</span>
                                                                             </span>
                                                                         </strong>
                                                                     </td>
                                                                 </tr>
-
-
                                                             </table>
-                                                            <div class="wc-proceed-to-checkout">
-                                                                <a href="/GioHang/ThanhToan" class="checkout-button button alt wc-forward">Tiến hành thanh toán</a>
-                                                            </div>
+
+                                                            <!-- Hiển thị thông báo tổng thể nếu có lỗi khác -->
+                                                            @if (TempData["CartError"] != null)
+                                                            {
+                                                                <div class="cart-error" style="color: red; margin-top: 5px;">
+                                                                    <strong>Lỗi:</strong> @TempData["CartError"]
+                                                                </div>
+                                                            }
                                                         </div>
                                                     </div>
+
+
+                                                    <div class="wc-proceed-to-checkout">
+                                                        <a href="/GioHang/ThanhToan" class="checkout-button button alt wc-forward">Tiến hành thanh toán</a>
+                                                    </div>
+                                                </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
+
                             </div>
 
                         </div>
@@ -924,8 +938,8 @@
                     <div class="footer-nav">
                         <h4 class="title-menu">HỖ TRỢ KHÁCH HÀNG</h4><div class="menu-menu-footer-container">
                             <ul id="menu-menu-footer" class="menu">
-                                <li id="menu-item-1801" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1801"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Giới thiệu Ant Clothes</span></a></li>
-                                <li id="menu-item-1802" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1802"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy chế hoạt động</span></a></li>
+                                
+                                
                                 <li id="menu-item-1803" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1803"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy định bán hàng</span></a></li>
                                 <li id="menu-item-1804" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1804"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Tin tức khuyến mãi</span></a></li>
                             </ul>
@@ -933,8 +947,8 @@
                     </div><div class="footer-nav">
                         <h4 class="title-menu">VỀ TIKI</h4><div class="menu-menu-footer-container">
                             <ul id="menu-menu-footer-1" class="menu">
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1801"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Giới thiệu Ant Clothes</span></a></li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1802"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy chế hoạt động</span></a></li>
+                                
+                                
                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1803"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy định bán hàng</span></a></li>
                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1804"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Tin tức khuyến mãi</span></a></li>
                             </ul>
@@ -942,8 +956,7 @@
                     </div><div class="footer-nav">
                         <h4 class="title-menu">HỢP TÁC VÀ LIÊN KIẾT</h4><div class="menu-menu-footer-container">
                             <ul id="menu-menu-footer-2" class="menu">
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1801"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Giới thiệu Ant Clothes</span></a></li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1802"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy chế hoạt động</span></a></li>
+                                
                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1803"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Quy định bán hàng</span></a></li>
                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1804"><a href="#" class="menu-image-title-after"><span class="menu-image-title">Tin tức khuyến mãi</span></a></li>
                             </ul>

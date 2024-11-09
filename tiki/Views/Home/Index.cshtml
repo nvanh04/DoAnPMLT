@@ -531,8 +531,14 @@
 
 
                         <div id="header-cart">
-                            <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>
-
+                            @if (Session["IDKH"] != null)
+                            {
+                                <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">@Session["DemSP"]</span></a>
+                            }
+                            else
+                            {
+                                <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>
+                            }
                         </div>
 
                         <!-- Tooltip Link social -->
