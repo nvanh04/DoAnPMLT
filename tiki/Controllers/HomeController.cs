@@ -130,5 +130,10 @@ namespace tiki.Controllers
             ViewBag.UpdateUserRoleToNBH = db.get($"EXEC UpdateUserRoleToNBH {userId}");
             return RedirectToAction("shop", "Shop");
         }
+        public ActionResult Theodoidonhang()
+        {
+            DataModel db = new DataModel();
+            return View();
+        }
     }
 }

@@ -486,6 +486,7 @@
     <Content Include="Views\Shop\shoporderlist.cshtml" />
     <Content Include="Views\Shop\category.cshtml" />
     <Content Include="Views\Shop\shoplistproduct.cshtml" />
+    <Content Include="Views\Home\Theodoidonhang.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
