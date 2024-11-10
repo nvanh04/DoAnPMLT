@@ -17,13 +17,99 @@ namespace tiki.Controllers
         public ActionResult Index()
         {
             DataModel db = new DataModel();
-            int userId = Convert.ToInt32(Session["IDKH"]); // Lấy ID người dùng từ Session.
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.listDemSanPham = db.get($"exec DemSP {userId}");
+            // Gọi stored procedure để lấy thông tin giỏ hàng
+            ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
 
-            // Thực thi stored procedure và lấy kết quả vào ViewBag.CartItems
-            ViewBag.CartItems = db.get("EXEC GetCartItems1 " + userId);
-            ViewBag.Discount = 10;
+            // Gọi stored procedure để lấy giá trị CartTotal và gán trực tiếp vào ViewBag và Session
+            ViewBag.cartTotalResult = db.get($"EXEC CalculateCartTotal {userId}");
+            decimal cartTotal = ViewBag.cartTotalResult != null && ViewBag.cartTotalResult.Count > 0
+                                ? Convert.ToDecimal(ViewBag.cartTotalResult[0][0])
+                                : 0;
+
+            ViewBag.CartTotal = cartTotal;
+            Session["CartTotal"] = cartTotal;
+
+            // Thiết lập các giá trị khác cho ViewBag, lấy từ TempData
+            ViewBag.Discount = TempData["Discount"] ?? 0;
+            ViewBag.TotalAfterDiscount = cartTotal - (decimal)ViewBag.Discount;
+            ViewBag.CouponError = TempData["CouponError"];
+            ViewBag.CouponSuccess = TempData["CouponSuccess"];
+
             return View();
         }
+
+        // Áp dụng mã ưu đãi
+        [HttpPost]
+        public ActionResult ApplyCoupon(string coupon_code)
+        {
+            DataModel db = new DataModel();
+
+            // Kiểm tra xem người dùng đã đăng nhập chưa
+            if (Session["IDKH"] == null)
+            {
+                TempData["ErrorMessage"] = "Vui lòng đăng nhập để áp dụng mã giảm giá.";
+                return RedirectToAction("GiaoDienDangNhap");
+            }
+
+            int userId = Convert.ToInt32(Session["IDKH"]);
+
+            // Lấy giá trị tạm tính (CartTotal) từ Session
+            decimal cartTotal = Session["CartTotal"] != null ? Convert.ToDecimal(Session["CartTotal"]) : 0;
+            decimal discount = 0; // Khai báo biến discount bên ngoài
+
+            // Kiểm tra mã giảm giá rỗng
+            if (string.IsNullOrWhiteSpace(coupon_code))
+            {
+                TempData["CouponError"] = "Mã giảm giá không được để trống.";
+                return RedirectToAction("Index");
+            }
+
+            // Gọi stored procedure ApplyCoupon
+            ViewBag.discountResult = db.get($"EXEC ApplyCoupon {userId}, '{coupon_code}', {cartTotal}");
+
+
+            // Kiểm tra kết quả trả về của stored procedure
+            if (ViewBag.discountResult != null && ViewBag.discountResult.Count > 0)
+            {
+                ArrayList discountResult = (ArrayList)ViewBag.discountResult[0];
+
+                // Chuyển đổi discountResult[0] sang decimal
+                if (discountResult.Count > 0 && decimal.TryParse(discountResult[0].ToString(), out discount))
+                {
+                    if (discount > 0)
+                    {
+                        TempData["Discount"] = discount;
+                        TempData["CouponSuccess"] = $"Bạn đã được giảm giá {discount:C}.";
+                    }
+                    else
+                    {
+                        TempData["CouponError"] = "Mã giảm giá không hợp lệ, đã hết hạn hoặc không đáp ứng giá trị đơn hàng tối thiểu.";
+                    }
+                }
+                else
+                {
+                    TempData["CouponError"] = "Mã giảm giá không hợp lệ, đã hết hạn hoặc không đáp ứng giá trị đơn hàng tối thiểu.";
+                }
+            }
+            else
+            {
+                TempData["CouponError"] = "Đã xảy ra lỗi khi áp dụng mã giảm giá. Vui lòng thử lại.";
+            }
+
+            // Tính tổng tiền sau khi áp dụng mã giảm giá
+            decimal totalAfterDiscount = cartTotal - discount;
+
+            // Cập nhật lại các giá trị Session và TempData
+            Session["CartTotal"] = cartTotal;
+            TempData["Discount"] = discount;
+            TempData["TotalAfterDiscount"] = totalAfterDiscount;
+
+            return RedirectToAction("Index");
+        }
+
+
 
         // Thêm sản phẩm vào giỏ hàng
         [HttpPost]
@@ -68,16 +154,24 @@ namespace tiki.Controllers
 
         // Cập nhật số lượng sản phẩm trong giỏ hàng
         [HttpPost]
-        public ActionResult UpdateCart(int productId, int quantity)
+        public ActionResult UpdateCart(List<int> productIds, List<int> quantities)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
 
-            // Thực thi stored procedure để cập nhật số lượng sản phẩm
-            db.get($"EXEC UpdateCartItem {userId}, {productId}, {quantity}");
+            // Duyệt qua từng sản phẩm và cập nhật số lượng
+            for (int i = 0; i < productIds.Count; i++)
+            {
+                int productId = productIds[i];
+                int quantity = quantities[i];
+
+                // Thực thi stored procedure để cập nhật số lượng từng sản phẩm
+                db.get($"EXEC UpdateCartItem {userId}, {productId}, {quantity}");
+            }
 
             return RedirectToAction("Index");
         }
+
 
         // Xóa sản phẩm khỏi giỏ hàng
         public ActionResult RemoveFromCart(int productId)
@@ -91,25 +185,6 @@ namespace tiki.Controllers
             return RedirectToAction("Index");
         }
 
-        // Áp dụng mã ưu đãi
-        [HttpPost]
-        public ActionResult ApplyCoupon(string coupon_code)
-        {
-            DataModel db = new DataModel();
-            int userId = Convert.ToInt32(Session["IDKH"]);
-
-            // Gọi stored procedure và lấy kết quả
-            var discountList = db.get($"EXEC ApplyCoupon {userId}, '{coupon_code}'");
-
-            // Kiểm tra nếu có kết quả và gán vào ViewBag.Discount
-            if (discountList != null && discountList.Count > 0)
-            {
-                ViewBag.Discount = discountList[0]; // Lấy phần tử đầu tiên nếu có kết quả
-            }
-
-            return RedirectToAction("Index");
-        }
-
         // Chuyển đến trang thanh toán
         public ActionResult ThanhToan()
         {
@@ -117,7 +192,14 @@ namespace tiki.Controllers
             int userId = Convert.ToInt32(Session["IDKH"]);
 
             // Lấy thông tin giỏ hàng của người dùng khi chuyển đến trang thanh toán
-            ViewBag.CartItems = db.get("EXEC GetCartItems " + userId);
+            ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
+            ViewBag.cartTotalResult = db.get($"EXEC CalculateCartTotal {userId}");
+            decimal cartTotal = ViewBag.cartTotalResult != null && ViewBag.cartTotalResult.Count > 0
+                                ? Convert.ToDecimal(ViewBag.cartTotalResult[0][0])
+                                : 0;
+
+            ViewBag.CartTotal = cartTotal;
+            Session["CartTotal"] = cartTotal;
 
             return View();
         }
