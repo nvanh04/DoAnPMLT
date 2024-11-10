@@ -781,7 +781,7 @@
                                                         <div class="clear"></div>
                                                     </form>*@
                                                 <div class="woocommerce-notices-wrapper"></div>
-                                                <form name="checkout" method="post" class="checkout woocommerce-checkout" action="~/GioHang/ThemDonHang" enctype="multipart/form-data" >
+                                                <form name="checkout" method="post" class="checkout woocommerce-checkout" action="@Url.Action("DatHang")" enctype="multipart/form-data" >
 
 
 
@@ -859,17 +859,36 @@
                                                                                 @productName&nbsp;							 <strong class="product-quantity">× @quantity</strong>
                                                                             </td>
                                                                             <td class="product-total">
-                                                                                <span class="woocommerce-Price-amount amount">@itemPrice&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span>
+                                                                                <span class="woocommerce-Price-amount amount">@totalPrice&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
-                                                                    <tfoot>
-                                                                        <tr class="order-total">
-                                                                            <th>Tổng</th>
-                                                                            <td><strong><span class="woocommerce-Price-amount amount">@(ViewBag.CartTotal != null ? ((decimal)ViewBag.CartTotal).ToString("N0") : "0")&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></strong> </td>
-                                                                        </tr>
-                                                                    </tfoot>
+
                                                                 }
+                                                                <tfoot>
+                                                                    <tr class="order-total">
+                                                                        <th>Voucher Giảm</th>
+                                                                        <td>
+                                                                            @if (@Session["discount"] == null)
+                                                                            {
+                                                                                <strong><span class="woocommerce-Price-amount amount">@Session["discount"]&nbsp; <span class="woocommerce-Price-currencySymbol">0₫</span></span></strong>
+                                                                            }
+                                                                            else
+                                                                            {<strong><span class="woocommerce-Price-amount amount">@Session["discount"]&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></strong>}
+
+                                                                        </td>
+                                                                        <th>Tổng</th>
+                                                                        <td>
+                                                                            @if(@Session["discount"] == null)
+                                                                                {
+                                                                                    <strong><span class="woocommerce-Price-amount amount">@Session["CartTotal"]&nbsp;<span class="woocommerce-Price-currencySymbol"></span>₫</span></strong>
+                                                                                }
+                                                                            else{<strong><span class="woocommerce-Price-amount amount">@Session["totalAfterDiscount"]&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></strong>}
+                                                                                        
+                                                                            
+                                                                        </td>
+                                                                    </tr>
+                                                                </tfoot>
                                                             </table>
 
 
@@ -900,7 +919,10 @@
 
 
                                                             </div>
-                                                            <button type="submit"  value="Đặt hàng">Đặt hàng</button>
+                                                            <form action="@Url.Action("DatHang")">
+                                                                <button type="submit" value="Đặt hàng">Đặt hàng</button>
+                                                            </form>
+                                                            
                                                         </div>
                                                     </div>
 

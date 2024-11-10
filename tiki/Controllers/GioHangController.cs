@@ -40,6 +40,17 @@ namespace tiki.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult DatHang()
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
+            ViewBag.CartItems = db.get($"EXEC SaveOrder {userId}");
+            // Redirect to a success page or display a success message
+            return RedirectToAction("index", "Home"); // Or return View("OrderConfirmation", model);
+            
+        }
 
         // Áp dụng mã ưu đãi
         [HttpPost]
@@ -103,10 +114,11 @@ namespace tiki.Controllers
             decimal totalAfterDiscount = cartTotal - discount;
 
             // Cập nhật lại các giá trị Session và TempData
+            Session["discount"] = discount;
             Session["CartTotal"] = cartTotal;
             TempData["Discount"] = discount;
             TempData["TotalAfterDiscount"] = totalAfterDiscount;
-
+            Session["totalAfterDiscount"] = totalAfterDiscount;
             return RedirectToAction("Index");
         }
 
@@ -204,23 +216,6 @@ namespace tiki.Controllers
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
             return View();
         }
-        [HttpPost]
-        public ActionResult ThemDonHang(int productId, int quantity, decimal price, string orderStatus, decimal totalAmount)
-        {
-            DataModel db = new DataModel();
-            int userId = Convert.ToInt32(Session["IDKH"]);
-            ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
-            ViewBag.cartTotalResult = db.get($"EXEC CalculateCartTotal {userId}");
-            decimal cartTotal = ViewBag.cartTotalResult != null && ViewBag.cartTotalResult.Count > 0
-                                ? Convert.ToDecimal(ViewBag.cartTotalResult[0][0])
-                                : 0;
-
-            ViewBag.CartTotal = cartTotal;
-            Session["CartTotal"] = cartTotal;
-            db.get($"EXEC ThemDonHang {userId}, {productId}, {quantity}, {price}, {orderStatus}, {totalAmount}");
-
-            // Redirect to a success page or display a success message
-            return RedirectToAction("index","Home"); // Or return View("OrderConfirmation", model);
-        }
+       
     }
 }
