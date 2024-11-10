@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -200,8 +201,26 @@ namespace tiki.Controllers
 
             ViewBag.CartTotal = cartTotal;
             Session["CartTotal"] = cartTotal;
-
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
             return View();
+        }
+        [HttpPost]
+        public ActionResult ThemDonHang(int productId, int quantity, decimal price, string orderStatus, decimal totalAmount)
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
+            ViewBag.cartTotalResult = db.get($"EXEC CalculateCartTotal {userId}");
+            decimal cartTotal = ViewBag.cartTotalResult != null && ViewBag.cartTotalResult.Count > 0
+                                ? Convert.ToDecimal(ViewBag.cartTotalResult[0][0])
+                                : 0;
+
+            ViewBag.CartTotal = cartTotal;
+            Session["CartTotal"] = cartTotal;
+            db.get($"EXEC ThemDonHang {userId}, {productId}, {quantity}, {price}, {orderStatus}, {totalAmount}");
+
+            // Redirect to a success page or display a success message
+            return RedirectToAction("index","Home"); // Or return View("OrderConfirmation", model);
         }
     }
 }
