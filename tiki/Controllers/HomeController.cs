@@ -135,5 +135,10 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
             return View();
         }
+        public ActionResult Thongtincanhan()
+        {
+            DataModel db = new DataModel();
+            return View();
+        }
     }
 }
