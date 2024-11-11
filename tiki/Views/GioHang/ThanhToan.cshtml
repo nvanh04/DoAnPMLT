@@ -7,6 +7,46 @@
     <title>
         Thanh toán &#8211; Mua Hàng Trực Tuyến Uy Tín với Giá Rẻ Hơn tại Tiki.vn
     </title>
+    <style>
+        .notification {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+            .notification p {
+                margin: 0;
+                font-size: 18px;
+            }
+
+        .notification-buttons {
+            margin-top: 10px;
+        }
+
+            .notification-buttons button {
+                padding: 8px 15px;
+                margin: 5px;
+                font-size: 16px;
+                background-color: white;
+                color: #4CAF50;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                .notification-buttons button:hover {
+                    background-color: #ddd;
+                }
+    </style>
     <link href="" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <meta name='robots' content='noindex, nofollow' />
     <link rel='dns-prefetch' href='//s.w.org' />
@@ -297,30 +337,32 @@
     <link rel="alternate" type="application/json+oembed" href="https://tiki.maugiaodien.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftiki.maugiaodien.com%2Fthanh-toan%2F" />
     <link rel="alternate" type="text/xml+oembed" href="https://tiki.maugiaodien.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftiki.maugiaodien.com%2Fthanh-toan%2F&#038;format=xml" />
     <noscript>
-    <style>
-        .woocommerce-product-gallery {
-            opacity: 1 !important;
-        }
-    </style></noscript>
+        <style>
+            .woocommerce-product-gallery {
+                opacity: 1 !important;
+            }
+        </style>
+    </noscript>
     <meta name='robots' content='noindex,nofollow' />
     <style type="text/css" id="wp-custom-css">
-			.hien-thi-thong-tin .large-4 {
-    width: 33%;
-    display: inline-block;
-}
+        .hien-thi-thong-tin .large-4 {
+            width: 33%;
+            display: inline-block;
+        }
 
 
 
 
 
-.hien-thi-thong-tin .row {
-    margin: 0 15px;
-}
+        .hien-thi-thong-tin .row {
+            margin: 0 15px;
+        }
 
 
-.hien-thi-thong-tin .row {
-    margin: 0;
-}		</style>
+        .hien-thi-thong-tin .row {
+            margin: 0;
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700&amp;subset=vietnamese" rel="stylesheet">
 
     <script>
@@ -765,37 +807,6 @@
                                                                             </p>
                                                                         }
                                                                     </div>
-
-                                                                    <script>
-                                                                        document.querySelector("form.checkout").addEventListener("submit", function (e) {
-                                                                            document.querySelectorAll(".error-message").forEach(function (el) {
-                                                                                el.style.display = "none";
-                                                                            });
-
-                                                                            let hasError = false;
-                                                                            if (document.getElementById("billing_name").value.trim() === "") {
-                                                                                document.getElementById("billing_name_error").style.display = "block";
-                                                                                hasError = true;
-                                                                            }
-                                                                            if (document.getElementById("billing_address_1").value.trim() === "") {
-                                                                                document.getElementById("billing_address_1_error").style.display = "block";
-                                                                                hasError = true;
-                                                                            }
-                                                                            if (document.getElementById("billing_tel").value.trim() === "") {
-                                                                                document.getElementById("billing_tel_error").style.display = "block";
-                                                                                hasError = true;
-                                                                            }
-                                                                            if (document.getElementById("billing_email").value.trim() === "") {
-                                                                                document.getElementById("billing_email_error").style.display = "block";
-                                                                                hasError = true;
-                                                                            }
-
-                                                                            if (hasError) {
-                                                                                e.preventDefault();
-                                                                            }
-                                                                        });
-                                                                    </script>
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -895,9 +906,69 @@
 
 
                                                             </div>
-                                                            <button type="submit" value="Đặt hàng">
+                                                            <div id="order-success" class="notification" style="display: none;">
+                                                                <p>Đặt hàng thành công!</p>
+                                                                <div class="notification-buttons">
+                                                                    <button onclick="confirmOrder()">Xác nhận</button>
+                                                                    <button onclick="viewOrder()">Xem đơn hàng</button>
+                                                                    <button onclick="goHome()">Đăng xuất</button>
+                                                                </div>
+                                                            </div>
+                                                            <button onclick="handleSubmit(event)" type="submit" value="Đặt hàng">
                                                                 Đặt hàng
                                                             </button>
+
+                                                            <script>
+                                                                function handleSubmit(event) {
+                                                                    // Ngăn chặn gửi biểu mẫu nếu có lỗi
+                                                                    event.preventDefault();
+
+                                                                    // Ẩn tất cả thông báo lỗi
+                                                                    document.querySelectorAll(".error-message").forEach(function (el) {
+                                                                        el.style.display = "none";
+                                                                    });
+
+                                                                    // Kiểm tra điều kiện
+                                                                    let hasError = false;
+                                                                    if (document.getElementById("billing_name").value.trim() === "") {
+                                                                        document.getElementById("billing_name_error").style.display = "block";
+                                                                        hasError = true;
+                                                                    }
+                                                                    if (document.getElementById("billing_address_1").value.trim() === "") {
+                                                                        document.getElementById("billing_address_1_error").style.display = "block";
+                                                                        hasError = true;
+                                                                    }
+                                                                    if (document.getElementById("billing_tel").value.trim() === "") {
+                                                                        document.getElementById("billing_tel_error").style.display = "block";
+                                                                        hasError = true;
+                                                                    }
+                                                                    if (document.getElementById("billing_email").value.trim() === "") {
+                                                                        document.getElementById("billing_email_error").style.display = "block";
+                                                                        hasError = true;
+                                                                    }
+
+                                                                    // Nếu không có lỗi, hiển thị thông báo đặt hàng thành công
+                                                                    if (!hasError) {
+                                                                        document.getElementById("order-success").style.display = "block";
+                                                                        // Không gửi biểu mẫu tự động mà chờ người dùng xác nhận
+                                                                    }
+                                                                }
+
+                                                                // Gửi biểu mẫu sau khi người dùng nhấn nút xác nhận
+                                                                function confirmOrder() {
+                                                                    document.querySelector("form.checkout").submit();
+                                                                }
+
+                                                                function viewOrder() {
+                                                                    window.location.href = "/order-details";
+                                                                }
+
+                                                                // Đưa về trang GiaoDienDangNhap khi nhấn nút Đăng xuất
+                                                                function goHome() {
+                                                                    window.location.href = "/Home/GiaoDienDangNhap";
+                                                                }
+                                                            </script>
+
                                                         </div>
                                                     </div>
                                                 </form>
