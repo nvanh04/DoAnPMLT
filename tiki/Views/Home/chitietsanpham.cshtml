@@ -815,16 +815,7 @@
 
                                             <form class="cart product-form product-actions" action="@Url.Action("AddToCart", "GioHang")" method="post" enctype="multipart/form-data">
 
-                                                <!-- Thông báo lỗi/thành công -->
-                                                @if (TempData["ErrorMessage"] != null)
-                                                {
-                                                    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
-                                                }
-                                                @if (TempData["SuccessMessage"] != null)
-                                                {
-                                                    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
-                                                }
-
+                                               
                                                 <!-- Hidden field for Product ID -->
                                                 @if (ViewBag.listchitietsanpham != null && ViewBag.listchitietsanpham.Count > 0)
                                                 {

@@ -41,16 +41,48 @@ namespace tiki.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult DatHang()
+        public ActionResult DatHang(string billing_name, string billing_address_1, string billing_tel, string billing_email, string order_comments, string payment_method)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
-            ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
-            ViewBag.CartItems = db.get($"EXEC SaveOrder {userId}");
-            // Redirect to a success page or display a success message
-            return RedirectToAction("index", "Home"); // Or return View("OrderConfirmation", model);
-            
+
+            decimal cartTotal = Session["CartTotal"] != null ? Convert.ToDecimal(Session["CartTotal"]) : 0;
+            string coupon_code = Session["CouponCode"] != null ? Session["CouponCode"].ToString() : string.Empty;
+            decimal discount = Session["discount"] != null ? Convert.ToDecimal(Session["discount"]) : 0;
+            decimal totalAfterDiscount = cartTotal - discount;
+            var result = db.get($"EXEC SaveOrder {userId}, N'{billing_name}', N'{billing_address_1}', '{billing_tel}', '{billing_email}', '{coupon_code}', '{order_comments}', '{payment_method}'");
+
+            if (result != null && result.Count > 0)
+            {
+                var firstResult = result[0] as Dictionary<string, object>;
+
+                int orderId = firstResult != null && firstResult.ContainsKey("OrderId") && firstResult["OrderId"] != DBNull.Value
+                              ? Convert.ToInt32(firstResult["OrderId"])
+                              : 0;
+
+                decimal finalAmount = firstResult != null && firstResult.ContainsKey("FinalAmount") && firstResult["FinalAmount"] != DBNull.Value
+                                      ? Convert.ToDecimal(firstResult["FinalAmount"])
+                                      : 0;
+
+                ViewBag.OrderId = orderId;
+                ViewBag.FinalAmount = finalAmount;
+
+                Session.Remove("CartItems");
+                Session.Remove("CartTotal");
+                Session.Remove("discount");
+                Session.Remove("totalAfterDiscount");
+
+                TempData["DatThanhCong"] = "Đặt hàng thành công!";
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["DatThatBai"] = "Đặt hàng không thành công. Vui lòng thử lại.";
+                return RedirectToAction("ThanhToan", "GioHang");
+            }
         }
+
+
 
         // Áp dụng mã ưu đãi
         [HttpPost]
@@ -92,6 +124,8 @@ namespace tiki.Controllers
                 {
                     if (discount > 0)
                     {
+                         // Lưu mã giảm giá vào Session
+                        Session["CouponCode"] = coupon_code;
                         TempData["Discount"] = discount;
                         TempData["CouponSuccess"] = $"Bạn đã được giảm giá {discount:C}.";
                     }
@@ -121,7 +155,18 @@ namespace tiki.Controllers
             Session["totalAfterDiscount"] = totalAfterDiscount;
             return RedirectToAction("Index");
         }
+        public ActionResult ThanhToan()
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
 
+            // Lấy thông tin giỏ hàng của người dùng khi chuyển đến trang thanh toán
+            ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
+            ViewBag.cartTotalResult = db.get($"EXEC CalculateCartTotal {userId}");
+
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            return View();
+        }
 
 
         // Thêm sản phẩm vào giỏ hàng
@@ -199,23 +244,7 @@ namespace tiki.Controllers
         }
 
         // Chuyển đến trang thanh toán
-        public ActionResult ThanhToan()
-        {
-            DataModel db = new DataModel();
-            int userId = Convert.ToInt32(Session["IDKH"]);
-
-            // Lấy thông tin giỏ hàng của người dùng khi chuyển đến trang thanh toán
-            ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
-            ViewBag.cartTotalResult = db.get($"EXEC CalculateCartTotal {userId}");
-            decimal cartTotal = ViewBag.cartTotalResult != null && ViewBag.cartTotalResult.Count > 0
-                                ? Convert.ToDecimal(ViewBag.cartTotalResult[0][0])
-                                : 0;
-
-            ViewBag.CartTotal = cartTotal;
-            Session["CartTotal"] = cartTotal;
-            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
-            return View();
-        }
+        
        
     }
 }
