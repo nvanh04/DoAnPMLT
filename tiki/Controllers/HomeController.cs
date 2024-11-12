@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Helpers;
@@ -66,6 +67,7 @@ namespace tiki.Controllers
                 Session["VaiTro"] = userData[9];
                 Session["TenKH"] = userData[1];
                 Session["SoDTKH"] = userData[5];
+                Session["Hinh"] = userData[10];
                 return RedirectToAction("Index", "Home");
             }
             // Nếu không tìm thấy tài khoản
@@ -138,7 +140,41 @@ namespace tiki.Controllers
         public ActionResult Thongtincanhan()
         {
             DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+
             return View();
+        }
+        public ActionResult SuaThongTinCaNhan()
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult XuLySuaThongTinCaNhan(string username, string fullname, string email, HttpPostedFileBase hinh, string phone, string DiaChi)
+        {
+            try
+            {
+                if (hinh != null && hinh.ContentLength > 0)
+                {
+                    DataModel db = new DataModel();
+                    int userId = Convert.ToInt32(Session["IDKH"]);
+                    ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+                    string filename = Path.GetFileName(hinh.FileName);
+                    string path = Path.Combine(Server.MapPath("~/HINH"), filename);
+                    hinh.SaveAs(path);
+
+
+                    db.get("EXEC SuaThongTinCaNhan2 " + userId + ", " + username + ", '" + email + "', N'" + fullname + "', " + phone + ", N'" + DiaChi + "','" + hinh.FileName + "'");
+
+                }
+
+            }
+            catch (Exception) { }
+            return RedirectToAction("Thongtincanhan", "Home");
         }
         public ActionResult XemDonHang()
         {
