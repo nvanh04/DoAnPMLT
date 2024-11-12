@@ -73,7 +73,8 @@ namespace tiki.Controllers
                 Session.Remove("totalAfterDiscount");
 
                 TempData["DatThanhCong"] = "Đặt hàng thành công!";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("XemDonHang", "Home");
+
             }
             else
             {

@@ -8,132 +8,37 @@
         Thanh toán &#8211; Mua Hàng Trực Tuyến Uy Tín với Giá Rẻ Hơn tại Tiki.vn
     </title>
     <style>
-        /* Định dạng cho container tổng */
-        .col-sm-4 {
-            background: #ebe9eb;
-            color: #000;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 500px;
-            margin: 0 auto;
-            font-family: Arial, sans-serif;
+        table, h2 {
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Tiêu đề của đơn hàng */
-        #order_review_heading {
+        h2 {
             text-align: center;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #333;
+            background-color: dodgerblue;
+            color: white;
+            border: 2px solid darkcyan;
+            border-radius: 10px;
         }
 
-        /* Bảng hiển thị sản phẩm và tổng đơn hàng */
-        .shop_table {
+        tr {
+            border: 2px solid steelblue;
+            color: steelblue;
             width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
         }
 
-            .shop_table th,
-            .shop_table td {
-                text-align: left;
-                padding: 10px;
-                border-bottom: 1px solid #ddd;
-            }
-
-            .shop_table .product-name {
-                font-weight: bold;
-            }
-
-            .shop_table .product-total {
-                text-align: right;
-            }
-
-        /* Định dạng cho phần tổng cộng và giảm giá */
-        tfoot {
-            font-weight: bold;
+        .thongtin {
+            color: black;
         }
 
-        .order-total th {
-            text-align: left;
+        table {
+            font-size: large;
+            width: 70%;
         }
 
-        .order-total td {
-            text-align: right;
-        }
-
-        /* Định dạng cho các phương thức thanh toán */
-        #wc_payment_methods {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .wc_payment_method {
+        .tieude {
             padding: 10px;
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
-            border-radius: 5px;
         }
-
-            .wc_payment_method label {
-                font-weight: bold;
-                cursor: pointer;
-            }
-
-        .payment_box {
-            margin-top: 5px;
-            padding: 5px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .wc_payment_method input[type="radio"]:checked + label + .payment_box {
-            display: block;
-        }
-
-        /* Nút Đặt hàng */
-        button[type="submit"] {
-            width: 100%;
-            padding: 15px;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 1em;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-            button[type="submit"]:hover {
-                background-color: #0056b3;
-            }
-
-        /* Thông báo đặt hàng thành công */
-        #order-success {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            border-radius: 5px;
-            color: #155724;
-            margin-top: 20px;
-        }
-
-        .notification-buttons button {
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-            .notification-buttons button:hover {
-                background-color: #0056b3;
-            }
     </style>
     <style>
         .notification {
@@ -175,6 +80,11 @@
                     background-color: #ddd;
                 }
     </style>
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="~/assets/css/demo.css" />
+
     <link href="" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <meta name='robots' content='noindex, nofollow' />
     <link rel='dns-prefetch' href='//s.w.org' />
@@ -871,198 +781,89 @@
 
 
 
-        <div class="container" itemscope="" itemtype="http://schema.org/Blog">
-            <div class="row">
+        <h2>Thông tin Đơn hàng</h2>
+        @foreach (var donHang in ViewBag.XuatDH)
+        {
+            <table class="bang">
+                <tr>
+                    <td class="tieude"><b>Mã Đơn hàng</b></td>
+                    <td class="thongtin">@donHang[0]</td> <!-- order_id -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Tên khách hàng</b></td>
+                    <td class="thongtin">@donHang[3]</td> <!-- customer_name -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Số điện thoại</b></td>
+                    <td class="thongtin">@donHang[4]</td> <!-- customer_phone -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Email</b></td>
+                    <td class="thongtin">@donHang[5]</td> <!-- customer_email -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Địa chỉ giao hàng</b></td>
+                    <td class="thongtin">@donHang[6]</td> <!-- shipping_address -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Ngày đặt hàng</b></td>
+                    <td class="thongtin">@donHang[2]</td> <!-- order_date -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Tổng tiền</b></td>
+                    <td class="thongtin">@donHang[7] đ</td> <!-- total_amount -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Giảm giá</b></td>
+                    <td class="thongtin">@donHang[8] đ</td> <!-- discount_amount -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Tổng tiền sau giảm giá</b></td>
+                    <td class="thongtin">@donHang[10] đ</td> <!-- final_amount -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Phương thức thanh toán</b></td>
+                    <td class="thongtin">@donHang[13]</td> <!-- payment_method -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Trạng thái</b></td>
+                    <td class="thongtin">@donHang[11]</td> <!-- status -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Ghi chú</b></td>
+                    <td class="thongtin">@donHang[12]</td> <!-- order_comments -->
+                </tr>
+            </table>
+            <br />
+        }
 
+        <h2>Chi tiết Sản phẩm</h2>
+        @foreach (var item in ViewBag.XuatCTDH)
+        {
+            <table class="bang">
+                <tr>
+                    <td class="tieude"><b>Tên Sản phẩm</b></td>
+                    <td class="thongtin">@item[3]</td> <!-- product_name -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Số lượng</b></td>
+                    <td class="thongtin">@item[5]</td> <!-- quantity -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Giá</b></td>
+                    <td class="thongtin">@item[6] đ</td> <!-- price -->
+                </tr>
+                <tr>
+                    <td class="tieude"><b>Tổng giá sản phẩm</b></td>
+                    <td class="thongtin">@item[7] đ</td> <!-- total_price -->
+                </tr>
+            </table>
+            <br />
+        }
 
-
-                <section class="right-content col-lg-12">
-                    <div class="box-heading relative">
-                    </div>
-                    <article class="article-main">
-                        <div class="row">
-                            <div class="col-lg-12">
-
-                                <div class="article-details">
-
-                                    <h1 class="article-title1"><a href="https://tiki.maugiaodien.com/thanh-toan/">Thanh toán</a></h1>
-
-
-                                    <div class="article-content">
-                                        <div class="rte">
-                                            <div class="woocommerce">
-                                                <div class="woocommerce-notices-wrapper"></div>
-                                                <div class="woocommerce-notices-wrapper"></div>
-                                                <form name="checkout" method="post" class="checkout woocommerce-checkout" action="@Url.Action("DatHang")" enctype="multipart/form-data">
-
-
-                                                    <div class="col-sm-8" id="customer_details">
-                                                        <div class="col-1">
-                                                            <div class="col-1">
-                                                                <div class="woocommerce-billing-fields">
-                                                                    <h3>Thông tin thanh toán</h3>
-
-                                                                    <div class="woocommerce-billing-fields__field-wrapper">
-                                                                        @foreach (var a in ViewBag.list)
-                                                                        {
-                                                                            <p class="form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
-                                                                                <label for="billing_name" class="">Họ và tên&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                <span class="woocommerce-input-wrapper">
-                                                                                    <input type="text" class="input-text" name="billing_name" id="billing_name" value="@a[4]" placeholder="Nhập họ và tên" required />
-                                                                                    <span id="billing_name_error" class="error-message" style="color: red; display: none;">Vui lòng nhập họ và tên</span>
-                                                                                </span>
-                                                                            </p>
-                                                                            <p class="form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
-                                                                                <label for="billing_address_1" class="">Địa chỉ&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                <span class="woocommerce-input-wrapper">
-                                                                                    <input type="text" class="input-text" name="billing_address_1" id="billing_address_1" value="@a[6]" placeholder="Nhập địa chỉ" required />
-                                                                                    <span id="billing_address_1_error" class="error-message" style="color: red; display: none;">Vui lòng nhập địa chỉ</span>
-                                                                                </span>
-                                                                            </p>
-                                                                            <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100">
-                                                                                <label for="billing_tel" class="">Số điện thoại&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                <span class="woocommerce-input-wrapper">
-                                                                                    <input type="tel" class="input-text" name="billing_tel" id="billing_tel" value="@a[5]" placeholder="Nhập số điện thoại" required />
-                                                                                    <span id="billing_tel_error" class="error-message" style="color: red; display: none;">Vui lòng nhập số điện thoại</span>
-                                                                                </span>
-                                                                            </p>
-                                                                            <p class="form-row form-row-wide validate-required validate-email" id="billing_email_field" data-priority="110">
-                                                                                <label for="billing_email" class="">Địa chỉ email&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                <span class="woocommerce-input-wrapper">
-                                                                                    <input type="email" class="input-text" name="billing_email" id="billing_email" value="@a[2]" placeholder="Nhập email" required />
-                                                                                    <span id="billing_email_error" class="error-message" style="color: red; display: none;">Vui lòng nhập email hợp lệ</span>
-                                                                                </span>
-                                                                            </p>
-                                                                        }
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-2">
-                                                            <div class="woocommerce-shipping-fields">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-2">
-                                                            <div class="woocommerce-shipping-fields">
-                                                            </div>
-                                                            <div class="woocommerce-additional-fields">
-                                                                <h3>Thông tin bổ sung</h3>
-                                                                <div class="woocommerce-additional-fields__field-wrapper">
-                                                                    <p class="form-row notes" id="order_comments_field" data-priority=""><label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span class="optional">(tuỳ chọn)</span></label><span class="woocommerce-input-wrapper"><textarea name="order_comments" class="input-text " id="order_comments" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn." rows="2" cols="5"></textarea></span></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4" style=" background: #ebe9eb; color: #000; ">
-                                                        <h3 id="order_review_heading">Đơn hàng của bạn</h3>
-                                                        <div id="order_review" class="woocommerce-checkout-review-order">
-                                                            <table class="shop_table woocommerce-checkout-review-order-table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="product-name">Sản phẩm</th>
-                                                                        <th class="product-total">Tổng</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                @foreach (var item in ViewBag.CartItems)
-                                                                {
-                                                                    var productId = item[0]?.ToString();
-                                                                    var productName = item[1]?.ToString();
-                                                                    var itemPrice = decimal.Parse(item[2]?.ToString() ?? "0");
-                                                                    var quantity = int.Parse(item[3]?.ToString() ?? "0");
-                                                                    var totalPrice = decimal.Parse(item[4]?.ToString() ?? "0");
-                                                                    var imageUrl = item[5]?.ToString();
-                                                                    <tbody>
-                                                                        <tr class="cart_item">
-                                                                            <td class="product-name">
-                                                                                @productName&nbsp;							 <strong class="product-quantity">× @quantity</strong>
-                                                                            </td>
-                                                                            <td class="product-total">
-                                                                                <span class="woocommerce-Price-amount amount">@totalPrice&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                }
-                                                                <tfoot>
-                                                                    <tr class="order-total">
-                                                                        <th>Voucher Giảm</th>
-                                                                        <td>
-                                                                            @if (@Session["discount"] == null)
-                                                                            {
-                                                                                <strong><span class="woocommerce-Price-amount amount">@Session["discount"]&nbsp; <span class="woocommerce-Price-currencySymbol">0₫</span></span></strong>
-                                                                            }
-                                                                            else
-                                                                            {<strong><span class="woocommerce-Price-amount amount">@Session["discount"]&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></strong>}
-
-                                                                        </td>
-                                                                        <th>Tổng</th>
-                                                                        <td>
-                                                                            @if (@Session["discount"] == null)
-                                                                            {
-                                                                                <strong><span class="woocommerce-Price-amount amount">@Session["CartTotal"]&nbsp;<span class="woocommerce-Price-currencySymbol"></span>₫</span></strong>
-                                                                            }
-                                                                            else
-                                                                            {<strong><span class="woocommerce-Price-amount amount">@Session["totalAfterDiscount"]&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></strong>}
-                                                                        </td>
-                                                                    </tr>
-                                                                </tfoot>
-                                                            </table>
-                                                            <div id="payment" class="woocommerce-checkout-payment">
-                                                                <ul class="wc_payment_methods payment_methods methods">
-                                                                    <li class="wc_payment_method payment_method_bacs">
-                                                                        <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" checked="checked" data-order_button_text="">
-
-                                                                        <label for="payment_method_bacs">
-                                                                            Chuyển khoản ngân hàng
-                                                                        </label>
-                                                                        <div class="payment_box payment_method_bacs">
-                                                                            <p>Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn hàng của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ đươc giao sau khi tiền đã chuyển.</p>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="wc_payment_method payment_method_cod">
-                                                                        <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" data-order_button_text="">
-
-                                                                        <label for="payment_method_cod">
-                                                                            Trả tiền mặt khi nhận hàng
-                                                                        </label>
-                                                                        <div class="payment_box payment_method_cod" style="display:none;">
-                                                                            <p>Trả tiền mặt khi giao hàng</p>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-
-
-                                                            </div>
-                                                            <div id="order-success" class="notification" style="display: none;">
-                                                                <p>Đặt hàng thành công!</p>
-                                                                <div class="notification-buttons">
-                                                                    <button onclick="viewOrder()">Xem đơn hàng</button>
-                                                                </div>
-                                                            </div>
-                                                            <button onclick="handleSubmit(event)" type="submit" value="Đặt hàng">
-                                                                Đặt hàng
-                                                            </button>
-
-
-
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </article>
-                </section>
-
-
-            </div>
-        </div>
-
+        <p>
+            @Html.ActionLink("Home", "Index")
+        </p>
 
 
 
@@ -1489,46 +1290,235 @@
             <a href="#0" class="lrm-close-form">Đóng</a>
         </div> <!-- lrm-user-modal-container -->
     </div> <!-- lrm-user-modal -->
-    <script>
-     function handleSubmit(event) {
-         // Ngăn chặn gửi biểu mẫu nếu có lỗi
-         event.preventDefault();
+    @*<div class="hien-thi-thong-tin" style="position: fixed;bottom: 0;width: 100%!important;z-index: 20;">
+            <div class="row">
+                <div class="large-4 small-12" style="padding:10px">
+                    <a href="https://themewp.vn" style="background-color: #FEBA1D;background: linear-gradient(135deg,#FEBA1D 30%,#F5912C 100%);padding:8px 3px;text-align: center;border-radius: 5px;color: #fff;display: block;font-size: 105%;text-decoration: none;" target="_blank"><i class="icon-star"></i> ThemeWP.vn - Kho Theme Wordpress</a>
+                </div>
+                <div class="large-4 hide-for-small" style="padding:10px">
+                    <a href="https://themewp.vn/kho-plugin" style="background-color: #FEBA1D;background: linear-gradient(135deg,#FEBA1D 30%,#F5912C 100%);padding:8px 3px;text-align: center;border-radius: 5px;color: #fff;display: block;font-size: 105%;text-decoration: none;" target="_blank"><i class="icon-gift"></i> Kho Plugin miễn phí</a>
+                </div>
+                <div class="large-4 hide-for-small" style="padding:10px">
+                    <a href="https://themewp.vn/kinh-doanh-linh-vuc-web" style="background-color: #FEBA1D;background: linear-gradient(135deg,#FEBA1D 30%,#F5912C 100%);padding:8px 3px;text-align: center;border-radius: 5px;color: #fff;display: block;font-size: 105%;text-decoration: none;" target="_blank"><i class="icon-play"></i> Đăng ký đại lý</a>
+                </div>
 
-         // Ẩn tất cả thông báo lỗi
-         document.querySelectorAll(".error-message").forEach(function (el) {
-             el.style.display = "none";
-         });
+            </div>
+        </div>*@
 
-         // Kiểm tra điều kiện
-         let hasError = false;
-         if (document.getElementById("billing_name").value.trim() === "") {
-             document.getElementById("billing_name_error").style.display = "block";
-             hasError = true;
-         }
-         if (document.getElementById("billing_address_1").value.trim() === "") {
-             document.getElementById("billing_address_1_error").style.display = "block";
-             hasError = true;
-         }
-         if (document.getElementById("billing_tel").value.trim() === "") {
-             document.getElementById("billing_tel_error").style.display = "block";
-             hasError = true;
-         }
-         if (document.getElementById("billing_email").value.trim() === "") {
-             document.getElementById("billing_email_error").style.display = "block";
-             hasError = true;
-         }
 
-         // Nếu không có lỗi, hiển thị thông báo đặt hàng thành công
-         if (!hasError) {
-             document.getElementById("order-success").style.display = "block";
-             // Không gửi biểu mẫu tự động mà chờ người dùng xác nhận
-         }
-     }
+    @*<script type="text/javascript">
+            var c = document.body.className;
+            c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+            document.body.className = c;
+        </script>
+        <script type="text/javascript" id="lrm-modal-js-extra">
+            /* <![CDATA[ */
+            var LRM = { "password_zxcvbn_js_src": "https:\/\/tiki.maugiaodien.com\/wp-includes\/js\/zxcvbn.min.js", "password_strength_lib": null, "redirect_url": "", "ajax_url": "https:\/\/tiki.maugiaodien.com\/?lrm=1", "is_user_logged_in": "", "reload_after_login": null, "selectors_mapping": { "login": "", "register": "" }, "is_customize_preview": "", "l10n": { "password_is_good": "Good Password", "password_is_strong": "Strong Password", "password_is_short": "Too Short Password", "password_is_bad": "Bad Password", "passwords_is_mismatch": "Passwords is mismatch!" } };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/ajax-login-and-registration-modal-popup/assets/lrm-core.js?ver=32" id="lrm-modal-js"></script>
+        <script type="text/javascript" id="contact-form-7-js-extra">
+            /* <![CDATA[ */
+            var wpcf7 = { "apiSettings": { "root": "https:\/\/tiki.maugiaodien.com\/wp-json\/contact-form-7\/v1", "namespace": "contact-form-7\/v1" } };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.6" id="contact-form-7-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70" id="jquery-blockui-js"></script>
+        <script type="text/javascript" id="wc-add-to-cart-js-extra">
+            /* <![CDATA[ */
+            var wc_add_to_cart_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "Xem gi\u1ecf h\u00e0ng", "cart_url": "https:\/\/tiki.maugiaodien.com\/gio-hang\/", "is_cart": "", "cart_redirect_after_add": "no" };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.8.0" id="wc-add-to-cart-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js?ver=1.0.6" id="selectWoo-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.9" id="regenerator-runtime-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-includes/js/dist/hooks.min.js?ver=c6d64f2cb8f5c6bb49caca37f8828ce3" id="wp-hooks-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-includes/js/dist/i18n.min.js?ver=ebee46757c6a411e38fd079a7ac71d94" id="wp-i18n-js"></script>
+        <script type="text/javascript" id="wp-i18n-js-after">
+            wp.i18n.setLocaleData({ 'text direction\u0004ltr': ['ltr'] });
+        </script>
+        <script type="text/javascript" id="password-strength-meter-js-extra">
+            /* <![CDATA[ */
+            var pwsL10n = { "unknown": "M\u1eadt kh\u1ea9u m\u1ea1nh kh\u00f4ng x\u00e1c \u0111\u1ecbnh", "short": "R\u1ea5t y\u1ebfu", "bad": "Y\u1ebfu", "good": "Trung b\u00ecnh", "strong": "M\u1ea1nh", "mismatch": "M\u1eadt kh\u1ea9u kh\u00f4ng kh\u1edbp" };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" id="password-strength-meter-js-translations">
+            (function (domain, translations) {
+                var localeData = translations.locale_data[domain] || translations.locale_data.messages;
+                localeData[""].domain = domain;
+                wp.i18n.setLocaleData(localeData, domain);
+            })("default", { "translation-revision-date": "2021-11-15 07:20:52+0000", "generator": "GlotPress\/4.0.0-alpha.1", "domain": "messages", "locale_data": { "messages": { "": { "domain": "messages", "plural-forms": "nplurals=1; plural=0;", "lang": "vi_VN" }, "%1$s is deprecated since version %2$s! Use %3$s instead. Please consider writing more inclusive code.": ["%1$s \u0111\u00e3 ng\u1eebng ho\u1ea1t \u0111\u1ed9ng t\u1eeb phi\u00ean b\u1ea3n %2$s! S\u1eed d\u1ee5ng thay th\u1ebf b\u1eb1ng %3$s."] } }, "comment": { "reference": "wp-admin\/js\/password-strength-meter.js" } });
+        </script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-admin/js/password-strength-meter.min.js?ver=6.0" id="password-strength-meter-js"></script>
+        <script type="text/javascript" id="wc-password-strength-meter-js-extra">
+            /* <![CDATA[ */
+            var wc_password_strength_meter_params = { "min_password_strength": "3", "stop_checkout": "", "i18n_password_error": "Vui l\u00f2ng nh\u1eadp m\u1eadt kh\u1ea9u kh\u00f3 h\u01a1n.", "i18n_password_hint": "G\u1ee3i \u00fd: M\u1eadt kh\u1ea9u ph\u1ea3i c\u00f3 \u00edt nh\u1ea5t 12 k\u00fd t\u1ef1. \u0110\u1ec3 n\u00e2ng cao \u0111\u1ed9 b\u1ea3o m\u1eadt, s\u1eed d\u1ee5ng ch\u1eef in hoa, in th\u01b0\u1eddng, ch\u1eef s\u1ed1 v\u00e0 c\u00e1c k\u00fd t\u1ef1 \u0111\u1eb7c bi\u1ec7t nh\u01b0 ! \" ? $ % ^ & )." };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/password-strength-meter.min.js?ver=3.8.0" id="wc-password-strength-meter-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4" id="js-cookie-js"></script>
+        <script type="text/javascript" id="woocommerce-js-extra">
+            /* <![CDATA[ */
+            var woocommerce_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%" };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.8.0" id="woocommerce-js"></script>
+        <script type="text/javascript" id="wc-country-select-js-extra">
+            /* <![CDATA[ */
+            var wc_country_select_params = { "countries": "{\"AF\":[],\"AO\":{\"BGO\":\"Bengo\",\"BLU\":\"Benguela\",\"BIE\":\"Bi\\u00e9\",\"CAB\":\"Cabinda\",\"CNN\":\"Cunene\",\"HUA\":\"Huambo\",\"HUI\":\"Hu\\u00edla\",\"CCU\":\"Kuando Kubango\",\"CNO\":\"Kwanza-Norte\",\"CUS\":\"Kwanza-Sul\",\"LUA\":\"Luanda\",\"LNO\":\"Lunda-Norte\",\"LSU\":\"Lunda-Sul\",\"MAL\":\"Malanje\",\"MOX\":\"Moxico\",\"NAM\":\"Namibe\",\"UIG\":\"U\\u00edge\",\"ZAI\":\"Zaire\"},\"AR\":{\"C\":\"Ciudad Aut\u00f3noma de Buenos Aires\",\"B\":\"Buenos Aires\",\"K\":\"Catamarca\",\"H\":\"Chaco\",\"U\":\"Chubut\",\"X\":\"C\u00f3rdoba\",\"W\":\"Corrientes\",\"E\":\"Entre R\u00edos\",\"P\":\"Formosa\",\"Y\":\"Jujuy\",\"L\":\"La Pampa\",\"F\":\"La Rioja\",\"M\":\"Mendoza\",\"N\":\"Misiones\",\"Q\":\"Neuqu\u00e9n\",\"R\":\"R\u00edo Negro\",\"A\":\"Salta\",\"J\":\"San Juan\",\"D\":\"San Luis\",\"Z\":\"Santa Cruz\",\"S\":\"Santa Fe\",\"G\":\"Santiago del Estero\",\"V\":\"Tierra del Fuego\",\"T\":\"Tucum\u00e1n\"},\"AT\":[],\"AU\":{\"ACT\":\"L\\u00e3nh th\\u1ed5 Th\\u1ee7 \\u0111\\u00f4 \\u00dac\",\"NSW\":\"New South Wales\",\"NT\":\" L\\u00e3nh th\\u1ed5 B\\u1eafc \\u00dac\",\"QLD\":\"Queensland\",\"SA\":\"Nam \\u00dac\",\"TAS\":\"Tasmania\",\"VIC\":\"Victoria\",\"WA\":\"Bang T\\u00e2y \\u00dac\"},\"AX\":[],\"BD\":{\"BD-05\":\"Bagerhat\",\"BD-01\":\"Bandarban\",\"BD-02\":\"Barguna\",\"BD-06\":\"Barishal\",\"BD-07\":\"Bhola\",\"BD-03\":\"Bogura\",\"BD-04\":\"Brahmanbaria\",\"BD-09\":\"Chandpur\",\"BD-10\":\"Chattogram\",\"BD-12\":\"Chuadanga\",\"BD-11\":\"Cox's Bazar\",\"BD-08\":\"Cumilla\",\"BD-13\":\"Dhaka\",\"BD-14\":\"Dinajpur\",\"BD-15\":\"Faridpur \",\"BD-16\":\"Feni\",\"BD-19\":\"Gaibandha\",\"BD-18\":\"Gazipur\",\"BD-17\":\"Gopalganj\",\"BD-20\":\"Habiganj\",\"BD-21\":\"Jamalpur\",\"BD-22\":\"Jashore\",\"BD-25\":\"Jhalokati\",\"BD-23\":\"Jhenaidah\",\"BD-24\":\"Joypurhat\",\"BD-29\":\"Khagrachhari\",\"BD-27\":\"Khulna\",\"BD-26\":\"Kishoreganj\",\"BD-28\":\"Kurigram\",\"BD-30\":\"Kushtia\",\"BD-31\":\"Lakshmipur\",\"BD-32\":\"Lalmonirhat\",\"BD-36\":\"Madaripur\",\"BD-37\":\"Magura\",\"BD-33\":\"Manikganj \",\"BD-39\":\"Meherpur\",\"BD-38\":\"Moulvibazar\",\"BD-35\":\"Munshiganj\",\"BD-34\":\"Mymensingh\",\"BD-48\":\"Naogaon\",\"BD-43\":\"Narail\",\"BD-40\":\"Narayanganj\",\"BD-42\":\"Narsingdi\",\"BD-44\":\"Natore\",\"BD-45\":\"Nawabganj\",\"BD-41\":\"Netrakona\",\"BD-46\":\"Nilphamari\",\"BD-47\":\"Noakhali\",\"BD-49\":\"Pabna\",\"BD-52\":\"Panchagarh\",\"BD-51\":\"Patuakhali\",\"BD-50\":\"Pirojpur\",\"BD-53\":\"Rajbari\",\"BD-54\":\"Rajshahi\",\"BD-56\":\"Rangamati\",\"BD-55\":\"Rangpur\",\"BD-58\":\"Satkhira\",\"BD-62\":\"Shariatpur\",\"BD-57\":\"Sherpur\",\"BD-59\":\"Sirajganj\",\"BD-61\":\"Sunamganj\",\"BD-60\":\"Sylhet\",\"BD-63\":\"Tangail\",\"BD-64\":\"Thakurgaon\"},\"BE\":[],\"BG\":{\"BG-01\":\"Blagoevgrad\",\"BG-02\":\"Burgas\",\"BG-08\":\"Dobrich\",\"BG-07\":\"Gabrovo\",\"BG-26\":\"Haskovo\",\"BG-09\":\"Kardzhali\",\"BG-10\":\"Kyustendil\",\"BG-11\":\"Lovech\",\"BG-12\":\"Montana\",\"BG-13\":\"Pazardzhik\",\"BG-14\":\"Pernik\",\"BG-15\":\"Pleven\",\"BG-16\":\"Plovdiv\",\"BG-17\":\"Razgrad\",\"BG-18\":\"Ruse\",\"BG-27\":\"Shumen\",\"BG-19\":\"Silistra\",\"BG-20\":\"Sliven\",\"BG-21\":\"Smolyan\",\"BG-23\":\"Sofia\",\"BG-22\":\"Sofia-Grad\",\"BG-24\":\"Stara Zagora\",\"BG-25\":\"Targovishte\",\"BG-03\":\"Varna\",\"BG-04\":\"Veliko Tarnovo\",\"BG-05\":\"Vidin\",\"BG-06\":\"Vratsa\",\"BG-28\":\"Yambol\"},\"BH\":[],\"BI\":[],\"BO\":{\"B\":\"Chuquisaca\",\"H\":\"Beni\",\"C\":\"Cochabamba\",\"L\":\"La Paz\",\"O\":\"Oruro\",\"N\":\"Pando\",\"P\":\"Potos\\u00ed\",\"S\":\"Santa Cruz\",\"T\":\"Tarija\"},\"BR\":{\"AC\":\"Acre\",\"AL\":\"Alagoas\",\"AP\":\"Amap\u00e1\",\"AM\":\"Amazonas\",\"BA\":\"Bahia\",\"CE\":\"Cear\u00e1\",\"DF\":\"Distrito Federal\",\"ES\":\"Esp\u00edrito Santo\",\"GO\":\"Goi\u00e1s\",\"MA\":\"Maranh\u00e3o\",\"MT\":\"Mato Grosso\",\"MS\":\"Mato Grosso do Sul\",\"MG\":\"Minas Gerais\",\"PA\":\"Par\u00e1\",\"PB\":\"Para\u00edba\",\"PR\":\"Paran\u00e1\",\"PE\":\"Pernambuco\",\"PI\":\"Piau\u00ed\",\"RJ\":\"Rio de Janeiro\",\"RN\":\"Rio Grande do Norte\",\"RS\":\"Rio Grande do Sul\",\"RO\":\"Rond\u00f4nia\",\"RR\":\"Roraima\",\"SC\":\"Santa Catarina\",\"SP\":\"S\u00e3o Paulo\",\"SE\":\"Sergipe\",\"TO\":\"Tocantins\"},\"CA\":{\"AB\":\"Alberta\",\"BC\":\"British Columbia\",\"MB\":\"Manitoba\",\"NB\":\"New Brunswick\",\"NL\":\"Newfoundland and Labrador\",\"NT\":\"Northwest Territories\",\"NS\":\"Nova Scotia\",\"NU\":\"Nunavut\",\"ON\":\"Ontario\",\"PE\":\"\\u0110\\u1ea3o Ho\\u00e0ng t\\u1eed Edward\",\"QC\":\"Quebec\",\"SK\":\"Saskatchewan\",\"YT\":\"V\\u00f9ng Yukon\"},\"CH\":{\"AG\":\"Aargau\",\"AR\":\"Appenzell Ausserrhoden\",\"AI\":\"Appenzell Innerrhoden\",\"BL\":\"Basel-Landschaft\",\"BS\":\"Basel-Stadt\",\"BE\":\"Bern\",\"FR\":\"Fribourg\",\"GE\":\"Geneva\",\"GL\":\"Glarus\",\"GR\":\"Graub\u00fcnden\",\"JU\":\"Jura\",\"LU\":\"Luzern\",\"NE\":\"Neuch\u00e2tel\",\"NW\":\"Nidwalden\",\"OW\":\"Obwalden\",\"SH\":\"Schaffhausen\",\"SZ\":\"Schwyz\",\"SO\":\"Solothurn\",\"SG\":\"St. Gallen\",\"TG\":\"Thurgau\",\"TI\":\"Ticino\",\"UR\":\"Uri\",\"VS\":\"Valais\",\"VD\":\"Vaud\",\"ZG\":\"Zug\",\"ZH\":\"Z\u00fcrich\"},\"CN\":{\"CN1\":\"V\\u00e2n Nam \\\/ \u4e91\u5357\",\"CN2\":\"B\\u1eafc Kinh \\\/ \u5317\u4eac\",\"CN3\":\"Thi\\u00ean T\\u00e2n \\\/ \u5929\u6d25\",\"CN4\":\"H\\u00e0 B\\u1eafc \\\/ \u6cb3\u5317\",\"CN5\":\"S\\u01a1n T\\u00e2y \\\/ \u5c71\u897f\",\"CN6\":\"N\\u1ed9i M\\u00f4ng \\\/ \u5167\u8499\u53e4\",\"CN7\":\"Li\\u00eau Ninh \\\/ \u8fbd\u5b81\",\"CN8\":\"C\\u00e1t L\\u00e2m \\\/ \u5409\u6797\",\"CN9\":\"H\\u1eafc Long Giang \\\/ \u9ed1\u9f99\u6c5f\",\"CN10\":\"Th\\u01b0\\u1ee3ng H\\u1ea3i \\\/ \u4e0a\u6d77\",\"CN11\":\"Giang T\\u00f4 \\\/ \u6c5f\u82cf\",\"CN12\":\"Chi\\u1ebft Giang \\\/ \u6d59\u6c5f\",\"CN13\":\"An Huy \\\/ \u5b89\u5fbd\",\"CN14\":\"Ph\\u00fac Ki\\u1ebfn \\\/ \u798f\u5efa\",\"CN15\":\"Giang T\\u00e2y \\\/ \u6c5f\u897f\",\"CN16\":\"S\\u01a1n \\u0110\\u00f4ng \\\/ \u5c71\u4e1c\",\"CN17\":\"H\\u00e0 Nam \\\/ \u6cb3\u5357\",\"CN18\":\"H\\u1ed3 B\\u1eafc \\\/ \u6e56\u5317\",\"CN19\":\"H\\u1ed3 Nam \\\/ \u6e56\u5357\",\"CN20\":\"Qu\\u1ea3ng \\u0110\\u00f4ng \\\/ \u5e7f\u4e1c\",\"CN21\":\"Khu t\\u1ef1 tr\\u1ecb d\\u00e2n t\\u1ed9c Choang Qu\\u1ea3ng T\\u00e2y \\\/ \u5e7f\u897f\u58ee\u65cf\",\"CN22\":\"H\\u1ea3i Nam \\\/ \u6d77\u5357\",\"CN23\":\"Tr\\u00f9ng Kh\\u00e1nh \\\/ \u91cd\u5e86\",\"CN24\":\"T\\u1ee9 Xuy\\u00ean \\\/ \u56db\u5ddd\",\"CN25\":\"Qu\\u00fd Ch\\u00e2u \\\/ \u8d35\u5dde\",\"CN26\":\"Thi\\u1ec3m T\\u00e2y \\\/ \u9655\u897f\",\"CN27\":\"Cam T\\u00fac \\\/ \u7518\u8083\",\"CN28\":\"Thanh H\\u1ea3i \\\/ \u9752\u6d77\",\"CN29\":\"Ninh H\\u1ea1 H\\u1ed3i \\\/ \u5b81\u590f\",\"CN30\":\"Macao \\\/ \u6fb3\u95e8\",\"CN31\":\"Tibet \\\/ \u897f\u85cf\",\"CN32\":\"T\\u00e2n C\\u01b0\\u01a1ng \\\/ \u65b0\u7586\"},\"CZ\":[],\"DE\":[],\"DK\":[],\"EE\":[],\"ES\":{\"C\":\"A Coru\u00f1a\",\"VI\":\"Araba\\\/\u00c1lava\",\"AB\":\"Albacete\",\"A\":\"Alicante\",\"AL\":\"Almer\u00eda\",\"O\":\"Asturias\",\"AV\":\"\u00c1vila\",\"BA\":\"Badajoz\",\"PM\":\"Baleares\",\"B\":\"Barcelona\",\"BU\":\"Burgos\",\"CC\":\"C\u00e1ceres\",\"CA\":\"C\u00e1diz\",\"S\":\"Cantabria\",\"CS\":\"Castell\u00f3n\",\"CE\":\"Ceuta\",\"CR\":\"Ciudad Real\",\"CO\":\"C\u00f3rdoba\",\"CU\":\"Cuenca\",\"GI\":\"Girona\",\"GR\":\"Granada\",\"GU\":\"Guadalajara\",\"SS\":\"Gipuzkoa\",\"H\":\"Huelva\",\"HU\":\"Huesca\",\"J\":\"Ja\u00e9n\",\"LO\":\"La Rioja\",\"GC\":\"Las Palmas\",\"LE\":\"Le\u00f3n\",\"L\":\"Lleida\",\"LU\":\"Lugo\",\"M\":\"Madrid\",\"MA\":\"M\u00e1laga\",\"ML\":\"Melilla\",\"MU\":\"Murcia\",\"NA\":\"Navarra\",\"OR\":\"Ourense\",\"P\":\"Palencia\",\"PO\":\"Pontevedra\",\"SA\":\"Salamanca\",\"TF\":\"Santa Cruz de Tenerife\",\"SG\":\"Segovia\",\"SE\":\"Sevilla\",\"SO\":\"Soria\",\"T\":\"Tarragona\",\"TE\":\"Teruel\",\"TO\":\"Toledo\",\"V\":\"Valencia\",\"VA\":\"Valladolid\",\"BI\":\"Bizkaia\",\"ZA\":\"Zamora\",\"Z\":\"Zaragoza\"},\"FI\":[],\"FR\":[],\"GP\":[],\"GR\":{\"I\":\"\\u0391\\u03c4\\u03c4\\u03b9\\u03ba\\u03ae\",\"A\":\"\\u0391\\u03bd\\u03b1\\u03c4\\u03bf\\u03bb\\u03b9\\u03ba\\u03ae \\u039c\\u03b1\\u03ba\\u03b5\\u03b4\\u03bf\\u03bd\\u03af\\u03b1 \\u03ba\\u03b1\\u03b9 \\u0398\\u03c1\\u03ac\\u03ba\\u03b7\",\"B\":\"\\u039a\\u03b5\\u03bd\\u03c4\\u03c1\\u03b9\\u03ba\\u03ae \\u039c\\u03b1\\u03ba\\u03b5\\u03b4\\u03bf\\u03bd\\u03af\\u03b1\",\"C\":\"\\u0394\\u03c5\\u03c4\\u03b9\\u03ba\\u03ae \\u039c\\u03b1\\u03ba\\u03b5\\u03b4\\u03bf\\u03bd\\u03af\\u03b1\",\"D\":\"\\u0389\\u03c0\\u03b5\\u03b9\\u03c1\\u03bf\\u03c2\",\"E\":\"\\u0398\\u03b5\\u03c3\\u03c3\\u03b1\\u03bb\\u03af\\u03b1\",\"F\":\"\\u0399\\u03cc\\u03bd\\u03b9\\u03bf\\u03b9 \\u039d\\u03ae\\u03c3\\u03bf\\u03b9\",\"G\":\"\\u0394\\u03c5\\u03c4\\u03b9\\u03ba\\u03ae \\u0395\\u03bb\\u03bb\\u03ac\\u03b4\\u03b1\",\"H\":\"\\u03a3\\u03c4\\u03b5\\u03c1\\u03b5\\u03ac \\u0395\\u03bb\\u03bb\\u03ac\\u03b4\\u03b1\",\"J\":\"\\u03a0\\u03b5\\u03bb\\u03bf\\u03c0\\u03cc\\u03bd\\u03bd\\u03b7\\u03c3\\u03bf\\u03c2\",\"K\":\"\\u0392\\u03cc\\u03c1\\u03b5\\u03b9\\u03bf \\u0391\\u03b9\\u03b3\\u03b1\\u03af\\u03bf\",\"L\":\"\\u039d\\u03cc\\u03c4\\u03b9\\u03bf \\u0391\\u03b9\\u03b3\\u03b1\\u03af\\u03bf\",\"M\":\"\\u039a\\u03c1\\u03ae\\u03c4\\u03b7\"},\"GF\":[],\"HK\":{\"HONG KONG\":\"\\u0110\\u1ea3o H\\u1ed3ng K\\u00f4ng\",\"KOWLOON\":\"C\\u1eedu Long\",\"NEW TERRITORIES\":\"T\\u00e2n Gi\\u1edbi\"},\"HU\":{\"BK\":\"B\\u00e1cs-Kiskun\",\"BE\":\"B\\u00e9k\\u00e9s\",\"BA\":\"Baranya\",\"BZ\":\"Borsod-Aba\\u00faj-Zempl\\u00e9n\",\"BU\":\"Budapest\",\"CS\":\"Csongr\\u00e1d\",\"FE\":\"Fej\\u00e9r\",\"GS\":\"Gy\\u0151r-Moson-Sopron\",\"HB\":\"Hajd\\u00fa-Bihar\",\"HE\":\"Heves\",\"JN\":\"J\\u00e1sz-Nagykun-Szolnok\",\"KE\":\"Kom\\u00e1rom-Esztergom\",\"NO\":\"N\\u00f3gr\\u00e1d\",\"PE\":\"Pest\",\"SO\":\"Somogy\",\"SZ\":\"Szabolcs-Szatm\\u00e1r-Bereg\",\"TO\":\"Tolna\",\"VA\":\"Vas\",\"VE\":\"Veszpr\\u00e9m\",\"ZA\":\"Zala\"},\"ID\":{\"AC\":\"Daerah Istimewa Aceh\",\"SU\":\"Sumatera Utara\",\"SB\":\"Sumatera Barat\",\"RI\":\"Riau\",\"KR\":\"Kepulauan Riau\",\"JA\":\"Jambi\",\"SS\":\"Sumatera Selatan\",\"BB\":\"Bangka Belitung\",\"BE\":\"Bengkulu\",\"LA\":\"Lampung\",\"JK\":\"DKI Jakarta\",\"JB\":\"Jawa Barat\",\"BT\":\"Banten\",\"JT\":\"Jawa Tengah\",\"JI\":\"Jawa Timur\",\"YO\":\"Daerah Istimewa Yogyakarta\",\"BA\":\"Bali\",\"NB\":\"Nusa Tenggara Barat\",\"NT\":\"Nusa Tenggara Timur\",\"KB\":\"Kalimantan Barat\",\"KT\":\"Kalimantan Tengah\",\"KI\":\"Kalimantan Timur\",\"KS\":\"Kalimantan Selatan\",\"KU\":\"Kalimantan Utara\",\"SA\":\"Sulawesi Utara\",\"ST\":\"Sulawesi Tengah\",\"SG\":\"Sulawesi Tenggara\",\"SR\":\"Sulawesi Barat\",\"SN\":\"Sulawesi Selatan\",\"GO\":\"Gorontalo\",\"MA\":\"Maluku\",\"MU\":\"Maluku Utara\",\"PA\":\"Papua\",\"PB\":\"Papua Barat\"},\"IE\":{\"CW\":\"Carlow\",\"CN\":\"Cavan\",\"CE\":\"Clare\",\"CO\":\"Cork\",\"DL\":\"Donegal\",\"D\":\"Dublin\",\"G\":\"Galway\",\"KY\":\"Kerry\",\"KE\":\"Kildare\",\"KK\":\"Kilkenny\",\"LS\":\"Laois\",\"LM\":\"Leitrim\",\"LK\":\"Limerick\",\"LD\":\"Longford\",\"LH\":\"Louth\",\"MO\":\"Mayo\",\"MH\":\"Meath\",\"MN\":\"Monaghan\",\"OY\":\"Offaly\",\"RN\":\"Roscommon\",\"SO\":\"Sligo\",\"TA\":\"Tipperary\",\"WD\":\"Waterford\",\"WH\":\"Westmeath\",\"WX\":\"Wexford\",\"WW\":\"Wicklow\"},\"IN\":{\"AP\":\"Andhra Pradesh\",\"AR\":\"Arunachal Pradesh\",\"AS\":\"Assam\",\"BR\":\"Bihar\",\"CT\":\"Chhattisgarh\",\"GA\":\"Goa\",\"GJ\":\"Gujarat\",\"HR\":\"Haryana\",\"HP\":\"Himachal Pradesh\",\"JK\":\"Jammu and Kashmir\",\"JH\":\"Jharkhand\",\"KA\":\"Karnataka\",\"KL\":\"Kerala\",\"MP\":\"Madhya Pradesh\",\"MH\":\"Maharashtra\",\"MN\":\"Manipur\",\"ML\":\"Meghalaya\",\"MZ\":\"Mizoram\",\"NL\":\"Nagaland\",\"OR\":\"Orissa\",\"PB\":\"Punjab\",\"RJ\":\"Rajasthan\",\"SK\":\"Sikkim\",\"TN\":\"Tamil Nadu\",\"TS\":\"Telangana\",\"TR\":\"Tripura\",\"UK\":\"Uttarakhand\",\"UP\":\"Uttar Pradesh\",\"WB\":\"West Bengal\",\"AN\":\"Qu\\u1ea7n \\u0111\\u1ea3o Andaman v\\u00e0 Nicobar\",\"CH\":\"Chandigarh\",\"DN\":\"Dadra and Nagar Haveli\",\"DD\":\"Daman v\\u00e0 Diu\",\"DL\":\"Delhi\",\"LD\":\"Lakshadeep\",\"PY\":\"Pondicherry (Puducherry)\"},\"IR\":{\"KHZ\":\"Khuzestan  (\\u062e\\u0648\\u0632\\u0633\\u062a\\u0627\\u0646)\",\"THR\":\"Tehran  (\\u062a\\u0647\\u0631\\u0627\\u0646)\",\"ILM\":\"Ilaam (\\u0627\\u06cc\\u0644\\u0627\\u0645)\",\"BHR\":\"Bushehr (\\u0628\\u0648\\u0634\\u0647\\u0631)\",\"ADL\":\"Ardabil (\\u0627\\u0631\\u062f\\u0628\\u06cc\\u0644)\",\"ESF\":\"Isfahan (\\u0627\\u0635\\u0641\\u0647\\u0627\\u0646)\",\"YZD\":\"Yazd (\\u06cc\\u0632\\u062f)\",\"KRH\":\"Kermanshah (\\u06a9\\u0631\\u0645\\u0627\\u0646\\u0634\\u0627\\u0647)\",\"KRN\":\"Kerman (\\u06a9\\u0631\\u0645\\u0627\\u0646)\",\"HDN\":\"Hamadan (\\u0647\\u0645\\u062f\\u0627\\u0646)\",\"GZN\":\"Ghazvin (\\u0642\\u0632\\u0648\\u06cc\\u0646)\",\"ZJN\":\"Zanjan (\\u0632\\u0646\\u062c\\u0627\\u0646)\",\"LRS\":\"Luristan (\\u0644\\u0631\\u0633\\u062a\\u0627\\u0646)\",\"ABZ\":\"Alborz (\\u0627\\u0644\\u0628\\u0631\\u0632)\",\"EAZ\":\"\\u0110\\u00f4ng Azarbaijan (\\u0622\\u0630\\u0631\\u0628\\u0627\\u06cc\\u062c\\u0627\\u0646 \\u0634\\u0631\\u0642\\u06cc)\",\"WAZ\":\"T\\u00e2y Azarbaijan (\\u0622\\u0630\\u0631\\u0628\\u0627\\u06cc\\u062c\\u0627\\u0646 \\u063a\\u0631\\u0628\\u06cc)\",\"CHB\":\"Chaharmahal v\\u00e0 Bakhtiari (\\u0686\\u0647\\u0627\\u0631\\u0645\\u062d\\u0627\\u0644 \\u0648 \\u0628\\u062e\\u062a\\u06cc\\u0627\\u0631\\u06cc)\",\"SKH\":\"Nam Khorasan (\\u062e\\u0631\\u0627\\u0633\\u0627\\u0646 \\u062c\\u0646\\u0648\\u0628\\u06cc)\",\"RKH\":\"Razavi Khorasan (\\u062e\\u0631\\u0627\\u0633\\u0627\\u0646 \\u0631\\u0636\\u0648\\u06cc)\",\"NKH\":\"North Khorasan (\\u062e\\u0631\\u0627\\u0633\\u0627\\u0646 \\u062c\\u0646\\u0648\\u0628\\u06cc)\",\"SMN\":\"Semnan (\\u0633\\u0645\\u0646\\u0627\\u0646)\",\"FRS\":\"Fars (\\u0641\\u0627\\u0631\\u0633)\",\"QHM\":\"Qom (\\u0642\\u0645)\",\"KRD\":\"Kurdistan \\\/ \\u06a9\\u0631\\u062f\\u0633\\u062a\\u0627\\u0646)\",\"KBD\":\"Kohgiluyeh v\\u00e0 BoyerAhmad (\\u06a9\\u0647\\u06af\\u06cc\\u0644\\u0648\\u06cc\\u06cc\\u0647 \\u0648 \\u0628\\u0648\\u06cc\\u0631\\u0627\\u062d\\u0645\\u062f)\",\"GLS\":\"Golestan (\\u06af\\u0644\\u0633\\u062a\\u0627\\u0646)\",\"GIL\":\"Gilan (\\u06af\\u06cc\\u0644\\u0627\\u0646)\",\"MZN\":\"Mazandaran (\\u0645\\u0627\\u0632\\u0646\\u062f\\u0631\\u0627\\u0646)\",\"MKZ\":\"Markazi (\\u0645\\u0631\\u06a9\\u0632\\u06cc)\",\"HRZ\":\"Hormozgan (\\u0647\\u0631\\u0645\\u0632\\u06af\\u0627\\u0646)\",\"SBN\":\"Sistan v\\u00e0 Baluchestan (\\u0633\\u06cc\\u0633\\u062a\\u0627\\u0646 \\u0648 \\u0628\\u0644\\u0648\\u0686\\u0633\\u062a\\u0627\\u0646)\"},\"IS\":[],\"IT\":{\"AG\":\"Agrigento\",\"AL\":\"Alessandria\",\"AN\":\"Ancona\",\"AO\":\"Aosta\",\"AR\":\"Arezzo\",\"AP\":\"Ascoli Piceno\",\"AT\":\"Asti\",\"AV\":\"Avellino\",\"BA\":\"Bari\",\"BT\":\"Barletta-Andria-Trani\",\"BL\":\"Belluno\",\"BN\":\"Benevento\",\"BG\":\"Bergamo\",\"BI\":\"Biella\",\"BO\":\"Bologna\",\"BZ\":\"Bolzano\",\"BS\":\"Brescia\",\"BR\":\"Brindisi\",\"CA\":\"Cagliari\",\"CL\":\"Caltanissetta\",\"CB\":\"Campobasso\",\"CE\":\"Caserta\",\"CT\":\"Catania\",\"CZ\":\"Catanzaro\",\"CH\":\"Chieti\",\"CO\":\"Como\",\"CS\":\"Cosenza\",\"CR\":\"Cremona\",\"KR\":\"Crotone\",\"CN\":\"Cuneo\",\"EN\":\"Enna\",\"FM\":\"Fermo\",\"FE\":\"Ferrara\",\"FI\":\"Firenze\",\"FG\":\"Foggia\",\"FC\":\"Forl\\u00ec-Cesena\",\"FR\":\"Frosinone\",\"GE\":\"Genova\",\"GO\":\"Gorizia\",\"GR\":\"Grosseto\",\"IM\":\"Imperia\",\"IS\":\"Isernia\",\"SP\":\"La Spezia\",\"AQ\":\"L'Aquila\",\"LT\":\"Latina\",\"LE\":\"Lecce\",\"LC\":\"Lecco\",\"LI\":\"Livorno\",\"LO\":\"Lodi\",\"LU\":\"Lucca\",\"MC\":\"Macerata\",\"MN\":\"Mantova\",\"MS\":\"Massa-Carrara\",\"MT\":\"Matera\",\"ME\":\"Messina\",\"MI\":\"Milano\",\"MO\":\"Modena\",\"MB\":\"Monza e della Brianza\",\"NA\":\"Napoli\",\"NO\":\"Novara\",\"NU\":\"Nuoro\",\"OR\":\"Oristano\",\"PD\":\"Padova\",\"PA\":\"Palermo\",\"PR\":\"Parma\",\"PV\":\"Pavia\",\"PG\":\"Perugia\",\"PU\":\"Pesaro e Urbino\",\"PE\":\"Pescara\",\"PC\":\"Piacenza\",\"PI\":\"Pisa\",\"PT\":\"Pistoia\",\"PN\":\"Pordenone\",\"PZ\":\"Potenza\",\"PO\":\"Prato\",\"RG\":\"Ragusa\",\"RA\":\"Ravenna\",\"RC\":\"Reggio Calabria\",\"RE\":\"Reggio Emilia\",\"RI\":\"Rieti\",\"RN\":\"Rimini\",\"RM\":\"Roma\",\"RO\":\"Rovigo\",\"SA\":\"Salerno\",\"SS\":\"Sassari\",\"SV\":\"Savona\",\"SI\":\"Siena\",\"SR\":\"Siracusa\",\"SO\":\"Sondrio\",\"SU\":\"Sud Sardegna\",\"TA\":\"Taranto\",\"TE\":\"Teramo\",\"TR\":\"Terni\",\"TO\":\"Torino\",\"TP\":\"Trapani\",\"TN\":\"Trento\",\"TV\":\"Treviso\",\"TS\":\"Trieste\",\"UD\":\"Udine\",\"VA\":\"Varese\",\"VE\":\"Venezia\",\"VB\":\"Verbano-Cusio-Ossola\",\"VC\":\"Vercelli\",\"VR\":\"Verona\",\"VV\":\"Vibo Valentia\",\"VI\":\"Vicenza\",\"VT\":\"Viterbo\"},\"IL\":[],\"IM\":[],\"JP\":{\"JP01\":\"Hokkaido\",\"JP02\":\"Aomori\",\"JP03\":\"Iwate\",\"JP04\":\"Miyagi\",\"JP05\":\"Akita\",\"JP06\":\"Yamagata\",\"JP07\":\"Fukushima\",\"JP08\":\"Ibaraki\",\"JP09\":\"Tochigi\",\"JP10\":\"Gunma\",\"JP11\":\"Saitama\",\"JP12\":\"Chiba\",\"JP13\":\"Tokyo\",\"JP14\":\"Kanagawa\",\"JP15\":\"Niigata\",\"JP16\":\"Toyama\",\"JP17\":\"Ishikawa\",\"JP18\":\"Fukui\",\"JP19\":\"Yamanashi\",\"JP20\":\"Nagano\",\"JP21\":\"Gifu\",\"JP22\":\"Shizuoka\",\"JP23\":\"Aichi\",\"JP24\":\"Mie\",\"JP25\":\"Shiga\",\"JP26\":\"Kyoto\",\"JP27\":\"Osaka\",\"JP28\":\"Hyogo\",\"JP29\":\"Nara\",\"JP30\":\"Wakayama\",\"JP31\":\"Tottori\",\"JP32\":\"Shimane\",\"JP33\":\"Okayama\",\"JP34\":\"Hiroshima\",\"JP35\":\"Yamaguchi\",\"JP36\":\"Tokushima\",\"JP37\":\"Kagawa\",\"JP38\":\"Ehime\",\"JP39\":\"Kochi\",\"JP40\":\"Fukuoka\",\"JP41\":\"Saga\",\"JP42\":\"Nagasaki\",\"JP43\":\"Kumamoto\",\"JP44\":\"Oita\",\"JP45\":\"Miyazaki\",\"JP46\":\"Kagoshima\",\"JP47\":\"Okinawa\"},\"KR\":[],\"KW\":[],\"LB\":[],\"LR\":{\"BM\":\"Bomi\",\"BN\":\"Bong\",\"GA\":\"Gbarpolu\",\"GB\":\"Grand Bassa\",\"GC\":\"Grand Cape Mount\",\"GG\":\"Grand Gedeh\",\"GK\":\"Grand Kru\",\"LO\":\"Lofa\",\"MA\":\"Margibi\",\"MY\":\"Maryland\",\"MO\":\"Montserrado\",\"NM\":\"Nimba\",\"RV\":\"Rivercess\",\"RG\":\"River Gee\",\"SN\":\"Sinoe\"},\"LU\":[],\"MD\":{\"C\":\"Chi\u0219in\u0103u\",\"BL\":\"B\u0103l\u021bi\",\"AN\":\"Anenii Noi\",\"BS\":\"Basarabeasca\",\"BR\":\"Briceni\",\"CH\":\"Cahul\",\"CT\":\"Cantemir\",\"CL\":\"C\u0103l\u0103ra\u0219i\",\"CS\":\"C\u0103u\u0219eni\",\"CM\":\"Cimi\u0219lia\",\"CR\":\"Criuleni\",\"DN\":\"Dondu\u0219eni\",\"DR\":\"Drochia\",\"DB\":\"Dub\u0103sari\",\"ED\":\"Edine\u021b\",\"FL\":\"F\u0103le\u0219ti\",\"FR\":\"Flore\u0219ti\",\"GE\":\"UTA G\u0103g\u0103uzia\",\"GL\":\"Glodeni\",\"HN\":\"H\u00eence\u0219ti\",\"IL\":\"Ialoveni\",\"LV\":\"Leova\",\"NS\":\"Nisporeni\",\"OC\":\"Ocni\u021ba\",\"OR\":\"Orhei\",\"RZ\":\"Rezina\",\"RS\":\"R\u00ee\u0219cani\",\"SG\":\"S\u00eengerei\",\"SR\":\"Soroca\",\"ST\":\"Str\u0103\u0219eni\",\"SD\":\"\u0218old\u0103ne\u0219ti\",\"SV\":\"\u0218tefan Vod\u0103\",\"TR\":\"Taraclia\",\"TL\":\"Telene\u0219ti\",\"UN\":\"Ungheni\"},\"MQ\":[],\"MT\":[],\"MX\":{\"DF\":\"Ciudad de M\u00e9xico\",\"JA\":\"Jalisco\",\"NL\":\"Nuevo Le\u00f3n\",\"AG\":\"Aguascalientes\",\"BC\":\"B\\u00e1n \\u0111\\u1ea3o Baja California\",\"BS\":\"Baja California Sur\",\"CM\":\"Campeche\",\"CS\":\"Chiapas\",\"CH\":\"Chihuahua\",\"CO\":\"Coahuila\",\"CL\":\"Colima\",\"DG\":\"Durango\",\"GT\":\"Guanajuato\",\"GR\":\"Guerrero\",\"HG\":\"Hidalgo\",\"MX\":\"Estado de M\u00e9xico\",\"MI\":\"Michoac\u00e1n\",\"MO\":\"Morelos\",\"NA\":\"Nayarit\",\"OA\":\"Oaxaca\",\"PU\":\"Puebla\",\"QT\":\"Quer\u00e9taro\",\"QR\":\"Quintana Roo\",\"SL\":\"San Luis Potos\u00ed\",\"SI\":\"Sinaloa\",\"SO\":\"Sonora\",\"TB\":\"Tabasco\",\"TM\":\"Tamaulipas\",\"TL\":\"Tlaxcala\",\"VE\":\"Veracruz\",\"YU\":\"Yucat\u00e1n\",\"ZA\":\"Zacatecas\"},\"MY\":{\"JHR\":\"Johor\",\"KDH\":\"Kedah\",\"KTN\":\"Kelantan\",\"LBN\":\"Labuan\",\"MLK\":\"Malacca (Melaka)\",\"NSN\":\"Negeri Sembilan\",\"PHG\":\"Pahang\",\"PNG\":\"Penang (Pulau Pinang)\",\"PRK\":\"Perak\",\"PLS\":\"Perlis\",\"SBH\":\"Sabah\",\"SWK\":\"Sarawak\",\"SGR\":\"Selangor\",\"TRG\":\"Terengganu\",\"PJY\":\"Putrajaya\",\"KUL\":\"Kuala Lumpur\"},\"NG\":{\"AB\":\"Abia\",\"FC\":\"Abuja\",\"AD\":\"Adamawa\",\"AK\":\"Akwa Ibom\",\"AN\":\"Anambra\",\"BA\":\"Bauchi\",\"BY\":\"Bayelsa\",\"BE\":\"Benue\",\"BO\":\"Borno\",\"CR\":\"Cross River\",\"DE\":\"Delta\",\"EB\":\"Ebonyi\",\"ED\":\"Edo\",\"EK\":\"Ekiti\",\"EN\":\"Enugu\",\"GO\":\"Gombe\",\"IM\":\"Imo\",\"JI\":\"Jigawa\",\"KD\":\"Kaduna\",\"KN\":\"Kano\",\"KT\":\"Katsina\",\"KE\":\"Kebbi\",\"KO\":\"Kogi\",\"KW\":\"Kwara\",\"LA\":\"Lagos\",\"NA\":\"Nasarawa\",\"NI\":\"Niger\",\"OG\":\"Ogun\",\"ON\":\"Ondo\",\"OS\":\"Osun\",\"OY\":\"Oyo\",\"PL\":\"Plateau\",\"RI\":\"Rivers\",\"SO\":\"Sokoto\",\"TA\":\"Taraba\",\"YO\":\"Yobe\",\"ZA\":\"Zamfara\"},\"NL\":[],\"NO\":[],\"NP\":{\"BAG\":\"Bagmati\",\"BHE\":\"Bheri\",\"DHA\":\"Dhaulagiri\",\"GAN\":\"Gandaki\",\"JAN\":\"Janakpur\",\"KAR\":\"Karnali\",\"KOS\":\"Koshi\",\"LUM\":\"Lumbini\",\"MAH\":\"Mahakali\",\"MEC\":\"Mechi\",\"NAR\":\"Narayani\",\"RAP\":\"Rapti\",\"SAG\":\"Sagarmatha\",\"SET\":\"Seti\"},\"NZ\":{\"NL\":\"Northland\",\"AK\":\"Auckland\",\"WA\":\"Waikato\",\"BP\":\"Bay of Plenty\",\"TK\":\"Taranaki\",\"GI\":\"Gisborne\",\"HB\":\"Hawke\u2019s Bay\",\"MW\":\"Manawatu-Wanganui\",\"WE\":\"Wellington\",\"NS\":\"Nelson\",\"MB\":\"Marlborough\",\"TM\":\"Tasman\",\"WC\":\"West Coast\",\"CT\":\"Canterbury\",\"OT\":\"Otago\",\"SL\":\"Southland\"},\"PE\":{\"CAL\":\"El Callao\",\"LMA\":\"Municipalidad Metropolitana de Lima\",\"AMA\":\"Amazonas\",\"ANC\":\"Ancash\",\"APU\":\"Apur\u00edmac\",\"ARE\":\"Arequipa\",\"AYA\":\"Ayacucho\",\"CAJ\":\"Cajamarca\",\"CUS\":\"Cusco\",\"HUV\":\"Huancavelica\",\"HUC\":\"Hu\u00e1nuco\",\"ICA\":\"Ica\",\"JUN\":\"Jun\u00edn\",\"LAL\":\"La Libertad\",\"LAM\":\"Lambayeque\",\"LIM\":\"Lima\",\"LOR\":\"Loreto\",\"MDD\":\"Madre de Dios\",\"MOQ\":\"Moquegua\",\"PAS\":\"Pasco\",\"PIU\":\"Piura\",\"PUN\":\"Puno\",\"SAM\":\"San Mart\u00edn\",\"TAC\":\"Tacna\",\"TUM\":\"Tumbes\",\"UCA\":\"Ucayali\"},\"PH\":{\"ABR\":\"Abra\",\"AGN\":\"Agusan del Norte\",\"AGS\":\"Agusan del Sur\",\"AKL\":\"Aklan\",\"ALB\":\"Albay\",\"ANT\":\"Antique\",\"APA\":\"Apayao\",\"AUR\":\"Aurora\",\"BAS\":\"Basilan\",\"BAN\":\"Bataan\",\"BTN\":\"Batanes\",\"BTG\":\"Batangas\",\"BEN\":\"Benguet\",\"BIL\":\"Biliran\",\"BOH\":\"Bohol\",\"BUK\":\"Bukidnon\",\"BUL\":\"Bulacan\",\"CAG\":\"Cagayan\",\"CAN\":\"Camarines Norte\",\"CAS\":\"Camarines Sur\",\"CAM\":\"Camiguin\",\"CAP\":\"Capiz\",\"CAT\":\"Catanduanes\",\"CAV\":\"Cavite\",\"CEB\":\"Cebu\",\"COM\":\"Compostela Valley\",\"NCO\":\"Cotabato\",\"DAV\":\"Davao del Norte\",\"DAS\":\"Davao del Sur\",\"DAC\":\"Davao Occidental\",\"DAO\":\"Davao Oriental\",\"DIN\":\"Dinagat Islands\",\"EAS\":\"Eastern Samar\",\"GUI\":\"Guimaras\",\"IFU\":\"Ifugao\",\"ILN\":\"Ilocos Norte\",\"ILS\":\"Ilocos Sur\",\"ILI\":\"Iloilo\",\"ISA\":\"Isabela\",\"KAL\":\"Kalinga\",\"LUN\":\"La Union\",\"LAG\":\"Laguna\",\"LAN\":\"Lanao del Norte\",\"LAS\":\"Lanao del Sur\",\"LEY\":\"Leyte\",\"MAG\":\"Maguindanao\",\"MAD\":\"Marinduque\",\"MAS\":\"Masbate\",\"MSC\":\"Misamis Occidental\",\"MSR\":\"Misamis Oriental\",\"MOU\":\"Mountain Province\",\"NEC\":\"Negros Occidental\",\"NER\":\"Negros Oriental\",\"NSA\":\"Northern Samar\",\"NUE\":\"Nueva Ecija\",\"NUV\":\"Nueva Vizcaya\",\"MDC\":\"Occidental Mindoro\",\"MDR\":\"Oriental Mindoro\",\"PLW\":\"Palawan\",\"PAM\":\"Pampanga\",\"PAN\":\"Pangasinan\",\"QUE\":\"Quezon\",\"QUI\":\"Quirino\",\"RIZ\":\"Rizal\",\"ROM\":\"Romblon\",\"WSA\":\"Samar\",\"SAR\":\"Sarangani\",\"SIQ\":\"Siquijor\",\"SOR\":\"Sorsogon\",\"SCO\":\"South Cotabato\",\"SLE\":\"Southern Leyte\",\"SUK\":\"Sultan Kudarat\",\"SLU\":\"Sulu\",\"SUN\":\"Surigao del Norte\",\"SUR\":\"Surigao del Sur\",\"TAR\":\"Tarlac\",\"TAW\":\"Tawi-Tawi\",\"ZMB\":\"Zambales\",\"ZAN\":\"Zamboanga del Norte\",\"ZAS\":\"Zamboanga del Sur\",\"ZSI\":\"Zamboanga Sibugay\",\"00\":\"Metro Manila\"},\"PK\":{\"JK\":\"Azad Kashmir\",\"BA\":\"Balochistan\",\"TA\":\"FATA\",\"GB\":\"Gilgit Baltistan\",\"IS\":\"Islamabad Capital Territory\",\"KP\":\"Khyber Pakhtunkhwa\",\"PB\":\"Punjab\",\"SD\":\"Sindh\"},\"PL\":[],\"PT\":[],\"PY\":{\"PY-ASU\":\"Asunci\u00f3n\",\"PY-1\":\"Concepci\u00f3n\",\"PY-2\":\"San Pedro\",\"PY-3\":\"Cordillera\",\"PY-4\":\"Guair\u00e1\",\"PY-5\":\"Caaguaz\u00fa\",\"PY-6\":\"Caazap\u00e1\",\"PY-7\":\"Itap\u00faa\",\"PY-8\":\"Misiones\",\"PY-9\":\"Paraguar\u00ed\",\"PY-10\":\"Alto Paran\u00e1\",\"PY-11\":\"Central\",\"PY-12\":\"\u00d1eembuc\u00fa\",\"PY-13\":\"Amambay\",\"PY-14\":\"Canindey\u00fa\",\"PY-15\":\"Presidente Hayes\",\"PY-16\":\"Alto Paraguay\",\"PY-17\":\"Boquer\u00f3n\"},\"RE\":[],\"RO\":{\"AB\":\"Alba\",\"AR\":\"Arad\",\"AG\":\"Arge\u0219\",\"BC\":\"Bac\u0103u\",\"BH\":\"Bihor\",\"BN\":\"Bistri\u021ba-N\u0103s\u0103ud\",\"BT\":\"Boto\u0219ani\",\"BR\":\"Br\u0103ila\",\"BV\":\"Bra\u0219ov\",\"B\":\"Bucure\u0219ti\",\"BZ\":\"Buz\u0103u\",\"CL\":\"C\u0103l\u0103ra\u0219i\",\"CS\":\"Cara\u0219-Severin\",\"CJ\":\"Cluj\",\"CT\":\"Constan\u021ba\",\"CV\":\"Covasna\",\"DB\":\"D\u00e2mbovi\u021ba\",\"DJ\":\"Dolj\",\"GL\":\"Gala\u021bi\",\"GR\":\"Giurgiu\",\"GJ\":\"Gorj\",\"HR\":\"Harghita\",\"HD\":\"Hunedoara\",\"IL\":\"Ialomi\u021ba\",\"IS\":\"Ia\u0219i\",\"IF\":\"Ilfov\",\"MM\":\"Maramure\u0219\",\"MH\":\"Mehedin\u021bi\",\"MS\":\"Mure\u0219\",\"NT\":\"Neam\u021b\",\"OT\":\"Olt\",\"PH\":\"Prahova\",\"SJ\":\"S\u0103laj\",\"SM\":\"Satu Mare\",\"SB\":\"Sibiu\",\"SV\":\"Suceava\",\"TR\":\"Teleorman\",\"TM\":\"Timi\u0219\",\"TL\":\"Tulcea\",\"VL\":\"V\u00e2lcea\",\"VS\":\"Vaslui\",\"VN\":\"Vrancea\"},\"RS\":[],\"SG\":[],\"SK\":[],\"SI\":[],\"TH\":{\"TH-37\":\"Amnat Charoen\",\"TH-15\":\"Ang Thong\",\"TH-14\":\"Ayutthaya\",\"TH-10\":\"Bangkok\",\"TH-38\":\"Bueng Kan\",\"TH-31\":\"Buri Ram\",\"TH-24\":\"Chachoengsao\",\"TH-18\":\"Chai Nat\",\"TH-36\":\"Chaiyaphum\",\"TH-22\":\"Chanthaburi\",\"TH-50\":\"Chiang Mai\",\"TH-57\":\"Chiang Rai\",\"TH-20\":\"Chonburi\",\"TH-86\":\"Chumphon\",\"TH-46\":\"Kalasin\",\"TH-62\":\"Kamphaeng Phet\",\"TH-71\":\"Kanchanaburi\",\"TH-40\":\"Khon Kaen\",\"TH-81\":\"Krabi\",\"TH-52\":\"Lampang\",\"TH-51\":\"Lamphun\",\"TH-42\":\"Loei\",\"TH-16\":\"Lopburi\",\"TH-58\":\"Mae Hong Son\",\"TH-44\":\"Maha Sarakham\",\"TH-49\":\"Mukdahan\",\"TH-26\":\"Nakhon Nayok\",\"TH-73\":\"Nakhon Pathom\",\"TH-48\":\"Nakhon Phanom\",\"TH-30\":\"Nakhon Ratchasima\",\"TH-60\":\"Nakhon Sawan\",\"TH-80\":\"Nakhon Si Thammarat\",\"TH-55\":\"Nan\",\"TH-96\":\"Narathiwat\",\"TH-39\":\"Nong Bua Lam Phu\",\"TH-43\":\"Nong Khai\",\"TH-12\":\"Nonthaburi\",\"TH-13\":\"Pathum Thani\",\"TH-94\":\"Pattani\",\"TH-82\":\"Phang Nga\",\"TH-93\":\"Phatthalung\",\"TH-56\":\"Phayao\",\"TH-67\":\"Phetchabun\",\"TH-76\":\"Phetchaburi\",\"TH-66\":\"Phichit\",\"TH-65\":\"Phitsanulok\",\"TH-54\":\"Phrae\",\"TH-83\":\"Phuket\",\"TH-25\":\"Prachin Buri\",\"TH-77\":\"Prachuap Khiri Khan\",\"TH-85\":\"Ranong\",\"TH-70\":\"Ratchaburi\",\"TH-21\":\"Rayong\",\"TH-45\":\"Roi Et\",\"TH-27\":\"Sa Kaeo\",\"TH-47\":\"Sakon Nakhon\",\"TH-11\":\"Samut Prakan\",\"TH-74\":\"Samut Sakhon\",\"TH-75\":\"Samut Songkhram\",\"TH-19\":\"Saraburi\",\"TH-91\":\"Satun\",\"TH-17\":\"Sing Buri\",\"TH-33\":\"Sisaket\",\"TH-90\":\"Songkhla\",\"TH-64\":\"Sukhothai\",\"TH-72\":\"Suphan Buri\",\"TH-84\":\"Surat Thani\",\"TH-32\":\"Surin\",\"TH-63\":\"Tak\",\"TH-92\":\"Trang\",\"TH-23\":\"Trat\",\"TH-34\":\"Ubon Ratchathani\",\"TH-41\":\"Udon Thani\",\"TH-61\":\"Uthai Thani\",\"TH-53\":\"Uttaradit\",\"TH-95\":\"Yala\",\"TH-35\":\"Yasothon\"},\"TR\":{\"TR01\":\"Adana\",\"TR02\":\"Ad\u0131yaman\",\"TR03\":\"Afyon\",\"TR04\":\"A\u011fr\u0131\",\"TR05\":\"Amasya\",\"TR06\":\"Ankara\",\"TR07\":\"Antalya\",\"TR08\":\"Artvin\",\"TR09\":\"Ayd\u0131n\",\"TR10\":\"Bal\u0131kesir\",\"TR11\":\"Bilecik\",\"TR12\":\"Bing\u00f6l\",\"TR13\":\"Bitlis\",\"TR14\":\"Bolu\",\"TR15\":\"Burdur\",\"TR16\":\"Bursa\",\"TR17\":\"\u00c7anakkale\",\"TR18\":\"\u00c7ank\u0131r\u0131\",\"TR19\":\"\u00c7orum\",\"TR20\":\"Denizli\",\"TR21\":\"Diyarbak\u0131r\",\"TR22\":\"Edirne\",\"TR23\":\"Elaz\u0131\u011f\",\"TR24\":\"Erzincan\",\"TR25\":\"Erzurum\",\"TR26\":\"Eski\u015fehir\",\"TR27\":\"Gaziantep\",\"TR28\":\"Giresun\",\"TR29\":\"G\u00fcm\u00fc\u015fhane\",\"TR30\":\"Hakkari\",\"TR31\":\"Hatay\",\"TR32\":\"Isparta\",\"TR33\":\"\u0130\u00e7el\",\"TR34\":\"\u0130stanbul\",\"TR35\":\"\u0130zmir\",\"TR36\":\"Kars\",\"TR37\":\"Kastamonu\",\"TR38\":\"Kayseri\",\"TR39\":\"K\u0131rklareli\",\"TR40\":\"K\u0131r\u015fehir\",\"TR41\":\"Kocaeli\",\"TR42\":\"Konya\",\"TR43\":\"K\u00fctahya\",\"TR44\":\"Malatya\",\"TR45\":\"Manisa\",\"TR46\":\"Kahramanmara\u015f\",\"TR47\":\"Mardin\",\"TR48\":\"Mu\u011fla\",\"TR49\":\"Mu\u015f\",\"TR50\":\"Nev\u015fehir\",\"TR51\":\"Ni\u011fde\",\"TR52\":\"Ordu\",\"TR53\":\"Rize\",\"TR54\":\"Sakarya\",\"TR55\":\"Samsun\",\"TR56\":\"Siirt\",\"TR57\":\"Sinop\",\"TR58\":\"Sivas\",\"TR59\":\"Tekirda\u011f\",\"TR60\":\"Tokat\",\"TR61\":\"Trabzon\",\"TR62\":\"Tunceli\",\"TR63\":\"\u015eanl\u0131urfa\",\"TR64\":\"U\u015fak\",\"TR65\":\"Van\",\"TR66\":\"Yozgat\",\"TR67\":\"Zonguldak\",\"TR68\":\"Aksaray\",\"TR69\":\"Bayburt\",\"TR70\":\"Karaman\",\"TR71\":\"K\u0131r\u0131kkale\",\"TR72\":\"Batman\",\"TR73\":\"\u015e\u0131rnak\",\"TR74\":\"Bart\u0131n\",\"TR75\":\"Ardahan\",\"TR76\":\"I\u011fd\u0131r\",\"TR77\":\"Yalova\",\"TR78\":\"Karab\u00fck\",\"TR79\":\"Kilis\",\"TR80\":\"Osmaniye\",\"TR81\":\"D\u00fczce\"},\"TZ\":{\"TZ01\":\"Arusha\",\"TZ02\":\"Dar es Salaam\",\"TZ03\":\"Dodoma\",\"TZ04\":\"Iringa\",\"TZ05\":\"Kagera\",\"TZ06\":\"Pemba North\",\"TZ07\":\"Zanzibar North\",\"TZ08\":\"Kigoma\",\"TZ09\":\"Kilimanjaro\",\"TZ10\":\"Pemba South\",\"TZ11\":\"Zanzibar South\",\"TZ12\":\"Lindi\",\"TZ13\":\"Mara\",\"TZ14\":\"Mbeya\",\"TZ15\":\"Zanzibar West\",\"TZ16\":\"Morogoro\",\"TZ17\":\"Mtwara\",\"TZ18\":\"Mwanza\",\"TZ19\":\"Coast\",\"TZ20\":\"Rukwa\",\"TZ21\":\"Ruvuma\",\"TZ22\":\"Shinyanga\",\"TZ23\":\"Singida\",\"TZ24\":\"Tabora\",\"TZ25\":\"Tanga\",\"TZ26\":\"Manyara\",\"TZ27\":\"Geita\",\"TZ28\":\"Katavi\",\"TZ29\":\"Njombe\",\"TZ30\":\"Simiyu\"},\"LK\":[],\"SE\":[],\"UG\":{\"UG314\":\"Abim\",\"UG301\":\"Adjumani\",\"UG322\":\"Agago\",\"UG323\":\"Alebtong\",\"UG315\":\"Amolatar\",\"UG324\":\"Amudat\",\"UG216\":\"Amuria\",\"UG316\":\"Amuru\",\"UG302\":\"Apac\",\"UG303\":\"Arua\",\"UG217\":\"Budaka\",\"UG218\":\"Bududa\",\"UG201\":\"Bugiri\",\"UG235\":\"Bugweri\",\"UG420\":\"Buhweju\",\"UG117\":\"Buikwe\",\"UG219\":\"Bukedea\",\"UG118\":\"Bukomansimbi\",\"UG220\":\"Bukwa\",\"UG225\":\"Bulambuli\",\"UG416\":\"Buliisa\",\"UG401\":\"Bundibugyo\",\"UG430\":\"Bunyangabu\",\"UG402\":\"Bushenyi\",\"UG202\":\"Busia\",\"UG221\":\"Butaleja\",\"UG119\":\"Butambala\",\"UG233\":\"Butebo\",\"UG120\":\"Buvuma\",\"UG226\":\"Buyende\",\"UG317\":\"Dokolo\",\"UG121\":\"Gomba\",\"UG304\":\"Gulu\",\"UG403\":\"Hoima\",\"UG417\":\"Ibanda\",\"UG203\":\"Iganga\",\"UG418\":\"Isingiro\",\"UG204\":\"Jinja\",\"UG318\":\"Kaabong\",\"UG404\":\"Kabale\",\"UG405\":\"Kabarole\",\"UG213\":\"Kaberamaido\",\"UG427\":\"Kagadi\",\"UG428\":\"Kakumiro\",\"UG101\":\"Kalangala\",\"UG222\":\"Kaliro\",\"UG122\":\"Kalungu\",\"UG102\":\"Kampala\",\"UG205\":\"Kamuli\",\"UG413\":\"Kamwenge\",\"UG414\":\"Kanungu\",\"UG206\":\"Kapchorwa\",\"UG236\":\"Kapelebyong\",\"UG126\":\"Kasanda\",\"UG406\":\"Kasese\",\"UG207\":\"Katakwi\",\"UG112\":\"Kayunga\",\"UG407\":\"Kibaale\",\"UG103\":\"Kiboga\",\"UG227\":\"Kibuku\",\"UG432\":\"Kikuube\",\"UG419\":\"Kiruhura\",\"UG421\":\"Kiryandongo\",\"UG408\":\"Kisoro\",\"UG305\":\"Kitgum\",\"UG319\":\"Koboko\",\"UG325\":\"Kole\",\"UG306\":\"Kotido\",\"UG208\":\"Kumi\",\"UG333\":\"Kwania\",\"UG228\":\"Kween\",\"UG123\":\"Kyankwanzi\",\"UG422\":\"Kyegegwa\",\"UG415\":\"Kyenjojo\",\"UG125\":\"Kyotera\",\"UG326\":\"Lamwo\",\"UG307\":\"Lira\",\"UG229\":\"Luuka\",\"UG104\":\"Luwero\",\"UG124\":\"Lwengo\",\"UG114\":\"Lyantonde\",\"UG223\":\"Manafwa\",\"UG320\":\"Maracha\",\"UG105\":\"Masaka\",\"UG409\":\"Masindi\",\"UG214\":\"Mayuge\",\"UG209\":\"Mbale\",\"UG410\":\"Mbarara\",\"UG423\":\"Mitooma\",\"UG115\":\"Mityana\",\"UG308\":\"Moroto\",\"UG309\":\"Moyo\",\"UG106\":\"Mpigi\",\"UG107\":\"Mubende\",\"UG108\":\"Mukono\",\"UG334\":\"Nabilatuk\",\"UG311\":\"Nakapiripirit\",\"UG116\":\"Nakaseke\",\"UG109\":\"Nakasongola\",\"UG230\":\"Namayingo\",\"UG234\":\"Namisindwa\",\"UG224\":\"Namutumba\",\"UG327\":\"Napak\",\"UG310\":\"Nebbi\",\"UG231\":\"Ngora\",\"UG424\":\"Ntoroko\",\"UG411\":\"Ntungamo\",\"UG328\":\"Nwoya\",\"UG331\":\"Omoro\",\"UG329\":\"Otuke\",\"UG321\":\"Oyam\",\"UG312\":\"Pader\",\"UG332\":\"Pakwach\",\"UG210\":\"Pallisa\",\"UG110\":\"Rakai\",\"UG429\":\"Rubanda\",\"UG425\":\"Rubirizi\",\"UG431\":\"Rukiga\",\"UG412\":\"Rukungiri\",\"UG111\":\"Sembabule\",\"UG232\":\"Serere\",\"UG426\":\"Sheema\",\"UG215\":\"Sironko\",\"UG211\":\"Soroti\",\"UG212\":\"Tororo\",\"UG113\":\"Wakiso\",\"UG313\":\"Yumbe\",\"UG330\":\"Zombo\"},\"UM\":{\"81\":\"Baker Island\",\"84\":\"Howland Island\",\"86\":\"Jarvis Island\",\"67\":\"Johnston Atoll\",\"89\":\"Kingman Reef\",\"71\":\"Midway Atoll\",\"76\":\"Navassa Island\",\"95\":\"Palmyra Atoll\",\"79\":\"Wake Island\"},\"US\":{\"AL\":\"Alabama\",\"AK\":\"Alaska\",\"AZ\":\"Arizona\",\"AR\":\"Arkansas\",\"CA\":\"California\",\"CO\":\"Colorado\",\"CT\":\"Connecticut\",\"DE\":\"Delaware\",\"DC\":\"\\u0110\\u1eb7c khu Columbia\",\"FL\":\"Florida\",\"GA\":\"Georgia\",\"HI\":\"Hawaii\",\"ID\":\"Idaho\",\"IL\":\"Illinois\",\"IN\":\"Indiana\",\"IA\":\"Iowa\",\"KS\":\"Kansas\",\"KY\":\"Kentucky\",\"LA\":\"Louisiana\",\"ME\":\"Maine\",\"MD\":\"Maryland\",\"MA\":\"Massachusetts\",\"MI\":\"Michigan\",\"MN\":\"Minnesota\",\"MS\":\"Mississippi\",\"MO\":\"Missouri\",\"MT\":\"Montana\",\"NE\":\"Nebraska\",\"NV\":\"Nevada\",\"NH\":\"New Hampshire\",\"NJ\":\"New Jersey\",\"NM\":\"New Mexico\",\"NY\":\"New York\",\"NC\":\"B\\u1eafc Carolina\",\"ND\":\"B\\u1eafc Dakota\",\"OH\":\"Ohio\",\"OK\":\"Oklahoma\",\"OR\":\"Oregon\",\"PA\":\"Pennsylvania\",\"RI\":\"Ti\\u1ec3u bang Rhode Island\",\"SC\":\"Nam Carolina\",\"SD\":\"Nam Dakota\",\"TN\":\"Tennessee\",\"TX\":\"Texas\",\"UT\":\"Utah\",\"VT\":\"Vermont\",\"VA\":\"Virginia\",\"WA\":\"Washington\",\"WV\":\"T\\u00e2y Virginia\",\"WI\":\"Wisconsin\",\"WY\":\"Wyoming\",\"AA\":\"Armed Forces (AA)\",\"AE\":\"Armed Forces (AE)\",\"AP\":\"Armed Forces (AP)\"},\"VN\":[],\"YT\":[],\"ZA\":{\"EC\":\"Eastern Cape\",\"FS\":\"Free State\",\"GP\":\"Gauteng\",\"KZN\":\"KwaZulu-Natal\",\"LP\":\"Limpopo\",\"MP\":\"Mpumalanga\",\"NC\":\"Northern Cape\",\"NW\":\"North West\",\"WC\":\"Western Cape\"},\"ZM\":{\"ZM-01\":\"Western\",\"ZM-02\":\"Central\",\"ZM-03\":\"Eastern\",\"ZM-04\":\"Luapula\",\"ZM-05\":\"Northern\",\"ZM-06\":\"North-Western\",\"ZM-07\":\"Southern\",\"ZM-08\":\"Copperbelt\",\"ZM-09\":\"Lusaka\",\"ZM-10\":\"Muchinga\"}}", "i18n_select_state_text": "Ch\u1ecdn m\u1ed9t t\u00f9y ch\u1ecdn\u2026", "i18n_no_matches": "Kh\u00f4ng t\u00ecm th\u1ea5y k\u1ebft qu\u1ea3 ph\u00f9 h\u1ee3p", "i18n_ajax_error": "Kh\u00f4ng t\u1ea3i \u0111\u01b0\u1ee3c", "i18n_input_too_short_1": "Vui l\u00f2ng nh\u1eadp 1 ho\u1eb7c nhi\u1ec1u k\u00fd t\u1ef1", "i18n_input_too_short_n": "Vui l\u00f2ng nh\u1eadp %qty% ho\u1eb7c nhi\u1ec1u k\u00fd t\u1ef1", "i18n_input_too_long_1": "Vui l\u00f2ng x\u00f3a 1 k\u00fd t\u1ef1", "i18n_input_too_long_n": "Vui l\u00f2ng x\u00f3a %qty%  k\u00fd t\u1ef1", "i18n_selection_too_long_1": "B\u1ea1n ch\u1ec9 c\u00f3 th\u1ec3 ch\u1ecdn 1 s\u1ea3n ph\u1ea9m", "i18n_selection_too_long_n": "B\u1ea1n c\u00f3 th\u1ec3 ch\u1ecdn %qty% s\u1ea3n ph\u1ea9m", "i18n_load_more": "T\u1ea3i th\u00eam k\u1ebft qu\u1ea3\u2026", "i18n_searching": "T\u00ecm ki\u1ebfm\u2026" };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/country-select.min.js?ver=3.8.0" id="wc-country-select-js"></script>
+        <script type="text/javascript" id="wc-address-i18n-js-extra">
+            /* <![CDATA[ */
+            var wc_address_i18n_params = { "locale": "{\"AE\":{\"postcode\":{\"required\":false,\"hidden\":true},\"state\":{\"required\":false}},\"AF\":{\"state\":{\"required\":false}},\"AO\":{\"postcode\":{\"required\":false,\"hidden\":true},\"state\":{\"label\":\"T\\u1ec9nh\"}},\"AT\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"AU\":{\"city\":{\"label\":\"V\\u00f9ng ven\"},\"postcode\":{\"label\":\"M\\u00e3 b\\u01b0u \\u0111i\\u1ec7n\"},\"state\":{\"label\":\"Bang\"}},\"AX\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"BD\":{\"postcode\":{\"required\":false},\"state\":{\"label\":\"Qu\\u1eadn\"}},\"BE\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false,\"label\":\"T\\u1ec9nh\"}},\"BH\":{\"postcode\":{\"required\":false},\"state\":{\"required\":false}},\"BI\":{\"state\":{\"required\":false}},\"BO\":{\"postcode\":{\"required\":false,\"hidden\":true}},\"BS\":{\"postcode\":{\"required\":false,\"hidden\":true}},\"CA\":{\"postcode\":{\"label\":\"Postal code\"},\"state\":{\"label\":\"T\\u1ec9nh\"}},\"CH\":{\"postcode\":{\"priority\":65},\"state\":{\"label\":\"Bang\",\"required\":false}},\"CL\":{\"city\":{\"required\":true},\"postcode\":{\"required\":false},\"state\":{\"label\":\"V\\u00f9ng\"}},\"CN\":{\"state\":{\"label\":\"T\\u1ec9nh\"}},\"CO\":{\"postcode\":{\"required\":false}},\"CZ\":{\"state\":{\"required\":false}},\"DE\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"DK\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"EE\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"FI\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"FR\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"GP\":{\"state\":{\"required\":false}},\"GF\":{\"state\":{\"required\":false}},\"GR\":{\"state\":{\"required\":false}},\"HK\":{\"postcode\":{\"required\":false},\"city\":{\"label\":\"Qu\\u1eadn \\\/ Huy\\u1ec7n\"},\"state\":{\"label\":\"V\\u00f9ng\"}},\"HU\":{\"state\":{\"label\":\"H\\u1ea1t\"}},\"ID\":{\"state\":{\"label\":\"T\\u1ec9nh\"}},\"IE\":{\"postcode\":{\"required\":false,\"label\":\"Eircode\"},\"state\":{\"label\":\"H\\u1ea1t\"}},\"IS\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"IL\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"IM\":{\"state\":{\"required\":false}},\"IT\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":true,\"label\":\"T\\u1ec9nh\"}},\"JP\":{\"last_name\":{\"class\":[\"form-row-first\"],\"priority\":10},\"first_name\":{\"class\":[\"form-row-last\"],\"priority\":20},\"postcode\":{\"class\":[\"form-row-first\"],\"priority\":65},\"state\":{\"label\":\"Qu\\u1eadn\",\"class\":[\"form-row-last\"],\"priority\":66},\"city\":{\"priority\":67},\"address_1\":{\"priority\":68},\"address_2\":{\"priority\":69}},\"KR\":{\"state\":{\"required\":false}},\"KW\":{\"state\":{\"required\":false}},\"LV\":{\"state\":{\"label\":\"Khu t\\u1ef1 tr\\u1ecb\",\"required\":false}},\"LB\":{\"state\":{\"required\":false}},\"MQ\":{\"state\":{\"required\":false}},\"MT\":{\"state\":{\"required\":false}},\"MZ\":{\"postcode\":{\"required\":false,\"hidden\":true},\"state\":{\"label\":\"T\\u1ec9nh\"}},\"NL\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false,\"label\":\"T\\u1ec9nh\"}},\"NG\":{\"postcode\":{\"label\":\"M\\u00e3 b\\u01b0u \\u0111i\\u1ec7n\",\"required\":false,\"hidden\":true},\"state\":{\"label\":\"Bang\"}},\"NZ\":{\"postcode\":{\"label\":\"M\\u00e3 b\\u01b0u \\u0111i\\u1ec7n\"},\"state\":{\"required\":false,\"label\":\"V\\u00f9ng\"}},\"NO\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"NP\":{\"state\":{\"label\":\"Bang\\\/V\\u00f9ng\"},\"postcode\":{\"required\":false}},\"PL\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"PT\":{\"state\":{\"required\":false}},\"RE\":{\"state\":{\"required\":false}},\"RO\":{\"state\":{\"label\":\"H\\u1ea1t\",\"required\":true}},\"RS\":{\"state\":{\"required\":false,\"hidden\":true}},\"SG\":{\"state\":{\"required\":false},\"city\":{\"required\":false}},\"SK\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"SI\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"SR\":{\"postcode\":{\"required\":false,\"hidden\":true}},\"ES\":{\"postcode\":{\"priority\":65},\"state\":{\"label\":\"T\\u1ec9nh\"}},\"LI\":{\"postcode\":{\"priority\":65},\"state\":{\"label\":\"Khu t\\u1ef1 tr\\u1ecb\",\"required\":false}},\"LK\":{\"state\":{\"required\":false}},\"LU\":{\"state\":{\"required\":false}},\"MD\":{\"state\":{\"label\":\"Municipality \\\/ District\"}},\"SE\":{\"postcode\":{\"priority\":65},\"state\":{\"required\":false}},\"TR\":{\"postcode\":{\"priority\":65},\"state\":{\"label\":\"T\\u1ec9nh\"}},\"UG\":{\"postcode\":{\"required\":false,\"hidden\":true},\"city\":{\"label\":\"Town \\\/ Village\",\"required\":true},\"state\":{\"label\":\"Qu\\u1eadn\",\"required\":true}},\"US\":{\"postcode\":{\"label\":\"M\\u00e3 v\\u00f9ng\"},\"state\":{\"label\":\"Bang\"}},\"GB\":{\"postcode\":{\"label\":\"M\\u00e3 b\\u01b0u \\u0111i\\u1ec7n\"},\"state\":{\"label\":\"H\\u1ea1t\",\"required\":false}},\"ST\":{\"postcode\":{\"required\":false,\"hidden\":true},\"state\":{\"label\":\"Qu\\u1eadn\"}},\"VN\":{\"state\":{\"required\":false,\"hidden\":true},\"postcode\":{\"priority\":65,\"required\":false,\"hidden\":false},\"address_2\":{\"required\":false,\"hidden\":true}},\"WS\":{\"postcode\":{\"required\":false,\"hidden\":true}},\"YT\":{\"state\":{\"required\":false}},\"ZA\":{\"state\":{\"label\":\"T\\u1ec9nh\"}},\"ZW\":{\"postcode\":{\"required\":false,\"hidden\":true}},\"default\":{\"first_name\":{\"label\":\"T\\u00ean\",\"required\":true,\"class\":[\"form-row-first\"],\"autocomplete\":\"given-name\",\"priority\":10},\"last_name\":{\"label\":\"H\\u1ecd\",\"required\":true,\"class\":[\"form-row-last\"],\"autocomplete\":\"family-name\",\"priority\":20},\"company\":{\"label\":\"T\\u00ean c\\u00f4ng ty\",\"class\":[\"form-row-wide\"],\"autocomplete\":\"organization\",\"priority\":30,\"required\":false},\"country\":{\"type\":\"country\",\"label\":\"Qu\\u1ed1c gia\",\"required\":true,\"class\":[\"form-row-wide\",\"address-field\",\"update_totals_on_change\"],\"autocomplete\":\"country\",\"priority\":40},\"address_1\":{\"label\":\"\\u0110\\u1ecba ch\\u1ec9\",\"placeholder\":\"\\u0110\\u1ecba ch\\u1ec9\",\"required\":true,\"class\":[\"form-row-wide\",\"address-field\"],\"autocomplete\":\"address-line1\",\"priority\":50},\"address_2\":{\"placeholder\":\"\\u0110\\u1ecba ch\\u1ec9 nh\\u00e0, c\\u0103n h\\u1ed9, to\\u00e0 nh\\u00e0,.. (tu\\u1ef3 ch\\u1ecdn)\",\"class\":[\"form-row-wide\",\"address-field\"],\"autocomplete\":\"address-line2\",\"priority\":60,\"required\":false},\"city\":{\"label\":\"T\\u1ec9nh \\\/ Th\\u00e0nh ph\\u1ed1\",\"required\":true,\"class\":[\"form-row-wide\",\"address-field\"],\"autocomplete\":\"address-level2\",\"priority\":70},\"state\":{\"type\":\"state\",\"label\":\"Bang \\\/ H\\u1ea1t\",\"required\":true,\"class\":[\"form-row-wide\",\"address-field\"],\"validate\":[\"state\"],\"autocomplete\":\"address-level1\",\"priority\":80},\"postcode\":{\"label\":\"M\\u00e3 b\\u01b0u \\u0111i\\u1ec7n\",\"required\":true,\"class\":[\"form-row-wide\",\"address-field\"],\"validate\":[\"postcode\"],\"autocomplete\":\"postal-code\",\"priority\":90}}}", "locale_fields": "{\"address_1\":\"#billing_address_1_field, #shipping_address_1_field\",\"address_2\":\"#billing_address_2_field, #shipping_address_2_field\",\"state\":\"#billing_state_field, #shipping_state_field, #calc_shipping_state_field\",\"postcode\":\"#billing_postcode_field, #shipping_postcode_field, #calc_shipping_postcode_field\",\"city\":\"#billing_city_field, #shipping_city_field, #calc_shipping_city_field\"}", "i18n_required_text": "b\u1eaft bu\u1ed9c", "i18n_optional_text": "tu\u1ef3 ch\u1ecdn" };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/address-i18n.min.js?ver=3.8.0" id="wc-address-i18n-js"></script>
+        <script type="text/javascript" id="wc-checkout-js-extra">
+            /* <![CDATA[ */
+            var wc_checkout_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "update_order_review_nonce": "3ed5c8467d", "apply_coupon_nonce": "a3a67d4ee5", "remove_coupon_nonce": "39df61b6b6", "option_guest_checkout": "yes", "checkout_url": "\/?wc-ajax=checkout", "is_checkout": "1", "debug_mode": "", "i18n_checkout_error": "\u0110\u00e3 c\u00f3 l\u1ed7i x\u1ea3y ra trong qu\u00e1 tr\u00ecnh thanh to\u00e1n. Vui l\u00f2ng th\u1eed l\u1ea1i." };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/checkout.min.js?ver=3.8.0" id="wc-checkout-js"></script>
+        <script type="text/javascript" id="wc-cart-fragments-js-extra">
+            /* <![CDATA[ */
+            var wc_cart_fragments_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "cart_hash_key": "wc_cart_hash_889ccfed3a46304e74ed615a94e54365", "fragment_name": "wc_fragments_889ccfed3a46304e74ed615a94e54365", "request_timeout": "5000" };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.8.0" id="wc-cart-fragments-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/vendor.js?ver=6.0" id="script_02-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/jquery.fancybox.js?ver=6.0" id="script_01-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/jquery.elevateZoom.js?ver=6.0" id="script_03-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/jquery.mmenu.js?ver=6.0" id="script_04-js"></script>
+        <script type="text/javascript" src="https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/reco-home.js?ver=6.0" id="script_0-js"></script>
 
-         // Handle the "Xem đơn hàng" button click
-         function viewOrder() {
-             window.location.href = '@Url.Action("XemDonHang", "Home")';
-         }
+
+        <script>
+            var swiper = new Swiper('.slider-wrap .swiper-container', {
+                navigation: {
+                    nextEl: '.slider-wrap .swiper-button-next',
+                    prevEl: '.slider-wrap .swiper-button-prev',
+                },
+            });
+        </script>
+
+
+        <script>
+            var swiper = new Swiper('.personal-categories .swiper-container', {
+                navigation: {
+                    nextEl: '.personal-categories .swiper-button-next',
+                    prevEl: '.personal-categories .swiper-button-prev',
+                },
+                slidesPerView: 8,
+                spaceBetween: 20,
+                // init: false,
+                pagination: {
+                    el: '.personal-categories .swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    }
+                }
+            });
+        </script>
+
+        <script>
+            var swiper = new Swiper('.personal-keyword .swiper-container', {
+                navigation: {
+                    nextEl: '.personal-keyword .swiper-button-next',
+                    prevEl: '.personal-keyword .swiper-button-prev',
+                },
+                slidesPerView: 8,
+                spaceBetween: 20,
+                // init: false,
+                pagination: {
+                    el: '.personal-keyword .swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    }
+                }
+            });
+        </script>
+        <script>
+            var swiper = new Swiper('.product-author-content .swiper-container', {
+                navigation: {
+                    nextEl: '.product-author-content .swiper-button-next',
+                    prevEl: '.product-author-content .swiper-button-prev',
+                },
+                slidesPerView: 5,
+                spaceBetween: 20,
+                // init: false,
+                pagination: {
+                    el: '.product-author-content .swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    }
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            jQuery('header#header .main-nav .main-nav-wrap>ul>li>a').hover(function () {
+                jQuery(this).toggleClass('active');
+            });
+            jQuery('.recently').click(function () {
+                jQuery('#main-ajax-recentlyviewed').toggleClass('show');
+            });
+        </script>
+        <script type="text/javascript">
+            if (jQuery(window).width() < 996) {
+                jQuery(function () {
+                    jQuery('#menumobile').mmenu();
+                });
+            }*@
     </script>
     <script src="~/assets/vendor/js/bootstrap.js"></script>
     <script src="~/assets/vendor/js/helpers.js"></script>

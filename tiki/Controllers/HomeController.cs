@@ -140,5 +140,13 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
             return View();
         }
+        public ActionResult XemDonHang()
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.XuatDH = db.get($"exec XuatDonHang {userId}");
+            ViewBag.XuatCTDH = db.get($"exec XuatChiTietDonHang {userId}");
+            return View();
+        }
     }
 }
