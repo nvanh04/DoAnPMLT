@@ -23,9 +23,19 @@ namespace tiki.Controllers
             return View();
 
         }
-        public ActionResult eCommerce()
+        public ActionResult eCommerce(string id)
         {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get("EXEC timkiemKHtheoID " + id + ";");
             return View();
+        }
+        [HttpPost]
+        public ActionResult XuLySuaThongTin(string userId,string username, string fullname, string email, string phone, string DiaChi)
+        {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}"); 
+            db.get("EXEC SuaThongTinCaNhan1 " + userId + ", " + username + ", '" + email + "', N'" + fullname + "', " + phone + ", N'" + DiaChi + "'");
+            return RedirectToAction("Index", "Customers");
         }
         public ActionResult product()
         {

@@ -150,7 +150,7 @@ namespace tiki.Controllers
 
             }
             catch (Exception) { }
-            return RedirectToAction("Thongtincanhan", "Home");
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult XemDonHang()
         {

@@ -1797,7 +1797,8 @@
 
                                         <div class="card-datatable table-responsive">
                                             <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
-                                                <div class="card-header d-flex flex-wrap flex-md-row flex-column align-items-start align-items-sm-center py-0"><div class="d-flex align-items-center me-5"><div id="DataTables_Table_0_filter" class="dataTables_filter ms-n3 mb-0 mb-md-6"><label><input type="search" class="form-control" placeholder="Search Order" aria-controls="DataTables_Table_0"></label></div></div><div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-md-end flex-wrap flex-sm-nowrap mb-6 mb-sm-0 pt-0"><div class="dataTables_length ms-n2 me-2" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div><div class="dt-buttons btn-group flex-wrap d-flex"> <div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary me-4" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false"><span><i class="bx bx-export bx-sm me-2"></i>Export</span></button></div> <button class="btn btn-secondary add-new btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEcommerceCustomerAdd"><span><i class="bx bx-plus bx-sm me-0 me-sm-2 mb-1"></i><span class="d-none d-sm-inline-block">Add Customer</span></span></button> </div></div></div><table class="datatables-customers table border-top dataTable no-footer dtr-column" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 888px;">
+                                                <div class="card-header d-flex flex-wrap flex-md-row flex-column align-items-start align-items-sm-center py-0"><div class="d-flex align-items-center me-5"><div id="DataTables_Table_0_filter" class="dataTables_filter ms-n3 mb-0 mb-md-6"><label><input type="search" class="form-control" placeholder="Search Order" aria-controls="DataTables_Table_0"></label></div></div><div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-md-end flex-wrap flex-sm-nowrap mb-6 mb-sm-0 pt-0"><div class="dataTables_length ms-n2 me-2" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div><div class="dt-buttons btn-group flex-wrap d-flex"> <div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary me-4" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false"><span><i class="bx bx-export bx-sm me-2"></i>Export</span></button></div> 
+                                                    <button class="btn btn-secondary add-new btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEcommerceCustomerAdd"><span><i class="bx bx-plus bx-sm me-0 me-sm-2 mb-1"></i><span class="d-none d-sm-inline-block">Add Customer</span></span></button> </div></div></div><table class="datatables-customers table border-top dataTable no-footer dtr-column" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 888px;">
     <thead>
         <tr>
             <th class="control sorting_disabled dtr-hidden" rowspan="1" colspan="1" style="width: 0px; display: none;" aria-label=""></th>
@@ -1805,9 +1806,9 @@
             <th class="sorting sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 213px;" aria-label="Customer: activate to sort column ascending" aria-sort="descending">Customer</th>
             <th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 93px;" aria-label="Customer Id: activate to sort column ascending">Customer Id</th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 166px;" aria-label="Country: activate to sort column ascending">Số điện thoại</th>
-            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 47px;" aria-label="Order: activate to sort column ascending">Order</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 47px;" aria-label="Order: activate to sort column ascending">Địa Chỉ</th>
             <th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 91px;" aria-label="Total Spent: activate to sort column ascending">Họ Tên</th>
-            <th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 91px;" aria-label="Total Spent: activate to sort column ascending">Role</th>
+            <th class="text-nowrap sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 91px;" aria-label="Total Spent: activate to sort column ascending"></th>
         </tr>
     </thead>
     @foreach (var a in ViewBag.listUser)
@@ -1816,14 +1817,15 @@
             <tr class="odd">
                 <td class="  control" tabindex="0" style="display: none;"></td>
                 <td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td>
-                <td class="sorting_1"><div class="d-flex justify-content-start align-items-center customer-name"></div><div class="d-flex flex-column"><a class="text-heading"><span class="fw-medium">@a[1]</span></a><small>@a[2]</small></div> </td>
+                <td class="sorting_1"><div class="d-flex justify-content-start align-items-center customer-name"></div><div class="d-flex flex-column"><a href="~/admin/eCommerce?id=@a[0]" class="text-heading"><span class="fw-medium">@a[1]</span></a><small>@a[2]</small></div> </td>
                 <td><span class="text-heading">@a[0]</span></td>
                 <td><div class="d-flex justify-content-start align-items-center customer-country"><div><i class="fis fi fi-ua rounded-circle me-2 fs-4"></i></div><div><span>@a[5]</span></div></div></td>
                 <td><span>@a[6]</span></td>
                 <td><span class="fw-medium text-heading">@a[4]@*<input type="text" class="form-control" id="ecommerce-product-name" placeholder="Vai trò" name="description" aria-label="Nhập tên">*@</span></td>
                 <td><a href="~/admin/Xoanguoidung?id=@a[0]">Xóa</a></td>
+
             </tr>
-        
+
 
         </tbody>
 
