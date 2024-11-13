@@ -746,7 +746,7 @@
                                             <div class="woocommerce">
                                                 <div class="woocommerce-notices-wrapper"></div>
                                                 <div class="woocommerce-notices-wrapper"></div>
-                                                <form name="checkout" method="post" class="checkout woocommerce-checkout" action="@Url.Action("UpdateDH")" enctype="multipart/form-data">
+                                                <form name="checkout" method="post" class="checkout woocommerce-checkout" action="@Url.Action("XuLyUpdateDH")" enctype="multipart/form-data">
 
 
                                                     <div class="col-sm-8" id="customer_details">
@@ -757,46 +757,40 @@
                                                                     <div class="woocommerce-billing-fields__field-wrapper">
                                                                         @foreach (var a in ViewBag.XemTTDonHang)
                                                                         {
-                                                                                <p class="form-row form-row-wide address-field validate-required" id="billing_name_field" data-priority="50">
-                                                                                    <label for="billing_name" class="">Họ và tên&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                    <span class="woocommerce-input-wrapper">
-                                                                                        <input type="text" class="input-text" name="billing_name" id="billing_name" value="@a[3]" placeholder="Nhập họ và tên" required />
-                                                                                    </span>
-                                                                                </p>
-                                                                                <p class="form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
-                                                                                    <label for="billing_address_1" class="">Địa chỉ&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                    <span class="woocommerce-input-wrapper">
-                                                                                        <input type="text" class="input-text" name="billing_address_1" id="billing_address_1" value="@a[6]" placeholder="Nhập địa chỉ" required />
-                                                                                    </span>
-                                                                                </p>
-                                                                                <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100">
-                                                                                    <label for="billing_tel" class="">Số điện thoại&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                    <span class="woocommerce-input-wrapper">
-                                                                                        <input type="tel" class="input-text" name="billing_tel" id="billing_tel" value="@a[4]" placeholder="Nhập số điện thoại" required />
-                                                                                    </span>
-                                                                                </p>
-                                                                                <p class="form-row form-row-wide validate-required validate-email" id="billing_email_field" data-priority="110">
-                                                                                    <label for="billing_email" class="">Địa chỉ email&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                    <span class="woocommerce-input-wrapper">
-                                                                                        <input type="email" class="input-text" name="billing_email" id="billing_email" value="@a[5]" placeholder="Nhập email" required />
-                                                                                    </span>
-                                                                                </p>
-                                                                                <p class="form-row form-row-wide" id="order_comments_field">
-                                                                                    <label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span class="optional">(tuỳ chọn)</span></label>
-                                                                                    <span class="woocommerce-input-wrapper">
-                                                                                        <input type="text" class="input-text" name="order_comments" id="order_comments" value="@a[12]" placeholder="Ghi chú về đơn hàng" rows="2" cols="5" />
-                                                                                    </span>
-                                                                                </p>
-                                                                                <div id="order-success" class="notification" style="display: none;">
-                                                                                    <p>Cập nhật đơn hàng thành công thành công!</p>
-                                                                                    <div class="notification-buttons">
-                                                                                        <button onclick="viewOrder()">Xem đơn hàng</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <button onclick="handleSubmit(event)" type="submit" value="cập nhật">
-                                                                                    Cập nhật
-                                                                                </button>
-                                                                         }
+                                                                            <input type="hidden" name="id" value="@a[0]" />
+                                                                            <input type="hidden" name="userId" value="@a[1]" />
+                                                                            <p class="form-row form-row-wide address-field validate-required" id="billing_name_field" data-priority="50">
+                                                                                <label for="billing_name" class="">Họ và tên&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
+                                                                                <span class="woocommerce-input-wrapper">
+                                                                                    <input type="text" class="input-text" name="billing_name" id="billing_name" value="@a[3]" placeholder="Nhập họ và tên" required />
+                                                                                </span>
+                                                                            </p>
+                                                                            <p class="form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                                <label for="billing_address_1" class="">Địa chỉ&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
+                                                                                <span class="woocommerce-input-wrapper">
+                                                                                    <input type="text" class="input-text" name="billing_address_1" id="billing_address_1" value="@a[6]" placeholder="Nhập địa chỉ" required />
+                                                                                </span>
+                                                                            </p>
+                                                                            <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100">
+                                                                                <label for="billing_tel" class="">Số điện thoại&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
+                                                                                <span class="woocommerce-input-wrapper">
+                                                                                    <input type="tel" class="input-text" name="billing_tel" id="billing_tel" value="@a[4]" placeholder="Nhập số điện thoại" required />
+                                                                                </span>
+                                                                            </p>
+                                                                            <p class="form-row form-row-wide validate-required validate-email" id="billing_email_field" data-priority="110">
+                                                                                <label for="billing_email" class="">Địa chỉ email&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
+                                                                                <span class="woocommerce-input-wrapper">
+                                                                                    <input type="email" class="input-text" name="billing_email" id="billing_email" value="@a[5]" placeholder="Nhập email" required />
+                                                                                </span>
+                                                                            </p>
+                                                                            <p class="form-row form-row-wide" id="order_comments_field">
+                                                                                <label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span class="optional">(tuỳ chọn)</span></label>
+                                                                                <span class="woocommerce-input-wrapper">
+                                                                                    <input type="text" class="input-text" name="order_comments" id="order_comments" value="@a[12]" placeholder="Ghi chú về đơn hàng" rows="2" cols="5" />
+                                                                                </span>
+                                                                            </p>
+                                                                            <input type="submit" value="Sửa Thông Tin" />
+                                                                        }
                                                                     </div>
                                                                 </div>
                                                             </div>

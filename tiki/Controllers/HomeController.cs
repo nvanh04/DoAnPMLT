@@ -180,7 +180,7 @@ namespace tiki.Controllers
 
             // Lấy chi tiết đơn hàng
             ViewBag.XemDanhSachDHCT = db.get($"exec XemDanhSachDHCT {userId}, {id}");
-
+          
             return View(); ;
         }
         public ActionResult XoaDH_User(string id)
@@ -190,13 +190,21 @@ namespace tiki.Controllers
             db.get($"exec XoaDH {userId}, {id}");
             return RedirectToAction("XemDanhSachDH_User");
         }
-        public ActionResult UpdateDH(string id, string billing_name, string billing_address_1, string billing_tel, string billing_email, string order_comments)
+        public ActionResult UpdateDH(string id)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
-            ViewBag.XemTTDonHang = db.get($"exec XemTTDonHang '{userId}', '{id}'");
-            db.get($"exec CapNhatDH '{userId}', '{id}', '{billing_name}', '{billing_tel}', '{billing_address_1}', '{billing_email}', '{order_comments}'");
+            ViewBag.XemTTDonHang = db.get($"exec XemCTDH '{userId}', '{id}'");
             return View();
+        }
+        [HttpPost]
+        public ActionResult XuLyUpdateDH(string id, string billing_name, string billing_address_1, string billing_tel, string billing_email, string order_comments)
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.XemTTDonHang = db.get($"exec XemCTDH '{userId}', '{id}'");
+            db.get("exec CapNhatDH "+userId+", "+id+", N'"+billing_name+"', '"+billing_tel+"', N'"+billing_address_1+"', '"+billing_email+"', N'"+order_comments+"'");
+            return RedirectToAction("XemDanhSachDH_User", "Home");
         }
     }
 } 
