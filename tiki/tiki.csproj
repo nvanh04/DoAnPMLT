@@ -490,6 +490,9 @@
     <Content Include="Views\Home\Thongtincanhan.cshtml" />
     <Content Include="Views\Home\XemDonHang.cshtml" />
     <Content Include="Views\Home\SuaThongTinCaNhan.cshtml" />
+    <Content Include="Views\Home\XemDanhSachDH_User.cshtml" />
+    <Content Include="Views\Home\XemDanhSachDHCT_User.cshtml" />
+    <Content Include="Views\Home\UpdateDH.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

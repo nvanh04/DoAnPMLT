@@ -35,31 +35,7 @@ namespace tiki.Controllers
         public ActionResult XulyDangNhap(string email, string password)
         {
             DataModel db = new DataModel();
-            //ViewBag.listCheckAdmin = db.get("EXEC CheckAdmin '" + email + "','" + password + "'");
-            //ViewBag.listCheckNBH = db.get("EXEC CheckNBH1 '" + email + "','" + password + "'");
             ViewBag.list = db.get("EXEC KIEMTRADANGNHAP5 '" + email + "','" + password + "'");
-
-            //// Nếu là Admin
-            //if (ViewBag.listCheckAdmin != null && ViewBag.listCheckAdmin.Count > 0)
-            //{
-            //    ArrayList adminData = (ArrayList)ViewBag.listCheckAdmin[0];
-            //    Session["IDAdmin"] = adminData[0];
-            //    Session["TenAdmin"] = adminData[1];
-            //    Session["VaiTro"] = adminData[2];
-            //    return RedirectToAction("Index", "admin");
-            //}
-
-            //// Nếu là Nhà bán hàng (NBH)
-            //if (ViewBag.listCheckNBH != null && ViewBag.listCheckNBH.Count > 0)
-            //{
-            //    ArrayList nbhData = (ArrayList)ViewBag.listCheckNBH[0];
-            //    Session["IDNBH"] = nbhData[0];
-            //    Session["TenNBH"] = nbhData[1];
-            //    Session["MatKhauNBH"] = nbhData[2];
-            //    return RedirectToAction("shop", "Shop");
-            //}
-
-            // Nếu là khách hàng (KH)
             if (ViewBag.list != null && ViewBag.list.Count > 0)
             {
                 ArrayList userData = (ArrayList)ViewBag.list[0];
@@ -184,5 +160,43 @@ namespace tiki.Controllers
             ViewBag.XuatCTDH = db.get($"exec XuatChiTietDonHang {userId}");
             return View();
         }
+        public ActionResult XemDanhSachDH_User()
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+
+            // Lấy danh sách đơn hàng cho người dùng
+            ViewBag.XemDanhSachDH = db.get($"exec XemDanhSachDH {userId}");
+
+            return View();
+        }
+        public ActionResult XemDanhSachDHCT_User(string id)
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+
+            // Lấy thông tin đơn hàng của người dùng
+            ViewBag.XemCTDH = db.get($"exec XemCTDH {userId}, {id}");
+
+            // Lấy chi tiết đơn hàng
+            ViewBag.XemDanhSachDHCT = db.get($"exec XemDanhSachDHCT {userId}, {id}");
+
+            return View(); ;
+        }
+        public ActionResult XoaDH_User(string id)
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            db.get($"exec XoaDH {userId}, {id}");
+            return RedirectToAction("XemDanhSachDH_User");
+        }
+        public ActionResult UpdateDH(string id, string billing_name, string billing_address_1, string billing_tel, string billing_email, string order_comments)
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.XemTTDonHang = db.get($"exec XemTTDonHang '{userId}', '{id}'");
+            db.get($"exec CapNhatDH '{userId}', '{id}', '{billing_name}', '{billing_tel}', '{billing_address_1}', '{billing_email}', '{order_comments}'");
+            return View();
+        }
     }
-}
+} 

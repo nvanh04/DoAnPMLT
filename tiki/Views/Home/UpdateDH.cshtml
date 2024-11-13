@@ -8,218 +8,35 @@
         Thanh toán &#8211; Mua Hàng Trực Tuyến Uy Tín với Giá Rẻ Hơn tại Tiki.vn
     </title>
     <style>
-        .woocommerce-billing-fields__field-wrapper {
-            padding: 20px;
-            background-color: #f9f9f9;
+        .tieude {
+            background-color: darkcyan;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-row {
-            margin-bottom: 20px;
-        }
-
-        .woocommerce-input-wrapper {
-            position: relative;
-        }
-
-        .input-text {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .error-message {
-            font-size: 12px;
-            color: red;
-            display: none;
-        }
-
-        input:invalid {
-            border-color: red;
-        }
-
-        input:required {
-            border-color: #ffbb33;
-        }
-
-        label {
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-    </style>
-    <style>
-        /* Định dạng cho container tổng */
-        .col-sm-4 {
-            background: #ebe9eb;
-            color: #000;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 500px;
-            margin: 0 auto;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Tiêu đề của đơn hàng */
-        #order_review_heading {
             text-align: center;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        /* Bảng hiển thị sản phẩm và tổng đơn hàng */
-        .shop_table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-            .shop_table th,
-            .shop_table td {
-                text-align: left;
-                padding: 10px;
-                border-bottom: 1px solid #ddd;
-            }
-
-            .shop_table .product-name {
-                font-weight: bold;
-            }
-
-            .shop_table .product-total {
-                text-align: right;
-            }
-
-        /* Định dạng cho phần tổng cộng và giảm giá */
-        tfoot {
             font-weight: bold;
-        }
-
-        .order-total th {
-            text-align: left;
-        }
-
-        .order-total td {
-            text-align: right;
-        }
-
-        /* Định dạng cho các phương thức thanh toán */
-        #wc_payment_methods {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .wc_payment_method {
-            padding: 10px;
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-            .wc_payment_method label {
-                font-weight: bold;
-                cursor: pointer;
-            }
-
-        .payment_box {
-            margin-top: 5px;
-            padding: 5px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .wc_payment_method input[type="radio"]:checked + label + .payment_box {
-            display: block;
-        }
-
-        /* Nút Đặt hàng */
-        button[type="submit"] {
-            width: 100%;
-            padding: 15px;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 1em;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-            button[type="submit"]:hover {
-                background-color: #0056b3;
-            }
-
-        /* Thông báo đặt hàng thành công */
-        #order-success {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            border-radius: 5px;
-            color: #155724;
-            margin-top: 20px;
-        }
-
-        .notification-buttons button {
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-            .notification-buttons button:hover {
-                background-color: #0056b3;
-            }
-    </style>
-    <style>
-        .notification {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background-color: #4CAF50;
             color: white;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
+            margin: 10px 10px 20px 10px;
+            padding: 5px;
         }
 
-            .notification p {
-                margin: 0;
-                font-size: 18px;
-            }
-
-        .notification-buttons {
-            margin-top: 10px;
+        .them a {
+            border-radius: 10px;
+            background-color: darkcyan;
+            color: white;
+            font-size: large;
+            padding: 5px;
+            margin: 50px 10px 0 10px;
         }
 
-            .notification-buttons button {
-                padding: 8px 15px;
-                margin: 5px;
-                font-size: 16px;
-                background-color: white;
-                color: #4CAF50;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                transition: background-color 0.3s;
+            .them a:hover {
+                text-decoration: none;
+                color: white;
+                background-color: #027171;
             }
 
-                .notification-buttons button:hover {
-                    background-color: #ddd;
-                }
+        .table-striped {
+            width: 100%;
+        }
     </style>
-    <link href="" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <meta name='robots' content='noindex, nofollow' />
     <link rel='dns-prefetch' href='//s.w.org' />
     <link rel='stylesheet' id='lrm-modal-css' href='https://tiki.maugiaodien.com/wp-content/plugins/ajax-login-and-registration-modal-popup/assets/lrm-core-compiled.css?ver=32' type='text/css' media='all' />
@@ -911,10 +728,6 @@
         </header>
 
         <div class="header-place"></div>
-
-
-
-
         <div class="container" itemscope="" itemtype="http://schema.org/Blog">
             <div class="row">
 
@@ -928,171 +741,68 @@
                             <div class="col-lg-12">
 
                                 <div class="article-details">
-
-                                    <h1 class="article-title1"><a href="https://tiki.maugiaodien.com/thanh-toan/">Thanh toán</a></h1>
-
-
                                     <div class="article-content">
                                         <div class="rte">
                                             <div class="woocommerce">
                                                 <div class="woocommerce-notices-wrapper"></div>
                                                 <div class="woocommerce-notices-wrapper"></div>
-                                                <form name="checkout" method="post" class="checkout woocommerce-checkout" action="@Url.Action("DatHang")" enctype="multipart/form-data">
+                                                <form name="checkout" method="post" class="checkout woocommerce-checkout" action="@Url.Action("UpdateDH")" enctype="multipart/form-data">
 
 
                                                     <div class="col-sm-8" id="customer_details">
                                                         <div class="col-1">
                                                             <div class="col-1">
                                                                 <div class="woocommerce-billing-fields">
-                                                                    <h3>Thông tin thanh toán</h3>
-
+                                                                    <h3>Cập nhật thông tin đơn hàng</h3>
                                                                     <div class="woocommerce-billing-fields__field-wrapper">
-                                                                        @foreach (var a in ViewBag.list)
+                                                                        @foreach (var a in ViewBag.XemTTDonHang)
                                                                         {
-                                                                            <p class="form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
-                                                                                <label for="billing_name" class="">Họ và tên&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                <span class="woocommerce-input-wrapper">
-                                                                                    <input type="text" class="input-text" name="billing_name" id="billing_name" value="@a[4]" placeholder="Nhập họ và tên" required />
-                                                                                    <span id="billing_name_error" class="error-message" style="color: red; display: none;">Vui lòng nhập họ và tên</span>
-                                                                                </span>
-                                                                            </p>
-                                                                            <p class="form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
-                                                                                <label for="billing_address_1" class="">Địa chỉ&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                <span class="woocommerce-input-wrapper">
-                                                                                    <input type="text" class="input-text" name="billing_address_1" id="billing_address_1" value="@a[6]" placeholder="Nhập địa chỉ" required />
-                                                                                    <span id="billing_address_1_error" class="error-message" style="color: red; display: none;">Vui lòng nhập địa chỉ</span>
-                                                                                </span>
-                                                                            </p>
-                                                                            <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100">
-                                                                                <label for="billing_tel" class="">Số điện thoại&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                <span class="woocommerce-input-wrapper">
-                                                                                    <input type="tel" class="input-text" name="billing_tel" id="billing_tel" value="@a[5]" placeholder="Nhập số điện thoại" required />
-                                                                                    <span id="billing_tel_error" class="error-message" style="color: red; display: none;">Vui lòng nhập số điện thoại</span>
-                                                                                </span>
-                                                                            </p>
-                                                                            <p class="form-row form-row-wide validate-required validate-email" id="billing_email_field" data-priority="110">
-                                                                                <label for="billing_email" class="">Địa chỉ email&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
-                                                                                <span class="woocommerce-input-wrapper">
-                                                                                    <input type="email" class="input-text" name="billing_email" id="billing_email" value="@a[2]" placeholder="Nhập email" required />
-                                                                                    <span id="billing_email_error" class="error-message" style="color: red; display: none;">Vui lòng nhập email hợp lệ</span>
-                                                                                </span>
-                                                                            </p>
-                                                                        }
+                                                                                <p class="form-row form-row-wide address-field validate-required" id="billing_name_field" data-priority="50">
+                                                                                    <label for="billing_name" class="">Họ và tên&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
+                                                                                    <span class="woocommerce-input-wrapper">
+                                                                                        <input type="text" class="input-text" name="billing_name" id="billing_name" value="@a[3]" placeholder="Nhập họ và tên" required />
+                                                                                    </span>
+                                                                                </p>
+                                                                                <p class="form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                                    <label for="billing_address_1" class="">Địa chỉ&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
+                                                                                    <span class="woocommerce-input-wrapper">
+                                                                                        <input type="text" class="input-text" name="billing_address_1" id="billing_address_1" value="@a[6]" placeholder="Nhập địa chỉ" required />
+                                                                                    </span>
+                                                                                </p>
+                                                                                <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100">
+                                                                                    <label for="billing_tel" class="">Số điện thoại&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
+                                                                                    <span class="woocommerce-input-wrapper">
+                                                                                        <input type="tel" class="input-text" name="billing_tel" id="billing_tel" value="@a[4]" placeholder="Nhập số điện thoại" required />
+                                                                                    </span>
+                                                                                </p>
+                                                                                <p class="form-row form-row-wide validate-required validate-email" id="billing_email_field" data-priority="110">
+                                                                                    <label for="billing_email" class="">Địa chỉ email&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label>
+                                                                                    <span class="woocommerce-input-wrapper">
+                                                                                        <input type="email" class="input-text" name="billing_email" id="billing_email" value="@a[5]" placeholder="Nhập email" required />
+                                                                                    </span>
+                                                                                </p>
+                                                                                <p class="form-row form-row-wide" id="order_comments_field">
+                                                                                    <label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span class="optional">(tuỳ chọn)</span></label>
+                                                                                    <span class="woocommerce-input-wrapper">
+                                                                                        <input type="text" class="input-text" name="order_comments" id="order_comments" value="@a[12]" placeholder="Ghi chú về đơn hàng" rows="2" cols="5" />
+                                                                                    </span>
+                                                                                </p>
+                                                                                <div id="order-success" class="notification" style="display: none;">
+                                                                                    <p>Cập nhật đơn hàng thành công thành công!</p>
+                                                                                    <div class="notification-buttons">
+                                                                                        <button onclick="viewOrder()">Xem đơn hàng</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <button onclick="handleSubmit(event)" type="submit" value="cập nhật">
+                                                                                    Cập nhật
+                                                                                </button>
+                                                                         }
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-2">
-                                                            <div class="woocommerce-shipping-fields">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-2">
-                                                            <div class="woocommerce-shipping-fields">
-                                                            </div>
-                                                            <div class="woocommerce-additional-fields">
-                                                                <h3>Thông tin bổ sung</h3>
-                                                                <div class="woocommerce-additional-fields__field-wrapper">
-                                                                    <p class="form-row notes" id="order_comments_field" data-priority=""><label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span class="optional">(tuỳ chọn)</span></label><span class="woocommerce-input-wrapper"><textarea name="order_comments" class="input-text " id="order_comments" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn." rows="2" cols="5"></textarea></span></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
-                                                    <div class="col-sm-4" style=" background: #ebe9eb; color: #000; ">
-                                                        <h3 id="order_review_heading">Đơn hàng của bạn</h3>
-                                                        <div id="order_review" class="woocommerce-checkout-review-order">
-                                                            <table class="shop_table woocommerce-checkout-review-order-table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="product-name">Sản phẩm</th>
-                                                                        <th class="product-total">Tổng</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                @foreach (var item in ViewBag.CartItems)
-                                                                {
-                                                                    var productId = item[0]?.ToString();
-                                                                    var productName = item[1]?.ToString();
-                                                                    var itemPrice = decimal.Parse(item[2]?.ToString() ?? "0");
-                                                                    var quantity = int.Parse(item[3]?.ToString() ?? "0");
-                                                                    var totalPrice = decimal.Parse(item[4]?.ToString() ?? "0");
-                                                                    var imageUrl = item[5]?.ToString();
-                                                                    <tbody>
-                                                                        <tr class="cart_item">
-                                                                            <td class="product-name">
-                                                                                @productName&nbsp;							 <strong class="product-quantity">× @quantity</strong>
-                                                                            </td>
-                                                                            <td class="product-total">
-                                                                                <span class="woocommerce-Price-amount amount">@totalPrice&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                }
-                                                                <tfoot>
-                                                                    <tr class="order-total">
-                                                                        <th>Voucher Giảm</th>
-                                                                        <td>
-                                                                            @if (@Session["discount"] == null)
-                                                                            {
-                                                                                <strong><span class="woocommerce-Price-amount amount">@Session["discount"]&nbsp; <span class="woocommerce-Price-currencySymbol">0₫</span></span></strong>
-                                                                            }
-                                                                            else
-                                                                            {<strong><span class="woocommerce-Price-amount amount">@Session["discount"]&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></strong>}
-
-                                                                        </td>
-                                                                        <th>Tổng</th>
-                                                                        <td>
-                                                                            @if (@Session["discount"] == null)
-                                                                            {
-                                                                                <strong><span class="woocommerce-Price-amount amount">@Session["CartTotal"]&nbsp;<span class="woocommerce-Price-currencySymbol"></span>₫</span></strong>
-                                                                            }
-                                                                            else
-                                                                            {<strong><span class="woocommerce-Price-amount amount">@Session["totalAfterDiscount"]&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></strong>}
-                                                                        </td>
-                                                                    </tr>
-                                                                </tfoot>
-                                                            </table>
-                                                            <div id="payment" class="woocommerce-checkout-payment">
-                                                                <ul class="wc_payment_methods payment_methods methods">
-                                                                    <li class="wc_payment_method payment_method_bacs">
-                                                                        <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" checked="checked" data-order_button_text="">
-
-                                                                        <label for="payment_method_bacs">
-                                                                            Chuyển khoản ngân hàng
-                                                                        </label>
-                                                                        <div class="payment_box payment_method_bacs">
-                                                                            <p>Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn hàng của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ đươc giao sau khi tiền đã chuyển.</p>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="wc_payment_method payment_method_cod">
-                                                                        <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" data-order_button_text="">
-
-                                                                        <label for="payment_method_cod">
-                                                                            Trả tiền mặt khi nhận hàng
-                                                                        </label>
-                                                                        <div class="payment_box payment_method_cod" style="display:none;">
-                                                                            <p>Trả tiền mặt khi giao hàng</p>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-
-
-                                                            </div>
-                                                            <div id="order-success" class="notification" style="display: none;">
-                                                                <p>Đặt hàng thành công!</p>
-                                                                <div class="notification-buttons">
-                                                                    <button onclick="viewOrder()">Xem đơn hàng</button>
-                                                                </div>
-                                                            </div>
-                                                            <button onclick="handleSubmit(event)" type="submit" value="Đặt hàng">
-                                                                Đặt hàng
-                                                            </button>
-
-
-
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                </form>>
                                             </div>
                                         </div>
                                     </div>
@@ -1106,11 +816,6 @@
 
             </div>
         </div>
-
-
-
-
-
         <footer id="footer">
             <!-- Begin MailChimp Signup Form -->
             <div class="tiki-newsletter">
@@ -1533,52 +1238,51 @@
             <a href="#0" class="lrm-close-form">Đóng</a>
         </div> <!-- lrm-user-modal-container -->
     </div> <!-- lrm-user-modal -->
-    <script>
-     function handleSubmit(event) {
-         // Ngăn chặn gửi biểu mẫu nếu có lỗi
-         event.preventDefault();
-
-         // Ẩn tất cả thông báo lỗi
-         document.querySelectorAll(".error-message").forEach(function (el) {
-             el.style.display = "none";
-         });
-
-         // Kiểm tra điều kiện
-         let hasError = false;
-         if (document.getElementById("billing_name").value.trim() === "") {
-             document.getElementById("billing_name_error").style.display = "block";
-             hasError = true;
-         }
-         if (document.getElementById("billing_address_1").value.trim() === "") {
-             document.getElementById("billing_address_1_error").style.display = "block";
-             hasError = true;
-         }
-         if (document.getElementById("billing_tel").value.trim() === "") {
-             document.getElementById("billing_tel_error").style.display = "block";
-             hasError = true;
-         }
-         if (document.getElementById("billing_email").value.trim() === "") {
-             document.getElementById("billing_email_error").style.display = "block";
-             hasError = true;
-         }
-
-         // Nếu không có lỗi, hiển thị thông báo đặt hàng thành công
-         if (!hasError) {
-             document.getElementById("order-success").style.display = "block";
-             // Không gửi biểu mẫu tự động mà chờ người dùng xác nhận
-         }
-     }
-
-         // Handle the "Xem đơn hàng" button click
-         function viewOrder() {
-             window.location.href = '@Url.Action("XemDonHang", "Home")';
-         }
-    </script>
     <script src="~/assets/vendor/js/bootstrap.js"></script>
     <script src="~/assets/vendor/js/helpers.js"></script>
     <script src="~/assets/vendor/js/menu.js"></script>
     <script src="~/assets/vendor/js/template-customizer.js"></script>
+    <script>
+  function handleSubmit(event) {
+      // Ngăn chặn gửi biểu mẫu nếu có lỗi
+      event.preventDefault();
 
+      // Ẩn tất cả thông báo lỗi
+      document.querySelectorAll(".error-message").forEach(function (el) {
+          el.style.display = "none";
+      });
+
+      // Kiểm tra điều kiện
+      let hasError = false;
+      if (document.getElementById("billing_name").value.trim() === "") {
+          document.getElementById("billing_name_error").style.display = "block";
+          hasError = true;
+      }
+      if (document.getElementById("billing_address_1").value.trim() === "") {
+          document.getElementById("billing_address_1_error").style.display = "block";
+          hasError = true;
+      }
+      if (document.getElementById("billing_tel").value.trim() === "") {
+          document.getElementById("billing_tel_error").style.display = "block";
+          hasError = true;
+      }
+      if (document.getElementById("billing_email").value.trim() === "") {
+          document.getElementById("billing_email_error").style.display = "block";
+          hasError = true;
+      }
+
+      // Nếu không có lỗi, hiển thị thông báo đặt hàng thành công
+      if (!hasError) {
+          document.getElementById("order-success").style.display = "block";
+          // Không gửi biểu mẫu tự động mà chờ người dùng xác nhận
+      }
+  }
+
+      // Handle the "Xem đơn hàng" button click
+      function viewOrder() {
+          window.location.href = '@Url.Action("XemDanhSachDH_User", "Home")';
+      }
+    </script>
 </body>
 
 </html>
