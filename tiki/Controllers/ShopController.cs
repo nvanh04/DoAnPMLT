@@ -11,13 +11,14 @@ namespace tiki.Controllers
     public class ShopController : Controller
     {
         // GET: Shop
-        
+
         public ActionResult shop()
         {
             DataModel db = new DataModel();
             ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
             ViewBag.listnhacungcap = db.get("SELECT * FROM Brands");
-            int userId = Convert.ToInt32(Session["IDKH"]);
+
+
             return View();
         }
         [HttpPost]
@@ -29,7 +30,7 @@ namespace tiki.Controllers
                 if (Session["IDKH"] != null)
                 {
 
-                     int userId = Convert.ToInt32(Session["IDKH"]); // Lấy `user_id` từ session
+                    int userId = Convert.ToInt32(Session["IDKH"]); // Lấy `user_id` từ session
 
                     // Kiểm tra xem có hình ảnh không
                     if (HINH != null && HINH.ContentLength > 0)
@@ -41,7 +42,7 @@ namespace tiki.Controllers
 
                         // Tạo câu lệnh SQL với `user_id`
                         DataModel db = new DataModel();
-                        string query = "EXEC THEMSP0 N'" + name + "', '" + description + "', " + price + ", '" + HINH.FileName + "', " + category_id + ", " + brand_id + ", " + stock_quantity + ", " + price_discount + ", " + userId + ";";
+                        string query = "EXEC THEMSP222 N'" + name + "', N'" + description + "', " + price + ", '" + filename + "', " + category_id + ", " + brand_id + ", " + stock_quantity + ", " + price_discount + ", " + userId + ";";
 
                         // Thực hiện truy vấn để thêm sản phẩm
                         ViewBag.list = db.get(query);
@@ -53,9 +54,9 @@ namespace tiki.Controllers
                     return RedirectToAction("GiaoDienDangNhap", "Home");
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
-               
+
             }
 
             // Chuyển hướng về trang quản lý sản phẩm sau khi thêm thành công
@@ -84,6 +85,8 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
             ViewBag.listSanpham = db.get("SELECT * FROM Products");
             ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.hienthisanphamid = db.get($"exec LAY_SANPHAM_THEO_USERID {userId}");
             return View();
         }
 
