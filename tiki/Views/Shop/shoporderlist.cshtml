@@ -1678,73 +1678,76 @@
                             </li>
                             <!--/ Notification -->
                             <!-- User -->
-                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                    <div class="avatar avatar-online">
-                                        <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
+                            <div class="user-profile item" id="header-user">
+                                <div data-reactroot="">
+
+                                    <div>
+                                        @if (Session["IDKH"] != null)
+                                        {
+                                            <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                                <div style="top :8px" class="avatar avatar-online">
+                                                    <img src="~/HINH/@Session["Hinh"]" alt="" class="w-px-40 h-auto rounded-circle">
+                                                </div>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li>
+                                                    <a class="dropdown-item" href="~/Home/Thongtincanhan?id=@Session["IDKH"]">
+                                                        <div class="d-flex">
+                                                            <div class="flex-shrink-0 me-3">
+                                                                <div class="avatar avatar-online">
+                                                                    <img src="~/HINH/@Session["Hinh"]" alt="" class="w-px-40 h-auto rounded-circle">
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-grow-1">
+                                                                <h6 class="mb-0">@Session["TenKH"]</h6>
+                                                                <small class="text-muted">Khách hàng</small>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <div class="dropdown-divider my-1"></div>
+                                                </li>
+
+                                                <li>
+                                                    <a class="dropdown-item" href="~/Home/Thongtincanhan">
+                                                        <i class="bx bx-user bx-md me-3"></i><span>Thông tin cá nhân</span>
+                                                    </a>
+                                                </li>
+
+                                                @* Thêm điều kiện hiển thị trang dành cho NBH hoặc Admin *@
+                                                @if (Session["VaiTro"]?.ToString() == "NBH")
+                                                {
+                                                    <li>
+                                                        <a class="dropdown-item" href="@Url.Action("shop", "Shop")">
+                                                            <i class="bx bx-store bx-md me-3"></i><span>Trang bán hàng</span>
+                                                        </a>
+                                                    </li>
+                                                }
+                                                else if (Session["VaiTro"]?.ToString() == "Admin")
+                                                {
+                                                    <li>
+                                                        <a class="dropdown-item" href="@Url.Action("Index", "Admin")">
+                                                            <i class="bx bx-cog bx-md me-3"></i><span>Trang Admin</span>
+                                                        </a>
+                                                    </li>
+                                                }
+
+                                                <li>
+                                                    <a class="dropdown-item" href="@Url.Action("GiaoDienDangNhap", "Home")">
+                                                        <i class="bx bx-power-off bx-md me-3"></i><span>Đăng xuất</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
+                                        }
+
                                     </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a class="dropdown-item" href="pages-account-settings-account.html">
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar avatar-online">
-                                                        <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-0">John Doe</h6>
-                                                    <small class="text-muted">Admin</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider my-1"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="pages-profile-user.html">
-                                            <i class="bx bx-user bx-md me-3"></i><span>My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="pages-account-settings-account.html">
-                                            <i class="bx bx-cog bx-md me-3"></i><span>Settings</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="pages-account-settings-billing.html">
-                                            <span class="d-flex align-items-center align-middle">
-                                                <i class="flex-shrink-0 bx bx-credit-card bx-md me-3"></i><span class="flex-grow-1 align-middle">Billing Plan</span>
-                                                <span class="flex-shrink-0 badge rounded-pill bg-danger">4</span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider my-1"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="pages-pricing.html">
-                                            <i class="bx bx-dollar bx-md me-3"></i><span>Pricing</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="pages-faq.html">
-                                            <i class="bx bx-help-circle bx-md me-3"></i><span>FAQ</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider my-1"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
-                                            <i class="bx bx-power-off bx-md me-3"></i><span>Log Out</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!--/ User -->
+                                </div>
+                            </div>
 
 
                         </ul>
@@ -1841,11 +1844,98 @@
                             <div class="card-datatable table-responsive">
                                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                                     <div class="card-header py-0 d-flex flex-column flex-md-row align-items-center"><div><div id="DataTables_Table_0_filter" class="dataTables_filter ms-n3 mb-0 mb-md-6"><label><input type="search" class="form-control" placeholder="Search Order" aria-controls="DataTables_Table_0"></label></div></div><div class="d-flex align-items-center justify-content-md-end gap-2 justify-content-center"><div class="dataTables_length ms-n2" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="10">10</option><option value="40">40</option><option value="60">60</option><option value="80">80</option><option value="100">100</option></select></label></div><div class="dt-action-buttons pt-0"><div class="dt-buttons btn-group flex-wrap"><div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false"><span><i class="bx bx-export bx-sm me-2"></i>Export</span></button></div> </div></div></div></div><table class="datatables-order table border-top dataTable no-footer dtr-column collapsed" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 1392px;">
-                                        <thead>
-                                            <tr><th class="control sorting_disabled" rowspan="1" colspan="1" style="width: 0px;" aria-label=""></th><th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1" colspan="1" style="width: 18px;" data-col="1" aria-label=""><input type="checkbox" class="form-check-input"></th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 65px;" aria-label="order: activate to sort column ascending">order</th><th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 151px;" aria-label="date: activate to sort column descending" aria-sort="ascending">date</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 303px;" aria-label="customers: activate to sort column ascending">customers</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 123px;" aria-label="payment: activate to sort column ascending">payment</th><th class="sorting dtr-hidden" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 138px; display: none;" aria-label="status: activate to sort column ascending">status</th><th class="sorting dtr-hidden" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 163px; display: none;" aria-label="method: activate to sort column ascending">method</th><th class="sorting_disabled dtr-hidden" rowspan="1" colspan="1" style="width: 79px; display: none;" aria-label="Actions">Actions</th></tr>
+                                       <thead>
+                                           <tr>
+                                               <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 151px;" aria-label="date: activate to sort column descending" aria-sort="ascending">Mã đơn hàng</th>
+                                               <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 151px;" aria-label="date: activate to sort column descending" aria-sort="ascending">Ngày đặt hàng</th>
+                                               <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 151px;" aria-label="date: activate to sort column descending" aria-sort="ascending">Khách hàng</th>
+                                               <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 151px;" aria-label="date: activate to sort column descending" aria-sort="ascending">Phương thức thanh toán</th>
+                                               <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 151px;" aria-label="date: activate to sort column descending" aria-sort="ascending">Trạng thái</th>
+                                           </tr>
                                         </thead>
-                                        <tbody><tr class="odd"><td class="control" tabindex="0" style=""></td><td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td><td><a href="app-ecommerce-order-details.html"><span>#6979</span></a></td><td class="sorting_1"><span class="text-nowrap">Apr 15, 2023, 10:21</span></td><td><div class="d-flex justify-content-start align-items-center order-name text-nowrap"><div class="avatar-wrapper"><div class="avatar avatar-sm me-3"><img src="../../assets/img/avatars/3.png" alt="Avatar" class="rounded-circle"></div></div><div class="d-flex flex-column"><h6 class="m-0"><a href="pages-profile-user.html" class="text-heading">Cristine Easom</a></h6><small>ceasomw@theguardian.com</small></div></div></td><td><h6 class="mb-0 align-items-center d-flex w-px-100 text-warning"><i class="bx bxs-circle bx-8px me-1"></i>Pending</h6></td><td class="dtr-hidden" style="display: none;"><span class="badge px-2 bg-label-success" text-capitalized="">Delivered</span></td><td class="dtr-hidden" style="display: none;"><div class="d-flex align-items-center text-nowrap"><img src="../../assets/img/icons/payments/mastercard-cc.png" alt="mastercard-cc" width="29"><span><i class="bx bx-dots-horizontal-rounded mt-1"></i>2356</span></div></td><td class="dtr-hidden" style="display: none;"><div class="d-flex justify-content-sm-start align-items-sm-center"><button class="btn btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded bx-md"></i></button><div class="dropdown-menu dropdown-menu-end m-0"><a href="app-ecommerce-order-details.html" class="dropdown-item">View</a><a href="javascript:0;" class="dropdown-item delete-record">Delete</a></div></div></td></tr></tbody>
-                                    </table><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Displaying 1 to 10 of 100 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link"><i class="bx bx-chevron-left bx-18px"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="DataTables_Table_0_ellipsis"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="ellipsis" tabindex="-1" class="page-link">…</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="9" tabindex="0" class="page-link">10</a></li><li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" class="page-link"><i class="bx bx-chevron-right bx-18px"></i></a></li></ul></div></div></div><div style="width: 1%;"></div>
+                                        <tbody>
+                                            @if (ViewBag.XuatDanhSachDH != null )
+                                            {
+                                                foreach (var c in ViewBag.XuatDanhSachDH)
+                                                {
+                                                    <tr class="odd">
+                                                        
+                                                        <td>
+                                                            <a href="app-ecommerce-order-details.html">
+                                                                <span>@c[0]</span>
+                                                            </a>
+                                                        </td>
+                                                        <td class="sorting_1">
+                                                            <span> @c[1]</span>
+                                                        </td>
+
+                                                        <td>
+                                                            <span> @c[2]</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="app-ecommerce-order-details.html">
+                                                                <span> @c[3]</span>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span> @c[4]</span>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td colspan="8" class="text-center">Không có đơn hàng nào!</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
+                                                Displaying 1 to 10 of 100 entries
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                                                <ul class="pagination">
+                                                    <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous">
+                                                        <a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link">
+                                                            <i class="bx bx-chevron-left bx-18px"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="paginate_button page-item active">
+                                                        <a href="#" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item">
+                                                        <a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item">
+                                                        <a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item">
+                                                        <a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item">
+                                                        <a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item disabled" id="DataTables_Table_0_ellipsis">
+                                                        <a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="ellipsis" tabindex="-1" class="page-link">…</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item">
+                                                        <a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="9" tabindex="0" class="page-link">10</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item next" id="DataTables_Table_0_next">
+                                                        <a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" class="page-link">
+                                                            <i class="bx bx-chevron-right bx-18px"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="width: 1%;"></div>
                                 </div>
                             </div>
                         </div>

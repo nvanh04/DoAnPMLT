@@ -15,10 +15,9 @@ namespace tiki.Controllers
         public ActionResult shop()
         {
             DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
             ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
             ViewBag.listnhacungcap = db.get("SELECT * FROM Brands");
-
-
             return View();
         }
         [HttpPost]
@@ -72,7 +71,19 @@ namespace tiki.Controllers
         }
         public ActionResult shoporderlist()
         {
-            return View();
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.XuatDanhSachDH = db.get($"EXEC GetSellerOrders {userId}");
+            if (ViewBag.XuatDanhSachDH != null || ViewBag.XuatDanhSachDH.Count > 0)
+            {
+                return View();
+            }
+            else
+            {
+                TempData["XuatDanhSachDHTB"] = "Không có đơn hàng nào!";
+                return View();
+            }
+        
         }
         public ActionResult category()
         {
@@ -86,9 +97,9 @@ namespace tiki.Controllers
             ViewBag.listSanpham = db.get("SELECT * FROM Products");
             ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
             int userId = Convert.ToInt32(Session["IDKH"]);
-            ViewBag.hienthisanphamid = db.get($"exec LAY_SANPHAM_THEO_USERID {userId}");
+            ViewBag.hienthisanphamid = db.get($"exec LAY_SANPHAM_THEO_USERID1 {userId}");
             return View();
         }
-
+      
     }
 }
