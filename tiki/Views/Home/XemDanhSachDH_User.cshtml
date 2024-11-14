@@ -768,8 +768,16 @@
                     </td>
                     <td>
                         <a href="~/Home/XemDanhSachDHCT_User?id=@item[0]">Chi tiết đơn hàng |</a>
-                        <a href="~/Home/UpdateDH?id=@item[0]">cập nhật thông tin đơn hàng |</a>
-                        <a href="~/Home/XoaDH_User?id=@item[0]">Huỷ đơn hàng</a>
+                        @if (@item[11].ToString() != "Đã giao")
+                        {
+                            <a href="~/Home/UpdateDH?id=@item[0]">cập nhật thông tin đơn hàng |</a>
+                            <a href="~/Home/XoaDH_User?id=@item[0]">Huỷ đơn hàng</a>
+                        }
+                        else
+                        {
+                            <span style="color: gray;">Đơn hàng đã được giao, không thể cập nhật hoặc</span>
+                            <span style="color: gray;">huỷ đơn hàng</span>
+                        }
                     </td>
                 </tr>
             }
