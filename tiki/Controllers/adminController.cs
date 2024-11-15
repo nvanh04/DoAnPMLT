@@ -139,6 +139,12 @@ namespace tiki.Controllers
             return RedirectToAction("Index", "Customers");
 
         }
+        public ActionResult Xoasanphamadmin(string id)
+        {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get("EXEC XOASANPHAMTHEOID " + id);
+            return RedirectToAction("product", "admin");
+        }
 
     }
 }

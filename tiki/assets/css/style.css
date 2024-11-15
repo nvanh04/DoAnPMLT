@@ -88,3 +88,103 @@ button:hover{
 #chk:checked ~ .signup label{
 	transform: scale(.6);
 }
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #e0e0e0;
+}
+
+.header {
+	background: linear-gradient(to right, #1e3c72, #2a5298);
+	padding: 15px;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.store-info {
+	display: flex;
+	align-items: center;
+}
+
+.store-logo {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-right: 15px;
+}
+
+.store-details {
+	display: flex;
+	flex-direction: column;
+	margin-right: 15px;
+}
+
+.store-name {
+	display: flex;
+	align-items: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.verified {
+	color: #00aaff;
+	font-size: 14px;
+	margin-left: 8px;
+}
+
+.store-rating {
+	font-size: 14px;
+	color: #f0f0f0;
+}
+
+.btn {
+	border: none;
+	padding: 10px 15px;
+	font-size: 14px;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.chat-btn {
+	background-color: #333;
+	color: white;
+}
+
+.follow-btn {
+	background-color: #1e90ff;
+	color: white;
+}
+
+.nav-menu {
+	display: flex;
+	gap: 20px;
+}
+
+	.nav-menu a {
+		color: white;
+		text-decoration: none;
+		font-size: 16px;
+	}
+
+.search-bar {
+	position: relative;
+}
+
+	.search-bar input {
+		padding: 8px 15px;
+		font-size: 14px;
+		border-radius: 5px;
+		border: none;
+		outline: none;
+	}
+
+		.search-bar input::placeholder {
+			color: #888;
+		}
