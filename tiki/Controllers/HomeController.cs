@@ -88,10 +88,11 @@ namespace tiki.Controllers
         public ActionResult chitietsanpham(string id)
         {
             DataModel db = new DataModel();
-            ViewBag.listchitietsanpham = db.get("EXEC TIMKIEMProductsID "+id+";");
+            ViewBag.laythongtintheoidproduct = db.get("EXEC LAY_THONGTIN_USER_THEO_PRODUCT " + id + ";");
+            ViewBag.listchitietsanpham = db.get("EXEC TIMKIEMProductsID " + id + ";");
             ViewBag.listTenCotSanPham = db.get("exec TenCotSanPham");
             ViewBag.listGetProductInfo = db.get("exec GetProductInfo");
-           
+
             return View();
         }
         public ActionResult TimKiemTenSP(string tensp, string id)
@@ -205,6 +206,13 @@ namespace tiki.Controllers
             ViewBag.XemTTDonHang = db.get($"exec XemCTDH '{userId}', '{id}'");
             db.get("exec CapNhatDH "+userId+", "+id+", N'"+billing_name+"', '"+billing_tel+"', N'"+billing_address_1+"', '"+billing_email+"', N'"+order_comments+"'");
             return RedirectToAction("XemDanhSachDH_User", "Home");
+        }
+        public ActionResult chitietnbh(string id)
+        {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get("EXEC TIMKIEMNBHTHEOID " + id + ";");
+            ViewBag.hienthisanphamid2 = db.get($"exec LAY_SANPHAM_THEO_USERID1 {id}");
+            return View();
         }
     }
 } 

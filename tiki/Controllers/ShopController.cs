@@ -61,6 +61,12 @@ namespace tiki.Controllers
             // Chuyển hướng về trang quản lý sản phẩm sau khi thêm thành công
             return RedirectToAction("product", "admin");
         }
+        public ActionResult xoasanpham(string id)
+        {
+            DataModel db = new DataModel();
+            ViewBag.list = db.get("EXEC XOASANPHAMTHEOID " + id);
+            return RedirectToAction("shoplistproduct", "Shop");
+        }
         public ActionResult shopreview()
         {
             return View();

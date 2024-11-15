@@ -815,7 +815,7 @@
 
                                             <form class="cart product-form product-actions" action="@Url.Action("AddToCart", "GioHang")" method="post" enctype="multipart/form-data">
 
-                                               
+
                                                 <!-- Hidden field for Product ID -->
                                                 @if (ViewBag.listchitietsanpham != null && ViewBag.listchitietsanpham.Count > 0)
                                                 {
@@ -902,110 +902,114 @@
 
 
                                     </div>
+                                    @foreach (var d in ViewBag.laythongtintheoidproduct)
+                                    {
+                                        <div class="col-xs-5 product-seller-block">
+                                            <div class="seller-container">
+                                                <div id="seller-list" style="display: ">
 
-                                    <div class="col-xs-5 product-seller-block">
-                                        <div class="seller-container">
-                                            <div id="seller-list" style="display: ">
-
-                                                <div class="seller-block-wrap">
-                                                    <div class="current-seller" data-id="1">
+                                                    <div class="seller-block-wrap">
                                                         <div class="current-seller" data-id="1">
-                                                            <div class="name">
-                                                                <i class="tikicon icon-store"></i>
-                                                                <div class="text">
-                                                                    <span>Tiki Trading</span>
-                                                                    <div class="text-small">Cam kết chính hiệu 100%</div>
+                                                            <div class="current-seller" data-id="1">
+
+                                                                <div class="name">
+                                                                    <i class="tikicon icon-store"><img src="~/HINH/@d[9]" /></i>
+                                                                    <div class="text">
+
+                                                                        <span><a href="~/Home/chitietnbh?id=@d[0]">@d[1]</a></span>
+                                                                        <div class="text-small">@d[3]</div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="warranty-info">
-                                                                <i class="tikicon icon-hoan-tien-2"></i>
-                                                                <div class="text">
-                                                                    <!-- react-text: 12 -->Tiki hoàn tiền 111%
-                                                                    <!-- /react-text -->
-                                                                    <!-- react-text: 13 -->
-                                                                    <!-- /react-text --><span class="seller__attribute__info"><i class="tikicon icon-info-grey" style="margin-right: 0px;"></i><p class="seller__attribute__info__tooltip"><!-- react-text: 17 -->Chính sách bồi thường - <!-- /react-text --><a target="_blank" href="https://drive.google.com/file/d/1po3r6qApp-q7JDB5kwGKujVtvInfO-ih/view?usp=sharing">Xem thêm</a></p></span>
-                                                                    <div class="text-small">Nếu phát hiện hàng giả</div>
+
+                                                                <div class="warranty-info">
+                                                                    <i class="tikicon icon-hoan-tien-2"></i>
+                                                                    <div class="text">
+                                                                        <!-- react-text: 12 -->Tiki hoàn tiền 111%
+                                                                        <!-- /react-text -->
+                                                                        <!-- react-text: 13 -->
+                                                                        <!-- /react-text --><span class="seller__attribute__info"><i class="tikicon icon-info-grey" style="margin-right: 0px;"></i><p class="seller__attribute__info__tooltip"><!-- react-text: 17 -->Chính sách bồi thường - <!-- /react-text --><a target="_blank" href="https://drive.google.com/file/d/1po3r6qApp-q7JDB5kwGKujVtvInfO-ih/view?usp=sharing">Xem thêm</a></p></span>
+                                                                        <div class="text-small">Nếu phát hiện hàng giả</div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="warranty-info">
-                                                                <i class="tikicon icon-warranty"></i>
-                                                                <div class="text">
-                                                                    <!-- react-text: 23 -->Thông tin bảo hành
-                                                                    <!-- /react-text -->
-                                                                    <div class="text-small">Thẻ bảo hành (24 Tháng tại Canon Lê Bảo Minh)</div>
-                                                                    <div class="text-small">
-                                                                        <a href="#freegift-popup-warranty_and_service" class="js-open-freegift warranty-detail">Chi tiết</a>
+                                                                <div class="warranty-info">
+                                                                    <i class="tikicon icon-warranty"></i>
+                                                                    <div class="text">
+                                                                        <!-- react-text: 23 -->Thông tin bảo hành
+                                                                        <!-- /react-text -->
+                                                                        <div class="text-small">Thẻ bảo hành (24 Tháng tại Canon Lê Bảo Minh)</div>
+                                                                        <div class="text-small">
+                                                                            <a href="#freegift-popup-warranty_and_service" class="js-open-freegift warranty-detail">Chi tiết</a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+
+
                                                 </div>
+                                                <div class="additional">
 
 
-                                            </div>
-                                            <div class="additional">
-
-
-                                                <div class="contact">
-                                                    <div class="item">
-                                                        <i style="margin-top: 5px" class="tikicon icon-phone"></i>
-                                                        <p>
-                                                            <b>Liên hệ</b><br />
-                                                            Hotline đặt hàng <a href="tel:1800 6963">1800 6963</a><br>
-                                                            <small>(Miễn phí, 8-21h cả T7, CN)</small>
-                                                        </p>
+                                                    <div class="contact">
+                                                        <div class="item">
+                                                            <i style="margin-top: 5px" class="tikicon icon-phone"></i>
+                                                            <p>
+                                                                <b>Liên hệ</b><br />
+                                                                Hotline đặt hàng <a>@d[4]</a><br>
+                                                                <small>(Miễn phí, 8-21h cả T7, CN)</small>
+                                                            </p>
+                                                        </div>
+                                                        <div class="item">
+                                                            <i style="margin-top: -2px" class="tikicon icon-email"></i>
+                                                            <p>
+                                                                Email: <a><span class="__cf_email__" data-cfemail="c8a0a7bcbaa788bca1a3a1e6bea6">@d[2]</span></a>
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                    <div class="item">
-                                                        <i style="margin-top: -2px" class="tikicon icon-email"></i>
-                                                        <p>
-                                                            Email: <a href="/cdn-cgi/l/email-protection#31595e45435e7145585a581f475f"><span class="__cf_email__" data-cfemail="c8a0a7bcbaa788bca1a3a1e6bea6">[email&#160;protected]</span></a>
-                                                        </p>
+                                                    <div class="register-to-sell">
+                                                        <form id="registerForm" action="~/home/UpdateUserRoleToNBH" method="post">
+                                                            Bạn muốn bán hàng cùng Tiki?
+                                                            <a href="javascript:void(0);" onclick="showConfirmation()">Đăng ký</a>
+                                                        </form>
                                                     </div>
-                                                </div>
-                                                <div class="register-to-sell">
-                                                    <form id="registerForm" action="~/home/UpdateUserRoleToNBH" method="post">
-                                                        Bạn muốn bán hàng cùng Tiki?
-                                                        <a href="javascript:void(0);" onclick="showConfirmation()">Đăng ký</a>
-                                                    </form>
-                                                </div>
 
-                                                <!-- Modal xác nhận -->
-                                                <div id="confirmationModal" style="display:none;">
-                                                    <div style="background-color: #fff; padding: 20px; border-radius: 8px; max-width: 300px; text-align: center;">
-                                                        <p>Bạn có chắc chắn muốn đăng ký bán hàng?</p>
-                                                        <button onclick="submitForm()">Đồng ý</button>
-                                                        <button onclick="closeModal()">Từ chối</button>
+                                                    <!-- Modal xác nhận -->
+                                                    <div id="confirmationModal" style="display:none;">
+                                                        <div style="background-color: #fff; padding: 20px; border-radius: 8px; max-width: 300px; text-align: center;">
+                                                            <p>Bạn có chắc chắn muốn đăng ký bán hàng?</p>
+                                                            <button onclick="submitForm()">Đồng ý</button>
+                                                            <button onclick="closeModal()">Từ chối</button>
+                                                        </div>
                                                     </div>
+
+                                                    <script>
+                                                        function showConfirmation() {
+                                                            // Hiển thị modal xác nhận
+                                                            document.getElementById("confirmationModal").style.display = "block";
+                                                        }
+
+                                                        function closeModal() {
+                                                            // Đóng modal xác nhận
+                                                            document.getElementById("confirmationModal").style.display = "none";
+                                                        }
+
+                                                        function submitForm() {
+                                                            // Gửi form
+                                                            document.getElementById("registerForm").submit();
+                                                        }
+                                                    </script>
                                                 </div>
-
-                                                <script>
-                                                    function showConfirmation() {
-                                                        // Hiển thị modal xác nhận
-                                                        document.getElementById("confirmationModal").style.display = "block";
-                                                    }
-
-                                                    function closeModal() {
-                                                        // Đóng modal xác nhận
-                                                        document.getElementById("confirmationModal").style.display = "none";
-                                                    }
-
-                                                    function submitForm() {
-                                                        // Gửi form
-                                                        document.getElementById("registerForm").submit();
-                                                    }
-                                                </script>
-                                            </div>
-                                            <div class="social-wrapper  " style="text-align: center;">
-                                                <div class="social-component-toggle">
-                                                    <div class="fb-like" style="margin-bottom:10px;" data-href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11/" data-width="300" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                <div class="social-wrapper  " style="text-align: center;">
+                                                    <div class="social-component-toggle">
+                                                        <div class="fb-like" style="margin-bottom:10px;" data-href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11/" data-width="300" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                    </div>
+                                                    <!-- <div class="fb-save" data-uri="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11/?utm_source=facebook.com&utm_medium=saved&utm_campaign=S_GN.GN-Product+Saved" data-size="small"></div> -->
+                                                    <!-- <a href="https://www.facebook.com/saved" target="_blank" title="Xem các sản phẩm đã lưu" class="view-fb-saved">Xem các sản phẩm đã lưu tại đây</a> -->
                                                 </div>
-                                                <!-- <div class="fb-save" data-uri="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11/?utm_source=facebook.com&utm_medium=saved&utm_campaign=S_GN.GN-Product+Saved" data-size="small"></div> -->
-                                                <!-- <a href="https://www.facebook.com/saved" target="_blank" title="Xem các sản phẩm đã lưu" class="view-fb-saved">Xem các sản phẩm đã lưu tại đây</a> -->
                                             </div>
-                                        </div>
 
-                                    </div>
+                                        </div>  }
                                 </div>
                             }
 

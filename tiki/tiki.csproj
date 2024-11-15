@@ -493,6 +493,7 @@
     <Content Include="Views\Home\XemDanhSachDH_User.cshtml" />
     <Content Include="Views\Home\XemDanhSachDHCT_User.cshtml" />
     <Content Include="Views\Home\UpdateDH.cshtml" />
+    <Content Include="Views\Home\chitietnbh.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
