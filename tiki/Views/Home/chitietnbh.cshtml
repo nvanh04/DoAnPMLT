@@ -921,7 +921,7 @@
                         </div>
 
                         <div class="user-profile item" id="header-user">
-                            <div data-reactroot="">
+     <div data-reactroot="">
 
                                 <div>
                                     @if (Session["IDKH"] != null)
@@ -988,9 +988,81 @@
                                     }
 
                                 </div>
+         <div>
+             @if (Session["IDKH"] != null)
+             {
+                 <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
+                     <div style="top :-10px" class="avatar avatar-online">
+                         <input type="hidden" name="userId" value="@Session["IDKH"]"/>
+                         @foreach (var a in ViewBag.listTTKH)
+                         {
+                             <img src="~/HINH/@a[10]" alt="" class="w-px-40 h-auto rounded-circle">
+                         }
+                         </div>
+                 </a>
+                 <ul class="dropdown-menu dropdown-menu-end">
+                     <li>
+                         <a class="dropdown-item" href="~/Home/Thongtincanhan?id=@Session["IDKH"]">
+                             <div class="d-flex">
+                                 <div class="flex-shrink-0 me-3">
+                                     <div class="avatar avatar-online">
+                                         <input type="hidden" name="userId" value="@Session["IDKH"]" />
+                                         @foreach (var a in ViewBag.listTTKH)
+                                         {
+                                             <img src="~/HINH/@a[10]" alt="" class="w-px-40 h-auto rounded-circle">
+                                         }
+                                     </div>
+                                 </div>
+                                 <div class="flex-grow-1">
+                                     <h6 class="mb-0">@Session["TenKH"]</h6>
+                                     <small class="text-muted">Khách hàng</small>
+                                 </div>
+                             </div>
+                         </a>
+                     </li>
+                     <li>
+                         <div class="dropdown-divider my-1"></div>
+                     </li>
 
-                            </div>
-                        </div>
+                     <li>
+                         <a class="dropdown-item" href="~/Home/Thongtincanhan">
+                             <i class="bx bx-user bx-md me-3"></i><span>Thông tin cá nhân</span>
+                         </a>
+                     </li>
+
+                     @* Thêm điều kiện hiển thị trang dành cho NBH hoặc Admin *@
+                     @if (Session["VaiTro"]?.ToString() == "NBH")
+                     {
+                         <li>
+                             <a class="dropdown-item" href="@Url.Action("shop", "Shop")">
+                                 <i class="bx bx-store bx-md me-3"></i><span>Trang bán hàng</span>
+                             </a>
+                         </li>
+                     }
+                     else if (Session["VaiTro"]?.ToString() == "Admin")
+                     {
+                         <li>
+                             <a class="dropdown-item" href="@Url.Action("Index", "Admin")">
+                                 <i class="bx bx-cog bx-md me-3"></i><span>Trang Admin</span>
+                             </a>
+                         </li>
+                     }
+
+                     <li>
+                         <a class="dropdown-item" href="@Url.Action("GiaoDienDangNhap", "Home")">
+                             <i class="bx bx-power-off bx-md me-3"></i><span>Đăng xuất</span>
+                         </a>
+                     </li>
+                 </ul>
+             }
+             else
+             {
+                 <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
+             }
+
+         </div>
+     </div>
+ </div>
 
 
                         <div id="header-cart">
