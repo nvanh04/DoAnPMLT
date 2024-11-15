@@ -212,6 +212,7 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
             ViewBag.list = db.get("EXEC TIMKIEMNBHTHEOID " + id + ";");
             ViewBag.hienthisanphamid2 = db.get($"exec LAY_SANPHAM_THEO_USERID1 {id}");
+            ViewBag.LayThongTinNguoiDung = db.get("EXEC LayThongTinNguoiDung " + id + ";");
             return View();
         }
     }
