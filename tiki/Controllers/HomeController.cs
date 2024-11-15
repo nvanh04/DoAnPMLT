@@ -134,6 +134,7 @@ namespace tiki.Controllers
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
 
             return View();
@@ -142,6 +143,7 @@ namespace tiki.Controllers
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
 
             return View();
@@ -155,6 +157,7 @@ namespace tiki.Controllers
                 {
                     DataModel db = new DataModel();
                     int userId = Convert.ToInt32(Session["IDKH"]);
+                    ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
                     ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
                     string filename = Path.GetFileName(hinh.FileName);
                     string path = Path.Combine(Server.MapPath("~/HINH"), filename);
