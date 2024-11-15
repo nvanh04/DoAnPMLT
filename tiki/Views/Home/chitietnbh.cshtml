@@ -6,6 +6,32 @@
     <title>
         Phòng ngủ hiện đại – Danh mục sản phẩm – Mua Hàng Trực Tuyến Uy Tín với Giá Rẻ Hơn tại Tiki.vn
     </title>
+    <link href="" rel="shortcut icon" type="~/image/vnd.microsoft.icon" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="~/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="~/assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="~/assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="~/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css">
+    <link rel="stylesheet" href="~/assets/vendor/libs/sweetalert2/sweetalert2.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/form-validation/form-validation.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/select2/select2.css" />
     <link href="" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <meta name="robots" content="noindex, nofollow">
     <link rel="dns-prefetch" href="//s.w.org">
@@ -894,18 +920,69 @@
                             <div data-reactroot="">
 
                                 <div>
-                                    <i class="icon-style-1 tikicon icon-user"></i><b>Đăng nhập</b>
-                                    <br><small>Tài khoản</small>
-                                </div>
-                                <div class="box">
-                                    <ul class="user-ajax-guest">
-                                        <li id="login_link">
-                                            <a href="#" title="Đăng Nhập" class="user-name-login lrm-login"><span class="text">Đăng nhập</span></a>
-                                        </li>
-                                        <li class="user-name-register">
-                                            <a href="#" title="Tạo tài khoản mới" class="lrm-register"><span class="text">Tạo tài khoản</span></a>
-                                        </li>
-                                    </ul>
+                                    @if (Session["IDKH"] != null)
+                                    {
+                                        <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                            <div style="top :-10px" class="avatar avatar-online">
+                                                <img src="~/assets/img/avatars/1.png" alt="" class="w-px-40 h-auto rounded-circle">
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li>
+                                                <a class="dropdown-item" href="@Url.Action("InfoCustomer", "Home")">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <div class="avatar avatar-online">
+                                                                <img src="~/assets/img/avatars/1.png" alt="" class="w-px-40 h-auto rounded-circle">
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <h6 class="mb-0">@Session["TenKH"]</h6>
+                                                            <small class="text-muted">Khách hàng</small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown-divider my-1"></div>
+                                            </li>
+
+                                            <li>
+                                                <a class="dropdown-item" href="@Url.Action("InfoCustomer", "Home")">
+                                                    <i class="bx bx-user bx-md me-3"></i><span>Thông tin cá nhân</span>
+                                                </a>
+                                            </li>
+
+                                            @* Thêm điều kiện hiển thị trang dành cho NBH hoặc Admin *@
+                                            @if (Session["VaiTro"]?.ToString() == "NBH")
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" href="@Url.Action("shop", "Shop")">
+                                                        <i class="bx bx-store bx-md me-3"></i><span>Trang bán hàng</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            else if (Session["VaiTro"]?.ToString() == "Admin")
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" href="@Url.Action("Index", "Admin")">
+                                                        <i class="bx bx-cog bx-md me-3"></i><span>Trang Admin</span>
+                                                    </a>
+                                                </li>
+                                            }
+
+                                            <li>
+                                                <a class="dropdown-item" href="@Url.Action("GiaoDienDangNhap", "Home")">
+                                                    <i class="bx bx-power-off bx-md me-3"></i><span>Đăng xuất</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
+                                    }
+
                                 </div>
 
                             </div>
@@ -959,12 +1036,13 @@
             <div class="wrap">
                 <div class="container ">
                     <div class="side-bar">
-                        <div class="box-left-wrap visible-lg-block" id="boxleft-wrap">
-                            <div class="panel-group box-left" id="boxleft" role="tablist" aria-multiselectable="true">
-
-                            </div>
+                        <div style="width: 1000px; height: 200px; left:auto; position: relative; background: white">
+                            @*<img style="width: 1000px; height: 200px; left: 0px; top: 0px; position: absolute" src="https://cdn2.fptshop.com.vn/unsafe/Uploads/images/tin-tuc/172740/Originals/background-la-gi-1.jpg">*@
+                            <div style="width: 118px; height: 109px; left: 42px; top: 45px; position: absolute; background: #D9D9D9; border-radius: 9999px"></div>
+                            <div style="width: 129px; height: 47px; left: 173px; top: 76px; position: absolute; color: black; font-size: 20px; font-family: Roboto; font-weight: 400; word-wrap: break-word">Name</div>
                         </div>
                     </div>
+
 
                     <div class="product-listing">
                         <div class="product-box no-mg">
@@ -984,33 +1062,33 @@
 
 
                             @*<div class="option-box-wrap">
-                    <div class="option-box">
-                        <div class="sort-box-holder">
-                            <div class="btn-group pull-right search-right-box">
-                                <form action="https://tiki.maugiaodien.com" method="get" class="category-search-frm">
-                                    <input type="text" name="s" placeholder="Phòng ngủ hiện đại   " value="">
-                                    <input type="hidden" name="cat" value="343">
-                                    <input type="hidden" value="product" name="post_type">
-                                    <button>Tìm kiếm</button>
-                                </form>
-                            </div>
+                                    <div class="option-box">
+                                        <div class="sort-box-holder">
+                                            <div class="btn-group pull-right search-right-box">
+                                                <form action="https://tiki.maugiaodien.com" method="get" class="category-search-frm">
+                                                    <input type="text" name="s" placeholder="Phòng ngủ hiện đại   " value="">
+                                                    <input type="hidden" name="cat" value="343">
+                                                    <input type="hidden" value="product" name="post_type">
+                                                    <button>Tìm kiếm</button>
+                                                </form>
+                                            </div>
 
-                            <div class="btn-group pull-left sort-box">
-                                <span>Ưu tiên xem: </span>
-                                <ul class="sort-list">
+                                            <div class="btn-group pull-left sort-box">
+                                                <span>Ưu tiên xem: </span>
+                                                <ul class="sort-list">
 
-                                    <li><a href="./?orderby=date">Mới nhất</a></li>
-                                    <li><a href="./?orderby=popularity">Phổ biến nhất</a></li>
-                                    <li><a href="./?orderby=rating">Đánh giá cao nhất</a></li>
-                                    <li><a href="./?orderby=price">Giá tăng</a></li>
-                                    <li><a href="./?orderby=price-desc">Giá giảm dần</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                                                    <li><a href="./?orderby=date">Mới nhất</a></li>
+                                                    <li><a href="./?orderby=popularity">Phổ biến nhất</a></li>
+                                                    <li><a href="./?orderby=rating">Đánh giá cao nhất</a></li>
+                                                    <li><a href="./?orderby=price">Giá tăng</a></li>
+                                                    <li><a href="./?orderby=price-desc">Giá giảm dần</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-                </div>*@
+                                </div>*@
 
 
                             <div class="product-box-list" data-impress-list-title="Phòng ngủ hiện đại">
@@ -1683,6 +1761,9 @@
         }
     </script>
 
-
+    <script src="~/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/assets/vendor/js/helpers.js"></script>
+    <script src="~/assets/vendor/js/menu.js"></script>
+    <script src="~/assets/vendor/js/template-customizer.js"></script>
 </body>
 </html>
