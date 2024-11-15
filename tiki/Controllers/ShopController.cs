@@ -65,8 +65,12 @@ namespace tiki.Controllers
         {
             return View();
         }
-        public ActionResult shoporderdetails()
+        public ActionResult shoporderdetails(string id)
         {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.ShopDH = db.get($"EXEC ShopDH {id}");
+            ViewBag.ShopCTDH = db.get($"EXEC ShopCTDH {id}");
             return View();
         }
         public ActionResult shoporderlist()
