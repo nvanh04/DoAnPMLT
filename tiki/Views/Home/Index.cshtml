@@ -1585,10 +1585,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
 
 
@@ -1717,42 +1713,43 @@
                     <span></span><span></span><span></span>
                 </button>
             </a>
-            <form class="HeaderSearch__StyledHeaderSearch-zzne0z-0 BZgBX" action="https://tiki.maugiaodien.com" method="get">
+            <form class="HeaderSearch__StyledHeaderSearch-zzne0z-0 BZgBX" action="~/Home/TimKiemTenSP" method="get">
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
                 </svg>
-                <input type="search" aria-label="search" class="search" name="s" placeholder="Bạn đang tìm kiếm gì">
+                <input type="search" aria-label="search" class="search" name="tensp" placeholder="Bạn đang tìm kiếm gì" autocomplete="off" required="">
                 <input type="hidden" name="post_type" value="product">
             </form>
-            <a href="https://tiki.maugiaodien.com/gio-hang/" class="HeaderCart__StyledHeaderCart-sc-1633tqv-0 fPDuhH">
-                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="25" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path>
-                </svg>
-                <div class="count"> 0</div>
-            </a>
+
+            <div id="header-cart">
+                @if (Session["IDKH"] != null)
+                {
+                    <a href="~/GioHang/Index" class="HeaderCart__StyledHeaderCart-sc-1633tqv-0 fPDuhH">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="25" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path>
+                        </svg>
+                        <div class="count">@Session["DemSP"]</div>
+                    </a>
+                }
+                else
+                {
+                    <a href="~/GioHang/Index" class="HeaderCart__StyledHeaderCart-sc-1633tqv-0 fPDuhH">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="25" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path>
+                        </svg>
+                        <div class="count">0</div>
+                    </a>
+                }
+            </div>
+
         </header>
 
         <nav id="menumobile">
             <ul id="menu-menu-chinh-1" class="mobile-menu">
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1892">
-                    <a href="https://tiki.maugiaodien.com/danh-muc/phong-ngu-hien-dai/" class="menu-image-title-after menu-image-not-hovered"><img width="27" height="19" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03.png 27w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03-24x17.png 24w" sizes="(max-width: 27px) 100vw, 27px" /><span class="menu-image-title">Phòng ngủ hiện đại</span></a>
-                   
-                </li>
-
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2189"><a href="https://tiki.maugiaodien.com/danh-muc/ban-trang-diem/" class="menu-image-title-after menu-image-not-hovered"><img width="27" height="19" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03.png 27w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03-24x17.png 24w" sizes="(max-width: 27px) 100vw, 27px" /><span class="menu-image-title">Bàn trang điểm</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2190"><a href="https://tiki.maugiaodien.com/danh-muc/dien-gia-dung/" class="menu-image-title-after menu-image-not-hovered"><img width="27" height="19" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_05.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_05.png 27w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_05-24x17.png 24w" sizes="(max-width: 27px) 100vw, 27px" /><span class="menu-image-title">Điện Gia Dụng</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2191"><a href="https://tiki.maugiaodien.com/danh-muc/do-choi-me-be/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="31" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_07.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_07.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_07-24x24.png 24w" sizes="(max-width: 32px) 100vw, 32px" /><span class="menu-image-title">Đồ Chơi &#8211; Mẹ &#038; Bé</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2192"><a href="https://tiki.maugiaodien.com/danh-muc/hang-quoc-te/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_13.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_13.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_13-24x21.png 24w" sizes="(max-width: 32px) 100vw, 32px" /><span class="menu-image-title">Hàng Quốc Tế</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2193"><a href="https://tiki.maugiaodien.com/danh-muc/lam-dep-suc-khoe/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="27" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20-24x20.png 24w" sizes="(max-width: 32px) 100vw, 32px" /><span class="menu-image-title">Làm Đẹp &#8211; Sức Khỏe</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2194"><a href="https://tiki.maugiaodien.com/danh-muc/nha-sach-tiki/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="33" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_25.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_25.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_25-24x24.png 24w" sizes="(max-width: 32px) 100vw, 32px" /><span class="menu-image-title">Nhà Sách Tiki</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2195"><a href="https://tiki.maugiaodien.com/danh-muc/o-to-xe-may-xe-dap/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="34" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_33.png" class="menu-image menu-image-title-after" alt="" loading="lazy" /><span class="menu-image-title">Ô Tô &#8211; Xe Máy &#8211; Xe Đạp</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2196"><a href="https://tiki.maugiaodien.com/danh-muc/phong-bep-dep/" class="menu-image-title-after menu-image-not-hovered"><img width="31" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png 31w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39-24x22.png 24w" sizes="(max-width: 31px) 100vw, 31px" /><span class="menu-image-title">Phòng bếp đẹp</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2197"><a href="https://tiki.maugiaodien.com/danh-muc/phong-khach-hien-dai/" class="menu-image-title-after menu-image-not-hovered"><img width="24" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_41.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_41.png 24w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_41-21x24.png 21w" sizes="(max-width: 24px) 100vw, 24px" /><span class="menu-image-title">Phòng khách hiện đại</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2199"><a href="https://tiki.maugiaodien.com/danh-muc/sach-van-phong-pham/" class="menu-image-title-after menu-image-not-hovered"><img width="28" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_45.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_45.png 28w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_45-24x24.png 24w" sizes="(max-width: 28px) 100vw, 28px" /><span class="menu-image-title">Sách &#038; văn phòng phẩm</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2200"><a href="https://tiki.maugiaodien.com/danh-muc/tu-bep-dep/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="27" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_28.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_28.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_28-24x20.png 24w" sizes="(max-width: 32px) 100vw, 32px" /><span class="menu-image-title">Tủ bếp đẹp</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2201"><a href="https://tiki.maugiaodien.com/danh-muc/tu-dau-giuong/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="34" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_33.png" class="menu-image menu-image-title-after" alt="" loading="lazy" /><span class="menu-image-title">Tủ đầu giường</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2202"><a href="https://tiki.maugiaodien.com/danh-muc/tu-quan-ao/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="27" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20-24x20.png 24w" sizes="(max-width: 32px) 100vw, 32px" /><span class="menu-image-title">Tủ quần áo</span></a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2203"><a href="https://tiki.maugiaodien.com/danh-muc/xe-may-tiki/" class="menu-image-title-after menu-image-not-hovered"><img width="30" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_43.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_43.png 30w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_43-24x22.png 24w" sizes="(max-width: 30px) 100vw, 30px" /><span class="menu-image-title">Xe máy tiki</span></a></li>
+                @foreach (var c in ViewBag.listDanhMuc)
+                {
+                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2188" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2188 nav-item"><a href="~/Home/Danhmuc?id=@c[0]" class="menu-image-title-after menu-image-not-hovered"><img width="31" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png 31w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39-24x22.png 24w" sizes="(max-width: 31px) 100vw, 31px" /><span class="menu-image-title">@c[1]</span></a></li>
+                }
             </ul>
         </nav>
     </div>
@@ -1789,361 +1786,248 @@
             <div>
                 @if (Session["IDKH"] != null)
                 {
-                    <!-- Hiển thị thông tin khách hàng -->
-                    <a href="@Url.Action("InfoCustomer", "Home")" class="nav-item nav-link">@Session["TenKH"]</a>
-                    <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link" style="display: block; margin-top: 5px;">Đăng xuất</a>
+                    <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
+                        <div style="top :-10px" class="avatar avatar-online">
+                            <input type="hidden" name="userId" value="@Session["IDKH"]" />
+                            @foreach (var a in ViewBag.list)
+                            {
+                                <img src="~/HINH/@a[10]" alt="" class="w-px-40 h-auto rounded-circle">
+                            }
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item" href="~/Home/Thongtincanhan?id=@Session["IDKH"]">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 me-3">
+                                        <div class="avatar avatar-online">
+                                            <input type="hidden" name="userId" value="@Session["IDKH"]" />
+                                            @foreach (var a in ViewBag.list)
+                                            {
+                                                <img src="~/HINH/@a[10]" alt="" class="w-px-40 h-auto rounded-circle">
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-0">@Session["TenKH"]</h6>
+                                        <small class="text-muted">Khách hàng</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider my-1"></div>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="~/Home/Thongtincanhan">
+                                <i class="bx bx-user bx-md me-3"></i><span>Thông tin cá nhân</span>
+                            </a>
+                        </li>
+
+                        @* Thêm điều kiện hiển thị trang dành cho NBH hoặc Admin *@
+                        @if (Session["VaiTro"]?.ToString() == "NBH")
+                        {
+                            <li>
+                                <a class="dropdown-item" href="@Url.Action("shop", "Shop")">
+                                    <i class="bx bx-store bx-md me-3"></i><span>Trang bán hàng</span>
+                                </a>
+                            </li>
+                        }
+                        else if (Session["VaiTro"]?.ToString() == "Admin")
+                        {
+                            <li>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Admin")">
+                                    <i class="bx bx-cog bx-md me-3"></i><span>Trang Admin</span>
+                                </a>
+                            </li>
+                        }
+
+                        <li>
+                            <a class="dropdown-item" href="@Url.Action("GiaoDienDangNhap", "Home")">
+                                <i class="bx bx-power-off bx-md me-3"></i><span>Đăng xuất</span>
+                            </a>
+                        </li>
+                    </ul>
                 }
                 else
                 {
-                    <!-- Hiển thị liên kết đăng nhập nếu người dùng chưa đăng nhập -->
                     <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
                 }
 
-            </div>
-
-            <div class="lrm-signin-section ">
-                <!-- log in form -->
-                <form class="lrm-form" action="~/home/XulyDangNhap" method="post" data-action="login">
-
-                    <div class="lrm-integrations lrm-integrations--login">
-                    </div>
-
-                    <p class="lrm-form-message lrm-form-message--init"></p>
-
-                    <div class="fieldset">
-                        <label class="image-replace lrm-email lrm-ficon-mail" title="Username"></label>
-                        <input name="username" class="full-width has-padding has-border" type="text" aria-label="Email hoặc Username" placeholder="Email hoặc Username" required value="" autocomplete="username">
-                        <span class="lrm-error-message"></span>
-                    </div>
-
-                    <div class="fieldset">
-                        <label class="image-replace lrm-password lrm-ficon-key" title="Mật khẩu"></label>
-                        <input name="password" class="full-width has-padding has-border" type="password" aria-label="Mật khẩu" placeholder="Mật khẩu" required value="">
-                        <span class="lrm-error-message"></span>
-                        <span class="hide-password lrm-ficon-eye" data-show="Hiện" data-hide="Ẩn" aria-label="Hiện"></span>
-                    </div>
-
-                    <div class="fieldset">
-                        <label class="lrm-nice-checkbox__label lrm-remember-me-checkbox">
-                            Nhớ tôi                        <input type="checkbox" class="lrm-nice-checkbox lrm-remember-me" name="remember-me" checked>
-                            <div class="lrm-nice-checkbox__indicator"></div>
-                        </label>
-                    </div>
-
-                    <div class="lrm-integrations lrm-integrations--login lrm-integrations-before-btn">
-                    </div>
-
-                    <div class="lrm-integrations-otp"></div>
-
-                    <div class="fieldset fieldset--submit">
-                        <input type="submit" value="Đăng nhập" />
-                    </div>
-
-                    <div class="lrm-integrations lrm-integrations--login">
-                    </div>
-                    @*<form action="~/home/XulyDangNhap" method="post">
-                    Username: <input type="text" name="username" /><br />
-                    Password:<input type="password" name="password" /><br />
-                    <input type="submit" value="Đăng nhập" />
-                </form>*@
-
-                    <input type="hidden" name="redirect_to" value="">
-                    <input type="hidden" name="lrm_action" value="login">
-                    <input type="hidden" name="wp-submit" value="1">
-                    @*Fix for Eduma WP theme*@
-                    <input type="hidden" name="lp-ajax" value="login">
-
-                    <input type="hidden" id="security-login" name="security-login" value="291dca8a15" /><input type="hidden" name="_wp_http_referer" value="/" />
-                    @*For Invisible Recaptcha plugin*@
-                    <span class="wpcf7-submit" style="display: none;"></span>
-                </form>
-
-                <p class="lrm-form-bottom-message"><a href="#0" class="lrm-switch-to--reset-password">Quên mật khẩu?</a></p>
-                <a href="#0" class="lrm-close-form">Close</a>
-            </div> <!-- lrm-login -->
+        <script type="text/javascript">
+            var c = document.body.className;
+            c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+            document.body.className = c;
+        </script>
+        <script type='text/javascript' id='lrm-modal-js-extra'>
+            /* <![CDATA[ */
+            var LRM = { "password_zxcvbn_js_src": "https:\/\/tiki.maugiaodien.com\/wp-includes\/js\/zxcvbn.min.js", "password_strength_lib": null, "redirect_url": "", "ajax_url": "https:\/\/tiki.maugiaodien.com\/?lrm=1", "is_user_logged_in": "", "reload_after_login": null, "selectors_mapping": { "login": "", "register": "" }, "is_customize_preview": "", "l10n": { "password_is_good": "Good Password", "password_is_strong": "Strong Password", "password_is_short": "Too Short Password", "password_is_bad": "Bad Password", "passwords_is_mismatch": "Passwords is mismatch!" } };
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/ajax-login-and-registration-modal-popup/assets/lrm-core.js?ver=32' id='lrm-modal-js'></script>
+        <script type='text/javascript' id='contact-form-7-js-extra'>
+            /* <![CDATA[ */
+            var wpcf7 = { "apiSettings": { "root": "https:\/\/tiki.maugiaodien.com\/wp-json\/contact-form-7\/v1", "namespace": "contact-form-7\/v1" } };
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.6' id='contact-form-7-js'></script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70' id='jquery-blockui-js'></script>
+        <script type='text/javascript' id='wc-add-to-cart-js-extra'>
+            /* <![CDATA[ */
+            var wc_add_to_cart_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "Xem gi\u1ecf h\u00e0ng", "cart_url": "https:\/\/tiki.maugiaodien.com\/gio-hang\/", "is_cart": "", "cart_redirect_after_add": "no" };
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.8.0' id='wc-add-to-cart-js'></script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4' id='js-cookie-js'></script>
+        <script type='text/javascript' id='woocommerce-js-extra'>
+            /* <![CDATA[ */
+            var woocommerce_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%" };
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.8.0' id='woocommerce-js'></script>
+        <script type='text/javascript' id='wc-cart-fragments-js-extra'>
+            /* <![CDATA[ */
+            var wc_cart_fragments_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "cart_hash_key": "wc_cart_hash_889ccfed3a46304e74ed615a94e54365", "fragment_name": "wc_fragments_889ccfed3a46304e74ed615a94e54365", "request_timeout": "5000" };
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.8.0' id='wc-cart-fragments-js'></script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/vendor.js?ver=6.0' id='script_02-js'></script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/jquery.fancybox.js?ver=6.0' id='script_01-js'></script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/jquery.elevateZoom.js?ver=6.0' id='script_03-js'></script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/jquery.mmenu.js?ver=6.0' id='script_04-js'></script>
+        <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/reco-home.js?ver=6.0' id='script_0-js'></script>
+        <script>
+            var swiper = new Swiper('.slider-wrap .swiper-container', {
+                navigation: {
+                    nextEl: '.slider-wrap .swiper-button-next',
+                    prevEl: '.slider-wrap .swiper-button-prev',
+                },
+            });
+        </script>
 
 
-            <div class="lrm-signup-section ">
-                <!-- sign up form -->
+        <script>
+            var swiper = new Swiper('.personal-categories .swiper-container', {
+                navigation: {
+                    nextEl: '.personal-categories .swiper-button-next',
+                    prevEl: '.personal-categories .swiper-button-prev',
+                },
+                slidesPerView: 8,
+                spaceBetween: 20,
+                // init: false,
+                pagination: {
+                    el: '.personal-categories .swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    }
+                }
+            });
+        </script>
 
-                <form class="lrm-form" action="#0" data-action="registration" data-lpignore="true">
-
-                    <div class="lrm-integrations lrm-integrations--register">
-                    </div>
-
-                    <p class="lrm-form-message lrm-form-message--init"></p>
-
-                    <div class="fieldset fieldset--username">
-                        <label class="image-replace lrm-username lrm-ficon-user" for="signup-username" title="Tên đăng nhập *"></label>
-                        <input name="username" class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Tên đăng nhập *" required aria-label="Tên đăng nhập *" autocomplete="off" data-lpignore="true">
-                        <span class="lrm-error-message"></span>
-                    </div>
-
-                    <div class="fieldset clearfix">
-
-                        <label class="image-replace lrm-username lrm-ficon-user" for="signup-first-name" title="Họ và Tên"></label>
-                        <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="Họ và Tên" required aria-label="Họ và Tên" autocomplete="off" data-lpignore="true">
-                        <span class="lrm-error-message"></span>
-
-                    </div>
-
-                    <div class="fieldset fieldset--email">
-                        <label class="image-replace lrm-email lrm-ficon-mail" for="signup-email" title="Email*"></label>
-                        <input name="email" class="full-width has-padding has-border" id="signup-email" type="email" placeholder="Email*" required autocomplete="off" aria-label="Email*">
-                        <span class="lrm-error-message"></span>
-                    </div>
-
-
-
-                    <div class="lrm-integrations lrm-integrations--register">
-                    </div>
-
-                    <div class="fieldset fieldset--terms">
-
-                        <label class="lrm-nice-checkbox__label lrm-accept-terms-checkbox">
-                            Tôi đồng ý với <a> Điều khoản </a>                                    <input type="checkbox" class="lrm-nice-checkbox lrm-accept-terms" name="registration_terms" value="yes">
-                            <span class="lrm-error-message"></span>
-                            <div class="lrm-nice-checkbox__indicator"></div>
-                        </label>
-
-                    </div>
-
-                    <div class="lrm-integrations lrm-integrations--register lrm-info lrm-info--register">
-                    </div>
-
-                    <div class="fieldset fieldset--submit">
-                        <button class="full-width has-padding" type="submit">
-                            Tạo tài khoản
-                        </button>
-                    </div>
-
-                    <div class="lrm-integrations lrm-integrations--register">
-                    </div>
-
-                    <input type="hidden" name="redirect_to" value="">
-                    <input type="hidden" name="lrm_action" value="signup">
-                    <input type="hidden" name="wp-submit" value="1">
-
-                    <!-- Fix for Eduma WP theme-->
-                    <input type="hidden" name="is_popup_register" value="1">
-                    <input type="hidden" id="security-signup" name="security-signup" value="d95cf06d3d" /><input type="hidden" name="_wp_http_referer" value="/" />                    <!-- For Invisible Recaptcha plugin -->
-                    <span class="wpcf7-submit" style="display: none;"></span>
-
-                </form>
-
-
-                <!-- <a href="#0" class="lrm-close-form">Close</a> -->
-            </div> <!-- lrm-signup -->
-
-
-            <div class="lrm-reset-password-section ">
-                <!-- reset password form -->
-                <form class="lrm-form" action="#0" data-action="lost-password">
-
-                    <p class="lrm-form-message">Quên mật khẩu? Hãy điền địa chỉ email của bạn. Bạn sẽ nhận được thư có liên kết để đặt mật khẩu mới.</p>
-
-                    <div class="fieldset">
-                        <label class="image-replace lrm-email lrm-ficon-mail" title="Email or Username"></label>
-                        <input class="full-width has-padding has-border" name="user_login" type="text" required placeholder="Email or Username" data-autofocus="1" aria-label="Email or Username">
-                        <span class="lrm-error-message"></span>
-                    </div>
-
-                    <div class="lrm-integrations lrm-integrations--reset-pass">
-                    </div>
-
-                    <input type="hidden" name="lrm_action" value="lostpassword">
-                    <input type="hidden" name="wp-submit" value="1">
-                    <input type="hidden" id="security-lostpassword" name="security-lostpassword" value="8394528fdf" /><input type="hidden" name="_wp_http_referer" value="/" />
-                    <div class="fieldset fieldset--submit">
-                        <button class="full-width has-padding" type="submit">
-                            Reset password
-                        </button>
-                    </div>
-                    <!-- For Invisible Recaptcha plugin -->
-                    <span class="wpcf7-submit" style="display: none;"></span>
-
-                </form>
-
-                <p class="lrm-form-bottom-message"><a href="#0" class="lrm-switch-to--login">Back to login</a></p>
-            </div> <!-- lrm-reset-password -->
-            <a href="#0" class="lrm-close-form">Đóng</a>
-        </div> <!-- lrm-user-modal-container -->
-    </div> <!-- lrm-user-modal -->
-    
-
-
-    <script type="text/javascript">
-        var c = document.body.className;
-        c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
-        document.body.className = c;
-    </script>
-    <script type='text/javascript' id='lrm-modal-js-extra'>
-        /* <![CDATA[ */
-        var LRM = { "password_zxcvbn_js_src": "https:\/\/tiki.maugiaodien.com\/wp-includes\/js\/zxcvbn.min.js", "password_strength_lib": null, "redirect_url": "", "ajax_url": "https:\/\/tiki.maugiaodien.com\/?lrm=1", "is_user_logged_in": "", "reload_after_login": null, "selectors_mapping": { "login": "", "register": "" }, "is_customize_preview": "", "l10n": { "password_is_good": "Good Password", "password_is_strong": "Strong Password", "password_is_short": "Too Short Password", "password_is_bad": "Bad Password", "passwords_is_mismatch": "Passwords is mismatch!" } };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/ajax-login-and-registration-modal-popup/assets/lrm-core.js?ver=32' id='lrm-modal-js'></script>
-    <script type='text/javascript' id='contact-form-7-js-extra'>
-        /* <![CDATA[ */
-        var wpcf7 = { "apiSettings": { "root": "https:\/\/tiki.maugiaodien.com\/wp-json\/contact-form-7\/v1", "namespace": "contact-form-7\/v1" } };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.6' id='contact-form-7-js'></script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70' id='jquery-blockui-js'></script>
-    <script type='text/javascript' id='wc-add-to-cart-js-extra'>
-        /* <![CDATA[ */
-        var wc_add_to_cart_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "Xem gi\u1ecf h\u00e0ng", "cart_url": "https:\/\/tiki.maugiaodien.com\/gio-hang\/", "is_cart": "", "cart_redirect_after_add": "no" };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.8.0' id='wc-add-to-cart-js'></script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4' id='js-cookie-js'></script>
-    <script type='text/javascript' id='woocommerce-js-extra'>
-        /* <![CDATA[ */
-        var woocommerce_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%" };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.8.0' id='woocommerce-js'></script>
-    <script type='text/javascript' id='wc-cart-fragments-js-extra'>
-        /* <![CDATA[ */
-        var wc_cart_fragments_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "cart_hash_key": "wc_cart_hash_889ccfed3a46304e74ed615a94e54365", "fragment_name": "wc_fragments_889ccfed3a46304e74ed615a94e54365", "request_timeout": "5000" };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.8.0' id='wc-cart-fragments-js'></script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/vendor.js?ver=6.0' id='script_02-js'></script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/jquery.fancybox.js?ver=6.0' id='script_01-js'></script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/jquery.elevateZoom.js?ver=6.0' id='script_03-js'></script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/jquery.mmenu.js?ver=6.0' id='script_04-js'></script>
-    <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/reco-home.js?ver=6.0' id='script_0-js'></script>
+        <script>
+            var swiper = new Swiper('.personal-keyword .swiper-container', {
+                navigation: {
+                    nextEl: '.personal-keyword .swiper-button-next',
+                    prevEl: '.personal-keyword .swiper-button-prev',
+                },
+                slidesPerView: 8,
+                spaceBetween: 20,
+                // init: false,
+                pagination: {
+                    el: '.personal-keyword .swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    }
+                }
+            });
+        </script>
+        <script>
+            var swiper = new Swiper('.product-author-content .swiper-container', {
+                navigation: {
+                    nextEl: '.product-author-content .swiper-button-next',
+                    prevEl: '.product-author-content .swiper-button-prev',
+                },
+                slidesPerView: 5,
+                spaceBetween: 20,
+                // init: false,
+                pagination: {
+                    el: '.product-author-content .swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    }
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            jQuery('header#header .main-nav .main-nav-wrap>ul>li>a').hover(function () {
+                jQuery(this).toggleClass('active');
+            });
+            jQuery('.recently').click(function () {
+                jQuery('#main-ajax-recentlyviewed').toggleClass('show');
+            });
+        </script>
+        <script type="text/javascript">
+            if (jQuery(window).width() < 996) {
+                jQuery(function () {
+                    jQuery('#menumobile').mmenu();
+                });
+            }
+        </script>
+        <script src="~/assets/vendor/js/bootstrap.js"></script>
+        <script src="~/assets/vendor/js/helpers.js"></script>
+        <script src="~/assets/vendor/js/menu.js"></script>
+        <script src="~/assets/vendor/js/template-customizer.js"></script>
 </body>
 
-<script>
-    var swiper = new Swiper('.slider-wrap .swiper-container', {
-        navigation: {
-            nextEl: '.slider-wrap .swiper-button-next',
-            prevEl: '.slider-wrap .swiper-button-prev',
-        },
-    });
-</script>
 
-
-<script>
-    var swiper = new Swiper('.personal-categories .swiper-container', {
-        navigation: {
-            nextEl: '.personal-categories .swiper-button-next',
-            prevEl: '.personal-categories .swiper-button-prev',
-        },
-        slidesPerView: 8,
-        spaceBetween: 20,
-        // init: false,
-        pagination: {
-            el: '.personal-categories .swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            }
-        }
-    });
-</script>
-
-<script>
-    var swiper = new Swiper('.personal-keyword .swiper-container', {
-        navigation: {
-            nextEl: '.personal-keyword .swiper-button-next',
-            prevEl: '.personal-keyword .swiper-button-prev',
-        },
-        slidesPerView: 8,
-        spaceBetween: 20,
-        // init: false,
-        pagination: {
-            el: '.personal-keyword .swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            }
-        }
-    });
-</script>
-<script>
-    var swiper = new Swiper('.product-author-content .swiper-container', {
-        navigation: {
-            nextEl: '.product-author-content .swiper-button-next',
-            prevEl: '.product-author-content .swiper-button-prev',
-        },
-        slidesPerView: 5,
-        spaceBetween: 20,
-        // init: false,
-        pagination: {
-            el: '.product-author-content .swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            }
-        }
-    });
-</script>
-<script type="text/javascript">
-    jQuery('header#header .main-nav .main-nav-wrap>ul>li>a').hover(function () {
-        jQuery(this).toggleClass('active');
-    });
-    jQuery('.recently').click(function () {
-        jQuery('#main-ajax-recentlyviewed').toggleClass('show');
-    });
-</script>
-<script type="text/javascript">
-    if (jQuery(window).width() < 996) {
-        jQuery(function () {
-            jQuery('#menumobile').mmenu();
-        });
-    }
-</script>
-<script src="~/assets/vendor/js/bootstrap.js"></script>
-<script src="~/assets/vendor/js/helpers.js"></script>
-<script src="~/assets/vendor/js/menu.js"></script>
-<script src="~/assets/vendor/js/template-customizer.js"></script>
 </html>
 
