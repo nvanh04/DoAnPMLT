@@ -116,3 +116,18 @@ let menu, animate;
   // Auto update menu collapsed/expanded based on the themeConfig
   window.Helpers.setCollapsed(true, false);
 })();
+function increaseQuantity() {
+    const qtyInput = document.getElementById('qty');
+    let currentValue = parseInt(qtyInput.value, 10);
+    if (currentValue < parseInt(qtyInput.max, 10)) {
+        qtyInput.value = currentValue + 1;
+    }
+}
+
+function decreaseQuantity() {
+    const qtyInput = document.getElementById('qty');
+    let currentValue = parseInt(qtyInput.value, 10);
+    if (currentValue > parseInt(qtyInput.min, 10)) {
+        qtyInput.value = currentValue - 1;
+    }
+}

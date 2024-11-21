@@ -8,6 +8,57 @@
     <title>
         Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh) &#8211; Mua Hàng Trực Tuyến Uy Tín với Giá Rẻ Hơn tại Tiki.vn
     </title>
+    <style>
+        /* CSS Styles */
+        .quantity-col1 {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .quantity-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+        }
+
+            .input-group .input-group-btn {
+                display: flex;
+            }
+
+        .input-group-btn .btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            padding: 0;
+        }
+
+            .input-group-btn .btn:hover {
+                background-color: #e0e0e0;
+            }
+
+        .input-group input[type="number"] {
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            margin: 0 5px;
+        }
+    </style>
     <link href="" rel="shortcut icon" type="~/image/vnd.microsoft.icon" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -832,54 +883,75 @@
 
 
 
-                                                    <div class="item-product-options">
-                                                        <div id="add-cart-action">
-                                                            <div class="add-cart-action" style="display: block">
-                                                                <div class="quantity-box">
-                                                                    <!-- Quantity Limitation Alert -->
-                                                                    <div class="tiki-save-wrapper">
-                                                                        <div id="deal-max" class="alert alert-warning alert-small deal-max">
-                                                                            Sản phẩm này có giới hạn số lượng khi đặt hàng:<br />
-                                                                            Bạn có thể mua tối đa 1 sản phẩm cho mỗi đơn hàng.
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!-- Hidden field to pass product ID -->
-                                                                    @foreach (var d in ViewBag.listchitietsanpham)
-                                                                    {
-                                                                        <p>
-                                                                            <input id="product_id_for_cart" name="productId" type="hidden" value="@d[0]">
-
-                                                                        </p>
-                                                                    }
-
-
-                                                                    <!-- Quantity Selector -->
-                                                                    <div id="qtySelector" class="quantity-col1">
-                                                                        <p class="quantity-label">Số lượng:</p>
-                                                                        <div class="input-group bootstrap-touchspin">
-                                                                            <!-- Decrease Quantity Button -->
-                                                                            <span class="input-group-btn">
-                                                                                <button class="btn btn-default bootstrap-touchspin-down" type="button" onclick="decreaseQuantity()">-</button>
-                                                                            </span>
-                                                                            <!-- Quantity Input -->
-                                                                            <input id="qty" type="number" name="quantity" value="1" min="1" max="100" class="form-control">
-                                                                            <!-- Increase Quantity Button -->
-                                                                            <span class="input-group-btn">
-                                                                                <button class="btn btn-default bootstrap-touchspin-up" type="button" onclick="increaseQuantity()">+</button>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!-- Add to Cart Button -->
-                                                                    <div class="cta-box">
-                                                                        <button type="submit" class="add-to-cart">CHỌN MUA</button>
+                                                <div class="item-product-options">
+                                                    <div id="add-cart-action">
+                                                        <div class="add-cart-action" style="display: block">
+                                                            <div class="quantity-box">
+                                                                <!-- Quantity Limitation Alert -->
+                                                                <div class="tiki-save-wrapper">
+                                                                    <div id="deal-max" class="alert alert-warning alert-small deal-max">
+                                                                        Sản phẩm này có giới hạn số lượng khi đặt hàng:<br />
+                                                                        Bạn có thể mua tối đa 1 sản phẩm cho mỗi đơn hàng.
                                                                     </div>
                                                                 </div>
+
+                                                                <!-- Hidden field to pass product ID -->
+                                                                @foreach (var d in ViewBag.listchitietsanpham)
+                                                                {
+                                                                    <p>
+                                                                        <input id="product_id_for_cart" name="productId" type="hidden" value="@d[0]">
+
+                                                                    </p>
+                                                                }
+
+
+                                                                <!-- Quantity Selector -->
+                                                                <!--<div id="qtySelector" class="quantity-col1">
+        <p class="quantity-label">Số lượng:</p>
+        <div class="input-group bootstrap-touchspin">-->
+                                                                <!-- Decrease Quantity Button -->
+                                                                <!--<span class="input-group-btn">
+        <button class="btn btn-default bootstrap-touchspin-down" type="button" onclick="decreaseQuantity()">-</button>
+    </span>-->
+                                                                <!-- Quantity Input -->
+                                                                <!--<input id="qty" type="number" name="quantity" value="1" min="1" max="100" class="form-control">-->
+                                                                <!-- Increase Quantity Button -->
+                                                                <!--<span class="input-group-btn">
+                <button class="btn btn-default bootstrap-touchspin-up" type="button" onclick="increaseQuantity()">+</button>
+            </span>
+        </div>
+    </div>-->
+                                                            <div id="qtySelector" class="quantity-col1">
+                                                                <p class="quantity-label">Số lượng:</p>
+                                                                <div class="input-group bootstrap-touchspin">
+                                                                    <!-- Decrease Quantity Button -->
+                                                                    <span class="input-group-btn">
+                                                                        <button class="btn btn-default bootstrap-touchspin-down" type="button" onclick="decreaseQuantity()">-</button>
+                                                                    </span>
+                                                                    <!-- Quantity Input -->
+                                                                    <input id="qty" type="number" name="quantity" value="1" min="1" max="100" class="form-control">
+                                                                    <!-- Increase Quantity Button -->
+                                                                    <span class="input-group-btn">
+                                                                        <button class="btn btn-default bootstrap-touchspin-up" type="button" onclick="increaseQuantity()">+</button>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+
+                                                                <!-- Add to Cart Button -->
+                                                                <div class="cta-box">
+
+
+                                                                    <button id="#mainAddToCart" class="add-to-cart  js-add-to-cart is-css" type="submit" admicro-data-event="AddToCart" admicro-data-auto="1" admicro-data-order="false" name="add-to-cart" value="2237">
+                                                                        <span class="text" type="submit">CHỌN MUA</span>
+                                                                    </button>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                </div>
+                                            </form>
                                         </div>
 
                                         <script>
@@ -1016,7 +1088,7 @@
                                                 </div>
                                             </div>
 
-                                        </div>  }
+                                        </div>}
                                 </div>
                             }
 
@@ -1870,6 +1942,7 @@
         var wc_cart_fragments_params = { "ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "cart_hash_key": "wc_cart_hash_889ccfed3a46304e74ed615a94e54365", "fragment_name": "wc_fragments_889ccfed3a46304e74ed615a94e54365", "request_timeout": "5000" };
         /* ]]> */
     </script>
+    <script src="~/assets/js/main.js"></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.8.0' id='wc-cart-fragments-js'></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/vendor.js?ver=6.0' id='script_02-js'></script>
     <script type='text/javascript' src='https://tiki.maugiaodien.com/wp-content/themes/vpw_theme/js/jquery.fancybox.js?ver=6.0' id='script_01-js'></script>
@@ -2030,6 +2103,24 @@
         },
 
     });
+</script>
+<script>
+    // JavaScript Functions
+    function increaseQuantity() {
+        const qtyInput = document.getElementById('qty');
+        let currentValue = parseInt(qtyInput.value, 10);
+        if (currentValue < parseInt(qtyInput.max, 10)) {
+            qtyInput.value = currentValue + 1;
+        }
+    }
+
+    function decreaseQuantity() {
+        const qtyInput = document.getElementById('qty');
+        let currentValue = parseInt(qtyInput.value, 10);
+        if (currentValue > parseInt(qtyInput.min, 10)) {
+            qtyInput.value = currentValue - 1;
+        }
+    }
 </script>
 <script src="~/assets/vendor/js/bootstrap.js"></script>
 <script src="~/assets/vendor/js/helpers.js"></script>
