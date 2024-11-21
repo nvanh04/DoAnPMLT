@@ -179,7 +179,7 @@ namespace tiki.Controllers
             if (Session["IDKH"] == null)
             {
                 TempData["ErrorMessage"] = "Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.";
-                return RedirectToAction("GiaoDienDangNhap");
+                return RedirectToAction("GiaoDienDangNhap", "Home");
             }
 
             int userId = Convert.ToInt32(Session["IDKH"]);
