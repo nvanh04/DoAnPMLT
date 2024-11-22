@@ -777,8 +777,7 @@
 
         <div class="breadcrumb-wrap">
             <div class="container">
-                @*Ở đây chưa fix*@
-                <ul id="breadcrumb" class="breadcrumb"><li class="item-home"><a class="bread-link bread-home" href="https://tiki.maugiaodien.com" title="Trang chủ">Trang chủ</a></li><li class="separator separator-home">    <i class="fa fa-angle-right"></i>   </li><li class="item-cat item-custom-post-type-product"><a class="bread-cat bread-custom-post-type-product" href="https://tiki.maugiaodien.com/cua-hang/" title="Sản phẩm">Sản phẩm</a></li><li class="separator">    <i class="fa fa-angle-right"></i>   </li><li class="item-cat item-cat-347 item-cat-bach-hoa-online"><a class="bread-cat bread-cat-347 bread-cat-bach-hoa-online" href="https://tiki.maugiaodien.com/danh-muc/bach-hoa-online/" title="Bách Hóa Online">Bách Hóa Online</a></li><li class="separator">    <i class="fa fa-angle-right"></i>   </li><li class="item-current item-2236"><strong class="bread-current bread-2236" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)">Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)</strong></li></ul>
+                <ul id="breadcrumb" class="breadcrumb"><li class="item-home"><a class="bread-link bread-home" href="https://tiki.maugiaodien.com" title="Trang chủ">Trang chủ</a></li><li class="separator separator-home">    <i class="fa fa-angle-right"></i>   </li><li class="item-cat item-custom-post-type-product"><a class="bread-cat bread-custom-post-type-product" href="@Url.Action("Index", "Home")" title="Sản phẩm">Sản phẩm</a></li><li class="separator">    <i class="fa fa-angle-right"></i>   <li class="separator">    <i class="fa fa-angle-right"></i>   </li><li class="item-current item-2236"><strong class="bread-current bread-2236" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)">@ViewBag.listchitietsanpham[0][1]</strong></li></ul>
             </div>
         </div>
 
