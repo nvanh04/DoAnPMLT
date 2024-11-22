@@ -59,7 +59,7 @@ namespace tiki.Controllers
             }
 
             // Chuyển hướng về trang quản lý sản phẩm sau khi thêm thành công
-            return RedirectToAction("product", "admin");
+            return RedirectToAction("shoplistproduct", "Shop");
         }
         public ActionResult xoasanpham(string id)
         {
