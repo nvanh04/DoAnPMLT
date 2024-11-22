@@ -2060,16 +2060,16 @@
                                         <!-- Organize Card -->
                                         <div class="card mb-6">
                                             <div class="card-header">
-                                                <h5 class="card-title mb-0">Brand</h5>
+                                                <h5 class="card-title mb-0"></h5>
                                             </div>
                                             <div class="card-body">
                                                 <!-- Vendor -->
                                                 <div class="mb-6 col ecommerce-select2-dropdown">
                                                     <label class="form-label mb-1" for="vendor">
-                                                        Nhà cung cấp
+                                                        Loại
                                                     </label>
                                                     <select name="category_id" id="vendor" class="select2 form-select" data-placeholder="Chọn nhà cung cấp">
-                                                        @foreach (var b in ViewBag.listnhacungcap)
+                                                        @foreach (var b in ViewBag.listDanhMuc)
                                                         {
                                                             <option value="@b[0]">@b[1]</option>
                                                         }
@@ -2080,10 +2080,10 @@
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div class="mb-6 col ecommerce-select2-dropdown">
                                                         <label class="form-label mb-1" for="category-org">
-                                                            <span>Loại</span>
+                                                            <span>Brand</span>
                                                         </label>
                                                         <select name="brand_id" id="category-org" class="select2 form-select" data-placeholder="Select Category">
-                                                            @foreach (var c in ViewBag.listDanhMuc)
+                                                            @foreach (var c in ViewBag.listnhacungcap)
                                                             {
                                                                 <option value="@c[0]">@c[1]</option>
                                                             }
