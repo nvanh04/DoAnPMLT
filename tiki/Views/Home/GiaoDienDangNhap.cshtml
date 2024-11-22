@@ -11,10 +11,14 @@
         <div class="form-container sign-up-container">
             <form action="~/home/XulyDangKy" method="post">
                 <h1>Create Account</h1>
-                <input type="text" name="username" placeholder="Username" required=""/>
-                <input type="email" name="email" placeholder="Email" required=""/>
-                <input type="password" name="password" placeholder="Password" required=""/>
-                <input type="text" name="hoten" placeholder="Họ và Tên"/>
+                @if (TempData["Error"] != null)
+                {
+                    <p style="color: red;">@TempData["Error"]</p>
+                }
+                <input type="text" name="username" placeholder="Username" required="" />
+                <input type="email" name="email" placeholder="Email" required="" />
+                <input type="password" name="password" placeholder="Password" required="" />
+                <input type="text" name="hoten" placeholder="Họ và Tên" />
                 <button type="submit">Sign Up</button>
             </form>
         </div>
