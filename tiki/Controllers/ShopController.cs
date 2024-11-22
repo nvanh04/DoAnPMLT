@@ -75,6 +75,7 @@ namespace tiki.Controllers
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
             ViewBag.ShopDH = db.get($"EXEC ShopDH {id}");
             ViewBag.ShopCTDH = db.get($"EXEC ShopCTDH {id}");
             return View();
@@ -83,6 +84,7 @@ namespace tiki.Controllers
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
             ViewBag.XuatDanhSachDH = db.get($"EXEC GetSellerOrders {userId}");
             if (ViewBag.XuatDanhSachDH != null || ViewBag.XuatDanhSachDH.Count > 0)
             {
@@ -107,6 +109,7 @@ namespace tiki.Controllers
             ViewBag.listSanpham = db.get("SELECT * FROM Products");
             ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
             int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
             ViewBag.hienthisanphamid = db.get($"exec LAY_SANPHAM_THEO_USERID1 {userId}");
             return View();
         }
