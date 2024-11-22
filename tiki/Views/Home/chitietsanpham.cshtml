@@ -443,7 +443,7 @@
             </div>
             <div class="header-form-container">
                 <div class="container">
-                    <a href="@Url.Action("Index", "Home")" class="logo">
+                    <a href="~/Views/Home/Index.cshtml" class="logo">
                         <img src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/logo-1.png">
                     </a>
 
@@ -469,9 +469,9 @@
                         <div id="search-autocomplete" style="display: none"></div>
                     </div>
                     <div class="header-link">
-                        <a rel="nofollow" href="@Url.Action("XemDanhSachDH_User", "Home")" title="Kiểm tra trạng thái Đơn hàng của bạn" class="tracking-order item">
-                            <i class="icon-style-1 tikicon icon-tracking"></i> Đơn hàng
-                            <br>của tôi
+                        <a rel="nofollow" href="https://tiki.maugiaodien.com/theo-doi-don-hang" title="Kiểm tra trạng thái Đơn hàng của bạn" class="tracking-order item">
+                            <i class="icon-style-1 tikicon icon-tracking"></i> Theo dõi
+                            <br>đơn hàng
                         </a>
                         <div class="noti-item tracking-noti item" id="header-noti">
                             <div data-reactroot="">
@@ -552,9 +552,9 @@
                                     @if (Session["IDKH"] != null)
                                     {
                                         <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                            <div style="top: -10px" class="avatar avatar-online">
+                                            <div style="top :-10px" class="avatar avatar-online">
                                                 <input type="hidden" name="userId" value="@Session["IDKH"]" />
-                                                @foreach (var a in ViewBag.list)
+                                                @foreach (var a in ViewBag.listTTKH)
                                                 {
                                                     <img src="~/HINH/@a[10]" alt="" class="w-px-40 h-auto rounded-circle">
                                                 }
@@ -566,7 +566,11 @@
                                                     <div class="d-flex">
                                                         <div class="flex-shrink-0 me-3">
                                                             <div class="avatar avatar-online">
-                                                                <img src="~/HINH/@ViewBag.list[0][10]" alt="" class="w-px-40 h-auto rounded-circle">
+                                                                <input type="hidden" name="userId" value="@Session["IDKH"]" />
+                                                                @foreach (var a in ViewBag.listTTKH)
+                                                                {
+                                                                    <img src="~/HINH/@a[10]" alt="" class="w-px-40 h-auto rounded-circle">
+                                                                }
                                                             </div>
                                                         </div>
                                                         <div class="flex-grow-1">
@@ -590,7 +594,7 @@
                                             @if (Session["VaiTro"]?.ToString() == "NBH")
                                             {
                                                 <li>
-                                                    <a class="dropdown-item" href="@Url.Action("Shop", "Shop")">
+                                                    <a class="dropdown-item" href="@Url.Action("shop", "Shop")">
                                                         <i class="bx bx-store bx-md me-3"></i><span>Trang bán hàng</span>
                                                     </a>
                                                 </li>
@@ -602,41 +606,6 @@
                                                         <i class="bx bx-cog bx-md me-3"></i><span>Trang Admin</span>
                                                     </a>
                                                 </li>
-                                            }
-                                            else
-                                            {
-                                                @* Hiển thị form đăng ký nhà bán hàng nếu VaiTro bằng null *@
-                                                <li class="register-to-sell">
-                                                    <form id="registerForm" action="~/home/UpdateUserRoleToNBH" method="post">
-
-                                                        <a class="dropdown-item" href="javascript:void(0);" onclick="showConfirmation()"><i class="bx bx-store bx-md me-3"></i><span>Đăng ký bán hàng</span></a>
-                                                    </form>
-                                                </li>
-
-                                                <!-- Modal xác nhận -->
-                                                <div id="confirmationModal" style="display:none;">
-                                                    <div style="background-color: #fff; padding: 20px; border-radius: 8px; max-width: 300px; text-align: center;">
-                                                        <button onclick="submitForm()">Đồng ý</button>
-                                                        <button onclick="closeModal()">Từ chối</button>
-                                                    </div>
-                                                </div>
-
-                                                <script>
-                                                    function showConfirmation() {
-                                                        // Hiển thị modal xác nhận
-                                                        document.getElementById("confirmationModal").style.display = "block";
-                                                    }
-
-                                                    function closeModal() {
-                                                        // Đóng modal xác nhận
-                                                        document.getElementById("confirmationModal").style.display = "none";
-                                                    }
-
-                                                    function submitForm() {
-                                                        // Gửi form
-                                                        document.getElementById("registerForm").submit();
-                                                    }
-                                                </script>
                                             }
 
                                             <li>
@@ -650,9 +619,8 @@
                                     {
                                         <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
                                     }
-                                </div>
 
-                            </div>
+                                </div>
 
                             </div>
                         </div>

@@ -525,21 +525,17 @@
                                     @if (Session["IDKH"] != null)
                                     {
                                         <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                            <div style="top: -10px" class="avatar avatar-online">
-                                                <input type="hidden" name="userId" value="@Session["IDKH"]" />
-                                                @foreach (var a in ViewBag.list)
-                                                {
-                                                    <img src="~/HINH/@a[10]" alt="" class="w-px-40 h-auto rounded-circle">
-                                                }
+                                            <div style="top :-10px" class="avatar avatar-online">
+                                                <img src="~/assets/img/avatars/1.png" alt="" class="w-px-40 h-auto rounded-circle">
                                             </div>
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end">
                                             <li>
-                                                <a class="dropdown-item" href="~/Home/Thongtincanhan?id=@Session["IDKH"]">
+                                                <a class="dropdown-item" href="@Url.Action("InfoCustomer", "Home")">
                                                     <div class="d-flex">
                                                         <div class="flex-shrink-0 me-3">
                                                             <div class="avatar avatar-online">
-                                                                <img src="~/HINH/@ViewBag.list[0][10]" alt="" class="w-px-40 h-auto rounded-circle">
+                                                                <img src="~/assets/img/avatars/1.png" alt="" class="w-px-40 h-auto rounded-circle">
                                                             </div>
                                                         </div>
                                                         <div class="flex-grow-1">
@@ -554,7 +550,7 @@
                                             </li>
 
                                             <li>
-                                                <a class="dropdown-item" href="~/Home/Thongtincanhan">
+                                                <a class="dropdown-item" href="@Url.Action("InfoCustomer", "Home")">
                                                     <i class="bx bx-user bx-md me-3"></i><span>Thông tin cá nhân</span>
                                                 </a>
                                             </li>
@@ -563,7 +559,7 @@
                                             @if (Session["VaiTro"]?.ToString() == "NBH")
                                             {
                                                 <li>
-                                                    <a class="dropdown-item" href="@Url.Action("Shop", "Shop")">
+                                                    <a class="dropdown-item" href="@Url.Action("shop", "Shop")">
                                                         <i class="bx bx-store bx-md me-3"></i><span>Trang bán hàng</span>
                                                     </a>
                                                 </li>
@@ -575,41 +571,6 @@
                                                         <i class="bx bx-cog bx-md me-3"></i><span>Trang Admin</span>
                                                     </a>
                                                 </li>
-                                            }
-                                            else
-                                            {
-                                                @* Hiển thị form đăng ký nhà bán hàng nếu VaiTro bằng null *@
-                                                <li class="register-to-sell">
-                                                    <form id="registerForm" action="~/home/UpdateUserRoleToNBH" method="post">
-
-                                                        <a class="dropdown-item" href="javascript:void(0);" onclick="showConfirmation()"><i class="bx bx-store bx-md me-3"></i><span>Đăng ký bán hàng</span></a>
-                                                    </form>
-                                                </li>
-
-                                                <!-- Modal xác nhận -->
-                                                <div id="confirmationModal" style="display:none;">
-                                                    <div style="background-color: #fff; padding: 20px; border-radius: 8px; max-width: 300px; text-align: center;">
-                                                        <button onclick="submitForm()">Đồng ý</button>
-                                                        <button onclick="closeModal()">Từ chối</button>
-                                                    </div>
-                                                </div>
-
-                                                <script>
-                                                    function showConfirmation() {
-                                                        // Hiển thị modal xác nhận
-                                                        document.getElementById("confirmationModal").style.display = "block";
-                                                    }
-
-                                                    function closeModal() {
-                                                        // Đóng modal xác nhận
-                                                        document.getElementById("confirmationModal").style.display = "none";
-                                                    }
-
-                                                    function submitForm() {
-                                                        // Gửi form
-                                                        document.getElementById("registerForm").submit();
-                                                    }
-                                                </script>
                                             }
 
                                             <li>
@@ -623,6 +584,7 @@
                                     {
                                         <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
                                     }
+
                                 </div>
                             </div>
                         </div>

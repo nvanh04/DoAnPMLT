@@ -547,31 +547,31 @@
                                                 </li>
 
                                                 <!-- Modal xác nhận -->
-                                                <div id="confirmationModal" style="display:none;">
-                                                    <div style="background-color: #fff; padding: 20px; border-radius: 8px; max-width: 300px; text-align: center;">
-                                                        <button onclick="submitForm()">Đồng ý</button>
-                                                        <button onclick="closeModal()">Từ chối</button>
-                                                    </div>
-                                                </div>
 
-                                                <script>
-                                                    function showConfirmation() {
-                                                        // Hiển thị modal xác nhận
-                                                        document.getElementById("confirmationModal").style.display = "block";
-                                                    }
-
-                                                    function closeModal() {
-                                                        // Đóng modal xác nhận
-                                                        document.getElementById("confirmationModal").style.display = "none";
-                                                    }
-
-                                                    function submitForm() {
-                                                        // Gửi form
-                                                        document.getElementById("registerForm").submit();
-                                                    }
-                                                </script>
                                             }
+                                            <div id="confirmationModal" style="display:none;">
+                                                <div style="background-color: #fff; padding: 20px; border-radius: 8px; max-width: 300px; text-align: center;">
+                                                    <button onclick="submitForm()">Đồng ý</button>
+                                                    <button onclick="closeModal()">Từ chối</button>
+                                                </div>
+                                            </div>
 
+                                            <script>
+                                                function showConfirmation() {
+                                                    // Hiển thị modal xác nhận
+                                                    document.getElementById("confirmationModal").style.display = "block";
+                                                }
+
+                                                function closeModal() {
+                                                    // Đóng modal xác nhận
+                                                    document.getElementById("confirmationModal").style.display = "none";
+                                                }
+
+                                                function submitForm() {
+                                                    // Gửi form
+                                                    document.getElementById("registerForm").submit();
+                                                }
+                                            </script>
                                             <li>
                                                 <a class="dropdown-item" href="@Url.Action("GiaoDienDangNhap", "Home")">
                                                     <i class="bx bx-power-off bx-md me-3"></i><span>Đăng xuất</span>

@@ -19,6 +19,7 @@ namespace tiki.Controllers
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
             ViewBag.listDemSanPham = db.get($"exec DemSP {userId}");
             // Gọi stored procedure để lấy thông tin giỏ hàng
             ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
