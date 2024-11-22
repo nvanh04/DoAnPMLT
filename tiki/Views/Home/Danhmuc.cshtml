@@ -739,67 +739,7 @@
                     </div>
 
 
-                    <div class="product-listing">
-                        @if (ViewBag.listSPtheoID != null)
-                        {
-                            foreach (var c in ViewBag.listSPtheoID)
-                            {
-                                <div class="product-box no-mg">
-                                    <div class="filter-list-box">
-                                        <ul>
-                                            <div class="home-recently-list">
-                                                <div data-seller-product-id="2237" data-title="@c[1]" data-category="@c[1]" tpl="" rel="" class="product-item">
-                                                    <a data-id="2237" data-score="" href="~/Home/chitietsanpham?id=@c[0]" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="" />
-                                                    @*<a href="~/Home/chitietsanpham"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>*@
-                                                    <span class="image">
-                                                        <img class="product-image img-responsive" src="~/HINH/@c[10]" alt="">
-                                                        <span class="product-right-icon">
-                                                        </span>
-                                                    </span>
-                                                    <span class="title">
-                                                        @c[1]
-                                                    </span>
-                                                    <p class="price-sale">
-                                                        <span class="final-price">@c[3]</span>
-                                                        <span class="price-regular">11,790,000 đ</span>
-                                                        <span class="sale-tag sale-tag-square"> 1%</span>
-                                                    </p>
-                                                    <div class="price-tag-wrap"></div>
-                                                    <div class="review-wrap">
-                                                        <p class="rating">
-                                                            <span class="rating-content">
-                                                                <i class="star"></i>
-                                                                <i class="star"></i>
-                                                                <i class="star"></i>
-                                                                <i class="star"></i>
-                                                                <i class="star"></i>
-
-
-                                                                <span style="width:0%">
-                                                                    <i class="star"></i>
-                                                                    <i class="star"></i>
-                                                                    <i class="star"></i>
-                                                                    <i class="star"></i>
-                                                                    <i class="star"></i>
-                                                                </span>
-                                                            </span>
-                                                        </p>
-                                                        <p class="review">(0 nhận xét)</p>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </ul>
-                                        <!-- Keyword suggestion list -->
-                                    </div>
-                                </div>
-                            }
-
-                        }
-                        else
-                        {
-                            <p>Không có sản phẩm nào trong danh mục này.</p>
-                        }
+ 
 
 
                         <div class="product-box no-mg">
@@ -836,613 +776,73 @@
 
 
                             <div class="product-box-list" data-impress-list-title="Phòng ngủ hiện đại">
+                                @if (ViewBag.listSPtheoID != null)
+                                {
+                                    foreach (var c in ViewBag.listSPtheoID)
+                                    {
+                                        <div class="product-box no-mg">
+                                            <div class="filter-list-box">
+                                                <ul>
+                                                    <div class="home-recently-list">
+                                                        <div data-seller-product-id="2237" data-title="@c[1]" data-category="@c[1]" tpl="" rel="" class="product-item">
+                                                            <a data-id="2237" data-score="" href="~/Home/chitietsanpham?id=@c[0]" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="" />
+                                                            @*<a href="~/Home/chitietsanpham"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>*@
+                                                            <span class="image">
+                                                                <img class="product-image img-responsive" src="~/HINH/@c[10]" alt="">
+                                                                <span class="product-right-icon">
+                                                                </span>
+                                                            </span>
+                                                            <span class="title">
+                                                                @c[1]
+                                                            </span>
+                                                            <p class="price-sale">
+                                                                <span class="final-price">@c[3]</span>
+                                                                <span class="price-regular">11,790,000 đ</span>
+                                                                <span class="sale-tag sale-tag-square"> 1%</span>
+                                                            </p>
+                                                            <div class="price-tag-wrap"></div>
+                                                            <div class="review-wrap">
+                                                                <p class="rating">
+                                                                    <span class="rating-content">
+                                                                        <i class="star"></i>
+                                                                        <i class="star"></i>
+                                                                        <i class="star"></i>
+                                                                        <i class="star"></i>
+                                                                        <i class="star"></i>
 
 
+                                                                        <span style="width:0%">
+                                                                            <i class="star"></i>
+                                                                            <i class="star"></i>
+                                                                            <i class="star"></i>
+                                                                            <i class="star"></i>
+                                                                            <i class="star"></i>
+                                                                        </span>
+                                                                    </span>
+                                                                </p>
+                                                                <p class="review">(0 nhận xét)</p>
+                                                            </div>
 
-
-
-
-                                <div data-seller-product-id="2164" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2164" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-3/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
-
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
+                                                        </div>
+                                                    </div>
+                                                </ul>
+                                                <!-- Keyword suggestion list -->
+                                            </div>
                                         </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
+                                    }
 
+                                }
+                                else
+                                {
+                                    <p>Không có sản phẩm nào trong danh mục này.</p>
+                                }
 
-                                                    <span style="width:90%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(2 nhận xét)</p>
-                                        </div>
 
-                                    </a>
-                                </div>
 
 
 
 
-                                <div data-seller-product-id="2228" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2228" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-2/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
 
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
-                                        </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-
-
-                                                    <span style="width:0%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(0 nhận xét)</p>
-                                        </div>
-
-                                    </a>
-                                </div>
-
-
-
-
-                                <div data-seller-product-id="2229" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2229" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-4/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
-
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
-                                        </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-
-
-                                                    <span style="width:0%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(0 nhận xét)</p>
-                                        </div>
-
-                                    </a>
-                                </div>
-
-
-
-
-                                <div data-seller-product-id="2230" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2230" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-5/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
-
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
-                                        </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-
-
-                                                    <span style="width:0%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(0 nhận xét)</p>
-                                        </div>
-
-                                    </a>
-                                </div>
-
-
-
-
-                                <div data-seller-product-id="2231" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2231" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-6/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
-
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
-                                        </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-
-
-                                                    <span style="width:0%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(0 nhận xét)</p>
-                                        </div>
-
-                                    </a>
-                                </div>
-
-
-
-
-                                <div data-seller-product-id="2232" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2232" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-7/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
-
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
-                                        </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-
-
-                                                    <span style="width:0%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(0 nhận xét)</p>
-                                        </div>
-
-                                    </a>
-                                </div>
-
-
-
-
-                                <div data-seller-product-id="2233" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2233" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-8/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
-
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
-                                        </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-
-
-                                                    <span style="width:0%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(0 nhận xét)</p>
-                                        </div>
-
-                                    </a>
-                                </div>
-
-
-
-
-                                <div data-seller-product-id="2234" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2234" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-9/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
-
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
-                                        </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-
-
-                                                    <span style="width:0%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(0 nhận xét)</p>
-                                        </div>
-
-                                    </a>
-                                </div>
-
-
-
-
-                                <div data-seller-product-id="2235" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2235" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-10/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
-
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
-                                        </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-
-
-                                                    <span style="width:0%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(0 nhận xét)</p>
-                                        </div>
-
-                                    </a>
-                                </div>
-
-
-
-
-                                <div data-seller-product-id="2236" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2236" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-11/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
-
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
-                                        </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-
-
-                                                    <span style="width:0%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(0 nhận xét)</p>
-                                        </div>
-
-                                    </a>
-                                </div>
-
-
-
-
-                                <div data-seller-product-id="2237" data-title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" data-category="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" tpl="" rel="" class="product-item">
-                                    <a data-id="2237" data-score="" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)" class="">
-
-                                        <span class="image">
-
-                                            <img class="product-image img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="">
-
-
-                                            <span class="product-right-icon">
-                                            </span>
-
-                                        </span>
-
-                                        <span class="title">
-                                            Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)
-                                        </span>
-                                        <p class="price-sale">
-
-
-                                            <span class="final-price">11,690,000 đ</span>
-                                            <span class="price-regular">11,790,000 đ</span>
-
-
-                                            <span class="sale-tag sale-tag-square"> 1%</span>
-                                        </p>
-                                        <div class="price-tag-wrap">
-                                        </div>
-                                        <div class="review-wrap">
-                                            <p class="rating">
-                                                <span class="rating-content">
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-                                                    <i class="star"></i>
-
-
-                                                    <span style="width:0%">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="review">(0 nhận xét)</p>
-                                        </div>
-
-                                    </a>
-                                </div>
 
 
 
@@ -1881,20 +1281,7 @@
 
 
 
-    <div class="hien-thi-thong-tin" style="position: fixed;bottom: 0;width: 100%!important;z-index: 20;">
-        <div class="row">
-            <div class="large-4 small-12" style="padding:10px">
-                <a href="https://themewp.vn" style="background-color: #FEBA1D;background: linear-gradient(135deg,#FEBA1D 30%,#F5912C 100%);padding:8px 3px;text-align: center;border-radius: 5px;color: #fff;display: block;font-size: 105%;text-decoration: none;" target="_blank"><i class="icon-star"></i> ThemeWP.vn - Kho Theme Wordpress</a>
-            </div>
-            <div class="large-4 hide-for-small" style="padding:10px">
-                <a href="https://themewp.vn/kho-plugin" style="background-color: #FEBA1D;background: linear-gradient(135deg,#FEBA1D 30%,#F5912C 100%);padding:8px 3px;text-align: center;border-radius: 5px;color: #fff;display: block;font-size: 105%;text-decoration: none;" target="_blank"><i class="icon-gift"></i> Kho Plugin miễn phí</a>
-            </div>
-            <div class="large-4 hide-for-small" style="padding:10px">
-                <a href="https://themewp.vn/kinh-doanh-linh-vuc-web" style="background-color: #FEBA1D;background: linear-gradient(135deg,#FEBA1D 30%,#F5912C 100%);padding:8px 3px;text-align: center;border-radius: 5px;color: #fff;display: block;font-size: 105%;text-decoration: none;" target="_blank"><i class="icon-play"></i> Đăng ký đại lý</a>
-            </div>
-
-        </div>
-    </div>
+    
 
 
     <script type="text/javascript">
