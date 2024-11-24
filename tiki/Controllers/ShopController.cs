@@ -168,6 +168,17 @@ namespace tiki.Controllers
             ViewBag.hienthisanphamid = db.get($"exec LAY_SANPHAM_THEO_USERID1 {userId}");
             return View();
         }
+        public ActionResult RemoveOrder(string orderId)
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.LayTTDH = db.get($"EXEC LayTTDH {userId}, {orderId}");
+            // Thực thi stored procedure để xóa sản phẩm khỏi giỏ hàng
+            db.get($"EXEC XoaDHNBH {userId}, {orderId}");
+
+            return RedirectToAction("shoporderlist");
+            
+        }
 
 
     }
