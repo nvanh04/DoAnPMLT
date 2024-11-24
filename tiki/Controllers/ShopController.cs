@@ -166,6 +166,7 @@ namespace tiki.Controllers
             ViewBag.hienthisanphamid = db.get($"exec LAY_SANPHAM_THEO_USERID1 {userId}");
             return View();
         }
-      
+
+
     }
 }

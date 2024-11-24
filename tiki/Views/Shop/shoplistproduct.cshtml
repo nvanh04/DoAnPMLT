@@ -383,11 +383,7 @@
                                             <div class="text-truncate" data-i18n="Order List">Order List</div>
                                         </a>
                                     </li>
-                                    <li class="menu-item">
-                                        <a href="~/Shop/shoporderdetails" class="menu-link">
-                                            <div class="text-truncate" data-i18n="Order Details">Order Details</div>
-                                        </a>
-                                    </li>
+                             
                                 </ul>
                             </li>
                             <!--<li class="menu-item">
@@ -1860,30 +1856,189 @@
                                             </div>
                                         </div>
                                     </div><table class="datatables-products table dataTable no-footer dtr-column collapsed" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" style="width: 1069px;">
-                                        <thead class="border-top">
-                                            <tr>@*<th class="control sorting_disabled" rowspan="1" colspan="1" style="width: 1px;" aria-label=""></th>*@<th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1" colspan="1" style="width: 18px;" data-col="1" aria-label=""><input type="checkbox" class="form-check-input"></th><th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 390px;" aria-label="product: activate to sort column descending" aria-sort="ascending">sản phẩm</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 121px;" aria-label="category: activate to sort column ascending">Loại</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 47px;" aria-label="stock">stock</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 39px;" aria-label="sku: activate to sort column ascending">sku</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 66px;" aria-label="price: activate to sort column ascending">Giá</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 29px;" aria-label="qty: activate to sort column ascending">qty</th><th class="sorting dtr-hidden" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 0px; display: none;" aria-label="status: activate to sort column ascending">status</th><th class="sorting_disabled dtr-hidden" rowspan="1" colspan="1" style="width: 0px; display: none;" aria-label="Actions">Actions</th></tr>
-                                        </thead>
+                                              <thead class="border-top">
+                                                  <tr>
+                                                      <!-- Checkbox Select All Column -->
+                                                      <th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all"
+                                                          rowspan="1"
+                                                          colspan="1"
+                                                          style="width: 18px;"
+                                                          data-col="1"
+                                                          aria-label="">
+                                                          <input type="checkbox" class="form-check-input">
+                                                      </th>
+                                                      <!-- Product Column -->
+                                                      <th class="sorting sorting_asc"
+                                                          tabindex="0"
+                                                          aria-controls="DataTables_Table_0"
+                                                          rowspan="1"
+                                                          colspan="1"
+                                                          style="width: 390px;"
+                                                          aria-label="product: activate to sort column descending"
+                                                          aria-sort="ascending">
+                                                          Sản phẩm
+                                                      </th>
+                                                      <th class="sorting"
+                                                          tabindex="0"
+                                                          aria-controls="DataTables_Table_0"
+                                                          rowspan="1"
+                                                          colspan="1"
+                                                          style="width: 121px;"
+                                                          aria-label="category: activate to sort column ascending">
+                                                          Tên sản phẩm
+                                                      </th>
+                                                      <!-- Category Column -->
+                                                      <th class="sorting"
+                                                          tabindex="0"
+                                                          aria-controls="DataTables_Table_0"
+                                                          rowspan="1"
+                                                          colspan="1"
+                                                          style="width: 121px;"
+                                                          aria-label="category: activate to sort column ascending">
+                                                          Loại
+                                                      </th>
+                                                      <!-- Stock Column -->
+                                                      <th class="sorting_disabled"
+                                                          rowspan="1"
+                                                          colspan="1"
+                                                          style="width: 47px;"
+                                                          aria-label="stock">
+                                                          Stock
+                                                      </th>
+                                                      <!-- SKU Column -->
+                                                      <th class="sorting"
+                                                          tabindex="0"
+                                                          aria-controls="DataTables_Table_0"
+                                                          rowspan="1"
+                                                          colspan="1"
+                                                          style="width: 39px;"
+                                                          aria-label="sku: activate to sort column ascending">
+                                                          SKU
+                                                      </th>
+                                                      <!-- Price Column -->
+                                                      <th class="sorting"
+                                                          tabindex="0"
+                                                          aria-controls="DataTables_Table_0"
+                                                          rowspan="1"
+                                                          colspan="1"
+                                                          style="width: 66px;"
+                                                          aria-label="price: activate to sort column ascending">
+                                                          Giá
+                                                      </th>
+                                                      <!-- Quantity Column -->
+                                                      <th class="sorting"
+                                                          tabindex="0"
+                                                          aria-controls="DataTables_Table_0"
+                                                          rowspan="1"
+                                                          colspan="1"
+                                                          style="width: 29px;"
+                                                          aria-label="qty: activate to sort column ascending">
+                                                          Qty
+                                                      </th>
+                                                      <!-- Hidden Status Column -->
+                                                      <th class="sorting dtr-hidden"
+                                                          tabindex="0"
+                                                          aria-controls="DataTables_Table_0"
+                                                          rowspan="1"
+                                                          colspan="1"
+                                                          style="width: 0px; display: none;"
+                                                          aria-label="status: activate to sort column ascending">
+                                                          Status
+                                                      </th>
+                                                      <!-- Hidden Actions Column -->
+                                                      <th class="sorting_disabled dtr-hidden"
+                                                          rowspan="1"
+                                                          colspan="1"
+                                                          style="width: 0px; display: none;"
+                                                          aria-label="Actions">
+                                                          Actions
+                                                      </th>
+                                                  </tr>
+                                              </thead>
+                                 
                                         @foreach (var a in ViewBag.hienthisanphamid)
                                         {
-                                            <tbody>
-                                                <tr class="odd">
-                                                    @*<td class="control" tabindex="0" style=""></td>*@
-                                                    <td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td>
-                                                    <td class="sorting_1"><div class="d-flex justify-content-start align-items-center product-name"><div class="avatar-wrapper"><div class="avatar avatar me-4 rounded-2 bg-label-secondary"><img src="~/HINH/@a[10]" alt="Product-9" class="rounded"></div></div><div class="d-flex flex-column"><h6 class="text-nowrap mb-0">@a[1]</h6><small class="text-truncate d-none d-sm-block">@a[2]</small></div></div></td>
-                                                    <td><span class="text-truncate d-flex align-items-center text-heading"><span class="w-px-30 h-px-30 rounded-circle d-flex justify-content-center align-items-center bg-label-success me-4"><i class="bx bx-walk bx-sm"></i></span>Shoes</span></td>
-                                                    <td><span class="text-truncate"><label class="switch switch-primary switch-sm"><input type="checkbox" class="switch-input" id="switch"><span class="switch-toggle-slider"><span class="switch-off"></span></span></label><span class="d-none">Out_of_Stock</span></span></td>
-                                                    <td><span>@a[0]</span></td>
-                                                    <td><span>@a[3]</span></td>
-                                                    <td><span>@a[4]</span></td>
-                                                    <td class="dtr-hidden" style="display: none;"><span class="badge bg-label-danger" text-capitalized="">Inactive</span></td>
-                                                    <td class="dtr-hidden" style="display: none;"><div class="d-inline-block text-nowrap"><button class="btn btn-icon"><i class="bx bx-edit bx-md"></i></button><button class="btn btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded bx-md"></i></button><div class="dropdown-menu dropdown-menu-end m-0"><a href="javascript:0;" class="dropdown-item">View</a><a href="javascript:0;" class="dropdown-item">Suspend</a></div></div></td>
-                                                    <td><span><a href="~/Shop/xoasanpham?id=@a[0]">Xóa</a></span></td>
-                                                    <td><span><a href="~/Shop/suasanpham?id=@a[0]">Sua </a></span></td>
-
-
-                                                </tr>
-                                        </tbody>
-                                    }
+                                           <tbody>
+                                               <tr class="odd">
+                                                   <!-- Checkbox Column -->
+                                                   <td class="dt-checkboxes-cell">
+                                                       <input type="checkbox" class="dt-checkboxes form-check-input">
+                                                   </td>
+                                                   <!-- Product Name and Avatar -->
+                                                   <td class="sorting_1">
+                                                       <div class="d-flex justify-content-start align-items-center product-name">
+                                                           <div class="avatar-wrapper">
+                                                               <div class="avatar avatar me-4 rounded-2 bg-label-secondary">
+                                                                   <img src="~/HINH/@a[10]" alt="Product-9" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail">
+                                                               </div>
+                                                           </div>
+                                                       </div>
+                                                   </td>
+                                                   <td>
+                                                       <div class="d-flex justify-content-start align-items-center product-name">
+                                                           <div class="d-flex flex-column">
+                                                               <h6 class="text-nowrap mb-0">@a[1]</h6>
+                                                           </div>
+                                                       </div>
+                                                   </td>
+                                                   <!-- Status Column -->
+                                                   <td>
+                                                       <span class="text-truncate d-flex align-items-center text-heading">
+                                                           <span class="w-px-30 h-px-30 rounded-circle d-flex justify-content-center align-items-center bg-label-success me-4">
+                                                               <i class="bx bx-walk bx-sm"></i>
+                                                           </span>
+                                                           @a[12]
+                                                       </span>
+                                                   </td>
+                                                   <!-- Switch Column -->
+                                                   <td>
+                                                       <span class="text-truncate">
+                                                           <label class="switch switch-primary switch-sm">
+                                                               <input type="checkbox" class="switch-input" id="switch">
+                                                               <span class="switch-toggle-slider">
+                                                                   <span class="switch-off"></span>
+                                                               </span>
+                                                           </label>
+                                                           <span class="d-none">Out_of_Stock</span>
+                                                       </span>
+                                                   </td>
+                                                   <!-- Data Columns -->
+                                                   <td><span>@a[0]</span></td>
+                                                   <td><span>@a[3]</span></td>
+                                                   <td><span>@a[4]</span></td>
+                                                   <!-- Hidden Inactive Badge -->
+                                                   <td class="dtr-hidden" style="display: none;">
+                                                       <span class="badge bg-label-danger" text-capitalized="">Inactive</span>
+                                                   </td>
+                                                   <!-- Hidden Action Buttons -->
+                                                   <td class="dtr-hidden" style="display: none;">
+                                                       <div class="d-inline-block text-nowrap">
+                                                           <button class="btn btn-icon">
+                                                               <i class="bx bx-edit bx-md"></i>
+                                                           </button>
+                                                           <button class="btn btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                               <i class="bx bx-dots-vertical-rounded bx-md"></i>
+                                                           </button>
+                                                           <div class="dropdown-menu dropdown-menu-end m-0">
+                                                               <a href="javascript:0;" class="dropdown-item">View</a>
+                                                               <a href="javascript:0;" class="dropdown-item">Suspend</a>
+                                                           </div>
+                                                       </div>
+                                                   </td>
+                                                   <!-- Action Links -->
+                                                   <td>
+                                                       <span>
+                                                           <a href="~/Shop/xoasanpham?id=@a[0]">Xóa</a>
+                                                       </span>
+                                                   </td>
+                                                   <td>
+                                                       <span>
+                                                           <a href="~/Shop/suasanpham?id=@a[0]">Sửa</a>
+                                                       </span>
+                                                   </td>
+                                               </tr>
+                                           </tbody>
+                                        }
 
                                     </table><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Displaying 1 to 7 of 100 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link"><i class="bx bx-chevron-left bx-18px"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="DataTables_Table_0_ellipsis"><a aria-controls="DataTables_Table_0" aria-disabled="true" role="link" data-dt-idx="ellipsis" tabindex="-1" class="page-link">…</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="14" tabindex="0" class="page-link">15</a></li><li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" role="link" data-dt-idx="next" tabindex="0" class="page-link"><i class="bx bx-chevron-right bx-18px"></i></a></li></ul></div></div></div><div style="width: 1%;"></div><div style="width: 1%;"></div>
                                 </div>

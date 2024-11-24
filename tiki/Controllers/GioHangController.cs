@@ -23,7 +23,7 @@ namespace tiki.Controllers
             ViewBag.listDemSanPham = db.get($"exec DemSP {userId}");
             // Gọi stored procedure để lấy thông tin giỏ hàng
             ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
-
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
             // Gọi stored procedure để lấy giá trị CartTotal và gán trực tiếp vào ViewBag và Session
             ViewBag.cartTotalResult = db.get($"EXEC CalculateCartTotal {userId}");
             decimal cartTotal = ViewBag.cartTotalResult != null && ViewBag.cartTotalResult.Count > 0
@@ -46,7 +46,7 @@ namespace tiki.Controllers
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
-
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
             decimal cartTotal = Session["CartTotal"] != null ? Convert.ToDecimal(Session["CartTotal"]) : 0;
             string coupon_code = Session["CouponCode"] != null ? Session["CouponCode"].ToString() : string.Empty;
             decimal discount = Session["discount"] != null ? Convert.ToDecimal(Session["discount"]) : 0;
@@ -160,7 +160,7 @@ namespace tiki.Controllers
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
-
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
             // Lấy thông tin giỏ hàng của người dùng khi chuyển đến trang thanh toán
             ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
             ViewBag.cartTotalResult = db.get($"EXEC CalculateCartTotal {userId}");
@@ -217,7 +217,7 @@ namespace tiki.Controllers
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
-
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
             // Duyệt qua từng sản phẩm và cập nhật số lượng
             for (int i = 0; i < productIds.Count; i++)
             {
