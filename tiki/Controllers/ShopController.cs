@@ -129,6 +129,8 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTongDH = db.get($"EXEC TongDH {userId}");
+            ViewBag.LayTTDH = db.get($"EXEC LayTTDH {userId}, {id}");
             ViewBag.ShopDH = db.get($"EXEC ShopDH {id}");
             ViewBag.ShopCTDH = db.get($"EXEC ShopCTDH {id}");
             return View();

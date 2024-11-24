@@ -467,9 +467,9 @@
 
                             <div class="d-flex flex-column justify-content-center">
                                 <div class="mb-1">
-                                    <span class="h5">Order #32543 </span><span class="badge bg-label-success me-1 ms-2">Paid</span> <span class="badge bg-label-info">Ready to Pickup</span>
+                                    <span class="h5">#@ViewBag.LayTTDH[0][0] </span><span class="badge bg-label-success me-1 ms-2">Paid</span> <span class="badge bg-label-info">Ready to Pickup</span>
                                 </div>
-                                <p class="mb-0">Aug 17, <span id="orderYear"></span>, 5:48 (ET)</p>
+                                <p class="mb-0">@ViewBag.LayTTDH[0][2]</p>
                             </div>
                             <div class="d-flex align-content-center flex-wrap gap-2">
                                 <button class="btn btn-label-danger delete-order">Delete Order</button>
@@ -627,58 +627,53 @@
                                 </div>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <div class="card mb-6">
-                                    <div class="card-header">
-                                        <h5 class="card-title m-0">Customer details</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-start align-items-center mb-6">
-                                            <div class="avatar me-3">
-                                                <img src="~/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
+                                @foreach (var a in ViewBag.list)
+                                {
+                                    <div class="card mb-6">
+                                        <div class="card-header">
+                                            <h5 class="card-title m-0">Customer details</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-start align-items-center mb-6">
+                                                <div class="avatar me-3">
+                                                    <img src="~/HINH/@a[10]" alt="Avatar" class="rounded-circle">
+                                                </div>
+                                                <div class="d-flex flex-column">
+                                                    <a href="app-user-view-account.html" class="text-body text-nowrap">
+                                                        <h6 class="mb-0">@a[1]</h6>
+                                                    </a>
+                                                    <span>Customer ID: #@a[0]</span>
+                                                </div>
                                             </div>
-                                            <div class="d-flex flex-column">
-                                                <a href="app-user-view-account.html" class="text-body text-nowrap">
-                                                    <h6 class="mb-0">Shamus Tuttle</h6>
-                                                </a>
-                                                <span>Customer ID: #58909</span>
+                                            <div class="d-flex justify-content-start align-items-center mb-6">
+                                                <span class="avatar rounded-circle bg-label-success me-3 d-flex align-items-center justify-content-center"><i class="bx bx-cart bx-lg"></i></span>
+                                                <h6 class="text-nowrap mb-0">@ViewBag.listTongDH[0][0] Orders</h6>
                                             </div>
+                                            <div class="d-flex justify-content-between">
+                                                <h6 class="mb-1">Contact info</h6>
+                                            </div>
+                                            <p class=" mb-1">Email: @a[2]</p>
+                                            <p class=" mb-0">Mobile: @a[5]</p>
                                         </div>
-                                        <div class="d-flex justify-content-start align-items-center mb-6">
-                                            <span class="avatar rounded-circle bg-label-success me-3 d-flex align-items-center justify-content-center"><i class="bx bx-cart bx-lg"></i></span>
-                                            <h6 class="text-nowrap mb-0">12 Orders</h6>
+                                    </div>
+                                }
+
+
+                                @foreach (var a in ViewBag.LayTTDH)
+                                {
+                                    <div class="card mb-6">
+                                        <div class="card-header d-flex justify-content-between pb-2">
+                                            <h5 class="card-title m-0">Billing address</h5>
                                         </div>
-                                        <div class="d-flex justify-content-between">
-                                            <h6 class="mb-1">Contact info</h6>
-                                            <h6 class="mb-1"><a href=" javascript:void(0)" data-bs-toggle="modal" data-bs-target="#editUser">Edit</a></h6>
+                                        <div class="card-body">
+                                            <p class="mb-6">@a[6]</p>
+                                            <h5 class="mb-1">Mastercard</h5>
+                                            <p class="mb-0">Card Number: @a[4]</p>
                                         </div>
-                                        <p class=" mb-1">Email: Shamus889@yahoo.com</p>
-                                        <p class=" mb-0">Mobile: +1 (609) 972-22-22</p>
-                                    </div>
-                                </div>
 
-                                <div class="card mb-6">
+                                    </div>
+                                }
 
-                                    <div class="card-header d-flex justify-content-between">
-                                        <h5 class="card-title m-0">Shipping address</h5>
-                                        <h6 class="m-0"><a href=" javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addNewAddress">Edit</a></h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="mb-0">45 Roker Terrace <br>Latheronwheel <br>KW5 8NW,London <br>UK</p>
-                                    </div>
-
-                                </div>
-                                <div class="card mb-6">
-                                    <div class="card-header d-flex justify-content-between pb-2">
-                                        <h5 class="card-title m-0">Billing address</h5>
-                                        <h6 class="m-0"><a href=" javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addNewAddress">Edit</a></h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="mb-6">45 Roker Terrace <br>Latheronwheel <br>KW5 8NW,London <br>UK</p>
-                                        <h5 class="mb-1">Mastercard</h5>
-                                        <p class="mb-0">Card Number: ******4291</p>
-                                    </div>
-
-                                </div>
                             </div>
                         </div>
 
