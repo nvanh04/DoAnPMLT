@@ -15,6 +15,9 @@ namespace tiki.Controllers
         public ActionResult Index()
         {
             DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
             //if (Session["taikhoan"] == null)
             //{
             //    return RedirectToAction("GiaoDienDangNhap", "Home");
@@ -26,7 +29,10 @@ namespace tiki.Controllers
         public ActionResult eCommerce(string id)
         {
             DataModel db = new DataModel();
-            ViewBag.list = db.get("EXEC timkiemKHtheoID " + id + ";");
+            int userId = Convert.ToInt32(Session["IDKH"]);
+
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTK = db.get("EXEC timkiemKHtheoID " + id + ";");
             return View();
         }
         [HttpPost]

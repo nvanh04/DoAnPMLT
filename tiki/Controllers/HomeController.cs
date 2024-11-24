@@ -29,6 +29,25 @@ namespace tiki.Controllers
             ViewBag.listSPtheoID = db.get("EXEC SPtheoID'" + id + "'");
             return View();
         }
+        public ActionResult danhmuctong(string id)
+        {
+            DataModel db = new DataModel();
+            int userId = Convert.ToInt32(Session["IDKH"]);
+
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+
+            ViewBag.listDemSanPham = db.get($"exec DemSP {userId}");
+            ArrayList DemSP = (ArrayList)ViewBag.listDemSanPham[0];
+
+            Session["DemSP"] = DemSP[0];
+            ViewBag.listSanPham = db.get("EXEC xuatProducts");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC SPtheoID'" + id + "'");
+            ViewBag.listDM = db.get("select * from products");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
+            return View();
+
+        }
         public ActionResult GiaoDienDangNhap()
         {
             DataModel db = new DataModel();

@@ -1749,13 +1749,13 @@
                         <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between mb-6 text-center text-sm-start gap-2">
                             <div class="mb-2 mb-sm-0">
                                 <h4 class="mb-1">
-                                    Customer ID #@ViewBag.list[0][0]
+                                    Customer ID #@ViewBag.listTK[0][0]
                                 </h4>
                                 <p class="mb-0">
-                                    Ngày tạo: @ViewBag.list[0][7]
+                                    Ngày tạo: @ViewBag.listTK[0][7]
                                 </p>
                             </div>
-                            <button class="btn btn-danger delete-customer" data-id="@ViewBag.list[0][0]">Delete</button>
+                            <button class="btn btn-danger delete-customer" data-id="@ViewBag.listTK[0][0]">Delete</button>
                         </div>
 
 
@@ -1767,10 +1767,10 @@
                                     <div class="card-body pt-12">
                                         <div class="customer-avatar-section">
                                             <div class="d-flex align-items-center flex-column">
-                                                <img class="img-fluid rounded mb-4" src="~/Hinh/@ViewBag.list[0][10]" height="120" width="120" alt="User avatar" />
+                                                <img class="img-fluid rounded mb-4" src="~/Hinh/@ViewBag.listTK[0][10]" height="120" width="120" alt="User avatar" />
                                                 <div class="customer-info text-center mb-6">
-                                                    <h5 class="mb-0">@ViewBag.list[0][4]</h5>
-                                                    <span>Customer ID #@ViewBag.list[0][0]</span>
+                                                    <h5 class="mb-0">@ViewBag.listTK[0][4]</h5>
+                                                    <span>Customer ID #@ViewBag.listTK[0][0]</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1804,25 +1804,25 @@
                                             <ul class="list-unstyled mb-6">
                                                 <li class="mb-2">
                                                     <span class="h6 me-1">Username:</span>
-                                                    <span>@ViewBag.list[0][1]</span>
+                                                    <span>@ViewBag.listTK[0][1]</span>
                                                 </li>
                                                 <li class="mb-2">
                                                     <span class="h6 me-1">Email:</span>
-                                                    <span>@ViewBag.list[0][2]</span>
+                                                    <span>@ViewBag.listTK[0][2]</span>
                                                 </li>
 
                                                 <li class="mb-2">
                                                     <span class="h6 me-1">Contact:</span>
-                                                    <span>@ViewBag.list[0][5]</span>
+                                                    <span>@ViewBag.listTK[0][5]</span>
                                                 </li>
 
                                                 <li class="mb-2">
                                                     <span class="h6 me-1">Location:</span>
-                                                    <span>@ViewBag.list[0][6]</span>
+                                                    <span>@ViewBag.listTK[0][6]</span>
                                                 </li>
                                                 <li class="mb-2">
                                                     <span class="h6 me-1">Role:</span>
-                                                    <span class="badge bg-label-success">@ViewBag.list[0][9]</span>
+                                                    <span class="badge bg-label-success">@ViewBag.listTK[0][9]</span>
                                                 </li>
                                             </ul>
                                             <div class="d-flex justify-content-center">
@@ -1979,7 +1979,7 @@
                             <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                                 <div class="modal-content">
                                     <div class="modal-body">
-                                        @foreach (var a in ViewBag.list)
+                                        @foreach (var a in ViewBag.listTK)
                                         {
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             <div class="text-center mb-6">
