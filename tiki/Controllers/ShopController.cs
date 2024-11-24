@@ -62,7 +62,7 @@ namespace tiki.Controllers
             return RedirectToAction("shoplistproduct", "Shop");
         }
         [HttpPost]
-        public ActionResult suasp(string name, string description, string price, string stock_quantity, string category_id, string brand_id, HttpPostedFileBase HINH, string price_discount,string id)
+        public ActionResult suasp(string name, string description, string price, string stock_quantity, string category_id, string brand_id, HttpPostedFileBase HINH, string price_discount,string product_id)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace tiki.Controllers
 
                         // Tạo câu lệnh SQL với `user_id`
                         DataModel db = new DataModel();
-                        string query = "EXEC THEMSP222 N'" + name + "', N'" + description + "', " + price + ", " + stock_quantity + ", " + category_id + ", " + brand_id + ",'" + filename + "', " + stock_quantity + ", " + price_discount + ", " + id + ";";
+                        string query = "EXEC SUAPRODUCT2 N'" + name + "', N'" + description + "', " + price + ", " + stock_quantity + ", " + category_id + ", " + brand_id + ",'" + filename + "', " + price_discount + ", " + product_id + ";";
 
                         // Thực hiện truy vấn để thêm sản phẩm
                         ViewBag.listsua = db.get(query);
