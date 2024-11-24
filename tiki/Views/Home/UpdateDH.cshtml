@@ -37,6 +37,218 @@
             width: 100%;
         }
     </style>
+    <style>
+        .woocommerce-billing-fields__field-wrapper {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-row {
+            margin-bottom: 20px;
+        }
+
+        .woocommerce-input-wrapper {
+            position: relative;
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .error-message {
+            font-size: 12px;
+            color: red;
+            display: none;
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+        input:required {
+            border-color: #ffbb33;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+    <style>
+        /* Định dạng cho container tổng */
+        .col-sm-4 {
+            background: #ebe9eb;
+            color: #000;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Tiêu đề của đơn hàng */
+        #order_review_heading {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Bảng hiển thị sản phẩm và tổng đơn hàng */
+        .shop_table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+            .shop_table th,
+            .shop_table td {
+                text-align: left;
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .shop_table .product-name {
+                font-weight: bold;
+            }
+
+            .shop_table .product-total {
+                text-align: right;
+            }
+
+        /* Định dạng cho phần tổng cộng và giảm giá */
+        tfoot {
+            font-weight: bold;
+        }
+
+        .order-total th {
+            text-align: left;
+        }
+
+        .order-total td {
+            text-align: right;
+        }
+
+        /* Định dạng cho các phương thức thanh toán */
+        #wc_payment_methods {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .wc_payment_method {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+            .wc_payment_method label {
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+        .payment_box {
+            margin-top: 5px;
+            padding: 5px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .wc_payment_method input[type="radio"]:checked + label + .payment_box {
+            display: block;
+        }
+
+        /* Nút Đặt hàng */
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+        /* Thông báo đặt hàng thành công */
+        #order-success {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            color: #155724;
+            margin-top: 20px;
+        }
+
+        .notification-buttons button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .notification-buttons button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+    <style>
+        .notification {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+            .notification p {
+                margin: 0;
+                font-size: 18px;
+            }
+
+        .notification-buttons {
+            margin-top: 10px;
+        }
+
+            .notification-buttons button {
+                padding: 8px 15px;
+                margin: 5px;
+                font-size: 16px;
+                background-color: white;
+                color: #4CAF50;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                .notification-buttons button:hover {
+                    background-color: #ddd;
+                }
+    </style>
+    <link href="" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <meta name='robots' content='noindex, nofollow' />
     <link rel='dns-prefetch' href='//s.w.org' />
     <link rel='stylesheet' id='lrm-modal-css' href='https://tiki.maugiaodien.com/wp-content/plugins/ajax-login-and-registration-modal-popup/assets/lrm-core-compiled.css?ver=32' type='text/css' media='all' />
@@ -634,56 +846,6 @@
                             </div>
                         </div>
 
-                    </div>
-                </div>
-            </div>
-            <div class="main-nav">
-                <div class="container">
-
-                    <nav class="main-nav-wrap">
-                        <a href="javascript:" class="main-nav-toggle">
-                            <i class="tikicon icon-burger-menu"></i>
-                            <span class="long">DANH MỤC SẢN PHẨM</span>
-                            <span class="short">DANH MỤC</span>
-                        </a>
-                        <ul id="menu-menu-chinh" class="v2">
-                            @foreach (var c in ViewBag.listDanhMuc)
-                            {
-                                <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2188" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2188 nav-item"><a href="~/Home/Danhmuc?id=@c[0]" class="menu-image-title-after menu-image-not-hovered"><img width="31" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png 31w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39-24x22.png 24w" sizes="(max-width: 31px) 100vw, 31px" /><span class="menu-image-title">@c[1]</span></a></li>
-                            }
-                        </ul>
-                    </nav>
-
-                    <div class="feature location-picker" id="locationPicker">
-                        <span class="tikicon icon-location-picker"></span>
-                        <span class="text">
-                            Bạn muốn giao hàng tới đâu?
-                        </span>
-                    </div>
-                    <a class="feature recently">
-                        <span class="tikicon icon-arrow-down"></span> Sản phẩm bạn đã xem
-                    </a>
-                    <a href="#" target="_blank" class="feature delivery-2h">
-                        <span class="tikicon icon-tikinow">
-                        </span> TikiNOW giao nhanh
-                        <br> Hàng trăm nghìn sản phẩm
-                    </a>
-                    <div class="feature exclusive">
-                        <span class="tikicon icon-exclusive"></span> Tất cả sản phẩm
-                        <br> 100% chính hiệu
-                    </div>
-                    <a href="#" target="_blank" class="feature return">
-                        <span class="tikicon icon-return">
-                        </span> 30 ngày đổi trả dễ dàng
-                    </a>
-                    <div id="popup-sms"></div>
-                </div>
-            </div>
-
-            <div id="main-ajax-recentlyviewed" data-impress-list-title="Header | Sản phẩm bạn đã xem" class="">
-                <div data-reactroot="" class="product-recently-content swiper-carousel-wrapper">
-                    <div class="item-recently product-item"> <a class="track" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)">                 <img class="img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" data-lazyload="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)"></a>  </div><div class="item-recently product-item"> <a class="track" href="https://tiki.maugiaodien.com/san-pham/may-anh-canon-750d-lens-18-55-is-stm-le-bao-minh-3/" title="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)">                 <img class="img-responsive" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" data-lazyload="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/b02b462394bc3c59e5876ec0d9cb6ae8.jpg" alt="Máy Ảnh Canon 750D + Lens 18-55 IS STM (Lê Bảo Minh)"></a>  </div> <div class="item-recently product-item see-all-item">
-                        <a href="https://tiki.maugiaodien.com/cua-hang/" class="see-all">Xem thêm</a>
                     </div>
                 </div>
             </div>

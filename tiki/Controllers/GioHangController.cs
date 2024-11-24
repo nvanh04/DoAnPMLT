@@ -15,7 +15,7 @@ namespace tiki.Controllers
     public class GioHangController : Controller
     {
         // Hiển thị giỏ hàng
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
@@ -38,7 +38,12 @@ namespace tiki.Controllers
             ViewBag.TotalAfterDiscount = cartTotal - (decimal)ViewBag.Discount;
             ViewBag.CouponError = TempData["CouponError"];
             ViewBag.CouponSuccess = TempData["CouponSuccess"];
-
+            ViewBag.XemDanhSachDH = db.get($"exec XemDanhSachDH {userId}");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
+            ViewBag.XemTTDonHang = db.get($"exec XemCTDH '{userId}', '{id}'");
             return View();
         }
         [HttpPost]
@@ -156,7 +161,7 @@ namespace tiki.Controllers
             Session["totalAfterDiscount"] = totalAfterDiscount;
             return RedirectToAction("Index");
         }
-        public ActionResult ThanhToan()
+        public ActionResult ThanhToan(string id)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
@@ -164,7 +169,12 @@ namespace tiki.Controllers
             // Lấy thông tin giỏ hàng của người dùng khi chuyển đến trang thanh toán
             ViewBag.CartItems = db.get($"EXEC GetCartItems1 {userId}");
             ViewBag.cartTotalResult = db.get($"EXEC CalculateCartTotal {userId}");
-
+            ViewBag.XemDanhSachDH = db.get($"exec XemDanhSachDH {userId}");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
+            ViewBag.XemTTDonHang = db.get($"exec XemCTDH '{userId}', '{id}'");
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
             return View();
         }

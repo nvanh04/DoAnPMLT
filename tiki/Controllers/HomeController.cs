@@ -308,7 +308,11 @@ namespace tiki.Controllers
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
             ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
-
+            ViewBag.XemDanhSachDH = db.get($"exec XemDanhSachDH {userId}");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
             ViewBag.XemTTDonHang = db.get($"exec XemCTDH '{userId}', '{id}'");
             return View();
         }
@@ -320,7 +324,11 @@ namespace tiki.Controllers
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
             ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
-
+            ViewBag.XemDanhSachDH = db.get($"exec XemDanhSachDH {userId}");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
             ViewBag.XemTTDonHang = db.get($"exec XemCTDH '{userId}', '{id}'");
             db.get("exec CapNhatDH "+userId+", "+id+", N'"+billing_name+"', '"+billing_tel+"', N'"+billing_address_1+"', '"+billing_email+"', N'"+order_comments+"'");
             return RedirectToAction("XemDanhSachDH_User", "Home");
