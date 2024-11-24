@@ -396,17 +396,17 @@
             </div>
             <div class="header-form-container">
                 <div class="container">
-                    <a href="~/Views/Home/Index" class="logo">
+                    <a href="~/Home/Index" class="logo">
                         <img src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/logo-1.png">
                     </a>
 
 
                     <div class="form-search">
-                        <form id="search_form" action="https://tiki.maugiaodien.com" method="get">
+                        <form id="search_form" action="~/Home/TimKiemTenSP">
                             <div class="search-wrap">
                                 <div class="input">
                                     <div class="flex">
-                                        <input type="text" name="s" autocomplete="off" value="" placeholder="Tìm sản phẩm, danh mục hay thương hiệu mong muốn ...">
+                                        <input type="text" name="tensp" autocomplete="off" value="" placeholder="Tìm sản phẩm, danh mục hay thương hiệu mong muốn ..." required="">
                                         <input type="hidden" name="post_type" value="product">
                                     </div>
                                 </div>
@@ -422,9 +422,9 @@
                         <div id="search-autocomplete" style="display: none"></div>
                     </div>
                     <div class="header-link">
-                        <a rel="nofollow" href="https://tiki.maugiaodien.com/theo-doi-don-hang" title="Kiểm tra trạng thái Đơn hàng của bạn" class="tracking-order item">
-                            <i class="icon-style-1 tikicon icon-tracking"></i> Theo dõi
-                            <br>đơn hàng
+                        <a rel="nofollow" href="@Url.Action("XemDanhSachDH_User", "Home")" title="Kiểm tra trạng thái Đơn hàng của bạn" class="tracking-order item">
+                            <i class="icon-style-1 tikicon icon-tracking"></i> Đơn hàng
+                            <br>của tôi
                         </a>
                         <div class="noti-item tracking-noti item" id="header-noti">
                             <div data-reactroot="">
@@ -505,9 +505,9 @@
                                     @if (Session["IDKH"] != null)
                                     {
                                         <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                            <div style="top :-10px" class="avatar avatar-online">
+                                            <div style="top: -10px" class="avatar avatar-online">
                                                 <input type="hidden" name="userId" value="@Session["IDKH"]" />
-                                                @foreach (var a in ViewBag.listTTKH)
+                                                @foreach (var a in ViewBag.list)
                                                 {
                                                     <img src="~/HINH/@a[10]" alt="" class="w-px-40 h-auto rounded-circle">
                                                 }
@@ -519,11 +519,7 @@
                                                     <div class="d-flex">
                                                         <div class="flex-shrink-0 me-3">
                                                             <div class="avatar avatar-online">
-                                                                <input type="hidden" name="userId" value="@Session["IDKH"]" />
-                                                                @foreach (var a in ViewBag.listTTKH)
-                                                                {
-                                                                    <img src="~/HINH/@a[10]" alt="" class="w-px-40 h-auto rounded-circle">
-                                                                }
+                                                                <img src="~/HINH/@ViewBag.list[0][10]" alt="" class="w-px-40 h-auto rounded-circle">
                                                             </div>
                                                         </div>
                                                         <div class="flex-grow-1">
@@ -547,7 +543,7 @@
                                             @if (Session["VaiTro"]?.ToString() == "NBH")
                                             {
                                                 <li>
-                                                    <a class="dropdown-item" href="@Url.Action("shop", "Shop")">
+                                                    <a class="dropdown-item" href="@Url.Action("Shop", "Shop")">
                                                         <i class="bx bx-store bx-md me-3"></i><span>Trang bán hàng</span>
                                                     </a>
                                                 </li>
@@ -560,7 +556,42 @@
                                                     </a>
                                                 </li>
                                             }
+                                            else
+                                            {
+                                                @* Hiển thị form đăng ký nhà bán hàng nếu VaiTro bằng null *@
+                                                <li class="register-to-sell">
+                                                    <form id="registerForm" action="~/home/UpdateUserRoleToNBH" method="post">
 
+                                                        <a class="dropdown-item" href="javascript:void(0);" onclick="showConfirmation()"><i class="bx bx-store bx-md me-3"></i><span>Đăng ký bán hàng</span></a>
+                                                    </form>
+                                                </li>
+
+                                                <!-- Modal xác nhận -->
+
+                                            }
+                                            <div id="confirmationModal" style="display:none;">
+                                                <div style="background-color: #fff; padding: 20px; border-radius: 8px; max-width: 300px; text-align: center;">
+                                                    <button onclick="submitForm()">Đồng ý</button>
+                                                    <button onclick="closeModal()">Từ chối</button>
+                                                </div>
+                                            </div>
+
+                                            <script>
+                                                function showConfirmation() {
+                                                    // Hiển thị modal xác nhận
+                                                    document.getElementById("confirmationModal").style.display = "block";
+                                                }
+
+                                                function closeModal() {
+                                                    // Đóng modal xác nhận
+                                                    document.getElementById("confirmationModal").style.display = "none";
+                                                }
+
+                                                function submitForm() {
+                                                    // Gửi form
+                                                    document.getElementById("registerForm").submit();
+                                                }
+                                            </script>
                                             <li>
                                                 <a class="dropdown-item" href="@Url.Action("GiaoDienDangNhap", "Home")">
                                                     <i class="bx bx-power-off bx-md me-3"></i><span>Đăng xuất</span>
@@ -572,7 +603,6 @@
                                     {
                                         <a href="@Url.Action("GiaoDienDangNhap", "Home")" class="nav-item nav-link">Đăng nhập</a>
                                     }
-
                                 </div>
 
                             </div>
@@ -580,17 +610,14 @@
 
 
                         <div id="header-cart">
-                            <a data-reactroot="" rel="nofollow" href="https://tiki.maugiaodien.com/gio-hang/" class="header-cart item" admicro-data-event="ClickXemGioHang" admicro-data-auto="1" admicro-data-order="false">
-                                @if (Session["IDKH"] != null)
-                                {
-                                    <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">@Session["DemSP"]</span></a>
-                                }
-                                else
-                                {
-                                    <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>
-                                }
-
-                            </a>
+                            @if (Session["IDKH"] != null)
+                            {
+                                <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">@Session["DemSP"]</span></a>
+                            }
+                            else
+                            {
+                                <a href="~/GioHang/Index" class="header-cart item"><i class="tikicon icon-cart"></i>Giỏ hàng<span class="cart-count" id="cart-total">0</span></a>
+                            }
                         </div>
 
                         <!-- Tooltip Link social -->
@@ -620,81 +647,10 @@
                             <span class="short">DANH MỤC</span>
                         </a>
                         <ul id="menu-menu-chinh" class="v2">
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1892" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children dropdown-submenu menu-item-1892 nav-item">
-                                <a href="https://tiki.maugiaodien.com/danh-muc/phong-ngu-hien-dai/" class="menu-image-title-after menu-image-not-hovered"><img width="27" height="19" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03.png 27w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03-24x17.png 24w" sizes="(max-width: 27px) 100vw, 27px"><span class="menu-image-title">Phòng ngủ hiện đại</span></a>
-                                <div class="nav-sub">
-                                    <ul role="menu">
-                                        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1893" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children dropdown-submenu menu-item-1893 nav-item">
-                                            <a href="https://tiki.maugiaodien.com/danh-muc/tu-quan-ao/" class="menu-image-title-after"><span class="menu-image-title">Điện tử &amp; Công nghệ</span></a>
-                                            <div class="nav-sub">
-                                                <ul role="menu">
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1894" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1894 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/ban-trang-diem/" class="menu-image-title-after"><span class="menu-image-title">Mẹ &amp; bé</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1895" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1895 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/tu-dau-giuong/" class="menu-image-title-after"><span class="menu-image-title">Nhà cửa &amp; đời sống</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1896" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1896 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/sach-van-phong-pham/" class="menu-image-title-after"><span class="menu-image-title">Sách &amp; văn phòng phẩm</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1897" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children dropdown-submenu menu-item-1897 nav-item">
-                                            <a href="https://tiki.maugiaodien.com/danh-muc/phong-bep-dep/" class="menu-image-title-after"><span class="menu-image-title">Sức khỏe &amp; sắc đẹp</span></a>
-                                            <div class="nav-sub">
-                                                <ul role="menu">
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1898" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1898 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/tu-bep-dep/" class="menu-image-title-after"><span class="menu-image-title">Tủ bếp đẹp</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1899" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1899 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/phong-khach-hien-dai/" class="menu-image-title-after"><span class="menu-image-title">Phòng khách hiện đại</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2172" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2172 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/bach-hoa-online/" class="menu-image-title-after"><span class="menu-image-title">Bách Hóa Online</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2173" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children dropdown-submenu menu-item-2173 nav-item">
-                                            <a href="https://tiki.maugiaodien.com/danh-muc/ban-trang-diem/" class="menu-image-title-after"><span class="menu-image-title">Bàn trang điểm</span></a>
-                                            <div class="nav-sub">
-                                                <ul role="menu">
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2174" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2174 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/dien-gia-dung/" class="menu-image-title-after"><span class="menu-image-title">Điện Gia Dụng</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2175" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2175 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/do-choi-me-be/" class="menu-image-title-after"><span class="menu-image-title">Đồ Chơi – Mẹ &amp; Bé</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2176" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2176 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/hang-quoc-te/" class="menu-image-title-after"><span class="menu-image-title">Hàng Quốc Tế</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2177" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children dropdown-submenu menu-item-2177 nav-item">
-                                            <a href="https://tiki.maugiaodien.com/danh-muc/lam-dep-suc-khoe/" class="menu-image-title-after"><span class="menu-image-title">Làm Đẹp – Sức Khỏe</span></a>
-                                            <div class="nav-sub">
-                                                <ul role="menu">
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2178" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2178 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/nha-sach-tiki/" class="menu-image-title-after"><span class="menu-image-title">Nhà Sách Tiki</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2179" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2179 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/o-to-xe-may-xe-dap/" class="menu-image-title-after"><span class="menu-image-title">Ô Tô – Xe Máy – Xe Đạp</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2180" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2180 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/phong-bep-dep/" class="menu-image-title-after"><span class="menu-image-title">Phòng bếp đẹp</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2181" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2181 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/phong-khach-hien-dai/" class="menu-image-title-after"><span class="menu-image-title">Phòng khách hiện đại</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2182" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children dropdown-submenu menu-item-2182 nav-item">
-                                            <a href="https://tiki.maugiaodien.com/danh-muc/phong-ngu-hien-dai/" class="menu-image-title-after"><span class="menu-image-title">Phòng ngủ hiện đại</span></a>
-                                            <div class="nav-sub">
-                                                <ul role="menu">
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2183" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2183 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/sach-van-phong-pham/" class="menu-image-title-after"><span class="menu-image-title">Sách &amp; văn phòng phẩm</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2184" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2184 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/tu-bep-dep/" class="menu-image-title-after"><span class="menu-image-title">Tủ bếp đẹp</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2185" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2185 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/tu-dau-giuong/" class="menu-image-title-after"><span class="menu-image-title">Tủ đầu giường</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2186" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2186 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/tu-quan-ao/" class="menu-image-title-after"><span class="menu-image-title">Tủ quần áo</span></a></li>
-                                                    <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2187" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2187 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/xe-may-tiki/" class="menu-image-title-after"><span class="menu-image-title">Xe máy tiki</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2188" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2188 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/bach-hoa-online/" class="menu-image-title-after menu-image-not-hovered"><img width="31" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png 31w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39-24x22.png 24w" sizes="(max-width: 31px) 100vw, 31px"><span class="menu-image-title">Bách Hóa Online</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2189" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2189 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/ban-trang-diem/" class="menu-image-title-after menu-image-not-hovered"><img width="27" height="19" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03.png 27w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_03-24x17.png 24w" sizes="(max-width: 27px) 100vw, 27px"><span class="menu-image-title">Bàn trang điểm</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2190" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2190 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/dien-gia-dung/" class="menu-image-title-after menu-image-not-hovered"><img width="27" height="19" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_05.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_05.png 27w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_05-24x17.png 24w" sizes="(max-width: 27px) 100vw, 27px"><span class="menu-image-title">Điện Gia Dụng</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2191" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2191 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/do-choi-me-be/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="31" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_07.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_07.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_07-24x24.png 24w" sizes="(max-width: 32px) 100vw, 32px"><span class="menu-image-title">Đồ Chơi – Mẹ &amp; Bé</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2192" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2192 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/hang-quoc-te/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_13.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_13.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_13-24x21.png 24w" sizes="(max-width: 32px) 100vw, 32px"><span class="menu-image-title">Hàng Quốc Tế</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2193" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2193 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/lam-dep-suc-khoe/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="27" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20-24x20.png 24w" sizes="(max-width: 32px) 100vw, 32px"><span class="menu-image-title">Làm Đẹp – Sức Khỏe</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2194" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2194 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/nha-sach-tiki/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="33" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_25.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_25.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_25-24x24.png 24w" sizes="(max-width: 32px) 100vw, 32px"><span class="menu-image-title">Nhà Sách Tiki</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2195" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2195 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/o-to-xe-may-xe-dap/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="34" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_33.png" class="menu-image menu-image-title-after" alt="" loading="lazy"><span class="menu-image-title">Ô Tô – Xe Máy – Xe Đạp</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2196" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2196 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/phong-bep-dep/" class="menu-image-title-after menu-image-not-hovered"><img width="31" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png 31w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39-24x22.png 24w" sizes="(max-width: 31px) 100vw, 31px"><span class="menu-image-title">Phòng bếp đẹp</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2197" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2197 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/phong-khach-hien-dai/" class="menu-image-title-after menu-image-not-hovered"><img width="24" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_41.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_41.png 24w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_41-21x24.png 21w" sizes="(max-width: 24px) 100vw, 24px"><span class="menu-image-title">Phòng khách hiện đại</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2199" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2199 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/sach-van-phong-pham/" class="menu-image-title-after menu-image-not-hovered"><img width="28" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_45.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_45.png 28w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_45-24x24.png 24w" sizes="(max-width: 28px) 100vw, 28px"><span class="menu-image-title">Sách &amp; văn phòng phẩm</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2200" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2200 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/tu-bep-dep/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="27" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_28.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_28.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_28-24x20.png 24w" sizes="(max-width: 32px) 100vw, 32px"><span class="menu-image-title">Tủ bếp đẹp</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2201" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2201 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/tu-dau-giuong/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="34" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_33.png" class="menu-image menu-image-title-after" alt="" loading="lazy"><span class="menu-image-title">Tủ đầu giường</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2202" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2202 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/tu-quan-ao/" class="menu-image-title-after menu-image-not-hovered"><img width="32" height="27" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20.png 32w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_20-24x20.png 24w" sizes="(max-width: 32px) 100vw, 32px"><span class="menu-image-title">Tủ quần áo</span></a></li>
-                            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2203" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2203 nav-item"><a href="https://tiki.maugiaodien.com/danh-muc/xe-may-tiki/" class="menu-image-title-after menu-image-not-hovered"><img width="30" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_43.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_43.png 30w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_43-24x22.png 24w" sizes="(max-width: 30px) 100vw, 30px"><span class="menu-image-title">Xe máy tiki</span></a></li>
+                            @foreach (var c in ViewBag.listDanhMuc)
+                            {
+                                <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2188" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-2188 nav-item"><a href="~/Home/Danhmuc?id=@c[0]" class="menu-image-title-after menu-image-not-hovered"><img width="31" height="28" src="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png" class="menu-image menu-image-title-after" alt="" loading="lazy" srcset="https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39.png 31w, https://tiki.maugiaodien.com/wp-content/uploads/2019/03/sprite_39-24x22.png 24w" sizes="(max-width: 31px) 100vw, 31px" /><span class="menu-image-title">@c[1]</span></a></li>
+                            }
                         </ul>
                     </nav>
 

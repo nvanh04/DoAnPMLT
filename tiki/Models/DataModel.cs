@@ -33,5 +33,16 @@ namespace tiki.Models
             return datalist;
 
         }
+        public void Execute(string sql)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sql, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
     }
 }

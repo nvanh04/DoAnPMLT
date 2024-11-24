@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tiki", "tiki\tiki.csproj", "{C248E5B0-DAF3-41CA-8951-0F8C54DF78CE}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "test", "test\test.vdproj", "{14B6A16D-7298-434D-BDAF-0F08E0CDA2B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{C248E5B0-DAF3-41CA-8951-0F8C54DF78CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C248E5B0-DAF3-41CA-8951-0F8C54DF78CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C248E5B0-DAF3-41CA-8951-0F8C54DF78CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14B6A16D-7298-434D-BDAF-0F08E0CDA2B0}.Debug|Any CPU.ActiveCfg = Debug
+		{14B6A16D-7298-434D-BDAF-0F08E0CDA2B0}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

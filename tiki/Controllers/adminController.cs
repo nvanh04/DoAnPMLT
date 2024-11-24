@@ -145,6 +145,20 @@ namespace tiki.Controllers
             ViewBag.list = db.get("EXEC XOASANPHAMTHEOID " + id);
             return RedirectToAction("product", "admin");
         }
+        [HttpPost]
+        public JsonResult DeleteCustomer(int id)
+        {
+            try
+            {
+                DataModel db = new DataModel();
+                db.Execute($"DELETE FROM Users WHERE user_id = {id}");
+                return Json(new { success = true, message = "Customer deleted successfully!" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
 
     }
 }

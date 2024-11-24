@@ -111,6 +111,7 @@ namespace tiki.Controllers
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
             ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
             ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id+"'");
             ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
@@ -126,10 +127,16 @@ namespace tiki.Controllers
             int userId = Convert.ToInt32(Session["IDKH"]);
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
+
             ViewBag.laythongtintheoidproduct = db.get("EXEC LAY_THONGTIN_USER_THEO_PRODUCT " + id + ";");
             ViewBag.listchitietsanpham = db.get("EXEC TIMKIEMProductsID " + id + ";");
             ViewBag.listTenCotSanPham = db.get("exec TenCotSanPham");
             ViewBag.listGetProductInfo = db.get("exec GetProductInfo");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
 
             return View();
         }
@@ -139,8 +146,14 @@ namespace tiki.Controllers
             int userId = Convert.ToInt32(Session["IDKH"]);
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
+
             ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
             ViewBag.list = db.get("EXEC TIMKIEMTHEOTEN '" + tensp + "'");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
             return View();
         }
         public ActionResult UpdateUserRoleToNBH()
@@ -150,30 +163,41 @@ namespace tiki.Controllers
             ViewBag.UpdateUserRoleToNBH = db.get($"EXEC UpdateUserRoleToNBH {userId}");
             return RedirectToAction("shop", "Shop");
         }
-        public ActionResult Theodoidonhang()
+        public ActionResult Theodoidonhang(string id)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
             return View();
         }
-        public ActionResult Thongtincanhan()
+        public ActionResult Thongtincanhan(string id)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
-            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
-
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
             return View();
         }
-        public ActionResult SuaThongTinCaNhan()
+        public ActionResult SuaThongTinCaNhan(string id)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
-            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
-
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
             return View();
         }
         [HttpPost]
@@ -186,7 +210,7 @@ namespace tiki.Controllers
                     DataModel db = new DataModel();
                     int userId = Convert.ToInt32(Session["IDKH"]);
                     ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
-                    ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+                    ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
                     string filename = Path.GetFileName(hinh.FileName);
                     string path = Path.Combine(Server.MapPath("~/HINH"), filename);
                     hinh.SaveAs(path);
@@ -200,25 +224,36 @@ namespace tiki.Controllers
             catch (Exception) { }
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult XemDonHang()
+        public ActionResult XemDonHang(string id)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
+
             ViewBag.XuatDH = db.get($"exec XuatDonHang {userId}");
             ViewBag.XuatCTDH = db.get($"exec XuatChiTietDonHang {userId}");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
             return View();
         }
-        public ActionResult XemDanhSachDH_User()
+        public ActionResult XemDanhSachDH_User(string id)
         {
             DataModel db = new DataModel();
             int userId = Convert.ToInt32(Session["IDKH"]);
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
+
             // Lấy danh sách đơn hàng cho người dùng
             ViewBag.XemDanhSachDH = db.get($"exec XemDanhSachDH {userId}");
-
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
             return View();
         }
         public ActionResult XemDanhSachDHCT_User(string id)
@@ -227,12 +262,17 @@ namespace tiki.Controllers
             int userId = Convert.ToInt32(Session["IDKH"]);
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
+
             // Lấy thông tin đơn hàng của người dùng
             ViewBag.XemCTDH = db.get($"exec XemCTDH {userId}, {id}");
 
             // Lấy chi tiết đơn hàng
             ViewBag.XemDanhSachDHCT = db.get($"exec XemDanhSachDHCT {userId}, {id}");
-          
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
             return View(); ;
         }
         public ActionResult XoaDH_User(string id)
@@ -248,6 +288,8 @@ namespace tiki.Controllers
             int userId = Convert.ToInt32(Session["IDKH"]);
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
+
             ViewBag.XemTTDonHang = db.get($"exec XemCTDH '{userId}', '{id}'");
             return View();
         }
@@ -258,6 +300,8 @@ namespace tiki.Controllers
             int userId = Convert.ToInt32(Session["IDKH"]);
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
+
             ViewBag.XemTTDonHang = db.get($"exec XemCTDH '{userId}', '{id}'");
             db.get("exec CapNhatDH "+userId+", "+id+", N'"+billing_name+"', '"+billing_tel+"', N'"+billing_address_1+"', '"+billing_email+"', N'"+order_comments+"'");
             return RedirectToAction("XemDanhSachDH_User", "Home");
@@ -268,9 +312,15 @@ namespace tiki.Controllers
              int userId = Convert.ToInt32(Session["IDKH"]);
 
             ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.listTTKH = db.get($"EXEC LayTTKH1 {userId}");
+
             ViewBag.list = db.get("EXEC TIMKIEMNBHTHEOID " + id + ";");
             ViewBag.hienthisanphamid2 = db.get($"exec LAY_SANPHAM_THEO_USERID1 {id}");
             ViewBag.LayThongTinNguoiDung = db.get("EXEC LayThongTinNguoiDung " + id + ";");
+            ViewBag.listDanhMuc = db.get("EXEC xuatDanhMuc");
+            ViewBag.listSPtheoID = db.get("EXEC GetProductsAndCategoryNameById'" + id + "'");
+            ViewBag.categoryName = db.get("EXEC GetCategoryNameById '" + id + "'");
+            ViewBag.listGetCategoryNameById = db.get("EXEC GetCategoryNameById'" + id + "'");
             return View();
         }
     }
