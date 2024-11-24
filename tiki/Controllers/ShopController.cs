@@ -61,6 +61,59 @@ namespace tiki.Controllers
             // Chuyển hướng về trang quản lý sản phẩm sau khi thêm thành công
             return RedirectToAction("shoplistproduct", "Shop");
         }
+        [HttpPost]
+        public ActionResult suasp(string name, string description, string price, string stock_quantity, string category_id, string brand_id, HttpPostedFileBase HINH, string price_discount,string id)
+        {
+            try
+            {
+                // Kiểm tra nếu `user_id` tồn tại trong session
+                if (Session["IDKH"] != null)
+                {
+
+                    //int userId = Convert.ToInt32(Session["IDKH"]); // Lấy `user_id` từ session
+
+                    // Kiểm tra xem có hình ảnh không
+                    if (HINH != null && HINH.ContentLength > 0)
+                    {
+                        // Lưu ảnh vào thư mục
+                        string filename = Path.GetFileName(HINH.FileName);
+                        string path = Path.Combine(Server.MapPath("~/HINH"), filename);
+                        HINH.SaveAs(path);
+
+                        // Tạo câu lệnh SQL với `user_id`
+                        DataModel db = new DataModel();
+                        string query = "EXEC THEMSP222 N'" + name + "', N'" + description + "', " + price + ", " + stock_quantity + ", " + category_id + ", " + brand_id + ",'" + filename + "', " + stock_quantity + ", " + price_discount + ", " + id + ";";
+
+                        // Thực hiện truy vấn để thêm sản phẩm
+                        ViewBag.listsua = db.get(query);
+                    }
+                }
+                else
+                {
+                    // Nếu không có `user_id` trong session, chuyển hướng tới trang đăng nhập
+                    return RedirectToAction("GiaoDienDangNhap", "Home");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi: " + ex.Message);
+            }
+
+            // Chuyển hướng về trang quản lý sản phẩm sau khi thêm thành công
+            return RedirectToAction("shoplistproduct", "Shop");
+        }
+        public ActionResult suasanpham(string id)
+        {
+            DataModel db = new DataModel();
+            ViewBag.listchitietsanpham = db.get("EXEC TIMKIEMProductsID " + id + ";");
+            ViewBag.listSanpham = db.get("SELECT * FROM Products" );
+            ViewBag.listDanhMuc = db.get("SELECT * FROM Categories");
+            ViewBag.listnhacungcap = db.get("SELECT * FROM Brands");
+            int userId = Convert.ToInt32(Session["IDKH"]);
+            ViewBag.list = db.get($"EXEC LayTTKH1 {userId}");
+            ViewBag.hienthisanphamid = db.get($"exec LAY_SANPHAM_THEO_USERID1 {userId}");
+            return View();
+        }
         public ActionResult xoasanpham(string id)
         {
             DataModel db = new DataModel();
